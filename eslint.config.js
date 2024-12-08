@@ -33,6 +33,7 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      'indent': ['warn', 2],
     },
   },
 ]

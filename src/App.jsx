@@ -1,12 +1,17 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Home } from './pages/home';
+import PropTypes from 'prop-types';
 
 const Layout = ({ children }) => {
-    return (
-      <>
-        {children}
-      </>
-    );
+  return (
+    <>
+      {children}
+    </>
+  );
+};
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired, 
 };
 
 export function App() {
@@ -18,5 +23,5 @@ export function App() {
         </Routes>
       </Layout>
     </Router>
-  )
+  );
 }
