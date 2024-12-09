@@ -1,10 +1,12 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Home } from './pages/home';
+import { Header } from './components/header';
 import PropTypes from 'prop-types';
 
 const Layout = ({ children }) => {
   return (
     <>
+      <Header/>
       {children}
     </>
   );
