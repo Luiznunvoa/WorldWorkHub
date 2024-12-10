@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
    margin: 0;
    border: 0;
@@ -8,7 +12,7 @@
     --white: #FAFAFA;
     
     --background-primary: #E0E0E0;
-    --background-secundary: #C0C0C0;
+    --background-secondary: #C0C0C0;
     --primary: #F0F0F0;
     
     --outline: #707070;
