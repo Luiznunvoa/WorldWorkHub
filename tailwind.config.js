@@ -19,9 +19,14 @@ export default {
         hero_pattern: "url('assets/person.png')",
       },
       fontFamily: {
-        'space-mono-regular': ["Space Mono", "serif"],
+        'Roboto': ["Roboto", "sans-serif"],
         'kanit-thin': ["Kanit", "sans-serif"],
         'archivo-black-regular': ["Archivo Black", "sans-serif"],
+      },
+      screens: {
+        'tablet': '800px',
+        'laptop': '1024px',
+        'desktop': '1280px',
       },
     },
   },

@@ -15,21 +15,14 @@ export function Header() {
         className="mr-12 text-text cursor-pointer"
         onClick={() => setDropdownVisible((prevVisible) => !prevVisible)}
       />
-      <div
-        className={
-          `absolute top-14 right-5 bg-white shadow-md rounded-lg p-4 
-          ${dropdownVisible ? 'block' : 'hidden'}
-        `}>
+      <div className={
+        `absolute top-14 right-5 bg-white shadow-md rounded-lg p-4 
+        ${dropdownVisible ? 'block' : 'hidden'}`
+      }>
         <ul className="list-none">
-          <li className="w-20 text-sm cursor-pointer p-2 hover:font-bold font-space-mono-regular">
-            About
-          </li>
-          <li className="w-20 text-sm cursor-pointer p-2 hover:font-bold font-space-mono-regular">
-            Contact
-          </li>
-          <li className="w-20 text-sm cursor-pointer p-2 hover:font-bold font-space-mono-regular">
-            License
-          </li>
+          <li className="w-20 text-sm cursor-pointer p-2 hover:font-bold font-space-mono-regular">About</li>
+          <li className="w-20 text-sm cursor-pointer p-2 hover:font-bold font-space-mono-regular">Contact</li>
+          <li className="w-20 text-sm cursor-pointer p-2 hover:font-bold font-space-mono-regular">License</li>
         </ul>
       </div>
     </header>
