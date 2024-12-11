@@ -8,11 +8,11 @@ export function Header() {
   return (
     <header 
       className="w-screen flex items-center justify-between bg-white border-solid border-b-[0.1rem] border-gray-500 p-4">
-      <h1 className="font-bold">WorldWork Hub</h1>
+      <h1 className="text-3xl font-bold italic font-kanit-thin">WorldWorkHub.</h1>
       <FontAwesomeIcon
         icon={faBars}
-        size="lg"
-        className="mr-11 text-gray-500 cursor-pointer"
+        size="xl"
+        className="mr-12 text-text cursor-pointer"
         onClick={() => setDropdownVisible((prevVisible) => !prevVisible)}
       />
       <div
@@ -21,9 +21,15 @@ export function Header() {
           ${dropdownVisible ? 'block' : 'hidden'}
         `}>
         <ul className="list-none">
-          <li className="cursor-pointer p-2 hover:font-bold">About Us</li>
-          <li className="cursor-pointer p-2 hover:font-bold">Contact</li>
-          <li className="cursor-pointer p-2 hover:font-bold">License</li>
+          <li className="w-20 text-sm cursor-pointer p-2 hover:font-bold font-space-mono-regular">
+            About
+          </li>
+          <li className="w-20 text-sm cursor-pointer p-2 hover:font-bold font-space-mono-regular">
+            Contact
+          </li>
+          <li className="w-20 text-sm cursor-pointer p-2 hover:font-bold font-space-mono-regular">
+            License
+          </li>
         </ul>
       </div>
     </header>
