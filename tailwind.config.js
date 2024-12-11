@@ -18,6 +18,18 @@ export default {
         custom_gradient: 'linear-gradient(0deg, rgba(224,224,224,1) 48%, rgba(61,149,103,1) 48%)',
         hero_pattern: "url('assets/person.png')",
       },
+      keyframes: {
+        colorAnimation: { // Uso do camelCase
+          '0%':  {color: '#ff006e'},
+          '25%': {color: '#1982c4'},
+          '50%': {color: '#06d6a0'},
+          '75%': {color: '#ffca3a'},
+          '100%':{color: '#ff006e'},
+        },
+      },
+      animation: {
+        colorAnimation: 'colorAnimation 2s linear infinite', // Nome consistente
+      },
       fontFamily: {
         'Roboto': ["Roboto", "sans-serif"],
         'kanit-thin': ["Kanit", "sans-serif"],
