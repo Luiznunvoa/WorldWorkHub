@@ -1,30 +1,27 @@
 import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { BarSvg } from '../../assets';
 
 export function Header() {
   const [dropdownVisible, setDropdownVisible] = useState(false);
 
   return (
     <header 
-      className="w-screen flex items-center justify-between bg-white border-solid border-b-[0.1rem] border-gray-500 p-4">
+      className="w-full flex items-center justify-between bg-white border-solid border-b-[0.1rem] border-gray-500 p-4">
       <h1 className="text-3xl font-bold italic font-kanit-thin">WorldWorkHub.</h1>
-      <FontAwesomeIcon
-        icon={faBars}
-        size="xl"
-        className="mr-12 text-text cursor-pointer"
-        onClick={() => setDropdownVisible((prevVisible) => !prevVisible)}
-      />
-      <div className={
-        `absolute top-14 right-5 bg-white shadow-md rounded-lg p-4 
-        ${dropdownVisible ? 'block' : 'hidden'}`
-      }>
-        <ul className="list-none">
-          <li className="w-20 text-sm cursor-pointer p-2 hover:font-bold font-space-mono-regular">About</li>
-          <li className="w-20 text-sm cursor-pointer p-2 hover:font-bold font-space-mono-regular">Contact</li>
-          <li className="w-20 text-sm cursor-pointer p-2 hover:font-bold font-space-mono-regular">License</li>
-        </ul>
-      </div>
+
+      <span className="mr-[3rem]" onClick={() => setDropdownVisible((prevVisible) => !prevVisible)}>
+        <BarSvg className="fill-text w-5 h-5"/>        
+      </span>
+
+      { dropdownVisible &&
+        <div className="absolute top-14 right-5 bg-white shadow-md rounded-lg p-4">
+          <ul className="list-none">
+            <li className="w-20 text-sm cursor-pointer p-2 hover:font-bold font-space-mono-regular">About</li>
+            <li className="w-20 text-sm cursor-pointer p-2 hover:font-bold font-space-mono-regular">Contact</li>
+            <li className="w-20 text-sm cursor-pointer p-2 hover:font-bold font-space-mono-regular">License</li>
+          </ul>
+        </div>
+      }
     </header>
   );
 }

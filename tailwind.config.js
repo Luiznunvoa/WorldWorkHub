@@ -6,6 +6,7 @@ export default {
       colors: {
         black: '#505050',
         white: '#FAFAFA',
+        green: '#3c9366',
         background_primary: '#E0E0E0',
         background_secondary: '#C0C0C0',
         primary: '#F0F0F0',
@@ -15,11 +16,12 @@ export default {
         text_secondary: '#F0F0F0',
       },
       backgroundImage: {
-        custom_gradient: 'linear-gradient(0deg, rgba(224,224,224,1) 48%, rgba(61,149,103,1) 48%)',
+        custom_gradient: 'linear-gradient(0deg, #C0C0C0 48%, #3c9366 48%)',
         hero_pattern: "url('assets/person.png')",
+        hand: "url('assets/hand.png')",
       },
       keyframes: {
-        colorAnimation: { // Uso do camelCase
+        colorAnimation: { 
           '0%':  {color: '#ff006e'},
           '25%': {color: '#1982c4'},
           '50%': {color: '#06d6a0'},
@@ -28,7 +30,7 @@ export default {
         },
       },
       animation: {
-        colorAnimation: 'colorAnimation 2s linear infinite', // Nome consistente
+        colorAnimation: 'colorAnimation 2s linear infinite',
       },
       fontFamily: {
         'Roboto': ["Roboto", "sans-serif"],
