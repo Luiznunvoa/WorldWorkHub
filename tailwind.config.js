@@ -16,9 +16,7 @@ export default {
         text_secondary: '#F0F0F0',
       },
       backgroundImage: {
-        custom_gradient: 'linear-gradient(0deg, #C0C0C0 48%, #3c9366 48%)',
-        hero_pattern: "url('assets/person.png')",
-        hand: "url('assets/hand.png')",
+        custom_gradient: 'linear-gradient(0deg, #C0C0C0 48%, #3c9366 48%)',    
       },
       keyframes: {
         colorAnimation: { 
