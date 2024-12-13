@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import  person  from '/assets/person.png'
 
+// TODO: Add images to a different file
 export const personPNG = person;
 
 const SVG_DATA = {

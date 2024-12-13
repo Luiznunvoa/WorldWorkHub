@@ -8,7 +8,7 @@ export function Header() {
     <header className="w-full flex items-center justify-between bg-white border-solid border-b-[0.1rem] border-gray-500 p-4">
       <h1 className="text-3xl font-bold italic font-kanit-thin">WorldWorkHub.</h1>
 
-      <span className="mr-[3rem] cursor-pointer" onClick={() => setDropdownVisible((prevVisible) => !prevVisible)}>
+      <span className="mr-12 cursor-pointer" onClick={() => setDropdownVisible((prevVisible) => !prevVisible)}>
         <SVG className="fill-text w-5 h-5" type="bar"/>
       </span>
 

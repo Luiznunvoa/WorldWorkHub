@@ -16,7 +16,7 @@ export default {
         text_secondary: '#F0F0F0',
       },
       backgroundImage: {
-        custom_gradient: 'linear-gradient(0deg, #C0C0C0 48%, #3c9366 48%)',    
+        custom_gradient: 'linear-gradient(0deg, #E0E0E0 48%, #3c9366 48%)',    
       },
       keyframes: {
         colorAnimation: { 
