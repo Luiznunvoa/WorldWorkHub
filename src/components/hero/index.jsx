@@ -8,7 +8,7 @@ export function Hero() {
         <p className="text-lg mt-5 font-Roboto text-center"> WWH. can help you get there!</p>
         <button className="bg-text border-solid border-outline border-[0.1rem] text-text_secondary mt-10 w-1/2 h-16 font-kanit-thin font-bold hover:scale-105 transition duration-150 ease-in-out hover:shadow-2xl">Start Now!</button>
       </div>
-      <img src={personPNG} alt="image" loading="lazy" className="lg:h-full lg:w-[48rem] bg-center lg:block h-1/2 w-full object-cover" />
+      <img src={personPNG} alt="image" loading="lazy" className="lg:h-full lg:w-[48rem] lg:block h-1/2 w-full object-cover" />
   	</div> 
   );
 }

@@ -20,15 +20,42 @@ export default {
       },
       keyframes: {
         colorAnimation: { 
-          '0%':  {color: '#ff006e'},
-          '25%': {color: '#1982c4'},
-          '50%': {color: '#06d6a0'},
-          '75%': {color: '#ffca3a'},
-          '100%':{color: '#ff006e'},
+          '0%':  {color: '#ff006e', fill: '#ff006e'},
+          '25%': {color: '#1982c4', fill: '#1982c4'},
+          '50%': {color: '#06d6a0', fill: '#06d6a0'},
+          '75%': {color: '#ffca3a', fill: '#ffca3a'},
+          '100%':{color: '#ff006e', fill: '#ff006e'},
         },
+        float: {
+          '0%':   { transform: 'translateY(0rem)' },
+          '33%':  { transform: 'translateY(-2rem)' },
+          '66%':  { transform: 'translateX(4rem)' },
+          '100%':  { transform: 'translateX(-1rem)' },
+        },
+        climb: {
+          '0%':   { transform: 'translateY(1rem)' },
+          '20%':  { transform: 'translateX(4rem)' },
+          '40%':  { transform: 'translateY(1rem)' },
+          '60%':  { transform: 'translateX(4rem)' },
+          '80%':  { transform: 'translateY(1rem)' },
+          '100%': { transform: 'translateX(4rem)' },
+        },
+        updown: {
+          '0%':   { transform: 'translateY(0rem)' },
+          '100%':  { transform: 'translateY(-1rem)' },
+        },
+        lefright: {
+          '0%':   { transform: 'translateX(0rem)' },
+          '100%': { transform: 'translateX(-0.5rem)' },
+        },
+
       },
       animation: {
         colorAnimation: 'colorAnimation 2s linear infinite',
+        float:   'float 6s ease-in-out infinite alternate',
+        climb:   'climb 20s ease-in-out infinite alternate',
+        updown: 'updown 2s ease-in-out infinite alternate',
+        lefright: 'lefright 2s ease-in-out infinite alternate',
       },
       fontFamily: {
         'Roboto': ["Roboto", "sans-serif"],
