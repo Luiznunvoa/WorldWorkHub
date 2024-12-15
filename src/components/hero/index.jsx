@@ -1,4 +1,5 @@
 import { personPNG } from "../../assets";
+
 export function Hero() {
 
   return (
