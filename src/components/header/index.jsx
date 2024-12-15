@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SVG } from '../../assets';
+import { SVG } from '../../utils/custom_svg';
 
 export function Header() {
   const [dropdownVisible, setDropdownVisible] = useState(false);

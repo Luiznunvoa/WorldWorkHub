@@ -1,7 +1,7 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Home } from './pages/home';
-import { Header } from './components/header';
 import PropTypes from 'prop-types';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Header } from './components/header';
+import { Home } from './pages/home';
 
 const Layout = ({ children }) => {
   return (

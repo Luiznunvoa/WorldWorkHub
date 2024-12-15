@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { SVG } from "../../assets";
+import { SVG } from "../../utils/custom_svg";
 
 function ProductSection({ text, icons }) {
   return (
@@ -52,7 +52,7 @@ export function Products() { // Label and icons for each section of the componen
   ];
 
   return (
-    <div className="w-full grid grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] gap-6 p-4 sm:flex-row">
+    <div className="w-full grid gap-6 p-4 grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] sm:grid-cols-2 xl:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))]">
       {sections.map((section, index) => (
         <ProductSection key={index} text={section.text} icons={section.icons} />
       ))}
