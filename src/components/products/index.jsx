@@ -3,7 +3,7 @@ import { SVG } from "../../utils/custom_svg";
 
 function ProductSection({ text, icons }) {
   return (
-    <section className="flex flex-row justify-center items-center h-">
+    <section className="flex flex-row justify-center items-center">
       <p className="font-Roboto w-40">{text}</p>
       <div className="flex flex-row relative">
         {icons.map((icon, index) => (
@@ -19,7 +19,7 @@ ProductSection.propTypes = {
   icons: PropTypes.array,
 };
 
-export function Products() { // Label and icons for each section of the component
+export function Products() { // Label and icons for each section of the components
   const sections = [
     {
       text: "Choose the country where you want to work on",
@@ -52,7 +52,7 @@ export function Products() { // Label and icons for each section of the componen
   ];
 
   return (
-    <div className="w-full grid gap-6 p-4 grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] sm:grid-cols-2 xl:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))]">
+    <div className="w-full grid gap-6 p-4 grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] sm:grid-cols-2 xl:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] m-12">
       {sections.map((section, index) => (
         <ProductSection key={index} text={section.text} icons={section.icons} />
       ))}

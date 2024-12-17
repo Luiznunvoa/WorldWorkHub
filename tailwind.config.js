@@ -48,7 +48,10 @@ export default {
           '0%':   { transform: 'translateX(0rem)' },
           '100%': { transform: 'translateX(-0.5rem)' },
         },
-
+        show: {
+          '0%':   { transform: 'scaleY(0)' }, 
+          '100%': { transform: 'scaleY(1)' }, 
+        },
       },
       animation: {
         colorAnimation: 'colorAnimation 2s linear infinite',
@@ -56,6 +59,7 @@ export default {
         climb:   'climb 20s ease-in-out infinite alternate',
         updown: 'updown 2s ease-in-out infinite alternate',
         lefright: 'lefright 2s ease-in-out infinite alternate',
+        show: 'show 1.5s ease-in-out', 
       },
       fontFamily: {
         'Roboto': ["Roboto", "sans-serif"],
