@@ -39,20 +39,20 @@ export function Products() { // Label and icons for each section of the componen
       text: "Live for new and exciting experiences",
       icons: [
         { type: "heart", className: "w-40 h-32 mt-5 fill-green" },
-        { type: "smile", className: "absolute mt-12 w-20 h-20 fill-text animate-updown" },
+        { type: "smile", className: "absolute mt-12 w-20 h-20 fill-text animate-jump" },
       ],
     },
     {
       text: "Explore paths that lead to your dreams and goals.",
       icons: [
         { type: "target", className: "w-40 h-24 mt-5 fill-green" },
-        { type: "bow", className: "absolute mt-8 w-20 h-20 fill-text animate-lefright" },
+        { type: "bow", className: "absolute mt-8 w-20 h-20 fill-text animate-turn" },
       ],
     },
   ];
 
   return (
-    <div className="w-full grid gap-6 p-4 grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] sm:grid-cols-2 xl:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] m-12">
+    <div className="w-full grid gap-6 p-4 grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] sm:grid-cols-2 xl:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] m-12 xl:flex xl:flex-row items-center justify-center">
       {sections.map((section, index) => (
         <ProductSection key={index} text={section.text} icons={section.icons} />
       ))}

@@ -24,7 +24,7 @@ export default {
           '25%': {color: '#1982c4', fill: '#1982c4'},
           '50%': {color: '#06d6a0', fill: '#06d6a0'},
           '75%': {color: '#ffca3a', fill: '#ffca3a'},
-          '100%':{color: '#ff006e', fill: '#ff006e'},
+          '100%': { color: '#0a0a0a', fill: '#ff006e'},
         },
         float: {
           '0%':   { transform: 'translateY(0rem)' },
@@ -40,36 +40,32 @@ export default {
           '80%':  { transform: 'translateY(1rem)' },
           '100%': { transform: 'translateX(4rem)' },
         },
-        updown: {
+        jump: {
           '0%':   { transform: 'translateY(0rem)' },
           '100%':  { transform: 'translateY(-1rem)' },
         },
-        lefright: {
+        turn: {
           '0%':   { transform: 'translateX(0rem)' },
           '100%': { transform: 'translateX(-0.5rem)' },
         },
         show: {
-          '0%':   { transform: 'scaleY(0)' }, 
-          '100%': { transform: 'scaleY(1)' }, 
+          '0%':   { opacity: '0%' },
+          '50%':  { opacity: '50%' },  
+          '100%': { opacity: '100%' }, 
         },
       },
       animation: {
-        colorAnimation: 'colorAnimation 2s linear infinite',
-        float:   'float 6s ease-in-out infinite alternate',
-        climb:   'climb 20s ease-in-out infinite alternate',
-        updown: 'updown 2s ease-in-out infinite alternate',
-        lefright: 'lefright 2s ease-in-out infinite alternate',
+        colorAnimation: 'colorAnimation 2s linear 2',
+        float:'float 6s ease-in-out infinite alternate',
+        climb:'climb 20s ease-in-out infinite alternate',
+        jump: 'jump 2s ease-in-out infinite alternate',
+        turn: 'turn 2s ease-in-out infinite alternate',
         show: 'show 1.5s ease-in-out', 
       },
       fontFamily: {
         'Roboto': ["Roboto", "sans-serif"],
         'kanit-thin': ["Kanit", "sans-serif"],
         'archivo-black-regular': ["Archivo Black", "sans-serif"],
-      },
-      screens: {
-        'tablet': '800px',
-        'laptop': '1024px',
-        'desktop': '1280px',
       },
     },
   },
