@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
-import { useScrollTrigger } from "../../utils/scroll_trigger";
 import { city1JPG, city2JPG, lorem } from "../../assets";
+import { useScrollTrigger } from "../../utils/scroll_trigger";
 
-export function About() {
+export function Places() {
   const sectionRef = useRef(null);
   const [animate, setAnimate] = useState(false);
 
