@@ -1,4 +1,4 @@
-import { About } from '../../components/about';
+import { Places } from '../../components/places';
 import { Hero } from '../../components/hero';
 import { Products } from '../../components/products';
 
@@ -10,7 +10,7 @@ export function Home() {
         <p className="text-text_secondary lg:text-lg font-Roboto m-1 text-sm">Look the Opportunities, Explore our solutions!</p>
       </div>
       <Products />
-      <About />
+      <Places />
     </main>
   );
 }

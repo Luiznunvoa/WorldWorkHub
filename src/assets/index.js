@@ -1,6 +1,6 @@
-import  person  from '/assets/person.png'
-import city1 from '/assets/city1.jpg'
-import city2 from '/assets/city2.jpg'
+import city1 from '/assets/city1.jpg';
+import city2 from '/assets/city2.jpg';
+import person from '/assets/person.png';
 
 export const personPNG = person;
 export const city1JPG = city1;
