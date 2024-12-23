@@ -52,7 +52,7 @@ export function Products() { // Label and icons for each section of the componen
   ];
 
   return (
-    <div className="w-full grid gap-6 p-4 grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] sm:grid-cols-2 xl:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] m-12 xl:flex xl:flex-row items-center justify-center">
+    <div className="grid gap-6 p-4 grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] sm:grid-cols-2 xl:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] m-12 xl:flex xl:flex-row items-center justify-center">
       {sections.map((section, index) => (
         <ProductSection key={index} text={section.text} icons={section.icons} />
       ))}

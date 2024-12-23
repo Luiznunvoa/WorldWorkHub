@@ -1,7 +1,7 @@
 import { Places } from '../../components/places';
 import { Hero } from '../../components/hero';
 import { Products } from '../../components/products';
-import { About } from '../../components/about';
+import { Team } from '../../components/team';
 
 export function Home() {
   return (
@@ -12,7 +12,7 @@ export function Home() {
       </div>
       <Products />
       <Places />
-      <About />
+      <Team />
     </main>
   );
 }
