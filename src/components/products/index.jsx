@@ -3,8 +3,8 @@ import { SVG } from "../../utils/custom_svg";
 
 function ProductSection({ text, icons }) {
   return (
-    <section className="flex flex-row justify-center items-center">
-      <p className="font-Roboto w-40">{text}</p>
+    <section className="flex flex-row justify-center items-center gap-5">
+      <p className="font-archivo-black-regular text-center text-lg w-40">{text}</p>
       <div className="flex flex-row relative">
         {icons.map((icon, index) => (
           <SVG key={index} className={icon.className} type={icon.type} />
@@ -25,7 +25,7 @@ export function Products() { // Label and icons for each section of the componen
       text: "Choose the country where you want to work on",
       icons: [
         { type: "usa", className: "w-40 h-40 fill-green" },
-        { type: "tap", className: "absolute mt-12 w-20 h-20 fill-text animate-float" },
+        { type: "tap", className: "absolute mr-12 mt-12 w-20 h-20 fill-text animate-float" },
       ],
     },
     {
@@ -52,7 +52,7 @@ export function Products() { // Label and icons for each section of the componen
   ];
 
   return (
-    <div className="grid gap-6 p-4 grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] sm:grid-cols-2 xl:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] m-12 xl:flex xl:flex-row items-center justify-center">
+    <div className="grid gap-6 p-4 grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] sm:grid-cols-2 xl:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] m-5 xl:flex xl:flex-row items-center justify-center">
       {sections.map((section, index) => (
         <ProductSection key={index} text={section.text} icons={section.icons} />
       ))}

@@ -20,11 +20,11 @@ export default {
       },
       keyframes: {
         colorAnimation: { 
-          '0%':  {color: '#ff006e', fill: '#ff006e'},
-          '25%': {color: '#1982c4', fill: '#1982c4'},
-          '50%': {color: '#06d6a0', fill: '#06d6a0'},
-          '75%': {color: '#ffca3a', fill: '#ffca3a'},
-          '100%': { color: '#0a0a0a', fill: '#ff006e'},
+          '0%': { color: '#ee82ee', fill: '#ee82ee'},
+          '25%': { color: '#4B0082', fill: '#4B0082'},
+          '50%': { color: '#008000', fill: '#008000'},
+          '75%': { color: '#ffa500', fill: '#ffa500'},
+          '100%': { color: '#ff0000', fill: '#ff0000'},
         },
         float: {
           '0%':   { transform: 'translateY(0rem)' },
@@ -55,7 +55,7 @@ export default {
         },
       },
       animation: {
-        colorAnimation: 'colorAnimation 2s linear 2',
+        colorAnimation: 'colorAnimation 4s ease-in-out infinite alternate',
         float:'float 6s ease-in-out infinite alternate',
         climb:'climb 20s ease-in-out infinite alternate',
         jump: 'jump 2s ease-in-out infinite alternate',

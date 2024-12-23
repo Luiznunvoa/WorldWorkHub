@@ -2,6 +2,7 @@ import { Places } from '../../components/places';
 import { Hero } from '../../components/hero';
 import { Products } from '../../components/products';
 import { Team } from '../../components/team';
+import { Possibilities } from '../../components/possibilities';
 
 export function Home() {
   return (
@@ -12,6 +13,7 @@ export function Home() {
       </div>
       <Products />
       <Places />
+      <Possibilities/>
       <Team />
     </main>
   );

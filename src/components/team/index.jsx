@@ -29,7 +29,7 @@ const teamMembers = [
     description: "Maintains strong client relationships and ensures exceptional customer service.",
   },
   {
-    name: "Pedro Scherer",
+    name: "Pedro Schemer",
     role: "Marketing and Sales",
     image: man4JPG,
     description: "Leads marketing campaigns and drives sales to achieve business goals.",
@@ -53,7 +53,7 @@ export function Team() {
         <section className="w-9/12 grid gap-6 p-4 justify-items-center grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] sm:grid-cols-2 xl:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] animate-show max-w-[1427px]">
           {teamMembers.map((member, index) => (
             <div key={index} className="w-60 flex flex-col items-center gap-3 m-10">
-              <img src={member.image} alt={member.name} className="w-full h-60 object-cover" />
+              <img src={member.image} alt={member.name} className="w-full h-60 object-cover border-solid border-4 border-text" />
                   
               <h3 className="w-9/12 font-bold font-kanit-thin text-2xl italic text-center">
                 {member.name}
