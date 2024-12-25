@@ -11,4 +11,5 @@ The project is made in Javascript, using the React framework and Tailwind for th
 Open the project's folder in the console and type:
 
 <code>npm i</code><br><br>
+<code>npx tailwind -i ./src/index.css -o ./index.css --minify</code><br><br>
 <code>npm run dev</code>
