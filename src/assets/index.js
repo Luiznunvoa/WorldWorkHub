@@ -6,7 +6,8 @@ import man2 from '/assets/man2.jpg';
 import man3 from '/assets/man3.jpg';
 import man4 from '/assets/man4.jpg';
 import woman1 from '/assets/woman1.jpg';
-
+import work_from_home from '/assets/work_from_home.jpg'
+import travel_to_work from '/assets/travel_to_work.jpg'
 
 export const personPNG = person;
 export const city1JPG = city1;
@@ -16,6 +17,9 @@ export const man2JPG = man2;
 export const man3JPG = man3;
 export const man4JPG = man4;
 export const woman1JPG = woman1;
+export const wfhJPG = work_from_home;
+export const ttwJPG = travel_to_work;
+
 
 export const lorem = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
 

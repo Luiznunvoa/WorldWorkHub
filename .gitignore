@@ -24,6 +24,6 @@ dist-ssr
 *.sw?
 
 /node_modules/
-/public/index.css
-projectm.sublime-project
-projectm.sublime-workspace
+index.css
+project.sublime-project
+project.sublime-workspace
