@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import { SVG } from '../../utils/custom_svg';
+import { useNavigate } from "react-router";
 
 export function Header() {
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  let navigate = useNavigate();
 
   return (
     <header className="w-full flex items-center justify-between bg-white border-solid border-b-[0.1rem] border-gray-500 p-4">
-      <h1 className="text-3xl font-bold italic font-kanit-thin">WorldWorkHub.</h1>
+      <span onClick={() => (navigate("/"))} className='cursor-pointer'> 
+        <h1 className="text-3xl font-bold italic font-kanit-thin">WorldWorkHub.</h1>
+      </span>
 
       <span className="mr-12 cursor-pointer" onClick={() => setDropdownVisible((prevVisible) => !prevVisible)}>
         <SVG className="fill-text w-5 h-5" type="bar"/>
