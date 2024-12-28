@@ -1,24 +1,21 @@
-import city1 from '/assets/city1.jpg';
-import city2 from '/assets/city2.jpg';
-import person from '/assets/person.png';
-import man1 from '/assets/man1.jpg';
-import man2 from '/assets/man2.jpg';
-import man3 from '/assets/man3.jpg';
-import man4 from '/assets/man4.jpg';
-import woman1 from '/assets/woman1.jpg';
-import houses from '/assets/houses.jpg'
-import america from '/assets/america.jpg'
-
-export const personPNG = person;
-export const city1JPG = city1;
-export const city2JPG = city2;
-export const man1JPG = man1;
-export const man2JPG = man2;
-export const man3JPG = man3;
-export const man4JPG = man4;
-export const woman1JPG = woman1;
-export const housesJPG = houses;
-export const americaJPG = america;
+export const personPNG = "https://i.postimg.cc/wBQbnHRp/person.png";
+export const man1JPG = "https://i.postimg.cc/8CS0ys54/man1.jpg";
+export const man2JPG = "https://i.postimg.cc/W1ry602t/man2.jpg";
+export const man3JPG = "https://i.postimg.cc/4NjM9WRr/man3.jpg";
+export const man4JPG = "https://i.postimg.cc/vH4kTpkr/man4.jpg";
+export const woman1JPG = "https://i.postimg.cc/597Dxx79/man5.jpg";
+export const housesJPG = "https://i.postimg.cc/Y92yHVQm/houses.jpg";
+export const americaJPG = "https://i.postimg.cc/C1vrLN4r/america.jpg";
+export const constructionJPG = "https://i.postimg.cc/j2qjbsjY/construction-guy.jpg";
+export const cleaningJPG = "https://i.postimg.cc/50ysXzyP/cleaning-girl.jpg";
+export const gardeningJPG = "https://i.postimg.cc/sg1P9zsX/gardeneer.jpg";
+export const foodserviceJPG = "https://i.postimg.cc/h4p7CYC7/foodservice-girl.jpg"
+export const logisticsJPG = "https://i.postimg.cc/PrJv0McV/warehouse-guy.jpg";
+export const retailserviceJPG = "https://i.postimg.cc/WzWFhDD7/costumer-service-girl.jpg"
+export const healthcareJPG = "https://i.postimg.cc/9McrbPZp/healtcare-girl.jpg"
+export const childcareJPG = "https://i.postimg.cc/QxzKDTZ8/childcare-girl.jpg"
+export const deliveryJPG = "https://i.postimg.cc/52FY22fw/delivery-guy.jpg"
+export const agricultureJPG = "https://i.postimg.cc/7L8CGrLj/agriculture-guy.jpg"
 
 export const SVG_DATA = {
   usa: {
