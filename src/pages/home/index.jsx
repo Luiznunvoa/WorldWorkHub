@@ -8,8 +8,6 @@ import {
   personPNG, 
   housesJPG, 
   americaJPG, 
-  wfhJPG, 
-  ttwJPG, 
   man1JPG,
   woman1JPG,
   man2JPG,
@@ -76,20 +74,7 @@ export function Home() {
         ]}
       />
 
-      <Possibilities 
-        possibilities={[
-          {
-            image: wfhJPG,
-            title: "Work from Home!",
-            description: "With WWH. you can find jobs abroad to work completely from home"
-          },
-          {
-            image: ttwJPG,
-            title: "Travel to Work!",
-            description: "We can help plan the travel to your travel dream job"
-          },
-        ]} 
-      />
+      <Possibilities />
 
       <Team 
         teamMembers={[
@@ -103,7 +88,7 @@ export function Home() {
             name: "Luísa Alves",
             role: "Chief of Staff",
             image: woman1JPG,
-            description: "Ensures smooth organizational operations and oversees key executive initiatives.",
+            description: "Ensures smooth organizational operations and oversees key executive sinitiatives.",
           },
           {
             name: "Antônio Ribas",
