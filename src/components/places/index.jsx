@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useScrollTrigger } from "../../utils/scroll_trigger";
 import { SVG } from "../../utils/custom_svg";
 
-export function Places({ places }) {
+export function Places({ icon, title, places }) {
   const sectionRef = useRef(null);
   const [animate, setAnimate] = useState(false);
 
@@ -12,8 +12,12 @@ export function Places({ places }) {
   return (
     <div ref={sectionRef} className="flex flex-col items-center gap-10 m-10">
       <section className="flex flex-row gap-5 items-center">
-        <SVG type="signs" className="fill-text h-10 w-10" />
-        <h2 className="text-3xl font-bold font-kanit-thin text-center">Go Beyond</h2>
+        {icon && <SVG type={icon} className="fill-text h-10 w-10" />}
+        {title &&
+          <h2 className="text-3xl font-bold font-kanit-thin text-center">
+            {title}
+          </h2>
+        }
       </section>
       {animate &&
         places.map((place, index) => (
@@ -43,6 +47,8 @@ export function Places({ places }) {
 }
 
 Places.propTypes = {
+  icon: PropTypes.string,
+  title: PropTypes.string,
   places: PropTypes.arrayOf(
     PropTypes.shape({
       description: PropTypes.string.isRequired,

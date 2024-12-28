@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useScrollTrigger } from "../../utils/scroll_trigger";
 import { SVG } from "../../utils/custom_svg";
 
-export function Team({ teamMembers }) {
+export function Team({ icon, title, teamMembers }) {
   const sectionRef = useRef(null);
   const [animate, setAnimate] = useState(false);
 
@@ -12,8 +12,12 @@ export function Team({ teamMembers }) {
   return (
     <div ref={sectionRef} className="w-full flex flex-col justify-center items-center m-20">
       <section className="flex flex-row gap-5 items-center">
-        <SVG type="paperpeople" className="fill-text h-10 w-10" />
-        <h2 className="text-3xl font-bold font-kanit-thin text-center">Meet Our Team</h2>
+        { icon && <SVG type={ icon } className="fill-text h-10 w-10" /> }
+        { title &&
+          <h2 className="text-3xl font-bold font-kanit-thin text-center">
+            { title }
+          </h2>
+        }
       </section>
 
       {animate && (
@@ -46,6 +50,8 @@ export function Team({ teamMembers }) {
 }
 
 Team.propTypes = {
+  icon: PropTypes.string,
+  title: PropTypes.string,
   teamMembers: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired, 

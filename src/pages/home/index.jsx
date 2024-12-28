@@ -3,7 +3,7 @@ import { Places } from '../../components/places';
 import { Hero } from '../../components/hero';
 import { Highlight } from '../../components/highlight';
 import { Team } from '../../components/team';
-import { Possibilities } from '../../components/possibilities';
+import { Slider } from '../../components/slider';
 import { 
   personPNG, 
   housesJPG, 
@@ -13,6 +13,16 @@ import {
   man2JPG,
   man3JPG,
   man4JPG,
+  constructionJPG,
+  cleaningJPG,
+  gardeningJPG,
+  foodserviceJPG,
+  logisticsJPG,
+  retailserviceJPG,
+  healthcareJPG,
+  childcareJPG,
+  deliveryJPG,
+  agricultureJPG
 } from '../../assets';
 
 export function Home() {
@@ -62,6 +72,8 @@ export function Home() {
       />
 
       <Places
+        icon="signs"
+        title="Go Beyond"
         places={[
           {
             description: "Relocating for work offers access to broader job markets, top companies, and new career opportunities. It’s a chance to build skills, expand your network, and gain valuable international experience, making you more competitive job market.",
@@ -74,9 +86,66 @@ export function Home() {
         ]}
       />
 
-      <Possibilities />
+      <Slider 
+        icon="bolt"
+        title="Endless possibilities"
+        slides={[
+          {
+            name: "Construction Work",
+            description: "The high demand for skilled labor in the construction industry values workers for their expertise and dedication.",
+            image: constructionJPG,
+          },
+          {
+            name: "Cleaning Services",
+            description: "The growing demand for reliable cleaning services in the U.S. look for workers with endurance and strong work ethic.",
+            image: cleaningJPG,
+          },
+          {
+            name: "Landscaping and Gardening",
+            description: "The landscaping industry appreciates workers for their creativity and ability to handle physical tasks outdoors.",
+            image: gardeningJPG,
+          },
+          {
+            name: "Food Service and Hospitality",
+            description: "Restaurants and hotels value workers for their adaptability, customer service skills, and teamwork.",
+            image: foodserviceJPG,
+          },
+          {
+            name: "Warehouse and Logistics",
+            description: "The logistics sector seeks workers who are efficient, organized, and comfortable in fast-paced environments.",
+            image: logisticsJPG,
+          },
+          {
+            name: "Retail and Customer Service",
+            description: "Retail businesses value employees for their communication skills and ability to connect with customers.",
+            image: retailserviceJPG,
+          },
+          {
+            name: "Home Health Care",
+            description: "The growing need for home health aides emphasizes compassion, reliability, and attention to detail.",
+            image: healthcareJPG,
+          },
+          {
+            name: "Childcare Services",
+            description: "Parents value caregivers who are patient, responsible, and great with children.",
+            image: childcareJPG,
+          },
+          {
+            name: "Transportation and Delivery",
+            description: "Delivery services appreciate workers for their punctuality and ability to navigate efficiently.",
+            image: deliveryJPG,
+          },
+          {
+            name: "Agricultural Work",
+            description: "Farms seek workers who are hardworking, consistent, and capable of handling seasonal demands.",
+            image: agricultureJPG,
+          },
+        ]}
+      />
 
       <Team 
+        icon="paperpeople"
+        title="Meet our Team"
         teamMembers={[
           {
             name: "Alex Martins",
