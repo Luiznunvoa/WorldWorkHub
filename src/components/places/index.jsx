@@ -19,7 +19,7 @@ export function Places({ places }) {
         places.map((place, index) => (
           <section
             key={index}
-            className={`flex lg:flex-row${index % 2 === 0 ? "" : "-reverse"} flex-col-reverse justify-center items-center w-full gap-20 min-h-1 animate-show max-w-[1920px]`}
+            className={`flex ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} flex-col-reverse justify-center items-center w-full gap-20 min-h-1 animate-show max-w-[1920px]`}
           >
             <p className="lg:w-2/5 w-5/6 font-archivo-black-regular text-center text-xl">
               {place.description}

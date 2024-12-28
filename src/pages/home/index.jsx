@@ -6,15 +6,15 @@ import { Team } from '../../components/team';
 import { Possibilities } from '../../components/possibilities';
 import { 
   personPNG, 
-  city1JPG, 
-  city2JPG, 
+  housesJPG, 
+  americaJPG, 
   wfhJPG, 
   ttwJPG, 
   man1JPG,
   woman1JPG,
   man2JPG,
   man3JPG,
-  man4JPG
+  man4JPG,
 } from '../../assets';
 
 export function Home() {
@@ -37,7 +37,7 @@ export function Home() {
       <Highlight
         highlights={[
           {
-            text: "Choose the country where you want to work on",
+            text: "Choose where you want to work on",
             greenIcon: "usa",
             blackIcon: "tap",
             animation: "animate-float"
@@ -66,12 +66,12 @@ export function Home() {
       <Places
         places={[
           {
-            description: "Relocating for work offers access to broader job markets, top companies, and new career opportunities. It’s a chance to build skills, expand your network, and gain valuable international experience, making you more competitive in a global job market.",
-            image: city1JPG
+            description: "Relocating for work offers access to broader job markets, top companies, and new career opportunities. It’s a chance to build skills, expand your network, and gain valuable international experience, making you more competitive job market.",
+            image: housesJPG
           },
           {
-            description: "Beyond work, moving allows you to experience new cultures, lifestyles, and perspectives. It fosters personal growth, resilience, and adaptability while creating exciting memories and opportunities for meaningful connections.",
-            image: city2JPG
+            description: "Beyond work, finding your perfect occupation can make you experience new lifestyles, and perspectives. It fosters personal growth, resilience, and adaptability while creating exciting memories and opportunities for meaningful connections.",
+            image: americaJPG
           }
         ]}
       />

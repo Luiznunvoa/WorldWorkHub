@@ -6,8 +6,8 @@ import man2 from '/assets/man2.jpg';
 import man3 from '/assets/man3.jpg';
 import man4 from '/assets/man4.jpg';
 import woman1 from '/assets/woman1.jpg';
-import work_from_home from '/assets/work_from_home.jpg'
-import travel_to_work from '/assets/travel_to_work.jpg'
+import houses from '/assets/houses.jpg'
+import america from '/assets/america.jpg'
 
 export const personPNG = person;
 export const city1JPG = city1;
@@ -17,8 +17,8 @@ export const man2JPG = man2;
 export const man3JPG = man3;
 export const man4JPG = man4;
 export const woman1JPG = woman1;
-export const wfhJPG = work_from_home;
-export const ttwJPG = travel_to_work;
+export const housesJPG = houses;
+export const americaJPG = america;
 
 export const SVG_DATA = {
   usa: {
@@ -58,7 +58,7 @@ export const SVG_DATA = {
     paths: ["M16 0L11.5 0.5V1.5L12.5572 2.0286L10.9057 3.68016C9.55098 2.62709 7.84872 2 6 2C4.33262 2 2.78439 2.5101 1.50283 3.38275C1.22497 3.57196 0.959638 3.77821 0.708351 4C0.457776 4.22116 0.221162 4.45778 0 4.70835L3.52452 8.23288L4.93874 6.81866L2.95096 4.83089C3.84475 4.3023 4.88659 4 6 4C7.29584 4 8.49573 4.4108 9.47656 5.10927L4.58583 10H3.00004L4.01735e-05 13L2.00004 14L3.00004 16L6.00004 13V11.4142L10.8908 6.52349C11.5892 7.5043 12 8.70418 12 10C12 11.1134 11.6977 12.1552 11.1691 13.049L9.18138 11.0613L7.76717 12.4755L11.2916 16C11.5422 15.7788 11.7788 15.5422 12 15.2916C12.2218 15.0404 12.428 14.775 12.6172 14.4972C13.4899 13.2156 14 11.6674 14 10C14 8.1513 13.3729 6.44906 12.3199 5.09438L13.9714 3.44281L14.5 4.5H15.5L16 0Z"],
   },
   target: {
-    viewBox: "0 0 18 18",
+    viewBox: "0 0 22 18",
     paths: ["M8 4C5.79086 4 4 5.79086 4 8C4 10.2091 5.79086 12 8 12C10.2091 12 12 10.2091 12 8C12 5.79086 10.2091 4 8 4ZM6 8C6 6.89543 6.89543 6 8 6C9.10457 6 10 6.89543 10 8C10 9.10457 9.10457 10 8 10C6.89543 10 6 9.10457 6 8Z", "M8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0ZM2 8C2 4.68629 4.68629 2 8 2C11.3137 2 14 4.68629 14 8C14 11.3137 11.3137 14 8 14C4.68629 14 2 11.3137 2 8Z"],
   },
   bolt: {
