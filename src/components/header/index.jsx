@@ -9,7 +9,9 @@ export function Header() {
   return (
     <header className="w-full flex items-center justify-between bg-white border-solid border-b-[0.1rem] border-gray-500 p-4">
       <span onClick={() => (navigate("/"))} className='cursor-pointer'> 
-        <h1 className="text-3xl font-bold italic font-kanit-thin">WorldWorkHub.</h1>
+        <h1 className="text-3xl font-bold italic font-kanit-thin">
+          WorldWorkHub.
+        </h1>
       </span>
 
       <span className="mr-12 cursor-pointer" onClick={() => setDropdownVisible((prevVisible) => !prevVisible)}>
@@ -19,9 +21,15 @@ export function Header() {
       { dropdownVisible &&
         <div className="absolute top-14 right-5 bg-white shadow-md rounded-lg p-4">
           <ul className="list-none">
-            <li className="w-20 text-sm cursor-pointer p-2 hover:font-bold font-space-mono-regular">About</li>
-            <li className="w-20 text-sm cursor-pointer p-2 hover:font-bold font-space-mono-regular">Contact</li>
-            <li className="w-20 text-sm cursor-pointer p-2 hover:font-bold font-space-mono-regular">License</li>
+            <li className="w-20 text-sm cursor-pointer p-2 hover:font-bold font-space-mono-regular">
+              About
+            </li>
+            <li className="w-20 text-sm cursor-pointer p-2 hover:font-bold font-space-mono-regular">
+              Contact
+            </li>
+            <li className="w-20 text-sm cursor-pointer p-2 hover:font-bold font-space-mono-regular">
+              License
+            </li>
           </ul>
         </div>
       }

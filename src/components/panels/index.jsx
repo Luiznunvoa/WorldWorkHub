@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useScrollTrigger } from "../../utils/scroll_trigger";
 import { SVG } from "../../utils/custom_svg";
 
-export function Places({ icon, title, places }) {
+export function Panels({ icon, title, places }) {
   const sectionRef = useRef(null);
   const [animate, setAnimate] = useState(false);
 
@@ -33,6 +33,7 @@ export function Places({ icon, title, places }) {
                 src={place.image}
                 className="w-full h-full object-cover lg:mt-10 lg:ml-10 animate-show rounded-lg border-solid border-4 border-text outline outline-4 outline-green bg-text"
                 alt={`City ${index + 1}`}
+                loading="lazy"
               />
               <SVG
                 type="cursor"
@@ -46,13 +47,14 @@ export function Places({ icon, title, places }) {
   );
 }
 
-Places.propTypes = {
+Panels.propTypes = {
   icon: PropTypes.string,
   title: PropTypes.string,
+  
   places: PropTypes.arrayOf(
     PropTypes.shape({
-      description: PropTypes.string.isRequired,
       image: PropTypes.string.isRequired,
-    })
+      description: PropTypes.string.isRequired,
+    }).isRequired
   ).isRequired,
 };

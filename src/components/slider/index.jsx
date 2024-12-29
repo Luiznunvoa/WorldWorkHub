@@ -12,7 +12,7 @@ export function Slider({icon, title, slides}) {
   useScrollTrigger(sectionRef, () => setAnimate(true));
   
   return (
-    <div ref={sectionRef} className="w-full flex flex-col justify-center items-center m-20 gap-20">
+    <div ref={sectionRef} className="w-full flex flex-col justify-center items-center m-10 gap-20">
       <section className="flex flex-row gap-5 items-center">
         {icon && <SVG type={icon} className="fill-text h-10 w-10" />}
         {title &&
@@ -34,19 +34,35 @@ export function Slider({icon, title, slides}) {
           }}
           className="overflow-hidden rounded-lg w-full max-w-[1120px] animate-show"
         >
-          {slides.map((slide, index) => (
+          { slides.map((slide, index) => (
             <SwiperSlide key={index} className="bg-white rounded-lg border-solid border-4 border-text mb-10">
               <div className="flex flex-col items-center p-5">
-                <img
-                  src={slide.image}
-                  alt={slide.name}
-                  className="w-full h-48 bg-text shadow-lg border-solid border-4 border-text outline outline- outline-offset-0 outline-green object-cover"
-                />
-                <h2 className="font-bold font-kanit-thin text-2xl italic mt-4">{slide.name}</h2>
-                <p className="font-Roboto text-outline text-center mt-2">{slide.description}</p>
-                <button className="mt-4 px-4 py-2 text-white bg-green rounded-lg hover:bg-green transition font-Roboto">
-                        View More
-                </button>
+
+                { slide.image &&
+                  <img
+                    src={slide.image}
+                    alt={slide.image}
+                    className="w-full h-48 bg-text shadow-lg border-solid border-4 border-text outline outline- outline-offset-0 outline-green object-cover"
+                    loading="lazy"
+                  />
+                }
+
+                { slide.title &&
+                  <h2 className="font-bold font-kanit-thin text-2xl italic mt-4">
+                    {slide.title}
+                  </h2>
+                }
+
+                { slide.description &&
+                  <p className="font-Roboto text-outline text-center mt-2">
+                    {slide.description}
+                  </p>
+                }
+                { slide.button &&
+                  <button onClick={() => slide.button.func()} className="mt-4 px-4 py-2 text-white bg-green rounded-lg hover:bg-green transition font-Roboto">
+                    { slide.button.label}
+                  </button>
+                }
               </div>
             </SwiperSlide>
           ))}
@@ -60,10 +76,16 @@ Slider.propTypes = {
   icon: PropTypes.string,
   title: PropTypes.string,
   slides: PropTypes.arrayOf(
+
     PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-    })
+      image: PropTypes.string,
+      title: PropTypes.string,
+      description: PropTypes.string,
+
+      button: PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        func: PropTypes.func.isRequired
+      })
+    }).isRequired
   ).isRequired,
 };
