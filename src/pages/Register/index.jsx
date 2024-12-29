@@ -3,14 +3,14 @@ import { useForm, FormProvider } from "react-hook-form";
 
 export function Register() {
   const[step, setStep] = useState(0);
-  const steps = ["Account Information"];
+  const steps = ["Account Information", "Personal Details", "Preferences" ];
   const methods = useForm();
 
   const nextStep = () => setStep((prev) => (prev < steps.length - 1 ? prev + 1 : prev));
   const previousStep = () => setStep((prev) => (prev > 0 ? prev - 1 : prev));
   
   const onSubmit = (data) => {
-    console.log(data); // Dados do formulário
+    console.log(data); 
     alert("Form submitted!");
   };
 
@@ -23,11 +23,11 @@ export function Register() {
             className="flex flex-row items-center text-sm font-semibold text-center relative text-green-600"
           >
           
-            <div className="w-12 h-12 mx-auto rounded-full bg-background_secondary text-white  text-xl flex items-center justify-center" >
+            <div className={`w-12 h-12 mx-auto rounded-full ${index <= step ? "bg-green text-text" : "bg-background_secondary text-text_secondary"} text-xl flex items-center justify-center`} >
               {index + 1}
             </div>
             {(index + 1) < steps.length &&
-              <div className="w-32 h-6 rounded-lg bg-background_secondary m-5" />                 
+              <div className={`w-32 h-6 rounded-lg ${index < step ? "bg-green" : "bg-background_secondary"} m-5`} />                 
             }
           </li>
         ))}                
@@ -43,7 +43,15 @@ export function Register() {
         >
           { step == 0 &&
             <> 
-              <h2 className="text-lg font-bold font-Roboto m-5">Create your account</h2>
+              <h2 className="text-lg font-bold font-Roboto m-5">
+                Create your account
+              </h2>
+              <input
+                {...methods.register("username", { required: "username is required" })}
+                type="name"
+                placeholder="Name"
+                className="w-full p-2 mb-4 border border-gray-300 rounded"
+              />
               <input
                 {...methods.register("email", { required: "Email is required" })}
                 type="email"
@@ -64,7 +72,22 @@ export function Register() {
               />
             </>
           }
-          <div className="flex flex-row items-center justify-center">
+
+          {step == 1 &&
+            <> 
+              <h2 className="text-lg font-bold font-Roboto m-5">
+                Create your account
+              </h2>
+              <input
+                {...methods.register("occupation", { required: "Occupation is required" })}
+                type="text"
+                placeholder="Your preferred occupation"
+                className="w-full p-2 mb-4 border border-gray-300 rounded"
+              />
+            </>
+          }
+
+          <div className="flex flex-row items-center justify-center gap-5">
             { step > 0 &&
               <button
                 type="button"
