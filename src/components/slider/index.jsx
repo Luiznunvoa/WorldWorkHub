@@ -35,7 +35,7 @@ export function Slider({icon, title, slides}) {
           className="overflow-hidden rounded-lg w-full max-w-[1120px] animate-show"
         >
           { slides.map((slide, index) => (
-            <SwiperSlide key={index} className="bg-white rounded-lg border-solid border-4 border-text mb-10">
+            <SwiperSlide key={index} className="bg-white rounded-lg border-solid border-4 border-text mb-10 shadow-xl">
               <div className="flex flex-col items-center p-5">
 
                 { slide.image &&
