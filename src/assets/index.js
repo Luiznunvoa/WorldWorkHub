@@ -17,6 +17,14 @@ export const childcare = "https://i.postimg.cc/QxzKDTZ8/childcare-girl.jpg"
 export const delivery = "https://i.postimg.cc/52FY22fw/delivery-guy.jpg"
 export const agriculture = "https://i.postimg.cc/7L8CGrLj/agriculture-guy.jpg"
 
+// export const lorem_sm = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+
+// export const lorem_md = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+
+// export const lorem_lg = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+
+// export const lorem_xl = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+
 export const SVG_DATA = {
   usa: {
     viewBox: "0 0 260 165",
@@ -77,6 +85,17 @@ export const SVG_DATA = {
   chart: {
     viewBox: "0 0 16 16",
     paths: ["M3.95706 1.45712L1.45706 3.95712L0.0428467 2.54291L2.54285 0.0429077L3.95706 1.45712Z", "M14.4999 8.50003C14.4999 9.80523 14.1152 11.0206 13.453 12.0389L15.707 14.2929L14.2928 15.7071L12.1163 13.5307C10.9954 14.449 9.56199 15 7.99986 15C6.43776 15 5.00436 14.449 3.88344 13.5307L1.70701 15.7071L0.2928 14.2929L2.54678 12.0389C1.88457 11.0206 1.49986 9.80525 1.49986 8.50003C1.49986 4.91018 4.41001 2.00003 7.99986 2.00003C11.5897 2.00003 14.4999 4.91018 14.4999 8.50003ZM6.99995 5V9.41421L9.29285 11.7071L10.7071 10.2929L8.99995 8.58579V5H6.99995Z", "M14.5428 3.95714L12.0428 1.45714L13.457 0.0429222L15.957 2.54292L14.5428 3.95714Z"]
-  }
-
+  },
+  calendar: {
+    viewBox: "0 0 16 16",
+    paths: ["M6 0H3V2H1V5H15V2H13V0H10V2H6V0Z", "M15 7H1V15H15V7Z"]
+  },
+  info: {
+    viewBox: "0 0 24 24",
+    paths: ["M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"]
+  },
+  support: {
+    viewBox: "0 0 32 32",
+    paths: ["M0 16q0 0.832 0.576 1.44t1.44 0.576q0.064 0 0.192-0.032t0.128-0.032q0.448 1.28 1.408 2.272t2.272 1.44v2.336q0 1.664 1.152 2.848t2.848 1.152q0 0.832 0.576 1.44t1.408 0.576h2.016q0.8 0 1.408-0.576t0.576-1.44v-1.984q0-0.832-0.576-1.408t-1.408-0.608h-2.016q-0.832 0-1.408 0.608t-0.576 1.408q-0.832 0-1.44-0.576t-0.576-1.44v-16h2.016q0-0.832 0.576-1.408t1.408-0.576h8q0.832 0 1.408 0.576t0.608 1.408h1.984v14.016q1.952 0 3.488-1.152t2.176-2.912q0.032 0 0.128 0.032t0.224 0.032q0.8 0 1.408-0.576t0.576-1.44-0.576-1.408-1.408-0.576q-0.096 0-0.192 0.032t-0.16 0.032q-0.416-1.28-1.408-2.272t-2.24-1.44v-2.368q0-2.464-1.76-4.224t-4.256-1.76h-8q-2.496 0-4.256 1.76t-1.728 4.224v2.368q-1.312 0.48-2.272 1.44t-1.408 2.272q-0.032 0-0.16-0.032t-0.16-0.032q-0.832 0-1.44 0.576t-0.576 1.408zM4 18.016v-4h2.016v4h-2.016zM26.016 18.016v-4h1.984v4h-1.984z"]
+  },
 };

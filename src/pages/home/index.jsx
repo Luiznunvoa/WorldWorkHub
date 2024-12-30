@@ -4,6 +4,7 @@ import { Hero } from '../../components/hero';
 import { Highlight } from '../../components/highlight';
 import { VisualGrid } from '../../components/visualGrid';
 import { Slider } from '../../components/slider';
+import { TextGrid } from "../../components/textGrid";
 import * as Images from "../../assets";
 
 export function Home() {
@@ -165,6 +166,33 @@ export function Home() {
             }
           },
         ]}
+      />
+
+      <TextGrid 
+        icon="info" 
+        title="How We Can Help You!"
+        elements={[
+          {
+            icon: "suitcase",
+            title: "Job Prospecting",
+            description: "Using our best technics of job prospecting we can help you find the best opportunities in the market."
+          },
+          {
+            icon: "calendar",
+            title: "Time Organization",
+            description: "Our team will organize all your work schedule for you, giving you time to focus on what you does best."
+          },
+          {
+            icon: "man",
+            title: "Account Management",
+            description: "By leting we manage your various job network accounts you will maximize you chances of getting your job."
+          },
+          {
+            icon: "support",
+            title: "Ongoing Support",
+            description: "We provide continuous assistance to address your concerns and ensure your professional success in the long term."
+          }
+        ]} 
       />
 
       <VisualGrid
