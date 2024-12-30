@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import PropTypes from "prop-types";
-import { useScrollTrigger } from "../../utils/scroll_trigger";
-import { SVG } from "../../utils/custom_svg";
+import { useScrollTrigger } from "../../utils";
+import { SVG } from "../svg";
 
 export function VisualGrid({ icon, title, elements }) {
   const sectionRef = useRef(null);

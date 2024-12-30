@@ -2,8 +2,8 @@ import { useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
-import { useScrollTrigger } from "../../utils/scroll_trigger";
-import { SVG } from "../../utils/custom_svg";
+import { useScrollTrigger } from "../../utils";
+import { SVG } from "../svg";
 
 export function Slider({icon, title, slides}) {
   const sectionRef = useRef(null);

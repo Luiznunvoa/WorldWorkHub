@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { SVG_DATA } from '../assets';
+import { SVG_DATA } from '../../assets';
 
 export function SVG({ className = "fill-text", type }) {
   const svgData = SVG_DATA[type];

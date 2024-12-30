@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { SVG } from "../../utils/custom_svg";
+import { SVG } from "../svg";
 
 export const Highlight = ({ highlights }) => (
   <div className="grid gap-6 p-4 grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] sm:grid-cols-2 xl:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] m-5 xl:flex xl:flex-row items-center justify-center">

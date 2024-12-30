@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import PropTypes from "prop-types";
-import { useScrollTrigger } from "../../utils/scroll_trigger";
-import { SVG } from "../../utils/custom_svg";
+import { useScrollTrigger } from "../../utils";
+import { SVG } from "../svg";
 
 export function Panels({ icon, title, places }) {
   const sectionRef = useRef(null);
@@ -31,7 +31,7 @@ export function Panels({ icon, title, places }) {
             <div className="h-60 w-96 bg-green shadow-2xl rounded-lg lg:border-solid lg:border-4 lg:border-text">
               <img
                 src={place.image}
-                className={`w-full h-full object-cover lg:mt-10 ${index % 2 == 0 ? "lg:-ml-10" : "lg:ml-10"} animate-show rounded-lg border-solid border-4 border-text outline outline-4 outline-green bg-text`}
+                className={`w-full h-full object-cover lg:mt-10 ${index % 2 == 0 ? "lg:-ml-10" : "lg:ml-10"} animate-show rounded-lg border-solid border-4 border-text outline outline-4 outline-green bg-text shadow-xl`}
                 alt={`City ${index + 1}`}
                 loading="lazy"
               />

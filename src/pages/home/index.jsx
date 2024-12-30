@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { Panels } from "../../components/Panels";
+import { Panels } from "../../components/panels";
 import { Hero } from '../../components/hero';
 import { Highlight } from '../../components/highlight';
 import { VisualGrid } from '../../components/visualGrid';
@@ -174,7 +174,7 @@ export function Home() {
           {
             image: Images.man1,
             title: "Alex Martins",
-            subtitle: "Operations and Finance",
+            subtitle: "Construction Worker",
             description: "Responsible for overseeing daily operations and managing financial strategies.",
           },
           {
@@ -195,12 +195,6 @@ export function Home() {
             subtitle: "Customer Relations",
             description: "Maintains strong client relationships and ensures exceptional customer service.",
           },
-          {
-            image: Images.man4,
-            title: "Pedro Schemer",
-            subtitle: "Marketing and Sales",
-            description: "Leads marketing campaigns and drives sales to achieve business goals.",
-          }
         ]}
       />
     </main>

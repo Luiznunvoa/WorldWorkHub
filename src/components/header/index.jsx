@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SVG } from '../../utils/custom_svg';
+import { SVG } from '../svg';
 import { useNavigate } from "react-router";
 
 export function Header() {
