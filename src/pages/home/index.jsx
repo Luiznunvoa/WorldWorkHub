@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { Panels } from "../../components/panels";
+import { Panels } from "../../components/Panels";
 import { Hero } from '../../components/hero';
 import { Highlight } from '../../components/highlight';
 import { VisualGrid } from '../../components/visualGrid';

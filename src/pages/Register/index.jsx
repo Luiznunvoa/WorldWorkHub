@@ -23,7 +23,7 @@ export function Register() {
             className="flex flex-row items-center text-sm font-semibold text-center relative text-green-600"
           >
           
-            <div className={`w-12 h-12 mx-auto rounded-full ${index <= step ? "bg-green text-text" : "bg-background_secondary text-text_secondary"} text-xl flex items-center justify-center`} >
+            <div className={`w-12 h-12 mx-auto rounded-xl ${index <= step ? "bg-green text-text" : "bg-background_secondary text-text_secondary"} text-xl flex items-center justify-center`} >
               {index + 1}
             </div>
             {(index + 1) < steps.length &&
@@ -76,14 +76,78 @@ export function Register() {
           {step == 1 &&
             <> 
               <h2 className="text-lg font-bold font-Roboto m-5">
-                Create your account
+                Personal Details
               </h2>
               <input
                 {...methods.register("occupation", { required: "Occupation is required" })}
                 type="text"
-                placeholder="Your preferred occupation"
+                placeholder="Occupation"
                 className="w-full p-2 mb-4 border border-gray-300 rounded"
               />
+              <input
+                {...methods.register("address", { required: "Address is required" })}
+                type="text"
+                placeholder="Address"
+                className="w-full p-2 mb-4 border border-gray-300 rounded"
+              />
+              <input
+                {...methods.register("cpf", { required: "CPF is required" })}
+                type="text"
+                placeholder="CPF"
+                className="w-full p-2 mb-4 border border-gray-300 rounded"
+              />
+              <select
+                {...methods.register("education", { required: "Education level is required" })}
+                className="w-full p-2 mb-4 border border-gray-300 rounded"
+              >
+                <option value="">Select Education Level</option>
+                <option value="highschool">High School</option>
+                <option value="bachelor">Bachelors Degree</option>
+                <option value="master">Masters Degree</option>
+                <option value="phd">PhD</option>
+              </select>
+              <input
+                {...methods.register("languages", { required: "Languages are required" })}
+                type="text"
+                placeholder="Languages spoken"
+                className="w-full p-2 mb-4 border border-gray-300 rounded"
+              />
+              <input
+                {...methods.register("phone", { required: "Phone number is required" })}
+                type="tel"
+                placeholder="Phone Number"
+                className="w-full p-2 mb-4 border border-gray-300 rounded"
+              />
+            </>
+          }
+
+          {step == 2 &&
+            <> 
+              <h2 className="text-lg font-bold font-Roboto m-5">
+                Preferences
+              </h2>
+              <textarea
+                {...methods.register("hobbies")}
+                placeholder="Describe your hobbies"
+                className="w-full p-2 mb-4 border border-gray-300 rounded"
+              />
+              <label className="flex items-center mb-4">
+                <input
+                  {...methods.register("notifications")}
+                  type="checkbox"
+                  className="mr-2"
+                />
+                Receive notifications
+              </label>
+              <select
+                {...methods.register("communicationPreference", { required: "Please select a communication preference" })}
+                className="w-full p-2 mb-4 border border-gray-300 rounded"
+              >
+                <option value="">Preferred Communication Format</option>
+                <option value="email">Email</option>
+                <option value="phone">Phone</option>
+                <option value="text">Text Message</option>
+              </select>
             </>
           }
 
