@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react';
-import PropTypes from 'prop-types';
-import { useScrollTrigger } from '../../utils';
-import { SVG } from '../svg';
+import { useRef, useState } from "react";
+import PropTypes from "prop-types";
+import { useScrollTrigger } from "../../utils";
+import { SVG } from "../svg";
 
 export function TextGrid({ icon, title, elements }) {
   const sectionRef = useRef(null);
@@ -10,49 +10,57 @@ export function TextGrid({ icon, title, elements }) {
   useScrollTrigger(sectionRef, () => setAnimate(true));
 
   return (
-    <div ref={sectionRef} className="flex flex-col justify-center items-center m-10 gap-20"> 
-      <section className="flex flex-row gap-5 items-center">
-        {icon && <SVG type={icon} className="fill-text h-10 w-10" />}
-        {title &&
-					<h2 className="text-3xl font-bold font-kanit-thin text-center">
-					  {title}
-					</h2>
-        }
+    <div
+      ref={sectionRef}
+      className="m-10 flex flex-col items-center justify-center gap-20"
+    >
+      <section className="flex flex-row items-center gap-5">
+        {icon && <SVG type={icon} className="h-10 w-10 fill-text" />}
+        {title && (
+          <h2 className="text-center font-kanit-thin text-3xl font-bold">
+            {title}
+          </h2>
+        )}
       </section>
 
-      { (elements && animate) &&
-      	<section className="grid md:grid-cols-2 grid-cols-1 justify-center items-center animate-show gap-10">
-      	  {elements.map((element, index) => (
-      	    <div key={index} className="flex flex-row  bg-white border-solid border-4 border-text rounded-2xl gap-5 py-8 px-2 shadow-xl hover:scale-110 hover:shadow-2xl transition-all cursor-pointer">
-      	      <div className="h-full flex flex-col">
-      	        <SVG type={element.icon} className="w-20 h-24 fill-white stroke-1 stroke-green" /> 
-      	      </div>
-      	      <div className="h-full flex flex-col  justify-center max-w-80 gap-5">
-      	        <h3 className="font-bold font-kanit-thin text-2xl italic text-start">
-      	          {element.title}
-      	        </h3>
-      	        <p className="italic font-Roboto text-start">
-      	          {element.description}
-      	        </p>		
-      	      </div>
-      	    </div>
-              	))
-      	  }
-      	</section>
-      }
-  	</div>
+      {elements && animate && (
+        <section className="grid animate-show grid-cols-1 items-center justify-center gap-10 md:grid-cols-2">
+          {elements.map((element, index) => (
+            <div
+              key={index}
+              className="flex cursor-pointer flex-row gap-5 rounded-2xl border-4 border-solid border-text bg-white px-2 py-8 shadow-xl transition-all hover:scale-110 hover:shadow-2xl"
+            >
+              <div className="flex h-full flex-col">
+                <SVG
+                  type={element.icon}
+                  className="h-24 w-20 fill-white stroke-green stroke-1"
+                />
+              </div>
+              <div className="flex h-full max-w-80 flex-col justify-center gap-5">
+                <h3 className="text-start font-kanit-thin text-2xl font-bold italic">
+                  {element.title}
+                </h3>
+                <p className="text-start font-Roboto italic">
+                  {element.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </section>
+      )}
+    </div>
   );
 }
 
 TextGrid.propTypes = {
   icon: PropTypes.string,
   title: PropTypes.string,
-  
+
   elements: PropTypes.arrayOf(
     PropTypes.shape({
-      icon: PropTypes.string, 
+      icon: PropTypes.string,
       title: PropTypes.string,
       description: PropTypes.string,
-    }).isRequired
+    }).isRequired,
   ),
 };

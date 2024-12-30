@@ -1,258 +1,147 @@
 {
-	"auto_complete":
-	{
-		"selected_items":
-		[
-			[
-				"re",
-				"return"
-			]
-		]
-	},
-	"buffers":
-	[
-	],
-	"build_system": "Packages/User/make.sublime-build",
-	"build_system_choices":
-	[
-	],
-	"build_varint": "",
-	"command_palette":
-	{
-		"height": 0.0,
-		"last_filter": "",
-		"selected_items":
-		[
-			[
-				"install",
-				"Package Control: Install Package"
-			],
-			[
-				"debu",
-				"Debugger: Open"
-			],
-			[
-				"insta",
-				"Package Control: Install Package"
-			],
-			[
-				"deb",
-				"Debugger: Open"
-			],
-			[
-				"de",
-				"Debugger: Open"
-			],
-			[
-				"instal",
-				"Package Control: Install Package"
-			],
-			[
-				"open",
-				"Terminus: Open Default Shell in Tab (View)"
-			],
-			[
-				"terminus: ",
-				"Terminus: Open Default Shell in Panel"
-			],
-			[
-				"terminus: open",
-				"Terminus: Open Default Shell in Panel"
-			],
-			[
-				"term",
-				"Terminus: Open Default Shell in Panel"
-			],
-			[
-				"terminus: ope",
-				"Terminus: Open Default Shell in Panel"
-			],
-			[
-				"ins",
-				"Package Control: Install Package"
-			],
-			[
-				"lis",
-				"Package Control: List Packages"
-			],
-			[
-				"list",
-				"Package Control: List Packages"
-			],
-			[
-				"packa",
-				"Install Package Control"
-			]
-		],
-		"width": 0.0
-	},
-	"console":
-	{
-		"height": 0.0,
-		"history":
-		[
-		]
-	},
-	"distraction_free":
-	{
-		"menu_visible": true,
-		"show_minimap": false,
-		"show_open_files": false,
-		"show_tabs": false,
-		"side_bar_visible": false,
-		"status_bar_visible": false
-	},
-	"file_history":
-	[
-		"/home/luiz/Dev/C_Testing/src/main.c",
-		"/home/luiz/Dev/C_Testing/Makefile",
-		"/home/luiz/Área de trabalho/remember.txt",
-		"/home/luiz/Documentos/SDL3-3.1.6/README.md",
-		"/home/luiz/.bashrc",
-		"/home/luiz/Dev/C_Testing/project.sublime-project",
-		"/home/luiz/.config/sublime-text/Packages/User/make.sublime-build",
-		"/home/luiz/Dev/WorldWorkHub/src/components/places/index.jsx",
-		"/home/luiz/Dev/WorldWorkHub/src/utils/scroll_trigger.js",
-		"/etc/lightdm/lightdm-gtk-greeter.conf",
-		"/home/luiz/.config/sublime-text/Packages/Default/Preferences.sublime-settings",
-		"/etc/lightdm/lightdm.conf",
-		"/home/luiz/.config/sublime-text/Packages/User/JSX.sublime-settings",
-		"/home/luiz/Dev/WorldWorkHub/src/components/products/index.jsx",
-		"/home/luiz/Dev/WorldWorkHub/src/pages/home/index.jsx",
-		"/home/luiz/Área de trabalho/mian.c",
-		"/home/luiz/.dmrc",
-		"/home/luiz/.bash_history",
-		"/home/luiz/.profile",
-		"/home/luiz/Área de trabalho/main.c"
-	],
-	"find":
-	{
-		"height": 40.0
-	},
-	"find_in_files":
-	{
-		"height": 0.0,
-		"where_history":
-		[
-		]
-	},
-	"find_state":
-	{
-		"case_sensitive": false,
-		"find_history":
-		[
-		],
-		"highlight": true,
-		"in_selection": false,
-		"preserve_case": false,
-		"regex": false,
-		"replace_history":
-		[
-		],
-		"reverse": false,
-		"scrollbar_highlights": true,
-		"show_context": true,
-		"use_buffer2": true,
-		"use_gitignore": true,
-		"whole_word": false,
-		"wrap": true
-	},
-	"groups":
-	[
-		{
-			"sheets":
-			[
-			]
-		}
-	],
-	"incremental_find":
-	{
-		"height": 28.0
-	},
-	"input":
-	{
-		"height": 40.0
-	},
-	"layout":
-	{
-		"cells":
-		[
-			[
-				0,
-				0,
-				1,
-				1
-			]
-		],
-		"cols":
-		[
-			0.0,
-			1.0
-		],
-		"rows":
-		[
-			0.0,
-			1.0
-		]
-	},
-	"menu_visible": true,
-	"output.LSP Log Panel":
-	{
-		"height": 0.0
-	},
-	"output.diagnostics":
-	{
-		"height": 0.0
-	},
-	"output.find_results":
-	{
-		"height": 0.0
-	},
-	"pinned_build_system": "Packages/User/make.sublime-build",
-	"project": "vite.config.sublime-project",
-	"replace":
-	{
-		"height": 52.0
-	},
-	"save_all_on_build": false,
-	"select_file":
-	{
-		"height": 0.0,
-		"last_filter": "",
-		"selected_items":
-		[
-		],
-		"width": 0.0
-	},
-	"select_project":
-	{
-		"height": 0.0,
-		"last_filter": "",
-		"selected_items":
-		[
-		],
-		"width": 0.0
-	},
-	"select_symbol":
-	{
-		"height": 0.0,
-		"last_filter": "",
-		"selected_items":
-		[
-		],
-		"width": 0.0
-	},
-	"selected_group": 0,
-	"settings":
-	{
-	},
-	"show_minimap": true,
-	"show_open_files": false,
-	"show_tabs": true,
-	"side_bar_visible": true,
-	"side_bar_width": 206.0,
-	"status_bar_visible": true,
-	"template_settings":
-	{
-	}
+  "auto_complete": {
+    "selected_items": [["re", "return"]],
+  },
+  "buffers": [],
+  "build_system": "Packages/User/make.sublime-build",
+  "build_system_choices": [],
+  "build_varint": "",
+  "command_palette": {
+    "height": 0.0,
+    "last_filter": "",
+    "selected_items": [
+      ["install", "Package Control: Install Package"],
+      ["debu", "Debugger: Open"],
+      ["insta", "Package Control: Install Package"],
+      ["deb", "Debugger: Open"],
+      ["de", "Debugger: Open"],
+      ["instal", "Package Control: Install Package"],
+      ["open", "Terminus: Open Default Shell in Tab (View)"],
+      ["terminus: ", "Terminus: Open Default Shell in Panel"],
+      ["terminus: open", "Terminus: Open Default Shell in Panel"],
+      ["term", "Terminus: Open Default Shell in Panel"],
+      ["terminus: ope", "Terminus: Open Default Shell in Panel"],
+      ["ins", "Package Control: Install Package"],
+      ["lis", "Package Control: List Packages"],
+      ["list", "Package Control: List Packages"],
+      ["packa", "Install Package Control"],
+    ],
+    "width": 0.0,
+  },
+  "console": {
+    "height": 0.0,
+    "history": [],
+  },
+  "distraction_free": {
+    "menu_visible": true,
+    "show_minimap": false,
+    "show_open_files": false,
+    "show_tabs": false,
+    "side_bar_visible": false,
+    "status_bar_visible": false,
+  },
+  "file_history": [
+    "/home/luiz/Dev/C_Testing/src/main.c",
+    "/home/luiz/Dev/C_Testing/Makefile",
+    "/home/luiz/Área de trabalho/remember.txt",
+    "/home/luiz/Documentos/SDL3-3.1.6/README.md",
+    "/home/luiz/.bashrc",
+    "/home/luiz/Dev/C_Testing/project.sublime-project",
+    "/home/luiz/.config/sublime-text/Packages/User/make.sublime-build",
+    "/home/luiz/Dev/WorldWorkHub/src/components/places/index.jsx",
+    "/home/luiz/Dev/WorldWorkHub/src/utils/scroll_trigger.js",
+    "/etc/lightdm/lightdm-gtk-greeter.conf",
+    "/home/luiz/.config/sublime-text/Packages/Default/Preferences.sublime-settings",
+    "/etc/lightdm/lightdm.conf",
+    "/home/luiz/.config/sublime-text/Packages/User/JSX.sublime-settings",
+    "/home/luiz/Dev/WorldWorkHub/src/components/products/index.jsx",
+    "/home/luiz/Dev/WorldWorkHub/src/pages/home/index.jsx",
+    "/home/luiz/Área de trabalho/mian.c",
+    "/home/luiz/.dmrc",
+    "/home/luiz/.bash_history",
+    "/home/luiz/.profile",
+    "/home/luiz/Área de trabalho/main.c",
+  ],
+  "find": {
+    "height": 40.0,
+  },
+  "find_in_files": {
+    "height": 0.0,
+    "where_history": [],
+  },
+  "find_state": {
+    "case_sensitive": false,
+    "find_history": [],
+    "highlight": true,
+    "in_selection": false,
+    "preserve_case": false,
+    "regex": false,
+    "replace_history": [],
+    "reverse": false,
+    "scrollbar_highlights": true,
+    "show_context": true,
+    "use_buffer2": true,
+    "use_gitignore": true,
+    "whole_word": false,
+    "wrap": true,
+  },
+  "groups": [
+    {
+      "sheets": [],
+    },
+  ],
+  "incremental_find": {
+    "height": 28.0,
+  },
+  "input": {
+    "height": 40.0,
+  },
+  "layout": {
+    "cells": [[0, 0, 1, 1]],
+    "cols": [0.0, 1.0],
+    "rows": [0.0, 1.0],
+  },
+  "menu_visible": true,
+  "output.LSP Log Panel": {
+    "height": 0.0,
+  },
+  "output.diagnostics": {
+    "height": 0.0,
+  },
+  "output.find_results": {
+    "height": 0.0,
+  },
+  "pinned_build_system": "Packages/User/make.sublime-build",
+  "project": "vite.config.sublime-project",
+  "replace": {
+    "height": 52.0,
+  },
+  "save_all_on_build": false,
+  "select_file": {
+    "height": 0.0,
+    "last_filter": "",
+    "selected_items": [],
+    "width": 0.0,
+  },
+  "select_project": {
+    "height": 0.0,
+    "last_filter": "",
+    "selected_items": [],
+    "width": 0.0,
+  },
+  "select_symbol": {
+    "height": 0.0,
+    "last_filter": "",
+    "selected_items": [],
+    "width": 0.0,
+  },
+  "selected_group": 0,
+  "settings": {},
+  "show_minimap": true,
+  "show_open_files": false,
+  "show_tabs": true,
+  "side_bar_visible": true,
+  "side_bar_width": 206.0,
+  "status_bar_visible": true,
+  "template_settings": {},
 }

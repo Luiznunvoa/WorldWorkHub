@@ -1,14 +1,14 @@
-import PropTypes from 'prop-types';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import { Footer } from './components/footer';
-import { Header } from './components/header';
-import { Home } from './pages/home';
-import { Register } from './pages/Register';
+import PropTypes from "prop-types";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Footer } from "./components/footer";
+import { Header } from "./components/header";
+import { Home } from "./pages/home";
+import { Register } from "./pages/Register";
 
 const Layout = ({ children }) => {
   return (
     <>
-      <Header/>
+      <Header />
       {children}
       <Footer />
     </>
@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
 };
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired, 
+  children: PropTypes.node.isRequired,
 };
 
 export function App() {
