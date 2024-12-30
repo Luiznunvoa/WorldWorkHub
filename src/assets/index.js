@@ -1,9 +1,8 @@
 export const person = "https://i.postimg.cc/wBQbnHRp/person.png";
-export const man1 = "https://i.postimg.cc/8CS0ys54/man1.jpg";
-export const man2 = "https://i.postimg.cc/W1ry602t/man2.jpg";
-export const man3 = "https://i.postimg.cc/4NjM9WRr/man3.jpg";
-export const man4 = "https://i.postimg.cc/vH4kTpkr/man4.jpg";
-export const woman1 = "https://i.postimg.cc/597Dxx79/man5.jpg";
+export const man1 = "https://i.postimg.cc/xCjn7gds/men1.png";
+export const man2 = "https://i.postimg.cc/rFqytVc6/men2.jpg";
+export const man3 = "https://i.postimg.cc/fRLwB8JB/men3.jpg";
+export const woman1 = "https://i.postimg.cc/7YXH3FY5/woman1.jpg";
 export const houses = "https://i.postimg.cc/Y92yHVQm/houses.jpg";
 export const statue = "https://i.postimg.cc/C1vrLN4r/america.jpg";
 export const construction = "https://i.postimg.cc/j2qjbsjY/construction-guy.jpg";

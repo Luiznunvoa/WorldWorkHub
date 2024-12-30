@@ -23,7 +23,7 @@ export function TextGrid({ icon, title, elements }) {
       { (elements && animate) &&
       	<section className="grid md:grid-cols-2 grid-cols-1 justify-center items-center animate-show gap-10">
       	  {elements.map((element, index) => (
-      	    <div key={index} className="flex flex-row  bg-white border-solid border-4 border-text rounded-2xl gap-5 py-8 px-2 shadow-xl">
+      	    <div key={index} className="flex flex-row  bg-white border-solid border-4 border-text rounded-2xl gap-5 py-8 px-2 shadow-xl hover:scale-110 hover:shadow-2xl transition-all cursor-pointer">
       	      <div className="h-full flex flex-col">
       	        <SVG type={element.icon} className="w-20 h-24 fill-white stroke-1 stroke-green" /> 
       	      </div>

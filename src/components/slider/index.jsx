@@ -12,7 +12,7 @@ export function Slider({icon, title, slides}) {
   useScrollTrigger(sectionRef, () => setAnimate(true));
   
   return (
-    <div ref={sectionRef} className="w-full flex flex-col justify-center items-center m-10 gap-20">
+    <div ref={sectionRef} className="w-full flex flex-col justify-center items-center mt-20 mb-10 gap-20">
       <section className="flex flex-row gap-5 items-center">
         {icon && <SVG type={icon} className="fill-text h-10 w-10" />}
         {title &&

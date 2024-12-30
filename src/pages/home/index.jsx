@@ -197,34 +197,35 @@ export function Home() {
 
       <VisualGrid
         icon="paperpeople"
-        title="Meet our Team"
+        title="Lives Transformed"
         elements={[
           {
             image: Images.man1,
             title: "Alex Martins",
             subtitle: "Construction Worker",
-            description: "Responsible for overseeing daily operations and managing financial strategies.",
+            description: "After 1 year of moving to America was able to find his first job to give a better life for his kids.",
           },
           {
             image: Images.woman1,
             title: "Luísa Alves",
-            subtitle: "Chief of Staff",
-            description: "Ensures smooth organizational operations and oversees key executive sinitiatives.",
+            subtitle: "Nurse Assistant",
+            description: "Found a stable job in the healthcare industry and is now supporting her family and pursuing her dreams.",
           },
           {
             image: Images.man2,
-            title: "Antônio Ribas",
-            subtitle: "Investments",
-            description: "Focuses on investment strategies and portfolio management to drive growth.",
+            title: "Carlos Mota",
+            subtitle: "Truck Driver",
+            description: "Transitioned to a new career in logistics, enabling him to secure financial stability for his loved ones.",
           },
           {
             image: Images.man3,
             title: "Marcos Totti",
-            subtitle: "Customer Relations",
-            description: "Maintains strong client relationships and ensures exceptional customer service.",
+            subtitle: "Chef",
+            description: "Started a career in a renowned restaurant, showcasing his culinary talent and building a brighter future.",
           },
         ]}
       />
+
     </main>
   );
 }

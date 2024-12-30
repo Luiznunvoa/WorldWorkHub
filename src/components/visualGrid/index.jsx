@@ -29,7 +29,7 @@ export function VisualGrid({ icon, title, elements }) {
                 <img
                   src={element.image}
                   alt={element.image}
-                  className="w-full h-60 object-cover border-solid border-4 border-text"
+                  className="w-full h-60 rounded-full object-cover border-solid border-4 border-white outline outline-offset-0 outline-text shadow-xl"
                   loading="lazy"
                 />
               }
