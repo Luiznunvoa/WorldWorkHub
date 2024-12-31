@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
-import { useState, createContext } from "react";
-
-export const AppContext = createContext();
+import { useState } from "react";
+import { AppContext } from "../utils";
 
 export const AppProvider = ({ children }) => {
   const [language, setLanguage] = useState("en");

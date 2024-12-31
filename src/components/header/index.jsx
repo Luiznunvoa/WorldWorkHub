@@ -15,7 +15,7 @@ export function Header() {
       </span>
       <img
         onClick={toggleLanguage}
-        className="absolute h-10 w-10 object-cover top-4 right-4 cursor-pointer rounded-full"
+        className="absolute right-4 top-4 h-10 w-10 cursor-pointer rounded-full object-cover"
         src={language == "en" ? uk : portugal}
       />
     </header>
