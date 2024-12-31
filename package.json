@@ -17,6 +17,7 @@
     "swiper": "^11.1.15"
   },
   "devDependencies": {
+    "@cspell/dict-pt-br": "^2.3.3",
     "@eslint/js": "^9.15.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",

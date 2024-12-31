@@ -1,7 +1,6 @@
 ## WorldWorkHub
 
-> fictitious international job market website<br>
-> ![alt text](https://github.com/Luiznunvoa/WorldWorkHub/blob/main/preview.png)
+> fictitious international job market website<br> > ![alt text](https://github.com/Luiznunvoa/WorldWorkHub/blob/main/preview.png)
 
 # About
 

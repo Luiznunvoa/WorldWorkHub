@@ -11,7 +11,7 @@ export const Highlight = ({ highlights }) => (
         <p className="w-40 text-center font-archivo-black-regular text-lg">
           {text}
         </p>
-        
+
         <div className="relative flex flex-row">
           <SVG className="h-40 w-40 fill-green" type={greenIcon} />
           <SVG

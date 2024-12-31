@@ -36,7 +36,7 @@ export function Panels({ icon, title, places }) {
                 alt={`City ${index + 1}`}
                 loading="lazy"
               />
-              
+
               <SVG
                 type="cursor"
                 className={`absolute -mt-12 h-20 w-20 fill-text stroke-green stroke-1 ${index % 2 === 0 ? "ml-20 rotate-90" : "ml-64"}`}
