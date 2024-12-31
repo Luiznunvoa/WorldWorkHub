@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { LanguageProvider } from "./context/LanguageProvider.jsx";
 import { Footer } from "./components/footer";
 import { Header } from "./components/header";
 import { Home } from "./pages/home";
@@ -21,13 +22,15 @@ Layout.propTypes = {
 
 export function App() {
   return (
-    <Router>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Register" element={<Register />} />
-        </Routes>
-      </Layout>
-    </Router>
+    <LanguageProvider>
+      <Router>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/Register" element={<Register />} />
+          </Routes>
+        </Layout>
+      </Router>
+    </LanguageProvider>
   );
 }

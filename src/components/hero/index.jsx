@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 export function Hero({ title, subtitle, image, button }) {
   return (
     <div className="flex h-[48rem] w-full flex-col-reverse items-center justify-center bg-custom_gradient pt-10 align-middle lg:flex-row lg:pt-0">
-      <div className="flex h-1/2 w-full flex-col items-center justify-center lg:h-full lg:w-[48rem]">
-        <h1 className="max-w-[48rem] text-center font-archivo-black-regular text-5xl italic sm:text-6xl lg:mt-40 xl:text-8xl">
+      <div className="flex h-1/2 w-full flex-col items-center justify-center lg:h-full lg:w-[52rem]">
+        <h1 className="text-center font-archivo-black-regular text-5xl italic sm:text-6xl lg:mt-40 xl:text-8xl">
           {title}
         </h1>
 

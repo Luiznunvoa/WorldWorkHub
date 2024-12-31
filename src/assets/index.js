@@ -15,6 +15,8 @@ export const healthcare = "https://i.postimg.cc/9McrbPZp/healtcare-girl.jpg"
 export const childcare = "https://i.postimg.cc/QxzKDTZ8/childcare-girl.jpg"
 export const delivery = "https://i.postimg.cc/52FY22fw/delivery-guy.jpg"
 export const agriculture = "https://i.postimg.cc/7L8CGrLj/agriculture-guy.jpg"
+export const uk = "../../uk.svg"
+export const portugal = "../../portugal.svg"
 
 // export const lorem_sm = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
 
