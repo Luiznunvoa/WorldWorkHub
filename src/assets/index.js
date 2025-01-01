@@ -20,14 +20,6 @@ export const agriculture = "https://i.postimg.cc/7L8CGrLj/agriculture-guy.jpg";
 export const uk = "../../uk.svg";
 export const portugal = "../../portugal.svg";
 
-// export const lorem_sm = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-
-// export const lorem_md = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-
-// export const lorem_lg = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-
-// export const lorem_xl = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
-
 export const SVG_DATA = {
   usa: {
     viewBox: "0 0 260 165",

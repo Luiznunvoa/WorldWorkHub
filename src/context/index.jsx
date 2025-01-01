@@ -1,9 +1,15 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AppContext } from "../utils";
 
 export const AppProvider = ({ children }) => {
-  const [language, setLanguage] = useState("en");
+  const [language, setLanguage] = useState(() => {
+    return localStorage.getItem("language") || "en";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("language", language);
+  }, [language]);
 
   const toggleLanguage = () => {
     setLanguage((prevLang) => (prevLang === "en" ? "pt" : "en"));

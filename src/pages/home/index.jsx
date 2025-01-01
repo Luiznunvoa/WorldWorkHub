@@ -166,7 +166,7 @@ export function Home() {
             button: {
               label: t.slider.slides[9].button_label,
               func: () => navigate("/Register"),
-            },
+            }, 
           },
         ]}
       />
