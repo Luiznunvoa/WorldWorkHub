@@ -1,4 +1,5 @@
 import { DynamicForm } from "../../components/dynamicForm";
+import { states, jobs } from "../../assets";
 
 export function Register() {
 
@@ -71,10 +72,11 @@ export function Register() {
             title: "Address Information",
             inputs: [
               {
-                name: "address",
-                type: "text",
-                required: "Address is required",
-                placeHolder: "Address",
+                name: "region",
+                type: "select",
+                required: "Region is required",
+                placeHolder: "Select your state",
+                options: states
               },
               {
                 name: "city",
@@ -95,13 +97,76 @@ export function Register() {
             ],
           },
           {
-            title: "Confirmation",
+            title: "Professional Information",
             inputs: [
               {
-                name: "terms",
-                type: "checkbox",
-                required: "You must accept the terms and conditions",
-                placeHolder: "I accept the terms and conditions",
+                name: "Education",
+                type: "select",
+                required: "Your Education Level is required",
+                placeHolder: "Select your Education",
+                options: [
+                  {
+                    label:"No Education",
+                    value:"No Education"
+                  },
+                  {
+                    label:"Middle School",
+                    value:"Middle School"
+                  },
+                  {
+                    label:"High School",
+                    value:"High School"
+                  },
+                  {
+                    label:"Bachelor Degree",
+                    value:"Bachelor Degree"
+                  },
+                  {
+                    label:"PhD",
+                    value:"PhD"
+                  },
+                ]
+              },
+              {
+                name: "OccupationName",
+                type: "select",
+                required: "Your current occupation is required",
+                placeHolder: "Select your Occupation",
+                options: jobs
+              },
+              {
+                name: "id",
+                type: "text",
+                required: "ID is required",
+                minLength: {
+                  value: 5,
+                  message: "Last name must have at least 5 characters",
+                },
+                pattern: {
+                  value: /^[0-9]*$/,
+                  message: "Please enter a valid ID",
+                },
+                placeHolder: "ID",
+                value: "CPF"
+              },
+              {
+                name: "Phone",
+                type: "text",
+                required: "Phone is required",
+                minLength: {
+                  value: 9,
+                  message: "Phone number must have at least 9 numbers",
+                },
+                pattern: {
+                  value: /^[0-9]*$/,
+                  message: "Please enter a valid Phone number",
+                },
+                placeHolder: "Phone number",
+              },
+              {
+                name: "ServiceDesc",
+                type: "text",
+                placeHolder: "(Optional)Job Description",
               },
             ],
           },
