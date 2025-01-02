@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import PropTypes from "prop-types";
 
-export function DynamicForm({ steps }) {
+export function DynamicForm({ onSubmit, steps }) {
   const [step, setStep] = useState(0);
   const methods = useForm();
 
@@ -15,12 +15,6 @@ export function DynamicForm({ steps }) {
 
   const previousStep = () => setStep((prev) => (prev > 0 ? prev - 1 : prev));
 
-  const onSubmit = (data) => {
-    console.log(data);
-    alert("Form submitted!");
-  };
-
-  // Resetar campos ao mudar de etapa
   useEffect(() => {
     steps[step].inputs.forEach((input) => {
       methods.resetField(input.name);
@@ -48,13 +42,13 @@ export function DynamicForm({ steps }) {
                 index <= step
                   ? "bg-green text-text"
                   : "bg-background_secondary text-text_secondary"
-              } flex items-center justify-center text-xl`}
+              } flex items-center justify-center text-xl transition-all`}
             >
               {index + 1}
             </div>
             {index + 1 < steps.length && (
               <div
-                className={`h-6 w-32 rounded-lg ${
+                className={`h-6 w-32 rounded-lg transition-all ${
                   index < step ? "bg-green" : "bg-background_secondary"
                 } m-5`}
               />
@@ -83,7 +77,7 @@ export function DynamicForm({ steps }) {
                   </option>
                   {input.options?.map((option, optIndex) => (
                     <option key={optIndex} value={option.value}>
-                      {option.value}
+                      {option.label}
                     </option>
                   ))}
                 </select>
@@ -142,6 +136,7 @@ export function DynamicForm({ steps }) {
 }
 
 DynamicForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
   steps: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,

@@ -1,172 +1,144 @@
 import { DynamicForm } from "../../components/dynamicForm";
+import { useAppContext } from "../../utils";
+import { translations } from "./translations";
 import { states, jobs } from "../../assets";
 
 export function Register() {
+  const { language } = useAppContext();
+  const t = translations[language];
 
   return (
     <main className="flex w-full flex-col items-center p-6">
       <DynamicForm
+        onSubmit={(data) => console.log(data)}
         steps={[
           {
-            title: "Create your account",
+            title: t.steps[0].title,
             inputs: [
               {
                 name: "firstname",
                 type: "text",
-                required: "First Name is required",
+                required: t.steps[0].inputs[0].required,
                 minLength: {
                   value: 2,
-                  message: "First name must have at least 2 characters",
+                  message: t.steps[0].inputs[0].minLength.message,
                 },
                 pattern: {
                   value: /^[a-zA-Z]+$/,
-                  message: "First name can only contain letters",
+                  message: t.steps[0].inputs[0].pattern.message,
                 },
-                placeHolder: "First Name",
+                placeHolder: t.steps[0].inputs[0].placeHolder,
               },
               {
                 name: "lastname",
                 type: "text",
-                required: "Last Name is required",
+                required: t.steps[0].inputs[1].required,
                 minLength: {
                   value: 2,
-                  message: "Last name must have at least 2 characters",
+                  message: t.steps[0].inputs[1].minLength.message,
                 },
                 pattern: {
                   value: /^[a-zA-Z]+$/,
-                  message: "Last name can only contain letters",
+                  message: t.steps[0].inputs[1].pattern.message,
                 },
-                placeHolder: "Last Name",
+                placeHolder: t.steps[0].inputs[1].placeHolder,
               },
               {
                 name: "email",
                 type: "email",
-                required: "Email is required",
+                required: t.steps[0].inputs[2].required,
                 pattern: {
                   value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                  message: "Please enter a valid email address",
+                  message: t.steps[0].inputs[2].pattern.message,
                 },
-                placeHolder: "Email",
+                placeHolder: t.steps[0].inputs[2].placeHolder,
               },
               {
                 name: "password",
                 type: "password",
-                required: "Password is required",
+                required: t.steps[0].inputs[3].required,
                 pattern: {
                   value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-                  message:
-                    "Password must be at least 8 characters long and contain both letters and numbers",
+                  message: t.steps[0].inputs[3].pattern.message,
                 },
-                placeHolder: "Password",
+                placeHolder: t.steps[0].inputs[3].placeHolder,
               },
               {
                 name: "confirmPassword",
                 type: "password",
-                required: "Confirm your password",
+                required: t.steps[0].inputs[4].required,
                 validate: "password",
-                placeHolder: "Confirm Password",
+                placeHolder: t.steps[0].inputs[4].placeHolder,
               },
             ],
           },
           {
-            title: "Address Information",
+            title: t.steps[1].title,
             inputs: [
               {
                 name: "region",
                 type: "select",
-                required: "Region is required",
-                placeHolder: "Select your state",
+                required: t.steps[1].inputs[0].required,
+                placeHolder: t.steps[1].inputs[0].placeHolder,
                 options: states
-              },
-              {
-                name: "city",
-                type: "text",
-                required: "City is required",
-                placeHolder: "City",
-              },
-              {
-                name: "zipcode",
-                type: "text",
-                required: "Zip Code is required",
-                pattern: {
-                  value: /^\d{5}(-\d{4})?$/,
-                  message: "Please enter a valid zip code",
-                },
-                placeHolder: "Zip Code",
-              },
-            ],
-          },
-          {
-            title: "Professional Information",
-            inputs: [
-              {
-                name: "Education",
-                type: "select",
-                required: "Your Education Level is required",
-                placeHolder: "Select your Education",
-                options: [
-                  {
-                    label:"No Education",
-                    value:"No Education"
-                  },
-                  {
-                    label:"Middle School",
-                    value:"Middle School"
-                  },
-                  {
-                    label:"High School",
-                    value:"High School"
-                  },
-                  {
-                    label:"Bachelor Degree",
-                    value:"Bachelor Degree"
-                  },
-                  {
-                    label:"PhD",
-                    value:"PhD"
-                  },
-                ]
-              },
-              {
-                name: "OccupationName",
-                type: "select",
-                required: "Your current occupation is required",
-                placeHolder: "Select your Occupation",
-                options: jobs
-              },
-              {
-                name: "id",
-                type: "text",
-                required: "ID is required",
-                minLength: {
-                  value: 5,
-                  message: "Last name must have at least 5 characters",
-                },
-                pattern: {
-                  value: /^[0-9]*$/,
-                  message: "Please enter a valid ID",
-                },
-                placeHolder: "ID",
-                value: "CPF"
               },
               {
                 name: "Phone",
                 type: "text",
-                required: "Phone is required",
+                required: t.steps[1].inputs[1].required,
                 minLength: {
                   value: 9,
-                  message: "Phone number must have at least 9 numbers",
+                  message: t.steps[1].inputs[1].minLength.message,
                 },
                 pattern: {
                   value: /^[0-9]*$/,
-                  message: "Please enter a valid Phone number",
+                  message: t.steps[1].inputs[1].pattern.message,
                 },
-                placeHolder: "Phone number",
+                placeHolder: t.steps[1].inputs[1].placeHolder,
               },
               {
-                name: "ServiceDesc",
+                name: "zipcode",
                 type: "text",
-                placeHolder: "(Optional)Job Description",
+                required: t.steps[1].inputs[2].required,
+                pattern: {
+                  value: /^\d{5}(-\d{4})?$/,
+                  message: t.steps[1].inputs[2].pattern.message,
+                },
+                placeHolder: t.steps[1].inputs[2].placeHolder,
+              },
+            ],
+          },
+          {
+            title: t.steps[2].title,
+            inputs: [
+              {
+                name: "Education",
+                type: "select",
+                required: t.steps[2].inputs[0].required,
+                placeHolder: t.steps[2].inputs[0].placeHolder,
+                options: t.steps[2].inputs[0].options
+              },
+              {
+                name: "OccupationName",
+                type: "select",
+                required: t.steps[2].inputs[1].required,
+                placeHolder: t.steps[2].inputs[1].placeHolder,
+                options: t.steps[2].inputs[1].options
+              },
+              {
+                name: "id",
+                type: "text",
+                required: t.steps[2].inputs[2].required,
+                minLength: {
+                  value: 5,
+                  message: t.steps[2].inputs[2].minLength.message,
+                },
+                pattern: {
+                  value: /^[0-9]*$/,
+                  message: t.steps[2].inputs[2].pattern.message,
+                },
+                placeHolder: t.steps[2].inputs[2].placeHolder,
+                value: t.steps[2].inputs[2].value
               },
             ],
           },
