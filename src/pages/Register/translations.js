@@ -1,5 +1,13 @@
 export const translations = {
   en: {
+    buttonLabels: {
+      next: "Next",
+      previous: "Previous",
+      submit: "Submit",
+    },
+    login: {
+      label: "Already have a account?"
+    },
     steps: [
       {
         title: "Create your account",
@@ -172,6 +180,95 @@ export const translations = {
                 label: "Bartender",
                 value: "Bartender"
               },
+              {
+                label: "Seamstress",
+                value: "Seamstress"
+              },
+              {
+                label: "Baker",
+                value: "Baker"
+              },
+              {
+                label: "Inside Salesperson",
+                value: "Inside Salesperson"
+              },
+              {
+                label: "Hairdresser",
+                value: "Hairdresser"
+              },
+              {
+                label: "Laborer",
+                value: "Laborer"
+              },
+              {
+                label: "Administrative Assistant",
+                value: "Administrative Assistant"
+              },
+              {
+                label: "Receptionist",
+                value: "Receptionist"
+              },
+              {
+                label: "Delivery Driver",
+                value: "Delivery Driver"
+              },
+              {
+                label: "Gardener",
+                value: "Gardener"
+              },
+              {
+                label: "Ride-share Driver",
+                value: "Ride-share Driver"
+              },
+              {
+                label: "Forklift Operator",
+                value: "Forklift Operator"
+              },
+              {
+                label: "Office Assistant",
+                value: "Office Assistant"
+              },
+              {
+                label: "Butcher",
+                value: "Butcher"
+              },
+              {
+                label: "Mechanic",
+                value: "Mechanic"
+              },
+              {
+                label: "Window Cleaner",
+                value: "Window Cleaner"
+              },
+              {
+                label: "Painter",
+                value: "Painter"
+              },
+              {
+                label: "Tailor",
+                value: "Tailor"
+              },
+              {
+                label: "Delivery Boy",
+                value: "Delivery Boy"
+              },
+              {
+                label: "Furniture Assembler",
+                value: "Furniture Assembler"
+              },
+              {
+                label: "Kitchen Assistant",
+                value: "Kitchen Assistant"
+              },
+              {
+                label: "Carpenter",
+                value: "Carpenter"
+              },
+              {
+                label: "Farmer",
+                value: "Farmer"
+              }
+
             ]
           },
           {
@@ -190,6 +287,14 @@ export const translations = {
     ]
   },
   pt: {
+    buttonLabels: {
+      next: "Próximo",
+      previous: "Voltar",
+      submit: "Enviar",
+    },
+    login: {
+      label: "Já tem uma conta? Faça "
+    },
     steps: [
       {
         title: "Crie sua conta",

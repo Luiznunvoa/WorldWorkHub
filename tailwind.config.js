@@ -63,7 +63,7 @@ export default {
         show: "show 1.5s ease-in-out",
       },
       fontFamily: {
-        Roboto: ["Roboto", "sans-serif"],
+        "Roboto": ["Roboto", "sans-serif"],
         "kanit-thin": ["Kanit", "sans-serif"],
         "archivo-black-regular": ["Archivo Black", "sans-serif"],
       },

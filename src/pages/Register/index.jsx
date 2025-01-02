@@ -1,7 +1,7 @@
 import { DynamicForm } from "../../components/dynamicForm";
 import { useAppContext } from "../../utils";
 import { translations } from "./translations";
-import { states, jobs } from "../../assets";
+import { states } from "../../assets";
 
 export function Register() {
   const { language } = useAppContext();
@@ -11,6 +11,15 @@ export function Register() {
     <main className="flex w-full flex-col items-center p-6">
       <DynamicForm
         onSubmit={(data) => console.log(data)}
+        buttonLabels={{
+          next: t.buttonLabels.next,
+          previous: t.buttonLabels.previous,
+          submit: t.buttonLabels.submit,
+        }}
+        login={{
+          label: t.login.label,
+          buttonPress: () => ("") 
+        }}
         steps={[
           {
             title: t.steps[0].title,

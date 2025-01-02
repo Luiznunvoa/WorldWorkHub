@@ -25,7 +25,6 @@ export function Hero({ title, subtitle, image, button }) {
         <img
           src={image}
           alt={title ? title : image}
-          loading="lazy"
           className="h-1/2 w-full object-cover lg:block lg:h-full lg:w-[48rem]"
         />
       )}

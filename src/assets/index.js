@@ -73,47 +73,6 @@ export const states = [
   { label: "WY", value: "WY" }
 ];
 
-export const jobs = [
-  { label: "Driver", value: "Driver" },
-  { label: "Waiter/Waitress", value: "Waiter/Waitress" },
-  { label: "Cashier", value: "Cashier" },
-  { label: "Cleaner", value: "Cleaner" },
-  { label: "Stock Clerk", value: "Stock Clerk" },
-  { label: "Fast Food Attendant", value: "Fast Food Attendant" },
-  { label: "Janitor", value: "Janitor" },
-  { label: "Construction Worker", value: "Construction Worker" },
-  { label: "Electrician", value: "Electrician" },
-  { label: "Plumber", value: "Plumber" },
-  { label: "Security Guard", value: "Security Guard" },
-  { label: "Cook", value: "Cook" },
-  { label: "Car Washer", value: "Car Washer" },
-  { label: "Intern", value: "Intern" },
-  { label: "Production Operator", value: "Production Operator" },
-  { label: "Bartender", value: "Bartender" },
-  { label: "Seamstress", value: "Seamstress" },
-  { label: "Baker", value: "Baker" },
-  { label: "Inside Salesperson", value: "Inside Salesperson" },
-  { label: "Hairdresser", value: "Hairdresser" },
-  { label: "Laborer", value: "Laborer" },
-  { label: "Administrative Assistant", value: "Administrative Assistant" },
-  { label: "Receptionist", value: "Receptionist" },
-  { label: "Delivery Driver", value: "Delivery Driver" },
-  { label: "Gardener", value: "Gardener" },
-  { label: "Ride-share Driver", value: "Ride-share Driver" },
-  { label: "Forklift Operator", value: "Forklift Operator" },
-  { label: "Office Assistant", value: "Office Assistant" },
-  { label: "Butcher", value: "Butcher" },
-  { label: "Mechanic", value: "Mechanic" },
-  { label: "Window Cleaner", value: "Window Cleaner" },
-  { label: "Painter", value: "Painter" },
-  { label: "Tailor", value: "Tailor" },
-  { label: "Delivery Boy", value: "Delivery Boy" },
-  { label: "Furniture Assembler", value: "Furniture Assembler" },
-  { label: "Kitchen Assistant", value: "Kitchen Assistant" },
-  { label: "Carpenter", value: "Carpenter" },
-  { label: "Farmer", value: "Farmer" }
-];
-
 export const SVG_DATA = {
   usa: {
     viewBox: "0 0 260 165",

@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import PropTypes from "prop-types";
 
-export function DynamicForm({ onSubmit, steps }) {
+export function DynamicForm({ onSubmit, buttonLabels, login, steps }) {
   const [step, setStep] = useState(0);
   const methods = useForm();
 
   const nextStep = async () => {
-    const isValid = await methods.trigger(); // Valida todos os campos da etapa atual
+    const isValid = await methods.trigger();
     if (isValid) {
       setStep((prev) => (prev < steps.length - 1 ? prev + 1 : prev));
     }
@@ -31,37 +31,41 @@ export function DynamicForm({ onSubmit, steps }) {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <ul className="mb-6 flex flex-row justify-between">
-        {steps.map((_, index) => (
-          <li
-            key={index}
-            className="text-green-600 relative flex flex-row items-center text-center text-sm font-semibold"
-          >
-            <div
-              className={`mx-auto h-12 w-12 rounded-xl ${
-                index <= step
-                  ? "bg-green text-text"
-                  : "bg-background_secondary text-text_secondary"
-              } flex items-center justify-center text-xl transition-all`}
+      { (steps.length > 1) &&
+        <ul className="mb-6 flex flex-row justify-between">
+          {steps.map((_, index) => (
+            <li
+              key={index}
+              className="text-green-600 relative flex flex-row items-center text-center text-sm font-semibold"
             >
-              {index + 1}
-            </div>
-            {index + 1 < steps.length && (
               <div
-                className={`h-6 w-32 rounded-lg transition-all ${
-                  index < step ? "bg-green" : "bg-background_secondary"
-                } m-5`}
-              />
-            )}
-          </li>
-        ))}
-      </ul>
+                className={`mx-auto h-8 w-8 rounded-sm ${
+                  index <= step
+                    ? "bg-green text-text_secondary"
+                    : "bg-white text-outline"
+                } flex items-center justify-center text-base transition-all duration-1000`}
+              >
+                {index + 1}
+              </div>
+              {index + 1 < steps.length && (
+                <div
+                  className={`h-1 w-36 transition-all duration-1000 ${
+                    index < step ? "bg-green" : "bg-white"
+                  }`}
+                />
+              )}
+            </li>
+          ))}
+        </ul>
+      }
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit(onSubmit)}
-          className="flex w-[32rem] flex-col items-center rounded-lg bg-white p-6 shadow"
+          className="flex w-96 flex-col items-center rounded-lg bg-white p-6 shadow-2xl"
         >
-          <h2 className="m-5 font-Roboto text-lg font-bold">{steps[step].title}</h2>
+          <h2 className="m-5 font-archivo-black-regular text-2xl font-bold italic">
+            {steps[step].title}
+          </h2>
           {steps[step].inputs.map((input, index) => (
             <div key={index} className="w-full mb-4">
               {input.type === "select" ? (
@@ -95,40 +99,46 @@ export function DynamicForm({ onSubmit, steps }) {
                   })}
                   type={input.type}
                   placeholder={input.placeHolder}
-                  className="w-full rounded border border-gray-300 p-2"
+                  className="w-full rounded border border-gray-300 p-2 placeholder:font-Roboto"
                 />
               )}
               <ErrorMessage error={methods.formState.errors[input.name]?.message} />
             </div>
           ))}
-          <div className="flex flex-row items-center justify-center gap-5">
+          <div className="my-2 flex flex-row items-center justify-center gap-5">
             {step > 0 && (
               <button
                 type="button"
                 onClick={previousStep}
-                className="mt-4 rounded bg-gray-400 px-4 py-2 text-white hover:bg-gray-500"
+                className="rounded font-Roboto bg-green px-4 py-2 text-white hover:bg-gray-500"
               >
-                Previous
+                {buttonLabels.previous}
               </button>
             )}
             {step < steps.length - 1 && (
               <button
                 type="button"
                 onClick={nextStep}
-                className="mt-4 rounded bg-gray-400 px-4 py-2 text-white hover:bg-gray-500"
+                className="rounded font-Roboto bg-green px-4 py-2 text-white hover:bg-gray-500"
               >
-                Next
+                {buttonLabels.next}
               </button>
             )}
             {step === steps.length - 1 && (
               <button
                 type="submit"
-                className="mt-4 rounded bg-gray-400 px-4 py-2 text-white hover:bg-gray-500"
+                className="rounded font-Roboto bg-green px-4 py-2 text-white hover:bg-gray-500"
               >
-                Submit
+                {buttonLabels.submit}
               </button>
             )}
           </div>
+          <p className="flex font-Roboto text-outline gap-1"> 
+            {login.label}
+            <a onClick={login.buttonPress} className="text-blue-600 underline cursor-pointer"> 
+              login!
+            </a>
+          </p>
         </form>
       </FormProvider>
     </div>
@@ -137,6 +147,15 @@ export function DynamicForm({ onSubmit, steps }) {
 
 DynamicForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  buttonLabels: PropTypes.shape({
+    next: PropTypes.string.isRequired,
+    previous: PropTypes.string.isRequired,
+    submit: PropTypes.string.isRequired,
+  }).isRequired,
+  login: PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    buttonPress: PropTypes.func.isRequired
+  }).isRequired,
   steps: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
@@ -145,6 +164,8 @@ DynamicForm.propTypes = {
           name: PropTypes.string.isRequired,
           required: PropTypes.string,
           validate: PropTypes.string,
+          type: PropTypes.string.isRequired,
+          placeHolder: PropTypes.string,
           minLength: PropTypes.shape({
             value: PropTypes.number.isRequired,
             message: PropTypes.string.isRequired,
@@ -153,8 +174,6 @@ DynamicForm.propTypes = {
             value: PropTypes.instanceOf(RegExp).isRequired,
             message: PropTypes.string.isRequired,
           }),
-          type: PropTypes.string.isRequired,
-          placeHolder: PropTypes.string,
           options: PropTypes.arrayOf(
             PropTypes.shape({
               label: PropTypes.string.isRequired,
