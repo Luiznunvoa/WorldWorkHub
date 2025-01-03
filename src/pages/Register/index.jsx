@@ -76,7 +76,8 @@ export function Register() {
                 name: "confirmPassword",
                 type: "password",
                 required: t.steps[0].inputs[4].required,
-                validate: "password",
+                validate: (value, methods) =>
+                  value === methods.getValues("password") || `${t.steps[0].inputs[4].validate}`,
                 placeHolder: t.steps[0].inputs[4].placeHolder,
               },
             ],
@@ -96,7 +97,7 @@ export function Register() {
                 type: "text",
                 required: t.steps[1].inputs[1].required,
                 minLength: {
-                  value: 9,
+                  value: 11,
                   message: t.steps[1].inputs[1].minLength.message,
                 },
                 pattern: {

@@ -63,7 +63,7 @@ export function DynamicForm({ onSubmit, buttonLabels, login, steps }) {
           onSubmit={methods.handleSubmit(onSubmit)}
           className="flex w-96 flex-col items-center rounded-lg bg-white p-6 shadow-2xl"
         >
-          <h2 className="m-5 font-archivo-black-regular text-2xl font-bold italic">
+          <h2 className="m-5 font-archivo-black-regular text-2xl text-center font-bold italic">
             {steps[step].title}
           </h2>
           {steps[step].inputs.map((input, index) => (
@@ -77,7 +77,7 @@ export function DynamicForm({ onSubmit, buttonLabels, login, steps }) {
                   defaultValue=""
                 >
                   <option value="" disabled>
-                    {input.placeHolder || "Select an option"}
+                    {input.placeHolder}
                   </option>
                   {input.options?.map((option, optIndex) => (
                     <option key={optIndex} value={option.value}>
@@ -91,11 +91,7 @@ export function DynamicForm({ onSubmit, buttonLabels, login, steps }) {
                     required: input.required,
                     minLength: input.minLength,
                     pattern: input.pattern,
-                    ...(input.validate && {
-                      validate: (value) =>
-                        value === methods.getValues(input.validate) ||
-                        `${input.validate} do not match`,
-                    }),
+                    validate: input.validate && ((value) => input.validate(value, methods)),
                   })}
                   type={input.type}
                   placeholder={input.placeHolder}
@@ -163,7 +159,7 @@ DynamicForm.propTypes = {
         PropTypes.shape({
           name: PropTypes.string.isRequired,
           required: PropTypes.string,
-          validate: PropTypes.string,
+          validate: PropTypes.func,
           type: PropTypes.string.isRequired,
           placeHolder: PropTypes.string,
           minLength: PropTypes.shape({

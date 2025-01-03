@@ -50,7 +50,7 @@ export const translations = {
           },
           {
             required: "Confirm your password",
-            validate: "password",
+            validate: "Password is not correct",
             placeHolder: "Confirm Password",
           },
         ]
@@ -82,7 +82,7 @@ export const translations = {
         ],
       },
       {
-        title: "Professional Information",
+        title: "Personal Information",
         inputs: [
           {
             name: "Education",
@@ -336,7 +336,7 @@ export const translations = {
           },
           {
             required: "Confirme sua senha",
-            validate: "senha",
+            validate: "Senha não esta correta.",
             placeHolder: "Confirme a Senha",
           },
         ]
@@ -368,7 +368,7 @@ export const translations = {
         ],
       },
       {
-        title: "Informações Profissionais",
+        title: "Informações Pessoais",
         inputs: [
           {
             name: "Educação",
