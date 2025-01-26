@@ -4,7 +4,7 @@ import { AppProvider } from "./context";
 import { Footer } from "./components/footer";
 import { Header } from "./components/header";
 import { Home } from "./pages/home";
-import { Register } from "./pages/Register";
+import { Register } from "./pages/register";
 
 const Layout = ({ children }) => {
   return (
