@@ -1,0 +1,174 @@
+{
+  "hero": {
+    "title": "Make your way to your dream job!",
+    "subtitle": "WWH. can help you get there...",
+    "image": "https://i.postimg.cc/wBQbnHRp/person.png",
+    "buttonLabel": "Start Now!"
+  },
+
+  "divider": "Look the Opportunities, Explore our solutions!",
+
+  "highlights": [
+    {
+      "text": "Choose where you want to work on",
+      "greenIcon": "usa",
+      "blackIcon": "tap",
+      "animation": "animate-float"
+    },
+    {
+      "text": "Search for better opportunities everywhere",
+      "greenIcon": "graph",
+      "blackIcon": "man",
+      "animation": " animte-climb "
+    },
+    {
+      "text": "Live for new and exciting experiences",
+      "greenIcon": "heart",
+      "blackIcon": "smile",
+      "animation": "animate-jump"
+    },
+    {
+      "text": "Explore paths that lead to your dreams and goals",
+      "greenIcon": "target",
+      "blackIcon": "bow",
+      "animation": "animate-turn"
+    }
+  ],
+
+  "panels": {
+    "title": "Go Beyond",
+    "places": [
+      {
+        "image": "https://i.postimg.cc/Y92yHVQm/houses.jpg",
+        "description": "Relocating for work offers access to broader job markets, top companies, and new career opportunities. It’s a chance to build skills, expand your network, and gain valuable international experience, making you more competitive in the job market."
+      },
+      {
+        "image": "https://i.postimg.cc/C1vrLN4r/america.jpg",
+        "description": "Beyond work, finding your perfect occupation can make you experience new lifestyles, and perspectives. It fosters personal growth, resilience, and adaptability while creating exciting memories and opportunities for meaningful connections."
+      }
+    ]
+  },
+
+  "slider": {
+    "title": "Endless possibilities",
+    "slides": [
+      {
+        "title": "Construction Work",
+        "images": "https://i.postimg.cc/j2qjbsjY/construction-guy.jpg",
+        "description": "The high demand for skilled labor in the construction industry values workers for their expertise and dedication.",
+        "button_label": "View More"
+      },
+      {
+        "title": "Cleaning Services",
+        "images": "https://i.postimg.cc/50ysXzyP/cleaning-girl.jpg",
+        "description": "The growing demand for reliable cleaning services in the U.S. looks for workers with endurance and strong work ethic.",
+        "button_label": "View More"
+      },
+      {
+        "title": "Landscaping and Gardening",
+        "images": "https://i.postimg.cc/sg1P9zsX/gardeneer.jpg",
+        "description": "The landscaping industry appreciates workers for their creativity and ability to handle physical tasks outdoors.",
+        "button_label": "View More"
+      },
+      {
+        "title": "Food Service and Hospitality",
+        "images": "https://i.postimg.cc/h4p7CYC7/foodservice-girl.jpg",
+        "description": "Restaurants and hotels value workers for their adaptability, customer service skills, and teamwork.",
+        "button_label": "View More"
+      },
+      {
+        "title": "Warehouse and Logistics",
+        "images": "https://i.postimg.cc/PrJv0McV/warehouse-guy.jpg",
+        "description": "The logistics sector seeks workers who are efficient, organized, and comfortable in fast-paced environments.",
+        "button_label": "View More"
+      },
+      {
+        "title": "Retail and Customer Service",
+        "images": "https://i.postimg.cc/WzWFhDD7/costumer-service-girl.jpg",
+        "description": "Retail businesses value employees for their communication skills and ability to connect with customers.",
+        "button_label": "View More"
+      },
+      {
+        "title": "Home Health Care",
+        "images": "https://i.postimg.cc/9McrbPZp/healtcare-girl.jpg",
+        "description": "The growing need for home health aides emphasizes compassion, reliability, and attention to detail.",
+        "button_label": "View More"
+      },
+      {
+        "title": "Childcare Services",
+        "images": "https://i.postimg.cc/QxzKDTZ8/childcare-girl.jpg",
+        "description": "Parents value caregivers who are patient, responsible, and great with children.",
+        "button_label": "View More"
+      },
+      {
+        "title": "Transportation and Delivery",
+        "images": "https://i.postimg.cc/52FY22fw/delivery-guy.jpg",
+        "description": "Delivery services appreciate workers for their punctuality and ability to navigate efficiently.",
+        "button_label": "View More"
+      },
+      {
+        "title": "Agricultural Work",
+        "images": "https://i.postimg.cc/7L8CGrLj/agriculture-guy.jpg",
+        "description": "Farms seek workers who are hardworking, consistent, and capable of handling seasonal demands.",
+        "button_label": "View More"
+      }
+    ]
+  },
+
+  "textGrid": {
+    "title": "How We Can Help You!",
+    "elements": [
+      {
+        "icon": "suitcase",
+        "title": "Job Prospecting",
+        "description": "Using our best techniques of job prospecting, we can help you find the best opportunities in the market."
+      },
+      {
+        "icon": "calendar",
+        "title": "Time Organization",
+        "description": "Our team will organize all your work schedule for you, giving you time to focus on what you do best."
+      },
+      {
+        "icon": "man",
+        "title": "Account Management",
+        "description": "By letting us manage your various job network accounts, you will maximize your chances of getting your job."
+      },
+      {
+        "icon": "support",
+        "title": "Ongoing Support",
+        "description": "We provide continuous assistance to address your concerns and ensure your professional success in the long term."
+      }
+    ]
+  },
+
+  "visualGrid": {
+    "title": "Lives Transformed",
+    "elements": [
+      {
+        "image": "https://i.postimg.cc/xCjn7gds/men1.png",
+        "title": "Alex Martins",
+        "subtitle": "Construction Worker",
+        "description": "After 1 year of moving to America, he was able to find his first job to give a better life for his kids."
+      },
+      {
+        "image": "https://i.postimg.cc/7YXH3FY5/woman1.jpg",
+        "title": "Luísa Alves",
+        "subtitle": "Nurse Assistant",
+        "description": "Found a stable job in the healthcare industry and is now supporting her family and pursuing her dreams."
+      },
+      {
+        "image": "https://i.postimg.cc/rFqytVc6/men2.jpg",
+        "title": "Carlos Mota",
+        "subtitle": "Truck Driver",
+        "description": "Transitioned to a new career in logistics, enabling him to secure financial stability for his loved ones."
+      },
+      {
+        "image": "https://i.postimg.cc/fRLwB8JB/men3.jpg",
+        "title": "Marcos Totti",
+        "subtitle": "Chef",
+        "description": "Started a career in a renowned restaurant, showcasing his culinary talent and building a brighter future."
+      }
+    ]
+  }
+}
+

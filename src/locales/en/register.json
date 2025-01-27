@@ -1,0 +1,239 @@
+{
+  "buttonlabels": {
+    "next": "next",
+    "previous": "previous",
+    "submit": "submit"
+  },
+  "login": {
+    "label": "already have an account?"
+  },
+  "steps": [
+    {
+      "title": "create your account",
+      "inputs": [
+        {
+          "name": "firstname",
+          "type": "text",
+          "required": "first name is required",
+          "minlength": {
+            "value": 2,
+            "message": "first name must have at least 2 characters"
+          },
+          "pattern": {
+            "value": "/^[a-zA-Z]+$/",
+            "message": "first name can only contain letters"
+          },
+          "placeholder": "first name"
+        },
+        {
+          "name": "lastname",
+          "type": "text",
+          "required": "last name is required",
+          "minlength": {
+            "value": 2,
+            "message": "last name must have at least 2 characters"
+          },
+          "pattern": {
+            "value": "/^[a-zA-Z]+$/",
+            "message": "last name can only contain letters"
+          },
+          "placeholder": "last name"
+        },
+        {
+          "name": "email",
+          "type": "email",
+          "required": "email is required",
+          "pattern": {
+            "value": "/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/",
+            "message": "please enter a valid email address"
+          },
+          "placeholder": "email"
+        },
+        {
+          "name": "password",
+          "type": "password",
+          "required": "password is required",
+          "pattern": {
+            "value": "/^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$/",
+            "message": "password must be at least 8 characters long and contain both letters and numbers"
+          },
+          "placeholder": "password"
+        },
+        {
+          "name": "confirmpassword",
+          "type": "password",
+          "required": "confirm your password",
+          "validate": "password is not correct",
+          "placeholder": "confirm password"
+        }
+      ]
+    },
+    {
+      "title": "address information",
+      "inputs": [
+        {
+          "name": "region",
+          "type": "select",
+          "required": "region is required",
+          "placeholder": "select your state",
+          "options": [
+            { "label": "AL", "value": "AL" },
+            { "label": "AK", "value": "AK" },
+            { "label": "AZ", "value": "AZ" },
+            { "label": "AR", "value": "AR" },
+            { "label": "CA", "value": "CA" },
+            { "label": "CO", "value": "CO" },
+            { "label": "CT", "value": "CT" },
+            { "label": "DE", "value": "DE" },
+            { "label": "FL", "value": "FL" },
+            { "label": "GA", "value": "GA" },
+            { "label": "HI", "value": "HI" },
+            { "label": "ID", "value": "ID" },
+            { "label": "IL", "value": "IL" },
+            { "label": "IN", "value": "IN" },
+            { "label": "IA", "value": "IA" },
+            { "label": "KS", "value": "KS" },
+            { "label": "KY", "value": "KY" },
+            { "label": "LA", "value": "LA" },
+            { "label": "ME", "value": "ME" },
+            { "label": "MD", "value": "MD" },
+            { "label": "MA", "value": "MA" },
+            { "label": "MI", "value": "MI" },
+            { "label": "MN", "value": "MN" },
+            { "label": "MS", "value": "MS" },
+            { "label": "MO", "value": "MO" },
+            { "label": "MT", "value": "MT" },
+            { "label": "NE", "value": "NE" },
+            { "label": "NV", "value": "NV" },
+            { "label": "NH", "value": "NH" },
+            { "label": "NJ", "value": "NJ" },
+            { "label": "NM", "value": "NM" },
+            { "label": "NY", "value": "NY" },
+            { "label": "NC", "value": "NC" },
+            { "label": "ND", "value": "ND" },
+            { "label": "OH", "value": "OH" },
+            { "label": "OK", "value": "OK" },
+            { "label": "OR", "value": "OR" },
+            { "label": "PA", "value": "PA" },
+            { "label": "RI", "value": "RI" },
+            { "label": "SC", "value": "SC" },
+            { "label": "SD", "value": "SD" },
+            { "label": "TN", "value": "TN" },
+            { "label": "TX", "value": "TX" },
+            { "label": "UT", "value": "UT" },
+            { "label": "VT", "value": "VT" },
+            { "label": "VA", "value": "VA" },
+            { "label": "WA", "value": "WA" },
+            { "label": "WV", "value": "WV" },
+            { "label": "WI", "value": "WI" },
+            { "label": "WY", "value": "WY" }
+          ] 
+        },
+        {
+          "name": "phone",
+          "type": "text",
+          "required": "phone is required",
+          "minlength": {
+            "value": 9,
+            "message": "phone number must have at least 9 numbers"
+          },
+          "pattern": {
+            "value": "/^[0-9]*$/",
+            "message": "please enter a valid phone number"
+          },
+          "placeholder": "phone number"
+        },
+        {
+          "name": "zipcode",
+          "type": "text",
+          "required": "zip code is required",
+          "pattern": {
+            "value": "/^\\d{5}(-\\d{4})?$/",
+            "message": "please enter a valid zip code"
+          },
+          "placeholder": "zip code"
+        }
+      ]
+    },
+    {
+      "title": "personal information",
+      "inputs": [
+        {
+          "name": "education",
+          "type": "select",
+          "required": "your education level is required",
+          "placeholder": "select your education",
+          "options": [
+            { "label": "no education", "value": "no education" },
+            { "label": "middle school", "value": "middle school" },
+            { "label": "high school", "value": "high school" },
+            { "label": "bachelor degree", "value": "bachelor degree" },
+            { "label": "phd", "value": "phd" }
+          ]
+        },
+        {
+          "name": "occupation",
+          "type": "select",
+          "required": "your current occupation is required",
+          "placeholder": "select your occupation",
+          "options": [
+            { "label": "driver", "value": "driver" },
+            { "label": "waiter/waitress", "value": "waiter/waitress" },
+            { "label": "cashier", "value": "cashier" },
+            { "label": "cleaner", "value": "cleaner" },
+            { "label": "stock clerk", "value": "stock clerk" },
+            { "label": "fast food attendant", "value": "fast food attendant" },
+            { "label": "janitor", "value": "janitor" },
+            { "label": "construction worker", "value": "construction worker" },
+            { "label": "electrician", "value": "electrician" },
+            { "label": "plumber", "value": "plumber" },
+            { "label": "security guard", "value": "security guard" },
+            { "label": "cook", "value": "cook" },
+            { "label": "car washer", "value": "car washer" },
+            { "label": "intern", "value": "intern" },
+            { "label": "production operator", "value": "production operator" },
+            { "label": "bartender", "value": "bartender" },
+            { "label": "seamstress", "value": "seamstress" },
+            { "label": "baker", "value": "baker" },
+            { "label": "inside salesperson", "value": "inside salesperson" },
+            { "label": "hairdresser", "value": "hairdresser" },
+            { "label": "laborer", "value": "laborer" },
+            { "label": "administrative assistant", "value": "administrative assistant" },
+            { "label": "receptionist", "value": "receptionist" },
+            { "label": "delivery driver", "value": "delivery driver" },
+            { "label": "gardener", "value": "gardener" },
+            { "label": "ride-share driver", "value": "ride-share driver" },
+            { "label": "forklift operator", "value": "forklift operator" },
+            { "label": "office assistant", "value": "office assistant" },
+            { "label": "butcher", "value": "butcher" },
+            { "label": "mechanic", "value": "mechanic" },
+            { "label": "window cleaner", "value": "window cleaner" },
+            { "label": "painter", "value": "painter" },
+            { "label": "tailor", "value": "tailor" },
+            { "label": "delivery boy", "value": "delivery boy" },
+            { "label": "furniture assembler", "value": "furniture assembler" },
+            { "label": "kitchen assistant", "value": "kitchen assistant" },
+            { "label": "carpenter", "value": "carpenter" },
+            { "label": "farmer", "value": "farmer" }
+          ]
+        },
+        {
+          "name": "id",
+          "type": "text",
+          "required": "id is required",
+          "minlength": {
+            "value": 5,
+            "message": "id must have at least 5 characters"
+          },
+          "pattern": {
+            "value": "/^[0-9]*$/",
+            "message": "please enter a valid id"
+          },
+          "placeholder": "id",
+          "value": "cpf"
+        }
+      ]
+    }
+  ]
+}
+

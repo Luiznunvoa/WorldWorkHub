@@ -1,4 +1,4 @@
-import { useEffect, useContext, createContext } from "react";
+import { useEffect, useState, useContext, createContext } from "react";
 
 export function useScrollTrigger(
   ref,
@@ -40,3 +40,39 @@ export const useAppContext = () => {
 
   return context;
 };
+
+// Fetches page contents with the specific language of the context
+export function useFetchLocale(page) {
+  const { language } = useAppContext(); // Retrieve the current language from the app context.
+  const [translations, setTranslations] = useState(null); // State to store the fetched translations.
+
+  useEffect(() => {
+    // Fetches the localization file whenever the language or page changes.
+    async function fetchData() {
+      try {
+        const response = await fetch(`/src/locales/${language}/${page}.json`);
+        const jsonData = await response.json(); // Parse the JSON response.
+        setTranslations(jsonData); // Update the state with the fetched translations.
+      } catch (error) {
+        console.error(`Error: Impossible to load page content in /src/locales/${language}/${page}.json:`, error);
+      }
+    }
+
+    fetchData();
+  }, [language, page]); // Re-run the effect whenever language or page changes.
+
+  return translations; 
+}
+
+// Converts a string in the format "/pattern/flags" into a regular expression.
+export function stringToRegex(patternString) {
+  const match = patternString.match(/^\/(.+)\/([a-z]*)$/); // Match the string against the regex format.
+
+  if (!match) {
+    console.error(`Warning: Invalid regex format: ${patternString}`);
+    return null; // Return null if the format is invalid.
+  }
+
+  const [, pattern, flags] = match; // Destructure the matched groups: pattern and flags.
+  return new RegExp(pattern, flags);
+}

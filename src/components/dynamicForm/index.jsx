@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import PropTypes from "prop-types";
 
-export function DynamicForm({ onSubmit, buttonLabels, login, steps }) {
+export function DynamicForm({ onSubmit, buttonLabels, option, steps }) {
   const [step, setStep] = useState(0);
   const methods = useForm();
 
@@ -129,12 +129,15 @@ export function DynamicForm({ onSubmit, buttonLabels, login, steps }) {
               </button>
             )}
           </div>
-          <p className="flex font-Roboto text-outline gap-1"> 
-            {login.label}
-            <a onClick={login.buttonPress} className="text-blue-600 underline cursor-pointer"> 
-              login!
-            </a>
-          </p>
+
+          { option && 
+            <p className="flex font-Roboto text-outline gap-1"> 
+              {option.label}
+              <a onClick={option.func} className="text-blue-600 underline cursor-pointer"> 
+                login!
+              </a>
+            </p>
+          }          
         </form>
       </FormProvider>
     </div>
@@ -142,34 +145,50 @@ export function DynamicForm({ onSubmit, buttonLabels, login, steps }) {
 }
 
 DynamicForm.propTypes = {
+  
+  // Function to run after the last step
   onSubmit: PropTypes.func.isRequired,
+
+  // Labels to the form buttons(next, previous, submit)
   buttonLabels: PropTypes.shape({
     next: PropTypes.string.isRequired,
     previous: PropTypes.string.isRequired,
     submit: PropTypes.string.isRequired,
   }).isRequired,
-  login: PropTypes.shape({
+
+  // Text with a link/function in the bottom of the form
+  option: PropTypes.shape({
     label: PropTypes.string.isRequired,
-    buttonPress: PropTypes.func.isRequired
-  }).isRequired,
+    func: PropTypes.func.isRequired
+  }),
+
+  // Steps of the form
   steps: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
+
+      // Array of inputs in each step
       inputs: PropTypes.arrayOf(
         PropTypes.shape({
           name: PropTypes.string.isRequired,
-          required: PropTypes.string,
-          validate: PropTypes.func,
-          type: PropTypes.string.isRequired,
-          placeHolder: PropTypes.string,
+          type: PropTypes.string.isRequired, 
+          required: PropTypes.string,         // Message in the case input is not given
+          validate: PropTypes.func,           // Function to validate input 
+          placeHolder: PropTypes.string,      // Input text to represent the input
+
+          // Value to the minimum lenght of the input and massege in case it's not achived
           minLength: PropTypes.shape({
-            value: PropTypes.number.isRequired,
+            value: PropTypes.number.isRequired, 
             message: PropTypes.string.isRequired,
           }),
+
+          // Regex of the input and message in case it's not in the pattern
           pattern: PropTypes.shape({
             value: PropTypes.instanceOf(RegExp).isRequired,
             message: PropTypes.string.isRequired,
           }),
+
+          // In case the input have the type select, put here an array of options with the values
           options: PropTypes.arrayOf(
             PropTypes.shape({
               label: PropTypes.string.isRequired,

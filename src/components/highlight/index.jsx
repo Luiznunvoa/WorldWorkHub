@@ -15,7 +15,7 @@ export const Highlight = ({ highlights }) => (
         <div className="relative flex flex-row">
           <SVG className="h-40 w-40 fill-green" type={greenIcon} />
           <SVG
-            className={`fill-tex absolute mt-8 h-20 w-20 ${animation}`}
+            className={`fill-tex absolute mt-8 h-20 w-20 ${animation}`} // FIX: The animation is not working
             type={blackIcon}
           />
         </div>

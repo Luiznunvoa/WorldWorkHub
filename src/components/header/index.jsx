@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router";
 import { useAppContext } from "../../utils";
-import { portugal, uk } from "../../assets";
 
 export function Header() {
   let navigate = useNavigate();
@@ -16,7 +15,10 @@ export function Header() {
       <img
         onClick={toggleLanguage}
         className="absolute right-4 top-4 h-10 w-10 cursor-pointer rounded-full object-cover"
-        src={language == "en" ? uk : portugal}
+        src={language == "en" ? 
+          "https://i.postimg.cc/HxwyxK5L/usa.jpg" : 
+          "https://i.postimg.cc/3N3DDBCF/brazil.jpg"
+        }
       />
     </header>
   );

@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
-import { SVG_DATA } from "../../assets";
+import svg_data  from "../../assets/svg_data.json";
 
 export function SVG({ className = "fill-text", type }) {
-  const svgData = SVG_DATA[type];
+  const svgData = svg_data[type];
 
   if (!svgData) {
     console.error(`SVG type "${type}" not found.`);
