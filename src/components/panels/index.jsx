@@ -14,7 +14,7 @@ import { SVG } from "../svg";
  */
 export function Panels({ icon, title, places }) {
   return (
-    <div className="flex flex-col items-center gap-10">
+    <div className="mb-10 flex flex-col items-center gap-10">
       <section className="flex flex-row items-center gap-5">
         {icon && <SVG type={icon} className="h-10 w-10 fill-text" />}
         {title && (

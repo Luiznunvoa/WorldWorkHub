@@ -1,4 +1,3 @@
-
 {
   "hero": {
     "title": "Busque o emprego dos seus sonhos!",
@@ -140,6 +139,7 @@
   },
 
   "visualGrid": {
+    "title": "Vidas Transformadas",
     "elements": [
       {
         "image": "https://i.postimg.cc/xCjn7gds/men1.png",
