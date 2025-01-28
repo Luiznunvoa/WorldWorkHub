@@ -1,8 +1,19 @@
 import PropTypes from "prop-types";
 import { SVG } from "../svg";
 
+/**
+ * Highlight Component
+ * A grid layout showcasing highlights with text and icons.
+ *
+ * Props:
+ * - highlights (array): An array of objects containing:
+ *   - text (string): Text to display.
+ *   - blackIcon (string): Type of black icon to display.
+ *   - greenIcon (string): Type of green icon to display.
+ *   - animation (string, optional): Additional animation classes for the black icon.
+ */
 export const Highlight = ({ highlights }) => (
-  <div className="m-5 grid grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] items-center justify-center gap-6 p-4 sm:grid-cols-2 xl:flex xl:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] xl:flex-row">
+  <div className="grid grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] items-center justify-center gap-6 p-4 sm:grid-cols-2 xl:flex xl:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] xl:flex-row">
     {highlights.map(({ text, blackIcon, greenIcon, animation = "" }, index) => (
       <section
         key={index}
@@ -15,7 +26,7 @@ export const Highlight = ({ highlights }) => (
         <div className="relative flex flex-row">
           <SVG className="h-40 w-40 fill-green" type={greenIcon} />
           <SVG
-            className={`fill-tex absolute mt-8 h-20 w-20 ${animation}`} // FIX: The animation is not working
+            className={`fill-tex absolute mt-8 h-20 w-20 ${animation}`}
             type={blackIcon}
           />
         </div>

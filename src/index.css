@@ -114,3 +114,90 @@
 	opacity: 0.35;
 	pointer-events: none;
 }
+
+@keyframes float {
+  0% {
+    transform: translateY(0rem);
+  }
+  33% {
+    transform: translateY(-2rem);
+  }
+  66% {
+    transform: translateX(4rem);
+  }
+  100% {
+    transform: translateX(-1rem);
+  }
+}
+
+@keyframes climb {
+  0% {
+    transform: translateY(1rem);
+  }
+  20% {
+    transform: translateX(4rem);
+  }
+  40% {
+    transform: translateY(1rem);
+  }
+  60% {
+    transform: translateX(4rem);
+  }
+  80% {
+    transform: translateY(1rem);
+  }
+  100% {
+    transform: translateX(4rem);
+  }
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0rem);
+  }
+  100% {
+    transform: translateY(-1rem);
+  }
+}
+
+@keyframes turn {
+  0% {
+    transform: translateX(0rem);
+  }
+  100% {
+    transform: translateX(-0.5rem);
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0%;
+  }
+  50% {
+    opacity: 50%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite alternate;
+}
+
+.animate-climb {
+  animation: climb 20s ease-in-out infinite alternate;
+}
+
+.animate-jump {
+  animation: jump 2s ease-in-out infinite alternate;
+}
+
+.animate-turn {
+  animation: turn 2s ease-in-out infinite alternate;
+}
+
+.animate-show {
+  animation: show 1.5s ease-in-out;
+}
+

@@ -17,24 +17,19 @@ export function Home() {
   } 
 
   return (
-    <main className="flex flex-col items-center">
+    <main className="flex flex-col items-center gap-10">
       
       {/* Main Banner */}
       <Hero
-        hero={{
-          title: t.hero.title,
-          subtitle: t.hero.subtitle,
-          image: t.hero.image,
-          button: {
-            label: t.hero.buttonLabel,
-            func: () => (navigate('/register'))
-          }
+        title={t.hero.title}
+        subtitle={t.hero.subtitle}
+        image={t.hero.image}
+        divider={t.divider}
+        button={{
+          label: t.hero.buttonLabel,
+          func: () => (navigate('/register'))
         }}
-      />
-
-      <div className="m-1 flex w-full flex-row justify-center bg-text font-Roboto text-sm text-text_secondary lg:text-lg">
-        {t.divider}
-      </div>
+      /> 
 
       {/* Array of animated SVGs with text labels*/}
       <Highlight
@@ -43,14 +38,14 @@ export function Home() {
  
       {/* Array of image Panels with text labels */}
       <Panels
-        icon="signs"
+        icon={t.panels.icon}
         title={t.panels.title}
         places={t.panels.places}
       />
 
       {/* Slider with slides containing a image, a title and a description */}
       <Slider
-        icon="bolt"
+        icon={t.slider.icon}
         title={t.slider.title}
         slides={t.slider.slides.map((slide) => ({
           image: slide.images,
@@ -61,11 +56,11 @@ export function Home() {
             func: () => navigate("/Register"), // TODO: Make the json decide the navegation path for each slide
           },
         }))}
-      />;
+      />
 
       {/* A grid of text cards with icons */}
       <TextGrid
-        icon="info"
+        icon={t.textGrid.icon}
         title={t.textGrid.title}
         elements={t.textGrid.elements}
       />

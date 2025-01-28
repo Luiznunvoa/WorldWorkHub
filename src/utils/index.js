@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext, createContext } from "react";
 
+/*
 export function useScrollTrigger(
   ref,
   onEnterView,
@@ -28,6 +29,7 @@ export function useScrollTrigger(
     };
   }, [ref, onEnterView, onExitView, options]);
 }
+*/
 
 export const AppContext = createContext();
 

@@ -4,8 +4,9 @@
     "previous": "anterior",
     "submit": "enviar"
   },
-  "login": {
-    "label": "já tem uma conta?"
+  "option": {
+    "label": "Entre agora!",
+    "text": "já tem uma conta?"
   },
   "steps": [
     {

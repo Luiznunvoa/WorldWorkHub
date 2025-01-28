@@ -19,7 +19,7 @@
       "text": "Search for better opportunities everywhere",
       "greenIcon": "graph",
       "blackIcon": "man",
-      "animation": " animte-climb "
+      "animation": " animate-climb "
     },
     {
       "text": "Live for new and exciting experiences",
@@ -36,8 +36,7 @@
   ],
 
   "panels": {
-    "title": "Go Beyond",
-    "places": [
+      "places": [
       {
         "image": "https://i.postimg.cc/Y92yHVQm/houses.jpg",
         "description": "Relocating for work offers access to broader job markets, top companies, and new career opportunities. It’s a chance to build skills, expand your network, and gain valuable international experience, making you more competitive in the job market."
@@ -50,7 +49,6 @@
   },
 
   "slider": {
-    "title": "Endless possibilities",
     "slides": [
       {
         "title": "Construction Work",
@@ -116,7 +114,6 @@
   },
 
   "textGrid": {
-    "title": "How We Can Help You!",
     "elements": [
       {
         "icon": "suitcase",

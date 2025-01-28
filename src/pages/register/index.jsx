@@ -23,7 +23,8 @@ export function Register() {
           submit: t.buttonlabels.submit,
         }}
         option={{
-          label: t.login.label,
+          text: t.option.text,
+          label: t.option.label,
           func: () => (navigate('/'))
         }}
         steps={t.steps.map((step) => ({

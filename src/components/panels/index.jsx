@@ -1,16 +1,20 @@
-import { useRef, useState } from "react";
 import PropTypes from "prop-types";
-import { useScrollTrigger } from "../../utils";
 import { SVG } from "../svg";
 
+/**
+ * Panels Component
+ * A layout to display a collection of panels with an optional icon, title, and detailed places.
+ *
+ * Props:
+ * - icon (string, optional): Type of SVG icon to display alongside the title.
+ * - title (string, optional): The main title of the panel.
+ * - places (array): An array of objects containing:
+ *   - image (string): URL of the image to display.
+ *   - description (string): Text description of the place.
+ */
 export function Panels({ icon, title, places }) {
-  const sectionRef = useRef(null);
-  const [animate, setAnimate] = useState(false);
-
-  useScrollTrigger(sectionRef, () => setAnimate(true));
-
   return (
-    <div ref={sectionRef} className="m-10 flex flex-col items-center gap-10">
+    <div className="flex flex-col items-center gap-10">
       <section className="flex flex-row items-center gap-5">
         {icon && <SVG type={icon} className="h-10 w-10 fill-text" />}
         {title && (
@@ -19,31 +23,31 @@ export function Panels({ icon, title, places }) {
           </h2>
         )}
       </section>
-      {animate &&
-        places.map((place, index) => (
-          <section
-            key={index}
-            className={`flex ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} min-h-1 w-full max-w-[1920px] animate-show flex-col-reverse items-center justify-center gap-20`}
-          >
-            <p className="w-5/6 text-center font-archivo-black-regular text-xl lg:w-2/5">
-              {place.description}
-            </p>
 
-            <div className="h-60 w-96 rounded-lg bg-green shadow-2xl lg:border-4 lg:border-solid lg:border-text">
-              <img
-                src={place.image}
-                className={`h-full w-full object-cover lg:mt-10 ${index % 2 == 0 ? "lg:-ml-10" : "lg:ml-10"} animate-show rounded-lg border-4 border-solid border-text bg-text shadow-xl outline outline-4 outline-green`}
-                alt={`City ${index + 1}`}
-                loading="lazy"
-              />
+      {places.map((place, index) => (
+        <section
+          key={index}
+          className={`flex ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} w-full max-w-[1920px] flex-col-reverse items-center justify-center gap-20`}
+        >
+          <p className="w-5/6 text-center font-archivo-black-regular text-xl lg:w-2/5">
+            {place.description}
+          </p>
 
-              <SVG
-                type="cursor"
-                className={`absolute -mt-12 h-20 w-20 fill-text stroke-green stroke-1 ${index % 2 === 0 ? "ml-20 rotate-90" : "ml-64"}`}
-              />
-            </div>
-          </section>
-        ))}
+          <div className="h-60 w-96 rounded-lg bg-green shadow-2xl lg:border-4 lg:border-solid lg:border-text">
+            <img
+              src={place.image}
+              className={`container object-cover lg:mt-10 ${index % 2 == 0 ? "lg:-ml-10" : "lg:ml-10"} rounded-lg border-4 border-text bg-text shadow-xl outline outline-4 outline-green`}
+              alt={`City ${index + 1}`}
+              loading="lazy"
+            />
+
+            <SVG
+              type="cursor"
+              className={`absolute -mt-12 h-20 w-20 fill-text stroke-green stroke-1 ${index % 2 === 0 ? "ml-20 rotate-90" : "ml-64"}`}
+            />
+          </div>
+        </section>
+      ))}
     </div>
   );
 }

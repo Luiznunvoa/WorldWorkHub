@@ -37,7 +37,6 @@
   ],
 
   "panels": {
-    "title": "Vá além",
     "places": [
       {
         "image": "https://i.postimg.cc/Y92yHVQm/houses.jpg",
@@ -51,7 +50,6 @@
   },
 
   "slider": {
-    "title": "Possibilidades infinitas",
     "slides": [
       {
         "title": "Trabalho de Construção",
@@ -117,7 +115,6 @@
   },
 
   "textGrid": {
-    "title": "Como podemos ajudar você!",
     "elements": [
       {
         "icon": "suitcase",
@@ -143,7 +140,6 @@
   },
 
   "visualGrid": {
-    "title": "Vidas transformadas",
     "elements": [
       {
         "image": "https://i.postimg.cc/xCjn7gds/men1.png",

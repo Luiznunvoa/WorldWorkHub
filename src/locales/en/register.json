@@ -4,8 +4,9 @@
     "previous": "previous",
     "submit": "submit"
   },
-  "login": {
-    "label": "already have an account?"
+  "option": {
+    "label": "Login!",
+    "text": "already have an account?"
   },
   "steps": [
     {
