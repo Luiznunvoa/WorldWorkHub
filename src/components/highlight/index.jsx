@@ -13,18 +13,18 @@ import { SVG } from "../svg";
  *   - animation (string, optional): Additional animation classes for the black icon.
  */
 export const Highlight = ({ highlights }) => (
-  <div className="grid grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] items-center justify-center gap-6 p-4 sm:grid-cols-2 xl:flex xl:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] xl:flex-row">
+  <div className="grid gap-6 justify-center items-center p-4 sm:grid-cols-2 xl:flex xl:flex-row grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] xl:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))]">
     {highlights.map(({ text, blackIcon, greenIcon, animation = "" }, index) => (
       <section
         key={index}
-        className="flex flex-row items-center justify-center gap-5"
+        className="flex flex-row gap-5 justify-center items-center"
       >
-        <p className="w-40 text-center font-archivo-black-regular text-lg">
+        <p className="w-40 text-lg text-center font-archivo-black-regular">
           {text}
         </p>
 
-        <div className="relative flex flex-row">
-          <SVG className="h-40 w-40 fill-green" type={greenIcon} />
+        <div className="flex relative flex-row">
+          <SVG className="w-40 h-40 fill-green" type={greenIcon} />
           <SVG
             className={`fill-tex absolute mt-8 h-20 w-20 ${animation}`}
             type={blackIcon}

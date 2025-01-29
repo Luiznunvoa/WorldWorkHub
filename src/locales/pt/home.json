@@ -49,6 +49,8 @@
   },
 
   "slider": {
+    "icon": "bolt",
+    "title": "Explore nossas oportunidades",
     "slides": [
       {
         "title": "Trabalho de Construção",

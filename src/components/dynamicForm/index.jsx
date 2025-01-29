@@ -36,7 +36,7 @@ export function DynamicForm({ onSubmit, buttonLabels, option, steps }) {
 
   // Error message component for form validation errors
   function ErrorMessage({ error }) {
-    return error ? <p className="text-red-500 text-sm">{error}</p> : null;
+    return error ? <p className="text-sm text-red-500">{error}</p> : null;
   }
 
   ErrorMessage.propTypes = {
@@ -47,24 +47,21 @@ export function DynamicForm({ onSubmit, buttonLabels, option, steps }) {
     <div className="flex flex-col justify-center items-center">
       {/* Step indicators */}
       {steps.length > 1 && (
-        <ul className="mb-6 flex flex-row justify-between">
+        <ul className="flex flex-row justify-between mb-6">
           {steps.map((_, index) => (
             <li
               key={index}
-              className="text-green-600 relative flex flex-row items-center text-center text-sm font-semibold"
+              className="flex relative flex-row items-center text-sm font-semibold text-center text-green-600"
             >
               <div
-                className={`mx-auto h-8 w-8 rounded-sm flex items-center justify-center text-base transition-all duration-1000 ${
-                  index <= step ? "bg-green text-text_secondary" : "bg-white text-outline"
-                }`}
+                className={`mx-auto h-8 w-8 rounded-sm flex items-center justify-center text-base transition-all duration-1000 
+                  ${index <= step ? "bg-green text-text_secondary" : "bg-white text-outline"}`}
               >
                 {index + 1}
               </div>
               {index + 1 < steps.length && (
                 <div
-                  className={`h-1 w-36 transition-all duration-1000 ${
-                    index < step ? "bg-green" : "bg-white"
-                  }`}
+                  className={`h-1 w-36 transition-all duration-1000 ${index < step ? "bg-green" : "bg-white"}`}
                 />
               )}
             </li>
@@ -75,22 +72,22 @@ export function DynamicForm({ onSubmit, buttonLabels, option, steps }) {
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit(onSubmit)}
-          className="flex w-96 flex-col items-center rounded-lg bg-white p-6 shadow-2xl"
+          className="flex flex-col items-center p-6 w-96 bg-white rounded-lg shadow-2xl"
         >
           {/* Step title */}
-          <h2 className="m-5 text-2xl font-bold italic text-center">
+          <h2 className="m-5 text-2xl italic font-bold text-center">
             {steps[step].title}
           </h2>
 
           {/* Step inputs */}
           {steps[step].inputs.map((input, index) => (
-            <div key={index} className="w-full mb-4">
+            <div key={index} className="mb-4 w-full">
               {input.type === "select" ? ( // In case the input is a dropdown type
                 <select
                   {...methods.register(input.name, {
                     required: input.required,
                   })}
-                  className="w-full rounded border border-gray-300 p-2"
+                  className="p-2 w-full rounded border border-gray-300"
                   defaultValue=""
                 >
                   <option value="" disabled>
@@ -102,30 +99,35 @@ export function DynamicForm({ onSubmit, buttonLabels, option, steps }) {
                     </option>
                   ))}
                 </select>
-              ) : ( // Regular input
+              ) : (
+                // Regular input
                 <input
                   {...methods.register(input.name, {
                     required: input.required,
                     minLength: input.minLength,
                     pattern: input.pattern,
-                    validate: input.validate && ((value) => input.validate(value, methods)),
+                    validate:
+                      input.validate &&
+                      ((value) => input.validate(value, methods)),
                   })}
                   type={input.type}
                   placeholder={input.placeHolder}
-                  className="w-full rounded border border-gray-300 p-2 placeholder:font-Roboto"
+                  className="p-2 w-full rounded border border-gray-300 placeholder:font-Roboto"
                 />
               )}
-              <ErrorMessage error={methods.formState.errors[input.name]?.message} />
+              <ErrorMessage
+                error={methods.formState.errors[input.name]?.message}
+              />
             </div>
           ))}
 
           {/* Navigation buttons */}
-          <div className="my-2 flex flex-row items-center justify-center gap-5">
+          <div className="flex flex-row gap-5 justify-center items-center my-2">
             {step > 0 && (
               <button
                 type="button"
                 onClick={previousStep}
-                className="rounded bg-green px-4 py-2 text-white hover:bg-gray-500"
+                className="py-2 px-4 text-white rounded hover:bg-gray-500 bg-green"
               >
                 {buttonLabels.previous}
               </button>
@@ -134,7 +136,7 @@ export function DynamicForm({ onSubmit, buttonLabels, option, steps }) {
               <button
                 type="button"
                 onClick={nextStep}
-                className="rounded bg-green px-4 py-2 text-white hover:bg-gray-500"
+                className="py-2 px-4 text-white rounded hover:bg-gray-500 bg-green"
               >
                 {buttonLabels.next}
               </button>
@@ -142,7 +144,7 @@ export function DynamicForm({ onSubmit, buttonLabels, option, steps }) {
             {step === steps.length - 1 && (
               <button
                 type="submit"
-                className="rounded bg-green px-4 py-2 text-white hover:bg-gray-500"
+                className="py-2 px-4 text-white rounded hover:bg-gray-500 bg-green"
               >
                 {buttonLabels.submit}
               </button>
@@ -151,7 +153,7 @@ export function DynamicForm({ onSubmit, buttonLabels, option, steps }) {
 
           {/* Optional link */}
           {option && (
-            <p className="flex text-outline gap-1">
+            <p className="flex gap-1 text-outline">
               {option.text}
               <a
                 onClick={option.func}
@@ -188,7 +190,7 @@ DynamicForm.propTypes = {
   // Configuration for each step of the form
   steps: PropTypes.arrayOf(
     PropTypes.shape({
-      // Title of the step 
+      // Title of the step
       title: PropTypes.string.isRequired,
 
       // Array of input configurations for the step
@@ -226,11 +228,10 @@ DynamicForm.propTypes = {
             PropTypes.shape({
               label: PropTypes.string.isRequired,
               value: PropTypes.string.isRequired,
-            })
+            }),
           ),
-        })
+        }),
       ).isRequired,
-    }).isRequired
+    }).isRequired,
   ).isRequired,
 };
-

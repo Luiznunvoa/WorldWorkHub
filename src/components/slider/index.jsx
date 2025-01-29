@@ -18,11 +18,11 @@ import { SVG } from "../svg";
  */
 export function Slider({ icon, title, slides }) {
   return (
-    <div className="flex w-full flex-col items-center justify-center gap-20">
-      <section className="flex flex-row items-center gap-5">
-        {icon && <SVG type={icon} className="h-10 w-10 fill-text" />}
+    <div className="flex flex-col gap-20 justify-center items-center w-full">
+      <section className="flex flex-row gap-5 items-center">
+        {icon && <SVG type={icon} className="w-10 h-10 fill-text" />}
         {title && (
-          <h2 className="text-center font-kanit-thin text-3xl font-bold">
+          <h2 className="text-3xl font-bold text-center font-kanit-thin">
             {title}
           </h2>
         )}
@@ -37,25 +37,25 @@ export function Slider({ icon, title, slides }) {
           600: { slidesPerView: 1 },
           800: { slidesPerView: 2 },
         }}
-        className="w-full max-w-[1120px] overflow-hidden rounded-lg"
+        className="block overflow-hidden relative mx-auto w-full rounded-lg max-w-[1120px]"
       >
         {slides.map((slide, index) => (
           <SwiperSlide
             key={index}
-            className="mb-10 rounded-lg border-4 border-solid border-text bg-white shadow-xl"
+            className="relative flex-shrink-0 mb-10 w-full bg-white rounded-lg border-4 border-solid shadow-xl border-text"
           >
             <div className="flex flex-col items-center p-5">
               {slide.image && (
                 <img
                   src={slide.image}
                   alt={slide.image}
-                  className="outline- h-48 w-full border-4 border-solid border-text bg-text object-cover shadow-lg outline outline-offset-0 outline-green"
+                  className="object-cover w-full h-48 border-4 border-solid shadow-lg outline- border-text bg-text outline outline-offset-0 outline-green"
                   loading="lazy"
                 />
               )}
 
               {slide.title && (
-                <h2 className="mt-4 font-kanit-thin text-2xl font-bold italic">
+                <h2 className="mt-4 text-2xl italic font-bold font-kanit-thin">
                   {slide.title}
                 </h2>
               )}
@@ -68,7 +68,7 @@ export function Slider({ icon, title, slides }) {
               {slide.button && (
                 <button
                   onClick={() => slide.button.func()}
-                  className="mt-4 rounded-lg bg-green px-4 py-2 font-Roboto text-white transition hover:bg-green"
+                  className="py-2 px-4 mt-4 text-white rounded-lg transition bg-green font-Roboto hover:bg-green"
                 >
                   {slide.button.label}
                 </button>

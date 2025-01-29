@@ -14,11 +14,11 @@ export function Home() {
 
   if (!t) {
     return <Spinner />;
-  } 
+  }
 
+  // This is a samplle txt with spelling mistaks.
   return (
-    <main className="flex flex-col items-center gap-10">
-      
+    <main className="flex flex-col gap-10 items-center">
       {/* Main Banner */}
       <Hero
         title={t.hero.title}
@@ -27,21 +27,15 @@ export function Home() {
         divider={t.divider}
         button={{
           label: t.hero.buttonLabel,
-          func: () => (navigate('/register'))
+          func: () => navigate("/register"),
         }}
-      /> 
+      />
 
       {/* Array of animated SVGs with text labels*/}
-      <Highlight
-        highlights={t.highlights}
-      />
- 
+      <Highlight highlights={t.highlights} />
+
       {/* Array of image Panels with text labels */}
-      <Panels
-        icon={t.panels.icon}
-        title={t.panels.title}
-        places={t.panels.places}
-      />
+      <Panels panels={t.panels} />
 
       {/* Slider with slides containing a image, a title and a description */}
       <Slider
@@ -53,17 +47,13 @@ export function Home() {
           description: slide.description,
           button: {
             label: slide.button_label,
-            func: () => navigate("/Register"), // TODO: Make the json decide the navegation path for each slide
+            func: () => navigate("/Register"),
           },
         }))}
       />
 
       {/* A grid of text cards with icons */}
-      <TextGrid
-        icon={t.textGrid.icon}
-        title={t.textGrid.title}
-        elements={t.textGrid.elements}
-      />
+      <TextGrid textGrid={t.textGrid} />
 
       {/* A grid of images and text labels */}
       <VisualGrid

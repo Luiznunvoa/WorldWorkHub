@@ -17,47 +17,45 @@ import { SVG } from "../svg";
  */
 export function VisualGrid({ icon, title, elements }) {
   return (
-    <div className="flex w-full flex-col items-center justify-center">
-      <section className="flex flex-row items-center gap-5">
-        {icon && 
-          <SVG type={icon} className="h-10 w-10 fill-text" />
-        }
+    <div className="flex flex-col justify-center items-center w-full">
+      <section className="flex flex-row gap-5 items-center">
+        {icon && <SVG type={icon} className="w-10 h-10 fill-text" />}
         {title && (
-          <h2 className="text-center font-kanit-thin text-3xl font-bold">
+          <h2 className="text-3xl font-bold text-center font-kanit-thin">
             {title}
           </h2>
         )}
       </section>
 
-      <section className="grid w-9/12 max-w-[1427px] grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] justify-items-center gap-6 p-4 sm:grid-cols-2 xl:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))]">
+      <section className="grid gap-6 justify-items-center p-4 w-9/12 sm:grid-cols-2 max-w-[1427px] grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] xl:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))]">
         {elements.map((element, index) => (
           <div
             key={index}
-            className="m-10 flex w-60 flex-col items-center gap-3"
+            className="flex flex-col gap-3 items-center m-10 w-60"
           >
             {element.image && (
               <img
                 src={element.image}
                 alt={element.image}
-                className="h-60 w-full rounded-full border-4 border-solid border-white object-cover shadow-xl outline outline-offset-0 outline-text"
+                className="object-cover w-full h-60 rounded-full border-4 border-white border-solid shadow-xl outline outline-offset-0 outline-text"
                 loading="lazy"
               />
             )}
 
             {element.title && (
-              <h3 className="w-9/12 text-center font-kanit-thin text-2xl font-bold italic">
+              <h3 className="w-9/12 text-2xl italic font-bold text-center font-kanit-thin">
                 {element.title}
               </h3>
             )}
 
             {element.subtitle && (
-              <p className="w-9/12 text-center font-Roboto italic">
+              <p className="w-9/12 italic text-center font-Roboto">
                 {element.subtitle}
               </p>
             )}
 
             {element.description && (
-              <p className="w-9/12 text-center font-Roboto italic text-outline">
+              <p className="w-9/12 italic text-center font-Roboto text-outline">
                 {element.description}
               </p>
             )}

@@ -3,8 +3,8 @@ import { useState, useEffect, createContext, useContext } from "react";
 export const AppContext = createContext();
 
 /**
-* Custom hook to access the AppContext
-*/
+ * Custom hook to access the AppContext
+ */
 export const useAppContext = () => {
   const context = useContext(AppContext);
 
@@ -16,8 +16,8 @@ export const useAppContext = () => {
 };
 
 /**
-* Custom hook to manage the app's language logic
-*/
+ * Custom hook to manage the app's language logic
+ */
 export const useAppLogic = () => {
   const [language, setLanguage] = useState(() => {
     return localStorage.getItem("language") || "en";
@@ -28,8 +28,8 @@ export const useAppLogic = () => {
   }, [language]);
 
   /**
-  * Function to toggle between "en" and "pt"
-  */
+   * Function to toggle between "en" and "pt"
+   */
   const toggleLanguage = () => {
     setLanguage((prevLang) => (prevLang === "en" ? "pt" : "en"));
   };

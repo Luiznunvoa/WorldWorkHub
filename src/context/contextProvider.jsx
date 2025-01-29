@@ -4,7 +4,9 @@ import { AppContext, useAppLogic } from "./context";
 export const AppProvider = ({ children }) => {
   const contextValue = useAppLogic();
 
-  return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;
+  return (
+    <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
+  );
 };
 
 AppProvider.propTypes = {

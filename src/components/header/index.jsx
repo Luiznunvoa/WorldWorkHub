@@ -6,18 +6,19 @@ export function Header() {
   const { language, toggleLanguage } = useAppContext();
 
   return (
-    <header className="flex w-full items-center justify-between border-b-[0.1rem] border-solid border-gray-500 bg-white p-4">
+    <header className="flex justify-between items-center p-4 w-full bg-white border-gray-500 border-solid border-b-[0.1rem]">
       <span onClick={() => navigate("/")} className="cursor-pointer">
-        <h1 className="font-kanit-thin text-3xl font-bold italic">
+        <h1 className="text-3xl italic font-bold font-kanit-thin">
           WorldWorkHub.
         </h1>
       </span>
       <img
         onClick={toggleLanguage}
-        className="absolute right-4 top-4 h-10 w-10 cursor-pointer rounded-full object-cover"
-        src={language == "en" ? 
-          "https://i.postimg.cc/HxwyxK5L/usa.jpg" : 
-          "https://i.postimg.cc/3N3DDBCF/brazil.jpg"
+        className="object-cover absolute top-4 right-4 w-10 h-10 rounded-full cursor-pointer"
+        src={
+          language == "en"
+            ? "https://i.postimg.cc/HxwyxK5L/usa.jpg"
+            : "https://i.postimg.cc/3N3DDBCF/brazil.jpg"
         }
       />
     </header>
