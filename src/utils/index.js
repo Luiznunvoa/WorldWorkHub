@@ -1,4 +1,5 @@
-import { useEffect, useState, useContext, createContext } from "react";
+import { useEffect, useState } from "react";
+import { useAppContext } from "../context/context";
 
 /*
 export function useScrollTrigger(
@@ -31,19 +32,9 @@ export function useScrollTrigger(
 }
 */
 
-export const AppContext = createContext();
-
-export const useAppContext = () => {
-  const context = useContext(AppContext);
-
-  if (!context) {
-    throw new Error("useAppContext must be used within a AppProvider");
-  }
-
-  return context;
-};
-
-// Fetches page contents with the specific language of the context
+/**
+ * Fetches page contents with the specific language of the context
+*/
 export function useFetchLocale(page) {
   const { language } = useAppContext(); // Retrieve the current language from the app context.
   const [translations, setTranslations] = useState(null); // State to store the fetched translations.
@@ -66,13 +57,15 @@ export function useFetchLocale(page) {
   return translations; 
 }
 
-// Converts a string in the format "/pattern/flags" into a regular expression.
+/**
+ * Converts a string in the format "/pattern/flags" into a regular regex expression.
+*/
 export function stringToRegex(patternString) {
   const match = patternString.match(/^\/(.+)\/([a-z]*)$/); // Match the string against the regex format.
 
   if (!match) {
     console.error(`Warning: Invalid regex format: ${patternString}`);
-    return null; // Return null if the format is invalid.
+    return null;
   }
 
   const [, pattern, flags] = match; // Destructure the matched groups: pattern and flags.

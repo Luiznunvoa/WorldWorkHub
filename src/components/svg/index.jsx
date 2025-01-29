@@ -10,7 +10,7 @@ import svg_data  from "../../assets/svg_data.json";
  * - className (string, optional): Custom class to style the SVG (default is "fill-text").
  * - type (string, required): The type of the SVG icon to render, which corresponds to a key in the svg_data JSON.
  *
- *   INFO: Avalible icons: "usa", "tap", "bar", "man", "suitcase", "graph", "smile", "heart", "bow", "target", "bolt", "signs", "paperpeople", "cursor", "calendar", "info", "support", "instagram", "github", 
+ *   INFO: Available icons: "usa", "tap", "bar", "man", "suitcase", "graph", "smile", "heart", "bow", "target", "bolt", "signs", "paperpeople", "cursor", "calendar", "info", "support", "instagram", "github", 
  */
 export function SVG({ className = "fill-text", type }) {
   const svgData = svg_data[type];

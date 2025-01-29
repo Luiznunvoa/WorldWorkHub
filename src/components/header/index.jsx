@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { useAppContext } from "../../utils";
+import { useAppContext } from "../../context/context";
 
 export function Header() {
   let navigate = useNavigate();

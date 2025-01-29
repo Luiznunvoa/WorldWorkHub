@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { AppProvider } from "./context";
+import { AppProvider } from "./context/contextProvider";
 import { Footer } from "./components/footer";
 import { Header } from "./components/header";
 import { Home } from "./pages/home";
