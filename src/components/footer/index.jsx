@@ -1,19 +1,26 @@
 import { SVG } from "../svg";
+import { useFetchLocale } from "../../utils";
 
 export function Footer() {
+  const t = useFetchLocale("footer");
+
+  if (!t) {
+    return null;
+  }
+
   return (
     <footer className="flex flex-col justify-center w-full border-t-2 border-outline">
-      <div className="flex flex-row items-center">
+      <div className="flex flex-row gap-40 items-center max-w-[1920px]">
         <div className="flex flex-col gap-2 m-10">
           <h2 className="text-2xl font-bold font-kanit-thin text-outline">
             WorldWorkHub.
           </h2>
 
-          <p className="text-sm text-outline font-Roboto">
+          <p className="text-sm italic text-outline font-Roboto">
             {`Copyright © ${new Date().getFullYear()} WorldWorkHub`}
           </p>
 
-          <p className="text-sm text-outline font-Roboto">
+          <p className="text-sm italic text-outline font-Roboto">
             all rights reserved
           </p>
 
@@ -38,6 +45,27 @@ export function Footer() {
             </div>
           </nav>
         </div>
+
+        {t.links.map((links) => (
+          <div
+            key={links.title}
+            className="flex flex-col justify-center items-center"
+          >
+            <p className="text-lg font-bold text-outline font-Roboto">
+              {links.title}
+            </p>
+            <ul className="flex flex-col gap-2 mt-3">
+              {links.links.map((link) => (
+                <li
+                  key={link.label}
+                  className="text-sm italic text-center text-outline font-Roboto"
+                >
+                  {link.label}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </footer>
   );

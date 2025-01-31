@@ -1,0 +1,73 @@
+{
+  "links": [
+    {
+      "title": "Services",
+      "links": [
+        {
+          "label": "Job Prospects",
+          "path": "#"
+        },
+        {
+          "label": "Time Organization",
+          "path": "#"
+        },
+        {
+          "label": "Account Support",
+          "path": "#"
+        }
+      ]
+    },
+    {
+      "title": "Company",
+      "links": [
+        {
+          "label": "About Us",
+          "path": "#"
+        },
+        {
+          "label": "Careers",
+          "path": "#"
+        },
+        {
+          "label": "Blog",
+          "path": "#"
+        }
+      ]
+    },
+    {
+      "title": "Support",
+      "links": [
+        {
+          "label": "FAQ",
+          "path": "#"
+        },
+        {
+          "label": "Contact",
+          "path": "#"
+        },
+        {
+          "label": "Help Center",
+          "path": "#"
+        }
+      ]
+    },
+    {
+      "title": "Legal",
+      "links": [
+        {
+          "label": "Privacy Policy",
+          "path": "#"
+        },
+        {
+          "label": "Terms of Service",
+          "path": "#"
+        },
+        {
+          "label": "License",
+          "path": "#"
+        }
+      ]
+    }
+  ]
+}
+
