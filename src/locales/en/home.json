@@ -3,10 +3,12 @@
     "title": "Make your way to your dream job!",
     "subtitle": "WWH. can help you get there...",
     "image": "https://i.postimg.cc/wBQbnHRp/person.png",
-    "buttonLabel": "Start Now!"
+    "divider": "Look the Opportunities, Explore our solutions!",
+    "button": {
+      "label": "Start Now!",
+      "path": "/register"
+    }
   },
-
-  "divider": "Look the Opportunities, Explore our solutions!",
 
   "highlights": [
     {
@@ -52,63 +54,63 @@
     "slides": [
       {
         "title": "Construction Work",
-        "images": "https://i.postimg.cc/j2qjbsjY/construction-guy.jpg",
+        "image": "https://i.postimg.cc/j2qjbsjY/construction-guy.jpg",
         "description": "The high demand for skilled labor in the construction industry values workers for their expertise and dedication.",
-        "button_label": "View More"
+        "button": { "label": "View More!", "path": "" }
       },
       {
         "title": "Cleaning Services",
-        "images": "https://i.postimg.cc/50ysXzyP/cleaning-girl.jpg",
+        "image": "https://i.postimg.cc/50ysXzyP/cleaning-girl.jpg",
         "description": "The growing demand for reliable cleaning services in the U.S. looks for workers with endurance and strong work ethic.",
-        "button_label": "View More"
+        "button": { "label": "View More!", "path": "" }
       },
       {
         "title": "Landscaping and Gardening",
-        "images": "https://i.postimg.cc/sg1P9zsX/gardeneer.jpg",
+        "image": "https://i.postimg.cc/sg1P9zsX/gardeneer.jpg",
         "description": "The landscaping industry appreciates workers for their creativity and ability to handle physical tasks outdoors.",
-        "button_label": "View More"
+        "button": { "label": "View More!", "path": "" }
       },
       {
         "title": "Food Service and Hospitality",
-        "images": "https://i.postimg.cc/h4p7CYC7/foodservice-girl.jpg",
+        "image": "https://i.postimg.cc/h4p7CYC7/foodservice-girl.jpg",
         "description": "Restaurants and hotels value workers for their adaptability, customer service skills, and teamwork.",
-        "button_label": "View More"
+        "button": { "label": "View More!", "path": "" }
       },
       {
         "title": "Warehouse and Logistics",
-        "images": "https://i.postimg.cc/PrJv0McV/warehouse-guy.jpg",
+        "image": "https://i.postimg.cc/PrJv0McV/warehouse-guy.jpg",
         "description": "The logistics sector seeks workers who are efficient, organized, and comfortable in fast-paced environments.",
-        "button_label": "View More"
+        "button": { "label": "View More!", "path": "" }
       },
       {
         "title": "Retail and Customer Service",
-        "images": "https://i.postimg.cc/WzWFhDD7/costumer-service-girl.jpg",
+        "image": "https://i.postimg.cc/WzWFhDD7/costumer-service-girl.jpg",
         "description": "Retail businesses value employees for their communication skills and ability to connect with customers.",
-        "button_label": "View More"
+        "button": { "label": "View More!", "path": "" }
       },
       {
         "title": "Home Health Care",
-        "images": "https://i.postimg.cc/9McrbPZp/healtcare-girl.jpg",
+        "image": "https://i.postimg.cc/9McrbPZp/healtcare-girl.jpg",
         "description": "The growing need for home health aides emphasizes compassion, reliability, and attention to detail.",
-        "button_label": "View More"
+        "button": { "label": "View More!", "path": "" }
       },
       {
         "title": "Childcare Services",
-        "images": "https://i.postimg.cc/QxzKDTZ8/childcare-girl.jpg",
+        "image": "https://i.postimg.cc/QxzKDTZ8/childcare-girl.jpg",
         "description": "Parents value caregivers who are patient, responsible, and great with children.",
-        "button_label": "View More"
+        "button": { "label": "View More!", "path": "" }
       },
       {
         "title": "Transportation and Delivery",
-        "images": "https://i.postimg.cc/52FY22fw/delivery-guy.jpg",
+        "image": "https://i.postimg.cc/52FY22fw/delivery-guy.jpg",
         "description": "Delivery services appreciate workers for their punctuality and ability to navigate efficiently.",
-        "button_label": "View More"
+        "button": { "label": "View More!", "path": "" }
       },
       {
         "title": "Agricultural Work",
-        "images": "https://i.postimg.cc/7L8CGrLj/agriculture-guy.jpg",
+        "image": "https://i.postimg.cc/7L8CGrLj/agriculture-guy.jpg",
         "description": "Farms seek workers who are hardworking, consistent, and capable of handling seasonal demands.",
-        "button_label": "View More"
+        "button": { "label": "View More!", "path": "" }
       }
     ]
   },

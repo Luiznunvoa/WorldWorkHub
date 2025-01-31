@@ -19,16 +19,7 @@ export function Home() {
   return (
     <main className="flex flex-col gap-10 items-center">
       {/* Main Banner */}
-      <Hero
-        title={t.hero.title}
-        subtitle={t.hero.subtitle}
-        image={t.hero.image}
-        divider={t.divider}
-        button={{
-          label: t.hero.buttonLabel,
-          func: () => navigate("/register"),
-        }}
-      />
+      <Hero hero={t.hero} />
 
       {/* Array of animated SVGs with text labels*/}
       <Highlight highlights={t.highlights} />
@@ -37,19 +28,7 @@ export function Home() {
       <Panels panels={t.panels} />
 
       {/* Slider with slides containing a image, a title and a description */}
-      <Slider
-        icon={t.slider.icon}
-        title={t.slider.title}
-        slides={t.slider.slides.map((slide) => ({
-          image: slide.images,
-          title: slide.title,
-          description: slide.description,
-          button: {
-            label: slide.button_label,
-            func: () => navigate("/Register"),
-          },
-        }))}
-      />
+      <Slider slider={t.slider} />
 
       {/* A grid of text cards with icons */}
       <TextGrid textGrid={t.textGrid} />

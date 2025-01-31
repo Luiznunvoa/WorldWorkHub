@@ -3,10 +3,12 @@
     "title": "Busque o emprego dos seus sonhos!",
     "subtitle": "A WWH pode te ajudar a chegar lá...",
     "image": "https://i.postimg.cc/wBQbnHRp/person.png",
-    "buttonLabel": "Comece agora!"
+    "divider": "Confira as oportunidades, explore nossas soluções!",
+    "button": {
+      "label": "Começe Agora!",
+      "path": "/register"
+    }
   },
-
-  "divider": "Confira as oportunidades, explore nossas soluções!",
 
   "highlights": [
     {
@@ -54,63 +56,63 @@
     "slides": [
       {
         "title": "Trabalho de Construção",
-        "images": "https://i.postimg.cc/j2qjbsjY/construction-guy.jpg",
+        "image": "https://i.postimg.cc/j2qjbsjY/construction-guy.jpg",
         "description": "A alta demanda por mão de obra qualificada na construção civil valoriza trabalhadores pela sua expertise e dedicação.",
-        "button_label": "Ver mais"
+        "button": { "label": "Saiba Mais!", "path": "" }  
       },
       {
         "title": "Serviços de Limpeza",
-        "images": "https://i.postimg.cc/50ysXzyP/cleaning-girl.jpg",
+        "image": "https://i.postimg.cc/50ysXzyP/cleaning-girl.jpg",
         "description": "A crescente demanda por serviços de limpeza nos EUA busca profissionais com resistência e forte ética de trabalho.",
-        "button_label": "Ver mais"
+        "button": { "label": "Saiba Mais!", "path": "" }  
       },
       {
         "title": "Paisagismo e Jardinagem",
-        "images": "https://i.postimg.cc/sg1P9zsX/gardeneer.jpg",
+        "image": "https://i.postimg.cc/sg1P9zsX/gardeneer.jpg",
         "description": "O setor de paisagismo valoriza profissionais pela criatividade e habilidade em tarefas ao ar livre.",
-        "button_label": "Ver mais"
+        "button": { "label": "Saiba Mais!", "path": "" }  
       },
       {
         "title": "Serviços de Alimentação e Hospitalidade",
-        "images": "https://i.postimg.cc/h4p7CYC7/foodservice-girl.jpg",
+        "image": "https://i.postimg.cc/h4p7CYC7/foodservice-girl.jpg",
         "description": "Restaurantes e hotéis valorizam trabalhadores pela adaptabilidade, atendimento ao cliente e trabalho em equipe.",
-        "button_label": "Ver mais"
+        "button": { "label": "Saiba Mais!", "path": "" }  
       },
       {
         "title": "Armazém e Logística",
-        "images": "https://i.postimg.cc/PrJv0McV/warehouse-guy.jpg",
+        "image": "https://i.postimg.cc/PrJv0McV/warehouse-guy.jpg",
         "description": "O setor de logística busca profissionais organizados e eficientes em ambientes dinâmicos.",
-        "button_label": "Ver mais"
+        "button": { "label": "Saiba Mais!", "path": "" }  
       },
       {
         "title": "Varejo e Atendimento ao Cliente",
-        "images": "https://i.postimg.cc/WzWFhDD7/costumer-service-girl.jpg",
+        "image": "https://i.postimg.cc/WzWFhDD7/costumer-service-girl.jpg",
         "description": "Empresas de varejo valorizam funcionários pela comunicação e conexão com os clientes.",
-        "button_label": "Ver mais"
+        "button": { "label": "Saiba Mais!", "path": "" }  
       },
       {
         "title": "Cuidados Domiciliares de Saúde",
-        "images": "https://i.postimg.cc/9McrbPZp/healtcare-girl.jpg",
+        "image": "https://i.postimg.cc/9McrbPZp/healtcare-girl.jpg",
         "description": "A crescente necessidade de cuidadores domiciliares destaca compaixão, confiabilidade e atenção aos detalhes.",
-        "button_label": "Ver mais"
+        "button": { "label": "Saiba Mais!", "path": "" }  
       },
       {
         "title": "Serviços de Cuidado Infantil",
-        "images": "https://i.postimg.cc/QxzKDTZ8/childcare-girl.jpg",
+        "image": "https://i.postimg.cc/QxzKDTZ8/childcare-girl.jpg",
         "description": "Os pais valorizam cuidadores pacientes, responsáveis e excelentes com crianças.",
-        "button_label": "Ver mais"
+        "button": { "label": "Saiba Mais!", "path": "" }  
       },
       {
         "title": "Transporte e Entrega",
-        "images": "https://i.postimg.cc/52FY22fw/delivery-guy.jpg",
+        "image": "https://i.postimg.cc/52FY22fw/delivery-guy.jpg",
         "description": "Serviços de entrega valorizam profissionais pontuais e eficientes na navegação.",
-        "button_label": "Ver mais"
+        "button": { "label": "Saiba Mais!", "path": "" }  
       },
       {
         "title": "Trabalho Agrícola",
-        "images": "https://i.postimg.cc/7L8CGrLj/agriculture-guy.jpg",
+        "image": "https://i.postimg.cc/7L8CGrLj/agriculture-guy.jpg",
         "description": "Fazendas buscam profissionais dedicados, consistentes e capazes de lidar com demandas sazonais.",
-        "button_label": "Ver mais"
+        "button": { "label": "Saiba Mais!", "path": "" }  
       }
     ]
   },
