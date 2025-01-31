@@ -16,7 +16,6 @@ export function Home() {
     return <Spinner />;
   }
 
-  // This is a samplle txt with spelling mistaks.
   return (
     <main className="flex flex-col gap-10 items-center">
       {/* Main Banner */}
@@ -56,16 +55,7 @@ export function Home() {
       <TextGrid textGrid={t.textGrid} />
 
       {/* A grid of images and text labels */}
-      <VisualGrid
-        icon="paperpeople"
-        title={t.visualGrid.title}
-        elements={t.visualGrid.elements.map((element) => ({
-          image: element.image,
-          title: element.title,
-          subtitle: element.subtitle,
-          description: element.description,
-        }))}
-      />
+      <VisualGrid visualGrid={t.visualGrid} />
     </main>
   );
 }

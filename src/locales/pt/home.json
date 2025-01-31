@@ -141,6 +141,7 @@
   },
 
   "visualGrid": {
+    "icon": "paperpeople",
     "title": "Vidas Transformadas",
     "elements": [
       {

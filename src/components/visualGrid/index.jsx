@@ -15,20 +15,22 @@ import { SVG } from "../svg";
  *   - subtitle (string, optional): Subtitle of the element.
  *   - description (string, optional): Description of the element.
  */
-export function VisualGrid({ icon, title, elements }) {
+export function VisualGrid({ visualGrid }) {
   return (
     <div className="flex flex-col justify-center items-center w-full">
       <section className="flex flex-row gap-5 items-center">
-        {icon && <SVG type={icon} className="w-10 h-10 fill-text" />}
-        {title && (
+        {visualGrid.icon && (
+          <SVG type={visualGrid.icon} className="w-10 h-10 fill-text" />
+        )}
+        {visualGrid.title && (
           <h2 className="text-3xl font-bold text-center font-kanit-thin">
-            {title}
+            {visualGrid.title}
           </h2>
         )}
       </section>
 
       <section className="grid gap-6 justify-items-center p-4 w-9/12 sm:grid-cols-2 max-w-[1427px] grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] xl:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))]">
-        {elements.map((element, index) => (
+        {visualGrid.elements.map((element, index) => (
           <div
             key={index}
             className="flex flex-col gap-3 items-center m-10 w-60"
@@ -67,15 +69,17 @@ export function VisualGrid({ icon, title, elements }) {
 }
 
 VisualGrid.propTypes = {
-  icon: PropTypes.string,
-  title: PropTypes.string,
+  visualGrid: PropTypes.shape({
+    icon: PropTypes.string,
+    title: PropTypes.string,
 
-  elements: PropTypes.arrayOf(
-    PropTypes.shape({
-      image: PropTypes.string,
-      title: PropTypes.string,
-      subtitle: PropTypes.string,
-      description: PropTypes.string,
-    }).isRequired,
-  ).isRequired,
+    elements: PropTypes.arrayOf(
+      PropTypes.shape({
+        image: PropTypes.string,
+        title: PropTypes.string,
+        subtitle: PropTypes.string,
+        description: PropTypes.string,
+      }).isRequired,
+    ).isRequired,
+  }),
 };
