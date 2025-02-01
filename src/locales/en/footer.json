@@ -1,22 +1,5 @@
 {
-  "links": [
-    {
-      "title": "Services",
-      "links": [
-        {
-          "label": "Job Prospects",
-          "path": "#"
-        },
-        {
-          "label": "Time Organization",
-          "path": "#"
-        },
-        {
-          "label": "Account Support",
-          "path": "#"
-        }
-      ]
-    },
+  "links": [ 
     {
       "title": "Company",
       "links": [

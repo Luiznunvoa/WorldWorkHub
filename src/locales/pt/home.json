@@ -1,6 +1,6 @@
 {
   "hero": {
-    "title": "Busque o emprego dos seus sonhos!",
+    "title": "O emprego dos seus sonhos!",
     "subtitle": "A WWH pode te ajudar a chegar lá...",
     "image": "https://i.postimg.cc/wBQbnHRp/person.png",
     "divider": "Confira as oportunidades, explore nossas soluções!",
@@ -51,8 +51,6 @@
   },
 
   "slider": {
-    "icon": "bolt",
-    "title": "Explore nossas oportunidades",
     "slides": [
       {
         "title": "Trabalho de Construção",

@@ -18,7 +18,7 @@ export function Hero({ hero }) {
   return (
     <div className="flex flex-col justify-center items-center w-full">
       <div className="flex flex-col-reverse justify-center items-center pt-10 w-full align-middle lg:flex-row lg:pt-0 h-[46rem] bg-custom_gradient">
-        <div className="flex flex-col justify-center items-center w-full h-1/2 lg:h-full lg:w-[52rem]">
+        <div className="flex flex-col justify-center items-center w-full h-1/2 lg:h-full lg:w-[56rem]">
           <h1 className="text-5xl italic text-center sm:text-6xl lg:mt-40 xl:text-8xl font-archivo-black-regular">
             {hero.title}
           </h1>

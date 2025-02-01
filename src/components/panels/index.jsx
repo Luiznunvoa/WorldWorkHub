@@ -14,7 +14,7 @@ import { SVG } from "../svg";
  */
 export function Panels({ panels }) {
   return (
-    <div className="flex flex-col gap-10 items-center mb-20">
+    <div className="flex flex-col gap-10 items-center mb-16">
       <section className="flex flex-row gap-5 items-center">
         {panels.icon && (
           <SVG type={panels.icon} className="w-10 h-10 fill-text" />
@@ -45,7 +45,7 @@ export function Panels({ panels }) {
 
             <SVG
               type="cursor"
-              className={`absolute -mt-12 h-20 w-20 animate-jump fill-text stroke-green stroke-1 ${index % 2 === 0 ? "ml-20 rotate-90" : "ml-64"}`}
+              className={`absolute -mt-12 h-20 w-20 fill-text stroke-green stroke-1 ${index % 2 === 0 ? "ml-20 rotate-90" : "ml-64"}`}
             />
           </div>
         </section>

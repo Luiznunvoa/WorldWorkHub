@@ -1,23 +1,6 @@
 
 {
-  "links": [
-    {
-      "title": "Serviços",
-      "links": [
-        {
-          "label": "Perspectivas de Emprego",
-          "path": "#"
-        },
-        {
-          "label": "Organização do Tempo",
-          "path": "#"
-        },
-        {
-          "label": "Suporte à Conta",
-          "path": "#"
-        }
-      ]
-    },
+  "links": [ 
     {
       "title": "Empresa",
       "links": [

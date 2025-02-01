@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useForm, FormProvider } from "react-hook-form";
+import { useAppContext } from "../../context/context";
 import PropTypes from "prop-types";
 
 /**
@@ -14,6 +15,8 @@ import PropTypes from "prop-types";
  */
 export function DynamicForm({ onSubmit, buttonLabels, option, steps }) {
   const [step, setStep] = useState(0); // Current step state
+  const { language } = useAppContext(); // Retrieve the current language from the app context.
+
   const methods = useForm(); // Form methods from react-hook-form
 
   // Proceed to the next step if current inputs are valid
@@ -33,6 +36,12 @@ export function DynamicForm({ onSubmit, buttonLabels, option, steps }) {
       methods.resetField(input.name);
     });
   }, [step, methods, steps]);
+
+  // UseEffect to reset the form if the language context changes
+  useEffect(() => {
+    setStep(0);
+    methods.reset();
+  }, [language, methods]);
 
   // Error message component for form validation errors
   function ErrorMessage({ error }) {
@@ -82,7 +91,8 @@ export function DynamicForm({ onSubmit, buttonLabels, option, steps }) {
           {/* Step inputs */}
           {steps[step].inputs.map((input, index) => (
             <div key={index} className="mb-4 w-full">
-              {input.type === "select" ? ( // In case the input is a dropdown type
+              {input.type === "select" ? (
+                // In case the input is a dropdown type
                 <select
                   {...methods.register(input.name, {
                     required: input.required,

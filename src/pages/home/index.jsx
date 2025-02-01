@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router";
 import { Panels } from "../../components/panels";
 import { Hero } from "../../components/hero";
 import { Highlight } from "../../components/highlight";
@@ -9,7 +8,6 @@ import { Spinner } from "../../components/spinner";
 import { useFetchLocale } from "../../utils";
 
 export function Home() {
-  const navigate = useNavigate();
   const t = useFetchLocale("home");
 
   if (!t) {

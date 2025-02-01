@@ -32,7 +32,7 @@ export function TextGrid({ textGrid }) {
         {textGrid.elements.map((element, index) => (
           <div
             key={index}
-            className="flex flex-row gap-5 py-8 px-2 bg-white rounded-2xl border-4 border-solid shadow-xl transition-all cursor-pointer hover:shadow-2xl hover:scale-110 border-text"
+            className="flex flex-row gap-5 p-10 bg-white rounded-2xl border-4 border-solid shadow-xl transition-all cursor-pointer hover:shadow-2xl hover:scale-110 border-text"
           >
             <div className="flex flex-col h-full">
               <SVG

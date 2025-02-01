@@ -18,7 +18,7 @@ import { SVG } from "../svg";
 export function VisualGrid({ visualGrid }) {
   return (
     <div className="flex flex-col justify-center items-center w-full">
-      <section className="flex flex-row gap-5 items-center">
+      <section className="flex flex-row gap-5 items-center m-5">
         {visualGrid.icon && (
           <SVG type={visualGrid.icon} className="w-10 h-10 fill-text" />
         )}

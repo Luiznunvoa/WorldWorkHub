@@ -10,7 +10,7 @@
   },
   "steps": [
     {
-      "title": "crie sua conta",
+      "title": "Crie sua conta",
       "inputs": [
         {
           "name": "firstname",
@@ -48,7 +48,7 @@
             "value": "/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/",
             "message": "insira um endereço de e-mail válido"
           },
-          "placeholder": "e-mail"
+          "placeholder": "email"
         },
         {
           "name": "password",
@@ -70,7 +70,7 @@
       ]
     },
     {
-      "title": "informações de endereço",
+      "title": "Informações de endereço",
       "inputs": [
         {
           "name": "region",
@@ -134,7 +134,7 @@
       ]
     },
     {
-      "title": "informações pessoais",
+      "title": "Informações pessoais",
       "inputs": [
         {
           "name": "education",
