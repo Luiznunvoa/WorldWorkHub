@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import { SVG } from "../svg";
+import { IconTitle } from "../iconTitle";
 
 /**
  * Slider Component
@@ -23,6 +24,8 @@ export function Slider({ slider }) {
 
   return (
     <div className="flex flex-col gap-20 justify-center items-center w-full">
+      <IconTitle icon={slider.icon} title={slider.title} />
+
       <section className="flex flex-row gap-5 items-center">
         {slider.icon && (
           <SVG type={slider.icon} className="w-10 h-10 fill-text" />

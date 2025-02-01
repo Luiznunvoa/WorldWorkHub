@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { IconTitle } from "../iconTitle";
 import { SVG } from "../svg";
 
 /**
@@ -17,16 +18,7 @@ import { SVG } from "../svg";
 export function TextGrid({ textGrid }) {
   return (
     <div className="flex flex-col gap-20 justify-center items-center">
-      <section className="flex flex-row gap-5 items-center">
-        {textGrid.icon && (
-          <SVG type={textGrid.icon} className="w-10 h-10 fill-text" />
-        )}
-        {textGrid.title && (
-          <h2 className="text-3xl font-bold text-center font-kanit-thin">
-            {textGrid.title}
-          </h2>
-        )}
-      </section>
+      <IconTitle icon={textGrid.icon} title={textGrid.title} />
 
       <section className="grid grid-cols-1 gap-10 justify-center items-center md:grid-cols-2">
         {textGrid.elements.map((element, index) => (

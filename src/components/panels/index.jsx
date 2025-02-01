@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { IconTitle } from "../iconTitle";
 import { SVG } from "../svg";
 
 /**
@@ -15,16 +16,7 @@ import { SVG } from "../svg";
 export function Panels({ panels }) {
   return (
     <div className="flex flex-col gap-10 items-center mb-16">
-      <section className="flex flex-row gap-5 items-center">
-        {panels.icon && (
-          <SVG type={panels.icon} className="w-10 h-10 fill-text" />
-        )}
-        {panels.title && (
-          <h2 className="text-3xl font-bold text-center font-kanit-thin">
-            {panels.title}
-          </h2>
-        )}
-      </section>
+      <IconTitle icon={panels.icon} title={panels.title} />
 
       {panels.places.map((place, index) => (
         <section

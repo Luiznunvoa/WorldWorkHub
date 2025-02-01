@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { IconTitle } from "../iconTitle";
 import { SVG } from "../svg";
 
 /**
@@ -18,16 +19,7 @@ import { SVG } from "../svg";
 export function VisualGrid({ visualGrid }) {
   return (
     <div className="flex flex-col justify-center items-center w-full">
-      <section className="flex flex-row gap-5 items-center m-5">
-        {visualGrid.icon && (
-          <SVG type={visualGrid.icon} className="w-10 h-10 fill-text" />
-        )}
-        {visualGrid.title && (
-          <h2 className="text-3xl font-bold text-center font-kanit-thin">
-            {visualGrid.title}
-          </h2>
-        )}
-      </section>
+      <IconTitle icon={visualGrid.icon} title={visualGrid.title} />
 
       <section className="grid gap-6 justify-items-center p-4 w-9/12 sm:grid-cols-2 max-w-[1427px] grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] xl:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))]">
         {visualGrid.elements.map((element, index) => (
