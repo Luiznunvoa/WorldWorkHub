@@ -1,13 +1,57 @@
+import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { DynamicForm } from "../../components/dynamicForm";
 import { Spinner } from "../../components/spinner";
 import { stringToRegex, useFetchLocale } from "../../utils";
+import { AxiosHttpAdapter } from "../../adapter/httpUser";
+import { UsersService } from "../../services/usersService";
 
 export function Register() {
   const navigate = useNavigate();
   const t = useFetchLocale("register");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [err, setErr] = useState(false);
 
-  if (!t) {
+  const usersService = useMemo(
+    () => new UsersService(new AxiosHttpAdapter()),
+    [],
+  );
+
+  const handleSubmit = async (data) => {
+    setIsSubmitting(true);
+
+    const newUser = {
+      firstname: data.firstname,
+      lastname: data.lastname,
+      email: data.email,
+      password: data.password,
+      occupation: "Cleaner",
+      role: "Admin",
+      region: data.region,
+      phone: data.phone,
+      zipcode: data.zipcode,
+      education: data.education,
+      city: "Niterói",
+    };
+
+    try {
+      await usersService.create(newUser);
+    } catch (error) {
+      console.error("Registration error:", error);
+      setErr(true);
+    } finally {
+      setIsSubmitting(false);
+      if (err) {
+        alert("Error creating user");
+        navigate("/");
+      } else {
+        alert("User created successfully");
+        navigate("/login");
+      }
+    }
+  };
+
+  if (!t || isSubmitting) {
     return <Spinner />;
   }
 
@@ -15,7 +59,7 @@ export function Register() {
     <main className="flex flex-col items-center p-6 w-full">
       {/* Form to create a new account */}
       <DynamicForm
-        onSubmit={(data) => console.log(data)} // TODO: Send data to the API
+        onSubmit={(data) => handleSubmit(data)}
         buttonLabels={{
           next: t.buttonlabels.next,
           previous: t.buttonlabels.previous,
