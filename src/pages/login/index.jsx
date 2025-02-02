@@ -13,23 +13,19 @@ export function Login() {
     <main className="flex flex-col items-center p-6 w-full">
       <DynamicForm
         onSubmit={(data) => console.log(data)} // TODO: Validate login
-        buttonLabels={{
-          next: t.buttonlabels.next,
-          previous: t.buttonlabels.previous,
-          submit: t.buttonlabels.submit,
-        }}
-        steps={t.steps.map((step) => ({
-          title: step.title,
-          inputs: step.inputs.map((input) => ({
-            name: input.name,
-            type: input.type,
-            required: input.required,
-            placeHolder: input.placeholder,
+        buttonlabels={t.buttonlabels}
+        steps={t.steps.map(({title, inputs}) => ({
+          title,
+          inputs: inputs.map(({name, type, required, placeholder, pattern}) => ({
+            name,
+            type,
+            required,
+            placeholder,
 
-            ...(input.pattern && {
+            ...(pattern && {
               pattern: {
-                value: stringToRegex(input.pattern.value),
-                message: input.pattern.message,
+                value: stringToRegex(pattern.value), // Convert string pattern to RegExp
+                message: pattern.message, 
               },
             }),
           })),

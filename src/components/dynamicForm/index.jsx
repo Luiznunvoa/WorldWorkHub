@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm, FormProvider } from "react-hook-form";
 import { useAppContext } from "../../context/context";
 import PropTypes from "prop-types";
@@ -9,11 +10,12 @@ import PropTypes from "prop-types";
  *
  * Props:
  * - onSubmit (function): Handles form submission.
- * - buttonLabels (object): Labels for navigation buttons (previous, next, submit).
+ * - buttonlabels (object): Labels for navigation buttons (previous, next, submit).
  * - option (object): Additional option to render a login prompt.
  * - steps (array of objects): Array of step configurations containing title and inputs.
  */
-export function DynamicForm({ onSubmit, buttonLabels, option, steps }) {
+export function DynamicForm({ onSubmit, buttonlabels, option, steps }) {
+  const navigate = useNavigate();
   const [step, setStep] = useState(0); // Current step state
   const { language } = useAppContext(); // Retrieve the current language from the app context.
 
@@ -101,7 +103,7 @@ export function DynamicForm({ onSubmit, buttonLabels, option, steps }) {
                   defaultValue=""
                 >
                   <option value="" disabled>
-                    {input.placeHolder}
+                    {input.placeholder}
                   </option>
                   {input.options.map((select, optIndex) => (
                     <option key={optIndex} value={select.value}>
@@ -114,14 +116,14 @@ export function DynamicForm({ onSubmit, buttonLabels, option, steps }) {
                 <input
                   {...methods.register(input.name, {
                     required: input.required,
-                    minLength: input.minLength,
+                    minlength: input.minLength,
                     pattern: input.pattern,
                     validate:
                       input.validate &&
                       ((value) => input.validate(value, methods)),
                   })}
                   type={input.type}
-                  placeholder={input.placeHolder}
+                  placeholder={input.placeholder}
                   className="p-2 w-full rounded border border-gray-300 placeholder:font-Roboto"
                 />
               )}
@@ -139,7 +141,7 @@ export function DynamicForm({ onSubmit, buttonLabels, option, steps }) {
                 onClick={previousStep}
                 className="py-2 px-4 text-white rounded hover:bg-gray-500 bg-green"
               >
-                {buttonLabels.previous}
+                {buttonlabels.previous}
               </button>
             )}
             {step < steps.length - 1 && (
@@ -148,7 +150,7 @@ export function DynamicForm({ onSubmit, buttonLabels, option, steps }) {
                 onClick={nextStep}
                 className="py-2 px-4 text-white rounded hover:bg-gray-500 bg-green"
               >
-                {buttonLabels.next}
+                {buttonlabels.next}
               </button>
             )}
             {step === steps.length - 1 && (
@@ -156,7 +158,7 @@ export function DynamicForm({ onSubmit, buttonLabels, option, steps }) {
                 type="submit"
                 className="py-2 px-4 text-white rounded hover:bg-gray-500 bg-green"
               >
-                {buttonLabels.submit}
+                {buttonlabels.submit}
               </button>
             )}
           </div>
@@ -166,7 +168,7 @@ export function DynamicForm({ onSubmit, buttonLabels, option, steps }) {
             <p className="flex gap-1 text-outline">
               {option.text}
               <a
-                onClick={option.func}
+                onClick={() => navigate(option.path)}
                 className="text-blue-600 underline cursor-pointer"
               >
                 {option.label}
@@ -184,7 +186,7 @@ DynamicForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 
   // Labels for the form buttons (next, previous, submit)
-  buttonLabels: PropTypes.shape({
+  buttonlabels: PropTypes.shape({
     next: PropTypes.string.isRequired,
     previous: PropTypes.string.isRequired,
     submit: PropTypes.string.isRequired,
@@ -194,7 +196,7 @@ DynamicForm.propTypes = {
   option: PropTypes.shape({
     text: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
-    func: PropTypes.func.isRequired,
+    path: PropTypes.string.isRequired,
   }),
 
   // Configuration for each step of the form
@@ -219,10 +221,10 @@ DynamicForm.propTypes = {
           validate: PropTypes.func,
 
           // Placeholder text for the input
-          placeHolder: PropTypes.string,
+          placeholder: PropTypes.string,
 
           // Minimum length validation and its error message
-          minLength: PropTypes.shape({
+          minlength: PropTypes.shape({
             value: PropTypes.number.isRequired,
             message: PropTypes.string.isRequired,
           }),
