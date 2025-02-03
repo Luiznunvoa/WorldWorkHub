@@ -18,15 +18,15 @@ export function Register() {
         onSubmit={(data) => handleSubmit(mapData(data))}
         buttonlabels={t.buttonlabels}
         option={t.option}
-
         // Process each step in the form
         steps={t.steps.map(({ title, inputs }) => ({
           title,
-          inputs: inputs.map( // Process each input field in the step 
-            ({ 
+          inputs: inputs.map(
+            // Process each input field in the step
+            ({
               // input properties
               name, type, required, placeholder, minlength, options, pattern, validate,
-            }) => ({ 
+            }) => ({
               // Preserve basic input properties
               name, type, required, placeholder, minlength, options,
 
@@ -34,7 +34,7 @@ export function Register() {
               ...(pattern && {
                 pattern: {
                   value: stringToRegex(pattern.value), // Convert string pattern to RegExp
-                  message: pattern.message, 
+                  message: pattern.message,
                 },
               }),
 

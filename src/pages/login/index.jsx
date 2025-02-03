@@ -11,24 +11,30 @@ export function Login() {
 
   return (
     <main className="flex flex-col items-center p-6 w-full">
+      {/* Form to validate user login */}
       <DynamicForm
         onSubmit={(data) => console.log(data)} // TODO: Validate login
         buttonlabels={t.buttonlabels}
-        steps={t.steps.map(({title, inputs}) => ({
+        // Process each step in the form
+        steps={t.steps.map(({ title, inputs }) => ({
           title,
-          inputs: inputs.map(({name, type, required, placeholder, pattern}) => ({
-            name,
-            type,
-            required,
-            placeholder,
+          inputs: inputs.map(
+            // input properties
+            ({ name, type, required, placeholder, pattern }) => ({
+              name,
+              type,
+              required,
+              placeholder,
 
-            ...(pattern && {
-              pattern: {
-                value: stringToRegex(pattern.value), // Convert string pattern to RegExp
-                message: pattern.message, 
-              },
+              // Conditionally add regex pattern validation if defined in locales
+              ...(pattern && {
+                pattern: {
+                  value: stringToRegex(pattern.value), // Convert string pattern to RegExp
+                  message: pattern.message,
+                },
+              }),
             }),
-          })),
+          ),
         }))}
       />
     </main>
