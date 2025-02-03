@@ -1,42 +1,12 @@
 import { useEffect, useState } from "react";
 import { useAppContext } from "../context/context";
 
-/*
-export function useScrollTrigger(
-  ref,
-  onEnterView,
-  onExitView,
-  options = { threshold: 0.5 },
-) {
-  useEffect(() => {
-    const target = ref.current; // Capture the current value of ref.current at the start of the effect
-
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        onEnterView?.(); // Call the function when the element enters the view
-      } else {
-        onExitView?.(); // Call the function when the element exits the view
-      }
-    }, options);
-
-    if (target) {
-      observer.observe(target); // Start observing the element
-    }
-
-    return () => {
-      if (target) {
-        observer.unobserve(target); // Use the captured reference to clean up the observation
-      }
-    };
-  }, [ref, onEnterView, onExitView, options]);
-}
-*/
-
 const localeCache = new Map(); // Global cache to store recent pages
 
 /**
  * UseEffect that fetches the page contents with the specific language of the context
  * @param {String} page - string with the name of the page
+ * @returns {Object} - object with the page contents
  */
 export function useFetchLocale(page) {
   const { language } = useAppContext(); // Current language from context
@@ -56,6 +26,7 @@ export function useFetchLocale(page) {
     // If cached data is available, update state if needed and exit early.
     if (cachedData) {
       if (translations !== cachedData) setTranslations(cachedData);
+      // console.log("cache hit"); // DEBUG: Log
       return;
     }
 
@@ -78,9 +49,11 @@ export function useFetchLocale(page) {
         if (translations) localeCache.set(cacheKey, translations);
       }
     }
-    // Execute the asynchronous data fetch.
     fetchData();
-  }, [language, translations, page]); // Dependencies: re-run effect if language, translations, or page changes.
+    // console.log("cache fault"); // DEBUG: Log 
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [language, page]); // WARN: Missing "translations" as dependency?
   return translations;
 }
 
