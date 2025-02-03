@@ -7,9 +7,9 @@ export function Footer() {
   const { language, toggleLanguage } = useAppContext();
 
   return (
-    <footer className="flex flex-col justify-center items-center w-full border-t-2 border-outline">
+    <footer className="flex flex-col justify-center items-center mt-16 w-full border-t-2 border-outline">
       {t && (
-        <div className="flex flex-col gap-16 items-center lg:flex-row max-w-[1920px]">
+        <div className="flex flex-col gap-16 items-center lg:flex-row">
           <div className="flex flex-col gap-2 m-10">
             <h2 className="text-2xl font-bold font-kanit-thin text-outline">
               WorldWorkHub.
@@ -77,7 +77,8 @@ export function Footer() {
             </div>
           ))}
           <iframe
-            className="hidden w-52 h-52 rounded-lg border-4 border-solid xl:flex border-outline"
+            className="hidden w-1/5 h-52 rounded-lg border-4 border-solid xl:flex border-outline"
+            // WARN: If used in a localhost will return a CORS warning
             // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.187190181311!2d-43.13583512383353!3d-22.90646547925535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x99817e444e692b%3A0xfd5e35fb577af2f5!2sUFF%20-%20Instituto%20de%20Computa%C3%A7%C3%A3o!5e0!3m2!1spt-BR!2sbr!4v1738373228294!5m2!1spt-BR!2sbr"
             title="Our Base"
             allowFullScreen

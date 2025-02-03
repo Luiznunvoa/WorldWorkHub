@@ -32,7 +32,7 @@ export function Home() {
       <TextGrid textGrid={t.textGrid} />
 
       {/* A grid of images and text labels */}
-      <VisualGrid visualGrid={t.visualGrid} />
+      {/* <VisualGrid visualGrid={t.visualGrid} /> */}
     </main>
   );
 }

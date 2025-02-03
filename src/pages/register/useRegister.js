@@ -1,11 +1,16 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useCallback } from "react";
 import { AxiosHttpAdapter } from "../../adapter/httpUser";
 import { UsersService } from "../../services/usersService";
 
+const STATUS = {
+  IDLE: "idle",
+  LOADING: "loading",
+  SUCCESS: "success",
+  ERROR: "error",
+};
+
 export function useRegister() {
-  const navigate = useNavigate();
-  const [state, setState] = useState({ loading: false, error: false });
+  const [state, setState] = useState(STATUS.IDLE);
   const usersService = new UsersService(new AxiosHttpAdapter());
 
   /**
@@ -13,24 +18,8 @@ export function useRegister() {
    * @param {Object} data - Form data
    * @returns {Object} New user data
    */
-  const mapData = (data) => {
-    /* INFO: data: 
-
-      city: ""
-      confirmpassword: "" (unused)
-      education: ""
-      email: ""
-      firstname: ""
-      id: "" (unused)
-      lastname: ""
-      occupation: ""
-      password: ""
-      phone: ""
-      region: ""
-      zipcode: ""
-    */
-
-    return {
+  const mapData = useCallback(
+    (data) => ({
       firstname: data.firstname,
       lastname: data.lastname,
       email: data.email,
@@ -42,8 +31,9 @@ export function useRegister() {
       zipcode: data.zipcode,
       education: data.education,
       city: data.city,
-    };
-  };
+    }),
+    [],
+  );
 
   /**
    * Make a requisition for the creation of a new user
@@ -51,19 +41,13 @@ export function useRegister() {
    * @returns {Promise<void>}
    */
   const handleSubmit = async (newUser) => {
-    setState({ loading: true, error: false });
-
+    setState(STATUS.LOADING);
     try {
       await usersService.create(newUser);
-      alert("User created successfully");
-      navigate("/login");
+      setState(STATUS.SUCCESS);
     } catch (error) {
       console.error("Registration error:", error);
-      setState({ loading: false, error: true });
-      alert("Error creating user");
-      navigate("/");
-    } finally {
-      setState((prev) => ({ ...prev, loading: false }));
+      setState(STATUS.ERROR);
     }
   };
 

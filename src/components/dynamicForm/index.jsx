@@ -18,7 +18,6 @@ export function DynamicForm({ onSubmit, buttonlabels, option, steps }) {
   const navigate = useNavigate();
   const [step, setStep] = useState(0); // Current step state
   const { language } = useAppContext(); // Retrieve the current language from the app context.
-
   const methods = useForm(); // Form methods from react-hook-form
 
   // Proceed to the next step if current inputs are valid
@@ -55,7 +54,7 @@ export function DynamicForm({ onSubmit, buttonlabels, option, steps }) {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col w-full h-full justify-center items-center">
       {/* Step indicators */}
       {steps.length > 1 && (
         <ul className="flex flex-row justify-between mb-6">
@@ -83,7 +82,7 @@ export function DynamicForm({ onSubmit, buttonlabels, option, steps }) {
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit(onSubmit)}
-          className="flex flex-col items-center p-6 w-96 bg-white rounded-lg shadow-2xl"
+          className="flex flex-col items-center p-6 w-full bg-white rounded-lg shadow-2xl"
         >
           {/* Step title */}
           <h2 className="m-5 text-2xl italic font-bold text-center">

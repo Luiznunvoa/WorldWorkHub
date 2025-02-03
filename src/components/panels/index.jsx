@@ -15,7 +15,7 @@ import { SVG } from "../svg";
  */
 export function Panels({ panels }) {
   return (
-    <div className="flex flex-col gap-10 items-center mb-16">
+    <div className="flex flex-col gap-10 items-center mb-14">
       <IconTitle icon={panels.icon} title={panels.title} />
 
       {panels.places.map((place, index) => (

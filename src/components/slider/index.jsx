@@ -24,7 +24,9 @@ export function Slider({ slider }) {
 
   return (
     <div className="flex flex-col gap-20 justify-center items-center w-full">
-      <IconTitle icon={slider.icon} title={slider.title} />
+      { (slider.icon || slider.title) &&
+        <IconTitle icon={slider.icon} title={slider.title} />
+      }
 
       <section className="flex flex-row gap-5 items-center">
         {slider.icon && (

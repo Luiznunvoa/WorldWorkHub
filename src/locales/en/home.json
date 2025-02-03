@@ -116,6 +116,8 @@
   },
 
   "textGrid": {
+    "icon": "paperpeople",
+    "title": "How We Can Help You?",
     "elements": [
       {
         "icon": "suitcase",

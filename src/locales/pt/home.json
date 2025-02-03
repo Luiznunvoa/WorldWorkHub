@@ -71,9 +71,9 @@
         "button": { "label": "Saiba Mais!", "path": "" }  
       },
       {
-        "title": "Serviços de Alimentação e Hospitalidade",
+        "title": "Serviços de Hospitalidade",
         "image": "https://i.postimg.cc/h4p7CYC7/foodservice-girl.jpg",
-        "description": "Restaurantes e hotéis valorizam trabalhadores pela adaptabilidade, atendimento ao cliente e trabalho em equipe.",
+        "description": "Restaurantes e hotéis valorizam trabalhadores pela adaptabilidade e atendimento ao cliente.",
         "button": { "label": "Saiba Mais!", "path": "" }  
       },
       {
@@ -116,6 +116,8 @@
   },
 
   "textGrid": {
+    "icon": "paperpeople",
+    "title": "Como Podemos Ajudar?",
     "elements": [
       {
         "icon": "suitcase",

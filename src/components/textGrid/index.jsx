@@ -18,7 +18,9 @@ import { SVG } from "../svg";
 export function TextGrid({ textGrid }) {
   return (
     <div className="flex flex-col gap-20 justify-center items-center">
-      <IconTitle icon={textGrid.icon} title={textGrid.title} />
+      {(textGrid.icon || textGrid.title) && (
+        <IconTitle icon={textGrid.icon} title={textGrid.title} />
+      )}
 
       <section className="grid grid-cols-1 gap-10 justify-center items-center md:grid-cols-2">
         {textGrid.elements.map((element, index) => (
@@ -27,10 +29,7 @@ export function TextGrid({ textGrid }) {
             className="flex flex-row gap-5 p-10 bg-white rounded-2xl border-4 border-solid shadow-xl transition-all cursor-pointer hover:shadow-2xl hover:scale-110 border-text"
           >
             <div className="flex flex-col h-full">
-              <SVG
-                type={element.icon}
-                className="w-20 h-24 stroke-1 fill-white stroke-green"
-              />
+              <SVG type={element.icon} className="w-20 h-24 fill-green" />
             </div>
 
             <div className="flex flex-col gap-5 justify-center h-full max-w-80">
