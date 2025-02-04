@@ -7,7 +7,7 @@ import { stringToRegex } from "../../utils";
 
 export function Login() {
   const t = useFetchLocale("login");
-  const { validateLogin, state } = useUsers();
+  const { validateUser, state } = useUsers();
 
   if (!t || state == "loading") {
     return <Spinner />;
@@ -52,7 +52,7 @@ export function Login() {
       {/* Form to validate user login */}
       <div className="flex w-96 h-96">
         <DynamicForm
-          onSubmit={(data) => validateLogin(data)}
+          onSubmit={(data) => validateUser(data)}
           buttonlabels={t.buttonlabels}
           // Process each step in the form
           steps={t.steps.map(({ title, inputs }) => ({

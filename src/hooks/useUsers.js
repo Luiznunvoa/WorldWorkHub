@@ -21,7 +21,8 @@ const userSchema = z.object({
     .regex(/^[A-Za-z]+$/, "Lastname must contain only letters."),
   email: z.string().email("Invalid email address."),
   password: z
-    .string() .nonempty("Missing password field.")
+    .string()
+    .nonempty("Missing password field.")
     .min(8, "Password must have at least 8 characters."),
   occupation: z.string().nonempty("Missing occupation field."),
   region: z.string().nonempty("Missing region field."),
@@ -39,50 +40,32 @@ const userSchema = z.object({
   city: z
     .string()
     .min(2, "City must have at least 2 characters.")
-    .regex(/^[A-Za-zÇç´^~ ]+$/, "City can only contain letters"),
+    .regex(/^[A-Za-zÇç´^~ ]+$/, "City can only contain letters")
+}).transform((data) => ({
+  ...data,
+  role: "User" // All user are created with the user role
+}));
+
+
+const loginSchema = z.object({
+  email: z.string().email("Email inválido."),
+  password: z.string()
+    .nonempty("Missing Password.")
+    .min(8, "Password must have at least 8 characters.")
 });
 
 export function useUsers() {
   const [state, setState] = useState(STATUS.IDLE);
   const usersService = new UsersService(new AxiosHttpAdapter());
-
-  /**
-   * Formats the form data to create new user
-   * This function is a callback that will be used to map the form data to the user object
-   * @param {Object} data - Form data
-   * @returns {Object} New user data
-   * INFO: Must have the fields: firstname, lastname, email, password, occupation, region, phone, zipcode, education and city
-   */
-  const mapUser = (data) => {
-    setState(STATUS.LOADING);
-    try {
-      const parsedData = userSchema.parse(data);
-      return {
-        firstname: parsedData.firstname,
-        lastname: parsedData.lastname,
-        email: parsedData.email,
-        password: parsedData.password,
-        occupation: parsedData.occupation,
-        role: "User",
-        region: parsedData.region,
-        phone: parsedData.phone,
-        zipcode: parsedData.zipcode,
-        education: parsedData.education,
-        city: parsedData.city,
-      };
-    } catch (error) {
-      setState(STATUS.ERROR);
-      throw error;
-    }
-  };
   
   /**
    * Make a requisition for the creation of a new user
    * @param {Object} newUser - User data
    * @returns {Promise<void>}
    */
-  const createUser = async (newUser) => {
+  const createUser = async (data) => {
     try {
+      const newUser = userSchema.parse(data);
       await usersService.create(newUser);
       setState(STATUS.SUCCESS);
     } catch (error) {
@@ -96,9 +79,10 @@ export function useUsers() {
    * @param {Object} user - Email and password
    * @returns {Promise<void>}
    */
-  const validateLogin = async (user) => {
+  const validateUser = async (data) => {
     setState(STATUS.LOADING)
     try {
+      const user = loginSchema.parse(data);
       await usersService.login(user);
       setState(STATUS.SUCCESS);
     } catch(error) {
@@ -108,9 +92,8 @@ export function useUsers() {
   }
 
   return {
-    mapUser,
     createUser,
-    validateLogin,
+    validateUser,
     state,
   };
 }

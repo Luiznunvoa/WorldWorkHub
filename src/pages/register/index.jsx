@@ -7,7 +7,7 @@ import { stringToRegex } from "../../utils";
 
 export function Register() {
   const t = useFetchLocale("register");
-  const { mapUser, createUser, state } = useUsers();
+  const { createUser, state } = useUsers();
 
   if (!t || state == "loading") {
     return <Spinner />;
@@ -52,7 +52,7 @@ export function Register() {
       <div className="w-96">
         {/* Form to create a new account */}
         <DynamicForm
-          onSubmit={(data) => createUser(mapUser(data))}
+          onSubmit={(data) => createUser(data)}
           buttonlabels={t.buttonlabels}
           option={t.option}
           // Process each step in the form
