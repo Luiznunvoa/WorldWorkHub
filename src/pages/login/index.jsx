@@ -1,6 +1,7 @@
 import { DynamicForm } from "../../components/dynamicForm";
 import { Spinner } from "../../components/spinner";
-import { stringToRegex, useFetchLocale } from "../../utils";
+import { useFetchLocale } from "../../hooks/useFetchLocale";
+import { stringToRegex } from "../../utils";
 
 export function Login() {
   const t = useFetchLocale("login");

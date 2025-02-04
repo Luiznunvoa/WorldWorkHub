@@ -1,11 +1,11 @@
 import { Panels } from "../../components/panels";
 import { Hero } from "../../components/hero";
 import { Highlight } from "../../components/highlight";
-import { VisualGrid } from "../../components/visualGrid";
+// import { VisualGrid } from "../../components/visualGrid";
 import { Slider } from "../../components/slider";
 import { TextGrid } from "../../components/textGrid";
 import { Spinner } from "../../components/spinner";
-import { useFetchLocale } from "../../utils";
+import { useFetchLocale } from "../../hooks/useFetchLocale";
 
 export function Home() {
   const t = useFetchLocale("home");

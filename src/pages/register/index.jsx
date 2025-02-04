@@ -1,11 +1,12 @@
 import { DynamicForm } from "../../components/dynamicForm";
 import { Spinner } from "../../components/spinner";
-import { stringToRegex, useFetchLocale } from "../../utils";
-import { useRegister } from "./useRegister";
+import { useFetchLocale } from "../../hooks/useFetchLocale";
+import { useRegisterUser } from "../../hooks/useRegisterUser";
+import { stringToRegex } from "../../utils";
 
 export function Register() {
   const t = useFetchLocale("register");
-  const { mapData, handleSubmit, state } = useRegister();
+  const { mapData, createUser, state } = useRegisterUser();
 
   if (!t || state == "loading") {
     return <Spinner />;
@@ -32,7 +33,7 @@ export function Register() {
       <div className="w-96">
         {/* Form to create a new account */} 
         <DynamicForm
-          onSubmit={(data) => handleSubmit(mapData(data))}
+          onSubmit={(data) => createUser(mapData(data))}
           buttonlabels={t.buttonlabels}
           option={t.option}
           // Process each step in the form

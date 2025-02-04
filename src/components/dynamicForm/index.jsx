@@ -126,6 +126,7 @@ export function DynamicForm({ onSubmit, buttonlabels, option, steps }) {
                   className="p-2 w-full rounded border border-gray-300 placeholder:font-Roboto"
                 />
               )}
+              {/* Error message */}
               <ErrorMessage
                 error={methods.formState.errors[input.name]?.message}
               />

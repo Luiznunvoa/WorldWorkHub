@@ -140,7 +140,7 @@
             "message": "city must have at least 2 characters"
           },
           "pattern": {
-            "value": "/^[a-zA-Z]+$/",
+            "value": "/^[A-Za-zÇç´^~ ]+$/",
             "message": "city can only contain letters"
           },
           "placeholder": "city"
@@ -232,21 +232,6 @@
               { "label": "Carpenter", "value": "Carpenter" },
               { "label": "Farmer", "value": "Farmer" }
           ]
-        },
-        {
-          "name": "id",
-          "type": "text",
-          "required": "id is required",
-          "minlength": {
-            "value": 5,
-            "message": "id must have at least 5 characters"
-          },
-          "pattern": {
-            "value": "/^[0-9]*$/",
-            "message": "please enter a valid id"
-          },
-          "placeholder": "id",
-          "value": "cpf"
         }
       ]
     }

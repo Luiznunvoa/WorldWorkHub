@@ -1,5 +1,5 @@
 import { SVG } from "../svg";
-import { useFetchLocale } from "../../utils";
+import { useFetchLocale } from "../../hooks/useFetchLocale";
 import { useAppContext } from "../../context/context";
 
 export function Footer() {
