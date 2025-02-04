@@ -1,12 +1,13 @@
 import { DynamicForm } from "../../components/dynamicForm";
 import { Spinner } from "../../components/spinner";
+import { AlertMessage } from "../../components/alertMessage";
 import { useFetchLocale } from "../../hooks/useFetchLocale";
-import { useRegisterUser } from "../../hooks/useRegisterUser";
+import { useUsers } from "../../hooks/useUsers";
 import { stringToRegex } from "../../utils";
 
 export function Register() {
   const t = useFetchLocale("register");
-  const { mapData, createUser, state } = useRegisterUser();
+  const { mapUser, createUser, state } = useUsers();
 
   if (!t || state == "loading") {
     return <Spinner />;
@@ -14,26 +15,44 @@ export function Register() {
 
   if (state == "error") {
     return (
-      <>
-        error
-      </>
+      <main className="flex flex-col items-center p-6 w-full fill-red-500 text-red-500">
+        <AlertMessage
+          message={{
+            icon: "warn",
+            text: "Unexpected Error",
+            link: {
+              text: "Back to Menu...",
+              path: "/",
+            },
+          }}
+        />
+      </main>
     );
   }
-  
+
   if (state == "success") {
     return (
-      <>
-        success
-      </>
+      <main className="flex flex-col items-center p-6 w-ful fill-green text-green">
+        <AlertMessage
+          message={{
+            icon: "check",
+            text: "User Created",
+            link: {
+              text: "Login Now!",
+              path: "/login",
+            },
+          }}
+        />
+      </main>
     );
   }
-  
+
   return (
     <main className="flex flex-col items-center p-6 w-full">
       <div className="w-96">
-        {/* Form to create a new account */} 
+        {/* Form to create a new account */}
         <DynamicForm
-          onSubmit={(data) => createUser(mapData(data))}
+          onSubmit={(data) => createUser(mapUser(data))}
           buttonlabels={t.buttonlabels}
           option={t.option}
           // Process each step in the form
@@ -43,10 +62,22 @@ export function Register() {
               // Process each input field in the step
               ({
                 // input properties
-                name, type, required, placeholder, minlength, options, pattern, validate,
+                name,
+                type,
+                required,
+                placeholder,
+                minlength,
+                options,
+                pattern,
+                validate,
               }) => ({
                 // Preserve basic input properties
-                name, type, required, placeholder, minlength, options,
+                name,
+                type,
+                required,
+                placeholder,
+                minlength,
+                options,
 
                 // Conditionally add regex pattern validation if defined in locales
                 ...(pattern && {
@@ -66,7 +97,6 @@ export function Register() {
             ),
           }))}
         />
-
       </div>
     </main>
   );
