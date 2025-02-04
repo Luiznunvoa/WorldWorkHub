@@ -3,7 +3,7 @@ import { z } from "zod";
 import { AxiosHttpAdapter } from "../adapter/httpUser";
 import { UsersService } from "../services/usersService";
 
-const STATUS = {
+const STATE = {
   IDLE: "idle",
   LOADING: "loading",
   SUCCESS: "success",
@@ -55,7 +55,7 @@ const loginSchema = z.object({
 });
 
 export function useUsers() {
-  const [state, setState] = useState(STATUS.IDLE);
+  const [state, setState] = useState(STATE.IDLE);
   const usersService = new UsersService(new AxiosHttpAdapter());
   
   /**
@@ -64,13 +64,14 @@ export function useUsers() {
    * @returns {Promise<void>}
    */
   const createUser = async (data) => {
+    setState(STATE.LOADING)
     try {
       const newUser = userSchema.parse(data);
       await usersService.create(newUser);
-      setState(STATUS.SUCCESS);
+      setState(STATE.SUCCESS);
     } catch (error) {
       console.error("Registration error:", error);
-      setState(STATUS.ERROR);
+      setState(STATE.ERROR);
     }
   };
 
@@ -80,14 +81,14 @@ export function useUsers() {
    * @returns {Promise<void>}
    */
   const validateUser = async (data) => {
-    setState(STATUS.LOADING)
+    setState(STATE.LOADING)
     try {
-      const user = loginSchema.parse(data);
-      await usersService.login(user);
-      setState(STATUS.SUCCESS);
+      const credentials = loginSchema.parse(data);
+      await usersService.login(credentials);
+      setState(STATE.SUCCESS);
     } catch(error) {
       console.error("Login error: ", error);
-      setState(STATUS.ERROR);
+      setState(STATE.ERROR);
     }
   }
 

@@ -2,11 +2,11 @@ import { DynamicForm } from "../../components/dynamicForm";
 import { Spinner } from "../../components/spinner";
 import { AlertMessage } from "../../components/alertMessage";
 import { useUsers } from "../../hooks/useUsers";
-import { useFetchLocale } from "../../hooks/useFetchLocale";
+import { useLocale } from "../../hooks/useLocale";
 import { stringToRegex } from "../../utils";
 
 export function Login() {
-  const t = useFetchLocale("login");
+  const { t, clearCache } = useLocale("login");
   const { validateUser, state } = useUsers();
 
   if (!t || state == "loading") {
@@ -31,6 +31,7 @@ export function Login() {
   }
 
   if (state == "success") {
+    clearCache();
     return (
       <main className="flex flex-col items-center p-6 w-ful fill-green text-green">
         <AlertMessage

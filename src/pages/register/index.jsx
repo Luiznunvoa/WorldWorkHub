@@ -1,12 +1,12 @@
 import { DynamicForm } from "../../components/dynamicForm";
 import { Spinner } from "../../components/spinner";
 import { AlertMessage } from "../../components/alertMessage";
-import { useFetchLocale } from "../../hooks/useFetchLocale";
+import { useLocale } from "../../hooks/useLocale";
 import { useUsers } from "../../hooks/useUsers";
 import { stringToRegex } from "../../utils";
 
 export function Register() {
-  const t = useFetchLocale("register");
+  const { t } = useLocale("register");
   const { createUser, state } = useUsers();
 
   if (!t || state == "loading") {

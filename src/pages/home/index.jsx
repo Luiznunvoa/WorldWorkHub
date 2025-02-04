@@ -5,10 +5,10 @@ import { Highlight } from "../../components/highlight";
 import { Slider } from "../../components/slider";
 import { TextGrid } from "../../components/textGrid";
 import { Spinner } from "../../components/spinner";
-import { useFetchLocale } from "../../hooks/useFetchLocale";
+import { useLocale } from "../../hooks/useLocale";
 
 export function Home() {
-  const t = useFetchLocale("home");
+  const { t } = useLocale("home");
 
   if (!t) {
     return <Spinner />;

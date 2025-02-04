@@ -1,9 +1,9 @@
 import { SVG } from "../svg";
-import { useFetchLocale } from "../../hooks/useFetchLocale";
+import { useLocale } from "../../hooks/useLocale";
 import { useAppContext } from "../../context/context";
 
 export function Footer() {
-  const t = useFetchLocale("footer");
+  const { t } = useLocale("footer");
   const { language, toggleLanguage } = useAppContext();
 
   return (
