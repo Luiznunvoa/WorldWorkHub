@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export class AxiosHttpAdapter {
   constructor() {
@@ -7,10 +8,12 @@ export class AxiosHttpAdapter {
     // Creates a customized Axios instance for the private backend
     this.privateBackendInstance = axios.create({
       baseURL,
-      "Content-Type": "application/json",
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
 
-    // Sets up interceptors for authentication
+    // Sets up interceptors for authentication and global error handling
     this._setupInterceptors();
   }
 
@@ -19,29 +22,29 @@ export class AxiosHttpAdapter {
    * and handle global errors
    */
   _setupInterceptors() {
-    // Request interceptor to add the JWT token
+    // Request interceptor to add the JWT token from the cookie
     this.privateBackendInstance.interceptors.request.use(
       (config) => {
-        const token = localStorage.getItem("authToken");
+        const token = Cookies.get("authToken");
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;
         }
         return config;
       },
-      (error) => Promise.reject(error),
+      (error) => Promise.reject(error)
     );
 
     // Response interceptor for global error handling
     this.privateBackendInstance.interceptors.response.use(
       (response) => response,
       (error) => {
-        // Custom error handling (e.g., redirect to login)
+        // If the status is 401 (unauthorized), remove the cookie and redirect to login
         if (error.response?.status === 401) {
-          localStorage.removeItem("authToken");
-          window.location.href = "/login"; // Redirect to login
+          Cookies.remove("authToken");
+          window.location.href = "/login";
         }
         return Promise.reject(error);
-      },
+      }
     );
   }
 
@@ -67,9 +70,9 @@ export class AxiosHttpAdapter {
 
       return response.data;
     } catch (error) {
-      // Local error handling
       console.error("Request error:", error);
       throw error.response?.data || error.message;
     }
   }
 }
+

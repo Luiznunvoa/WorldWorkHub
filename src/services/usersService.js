@@ -1,3 +1,5 @@
+import Cookies from "js-cookie";
+
 export class UsersService {
   /**
    * @param {AxiosHttpAdapter} httpAdapter - HTTP adapter instance
@@ -34,7 +36,7 @@ export class UsersService {
     });
 
     if (response.token) {
-      localStorage.setItem("authToken", response.token);
+      Cookies.set("authToken", response.token, { secure: true, sameSite: "Strict" });
     }
 
     return response;
