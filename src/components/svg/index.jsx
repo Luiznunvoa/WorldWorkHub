@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import svg_data from "../../assets/svg_data.json";
+import svg_data from "../../assets/svg.json";
 
 /**
  * SVG Component

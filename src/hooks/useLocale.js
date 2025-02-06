@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useAppContext } from "../context/context";
+import { usePreferencesStore } from "../stores/preferencesStore";
 
 // Global cache to store fetched page contents
 const localeCache = new Map();
@@ -11,7 +11,7 @@ const localeCache = new Map();
  * @returns {Object|null} - The t object or null if not loaded.
  */
 export function useLocale(page) {
-  const { language } = useAppContext(); // Get the current language from context
+  const { language } = usePreferencesStore(); // Get the current language from context
   const cacheKey = `${language}/${page}`; // Creates a cache key based on the context
   const [t, setTranslations] = useState( // Tries to get the translation in cache
     () => localeCache.get(cacheKey) || null,

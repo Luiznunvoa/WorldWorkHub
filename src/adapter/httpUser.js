@@ -1,5 +1,5 @@
 import axios from "axios";
-import Cookies from "js-cookie";
+import { useUserStore } from "../stores/userStore";
 
 export class AxiosHttpAdapter {
   constructor() {
@@ -22,10 +22,10 @@ export class AxiosHttpAdapter {
    * and handle global errors
    */
   _setupInterceptors() {
-    // Request interceptor to add the JWT token from the cookie
+    // Request interceptor to add the JWT token from the store
     this.privateBackendInstance.interceptors.request.use(
       (config) => {
-        const token = Cookies.get("authToken");
+        const token = useUserStore.getState().accessToken; // Get token from the store
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;
         }
@@ -38,10 +38,10 @@ export class AxiosHttpAdapter {
     this.privateBackendInstance.interceptors.response.use(
       (response) => response,
       (error) => {
-        // If the status is 401 (unauthorized), remove the cookie and redirect to login
+        // If the status is 401 (unauthorized), clear the token and redirect to login
         if (error.response?.status === 401) {
-          Cookies.remove("authToken");
-          window.location.href = "/login";
+          useUserStore.getState().reset(); // Clear token from the store
+          window.location.href = "/login"; // Redirect to login page
         }
         return Promise.reject(error);
       }
@@ -75,4 +75,3 @@ export class AxiosHttpAdapter {
     }
   }
 }
-

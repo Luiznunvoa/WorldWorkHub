@@ -1,10 +1,10 @@
 import { SVG } from "../svg";
 import { useLocale } from "../../hooks/useLocale";
-import { useAppContext } from "../../context/context";
+import { usePreferencesStore } from "../../stores/preferencesStore";
 
 export function Footer() {
+  const { language } = usePreferencesStore();
   const { t } = useLocale("footer");
-  const { language, toggleLanguage } = useAppContext();
 
   return (
     <footer className="flex flex-col justify-center items-center mt-16 w-full border-t-2 border-outline">
@@ -44,7 +44,7 @@ export function Footer() {
               </div>
             </nav>
             <img
-              onClick={toggleLanguage}
+              onClick={usePreferencesStore.getState().toggleLanguage}
               className="object-cover mt-2 w-10 h-5 rounded-sm cursor-pointer"
               src={
                 language == "en"

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm, FormProvider } from "react-hook-form";
-import { useAppContext } from "../../context/context";
 import PropTypes from "prop-types";
+import { usePreferencesStore } from "../../stores/preferencesStore";
 
 /**
  * DynamicForm Component
@@ -17,7 +17,7 @@ import PropTypes from "prop-types";
 export function DynamicForm({ onSubmit, buttonlabels, option, steps }) {
   const navigate = useNavigate();
   const [step, setStep] = useState(0); // Current step state
-  const { language } = useAppContext(); // Retrieve the current language from the app context.
+  const { language } = usePreferencesStore(); // Retrieve the current language from the app context.
   const methods = useForm(); // Form methods from react-hook-form
 
   // Proceed to the next step if current inputs are valid

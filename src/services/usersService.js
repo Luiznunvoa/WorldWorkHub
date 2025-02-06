@@ -1,5 +1,3 @@
-import Cookies from "js-cookie";
-
 export class UsersService {
   /**
    * @param {AxiosHttpAdapter} httpAdapter - HTTP adapter instance
@@ -34,11 +32,6 @@ export class UsersService {
       url: "/login",
       data: credentials,
     });
-
-    if (response.token) {
-      Cookies.set("authToken", response.token, { secure: true, sameSite: "Strict" });
-    }
-
-    return response;
+    return response.token;
   }
 }

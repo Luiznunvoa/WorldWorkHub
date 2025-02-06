@@ -2,7 +2,7 @@ import { useState } from "react";
 import { z } from "zod";
 import { AxiosHttpAdapter } from "../adapter/httpUser";
 import { UsersService } from "../services/usersService";
-import { useAppContext } from "../context/context";
+import { useUserStore } from "../stores/userStore";
 
 const STATE = {
   IDLE: "idle",
@@ -60,7 +60,6 @@ const loginSchema = z.object({
 export function useUsers() {
   const [state, setState] = useState(STATE.IDLE);
   const usersService = new UsersService(new AxiosHttpAdapter());
-  const { updateToken } = useAppContext();
 
   /**
    * Make a requisition for the creation of a new user
@@ -88,8 +87,8 @@ export function useUsers() {
     setState(STATE.LOADING);
     try {
       const credentials = loginSchema.parse(data);
-      await usersService.login(credentials);
-      updateToken();
+      const token = await usersService.login(credentials);
+      useUserStore.getState().setAccessToken(token);
       setState(STATE.SUCCESS);
     } catch (error) {
       console.error("Login error: ", error);

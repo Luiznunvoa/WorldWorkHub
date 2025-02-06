@@ -1,11 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import { DynamicForm } from "../../components/dynamicForm";
 import { Spinner } from "../../components/spinner";
-import { AlertMessage } from "../../components/alertMessage";
 import { useUsers } from "../../hooks/useUsers";
 import { useLocale } from "../../hooks/useLocale";
 import { stringToRegex } from "../../utils";
 
 export function Login() {
+  const navigate = useNavigate();
   const { t, clearCache } = useLocale("login");
   const { validateUser, state } = useUsers();
 
@@ -13,39 +14,10 @@ export function Login() {
     return <Spinner />;
   }
 
-  if (state == "error") {
-    return (
-      <main className="flex flex-col items-center p-6 w-full text-red-500 fill-red-500">
-        <AlertMessage
-          message={{
-            icon: "warn",
-            text: "Unexpected Error",
-            link: {
-              text: "Back to Menu...",
-              path: "/",
-            },
-          }}
-        />
-      </main>
-    );
-  }
-
   if (state == "success") {
     clearCache();
-    return (
-      <main className="flex flex-col items-center p-6 w-ful fill-green text-green">
-        <AlertMessage
-          message={{
-            icon: "check",
-            text: "User Created",
-            link: {
-              text: "Login Now!",
-              path: "/login",
-            },
-          }}
-        />
-      </main>
-    );
+    console.log("login validated!");
+    navigate("/");
   }
 
   return (
@@ -71,7 +43,7 @@ export function Login() {
                   pattern: {
                     value: stringToRegex(pattern.value), // Convert string pattern to RegExp
                     message: pattern.message,
-                  },
+                  }, 
                 }),
               }),
             ),
