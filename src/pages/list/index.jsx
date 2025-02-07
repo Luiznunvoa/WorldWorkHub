@@ -1,7 +1,7 @@
 export function List() {
   return (
     <main className="flex flex-col gap-10 items-center">
-      You can not get here without login
+      your user must be authenticated to be here
     </main>
   );
 }

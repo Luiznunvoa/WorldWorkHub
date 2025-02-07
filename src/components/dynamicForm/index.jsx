@@ -14,7 +14,7 @@ import { usePreferencesStore } from "../../stores/preferencesStore";
  * - option (object): Additional option to render a login prompt.
  * - steps (array of objects): Array of step configurations containing title and inputs.
  */
-export function DynamicForm({ onSubmit, buttonlabels, option, steps }) {
+export function DynamicForm({ onSubmit, buttonlabels, dialog, steps }) {
   const navigate = useNavigate();
   const [step, setStep] = useState(0); // Current step state
   const { language } = usePreferencesStore(); // Retrieve the current language from the app context.
@@ -164,14 +164,14 @@ export function DynamicForm({ onSubmit, buttonlabels, option, steps }) {
           </div>
 
           {/* Optional link */}
-          {option && (
+          {dialog && (
             <p className="flex gap-1 text-outline">
-              {option.text}
+              {dialog.text}
               <a
-                onClick={() => navigate(option.path)}
+                onClick={() => navigate(dialog.path)}
                 className="text-blue-600 underline cursor-pointer"
               >
-                {option.label}
+                {dialog.label}
               </a>
             </p>
           )}
@@ -193,7 +193,7 @@ DynamicForm.propTypes = {
   }).isRequired,
 
   // Optional login prompt or additional link at the bottom of the form
-  option: PropTypes.shape({
+  dialog: PropTypes.shape({
     text: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     path: PropTypes.string.isRequired,

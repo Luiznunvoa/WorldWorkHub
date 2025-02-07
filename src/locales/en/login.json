@@ -4,6 +4,11 @@
     "previous": "previous",
     "submit": "submit"
   },
+  "dialog": {
+    "text": "Did you ",
+    "label": "forgot your password?",
+    "path": "/"
+  },
   "steps":[
     {
       "title": "Login Now!",

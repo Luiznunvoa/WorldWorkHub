@@ -14,39 +14,40 @@ export class AxiosHttpAdapter {
     });
 
     // Sets up interceptors for authentication and global error handling
-    this._setupInterceptors();
+    // this._setupInterceptors();
   }
 
   /**
    * Sets up interceptors to include the authentication token
    * and handle global errors
    */
-  _setupInterceptors() {
-    // Request interceptor to add the JWT token from the store
-    this.privateBackendInstance.interceptors.request.use(
-      (config) => {
-        const token = useUserStore.getState().accessToken; // Get token from the store
-        if (token) {
-          config.headers.Authorization = `Bearer ${token}`;
-        }
-        return config;
-      },
-      (error) => Promise.reject(error)
-    );
-
-    // Response interceptor for global error handling
-    this.privateBackendInstance.interceptors.response.use(
-      (response) => response,
-      (error) => {
-        // If the status is 401 (unauthorized), clear the token and redirect to login
-        if (error.response?.status === 401) {
-          useUserStore.getState().reset(); // Clear token from the store
-          window.location.href = "/login"; // Redirect to login page
-        }
-        return Promise.reject(error);
-      }
-    );
-  }
+  // _setupInterceptors() {
+  //   // Request interceptor to add the JWT token from the store
+  //   this.privateBackendInstance.interceptors.request.use(
+  //     (config) => {
+  //       const token = useUserStore.getState().accessToken; // Get token from the store
+  //       if (token) {
+  //         config.headers.Authorization = `Bearer ${token}`;
+  //       }
+  //       return config;
+  //     },
+  //     (error) => Promise.reject(error)
+  //   );
+  //
+  //   // Response interceptor for global error handling
+  //   this.privateBackendInstance.interceptors.response.use(
+  //     (response) => response,
+  //     (error) => {
+  //       // If the status is 401 (unauthorized), clear the token and redirect to login
+  //       if (error.response?.status === 401) {
+  //         useUserStore.getState().reset(); // Clear token from the store
+  //         window.location.href = "/login"; // Redirect to login page
+  //       }
+  //       return Promise.reject(error);
+  //     }
+  //   );
+  // }
+  //
 
   /**
    * Generic method for authenticated requests

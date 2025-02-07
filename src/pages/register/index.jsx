@@ -13,23 +13,6 @@ export function Register() {
     return <Spinner />;
   }
 
-  if (state == "error") {
-    return (
-      <main className="flex flex-col items-center p-6 w-full fill-red-500 text-red-500">
-        <AlertMessage
-          message={{
-            icon: "warn",
-            text: "Unexpected Error",
-            link: {
-              text: "Back to Menu...",
-              path: "/",
-            },
-          }}
-        />
-      </main>
-    );
-  }
-
   if (state == "success") {
     return (
       <main className="flex flex-col items-center p-6 w-ful fill-green text-green">
@@ -51,10 +34,11 @@ export function Register() {
     <main className="flex flex-col items-center p-6 w-full">
       <div className="w-96">
         {/* Form to create a new account */}
+        <p className="w-100 h-10 text-center text-red-500">{ state == "error" && "Unexpected Error in Registration" }</p> 
         <DynamicForm
           onSubmit={(data) => createUser(data)}
           buttonlabels={t.buttonlabels}
-          option={t.option}
+          dialog={t.option}
           // Process each step in the form
           steps={t.steps.map(({ title, inputs }) => ({
             title,
