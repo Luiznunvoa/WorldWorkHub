@@ -14,7 +14,7 @@ import { usePreferencesStore } from "../../stores/preferencesStore";
  * - option (object): Additional option to render a login prompt.
  * - steps (array of objects): Array of step configurations containing title and inputs.
  */
-export function DynamicForm({ onSubmit, buttonlabels, dialog, steps }) {
+export function DynamicForm({ onSubmit, buttonlabels, dialogs, steps }) {
   const navigate = useNavigate();
   const [step, setStep] = useState(0); // Current step state
   const { language } = usePreferencesStore(); // Retrieve the current language from the app context.
@@ -54,7 +54,7 @@ export function DynamicForm({ onSubmit, buttonlabels, dialog, steps }) {
   };
 
   return (
-    <div className="flex flex-col w-full h-full justify-center items-center">
+    <div className="flex flex-col justify-center items-center w-full h-full">
       {/* Step indicators */}
       {steps.length > 1 && (
         <ul className="flex flex-row justify-between mb-6">
@@ -164,8 +164,8 @@ export function DynamicForm({ onSubmit, buttonlabels, dialog, steps }) {
           </div>
 
           {/* Optional link */}
-          {dialog && (
-            <p className="flex gap-1 text-outline">
+          {dialogs.map((dialog, index) => (
+            <p key={index} className="flex gap-1 text-outline">
               {dialog.text}
               <a
                 onClick={() => navigate(dialog.path)}
@@ -174,7 +174,7 @@ export function DynamicForm({ onSubmit, buttonlabels, dialog, steps }) {
                 {dialog.label}
               </a>
             </p>
-          )}
+          ))}
         </form>
       </FormProvider>
     </div>
@@ -193,11 +193,13 @@ DynamicForm.propTypes = {
   }).isRequired,
 
   // Optional login prompt or additional link at the bottom of the form
-  dialog: PropTypes.shape({
-    text: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    path: PropTypes.string.isRequired,
-  }),
+  dialogs: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      path: PropTypes.string.isRequired,
+    }),
+  ),
 
   // Configuration for each step of the form
   steps: PropTypes.arrayOf(

@@ -27,7 +27,7 @@ export function Login() {
         <DynamicForm
           onSubmit={(data) => validateUser(data)}
           buttonlabels={t.buttonlabels}
-          dialog={t.dialog}
+          dialogs={t.dialogs}
           // Process each step in the form
           steps={t.steps.map(({ title, inputs }) => ({
             title,

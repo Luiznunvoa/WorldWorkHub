@@ -38,7 +38,7 @@ export function Register() {
         <DynamicForm
           onSubmit={(data) => createUser(data)}
           buttonlabels={t.buttonlabels}
-          dialog={t.option}
+          dialogs={t.dialogs}
           // Process each step in the form
           steps={t.steps.map(({ title, inputs }) => ({
             title,

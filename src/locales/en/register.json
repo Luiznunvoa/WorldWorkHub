@@ -4,11 +4,13 @@
     "previous": "previous",
     "submit": "submit"
   },
-  "option": {
-    "label": "Login!",
-    "text": "already have an account?",
-    "path": "/login"
-  },
+  "dialogs": [
+    {
+      "label": "Login!",
+      "text": "already have an account?",
+      "path": "/login"
+    }
+  ],
   "steps": [
     {
       "title": "Create your account",

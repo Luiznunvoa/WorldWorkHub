@@ -4,11 +4,13 @@
     "previous": "anterior",
     "submit": "enviar"
   },
-  "option": {
-    "label": "Entre agora!",
-    "text": "já tem uma conta?",
-    "path": "/login"
-  },
+  "dialogs": [
+    {
+      "label": "Entre agora!",
+      "text": "já tem uma conta?",
+      "path": "/login"
+    }
+  ],
   "steps": [
     {
       "title": "Crie sua conta",

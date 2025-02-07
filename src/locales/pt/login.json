@@ -4,32 +4,39 @@
     "previous": "previous",
     "submit": "submit"
   },
-  "dialog": {
-    "text": "Será que você",
-    "label": "esqueceu sua senha?",
-    "path": "/"
-  },
+  "dialogs": [
+    {
+      "text": "Ainda não tem uma conta?",
+      "label": "Crie uma!",
+      "path": "/register"
+    },
+    {
+      "text": "Esqueceu sua senha?",
+      "label": "Tente isso!",
+      "path": "/"
+    }
+  ],
   "steps":[
     {
-      "title": "Login Now!",
+      "title": "Faça Login!",
       "inputs": [
         {
           "name": "email",
           "type": "email",
-          "required": "email is required",
+          "required": "O email é obrigatório",
           "pattern": {
             "value": "/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/",
-            "message": "please enter a valid email address"
+            "message": "Por favor, digite um email válido"
           },
-          "placeholder": "Your email"
+          "placeholder": "Email"
         },
         {
           "name": "password",
           "type": "password",
-          "required": "password is required",
+          "required": "A senha é obrigatória",
           "pattern": {
             "value": "/^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$/",
-            "message": "password must be at least 8 characters long and contain both letters and numbers"
+            "message": "A senha deve ter pelo menos 8 caracteres e conter letras e números"
           },
           "placeholder": "password"
         }
