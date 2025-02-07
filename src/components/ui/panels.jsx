@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import { IconTitle } from "../iconTitle";
-import { SVG } from "../svg";
+import { IconTitle } from "./iconTitle";
+import { Icon } from "./icon";
 
 /**
  * Panels Component
@@ -8,7 +8,7 @@ import { SVG } from "../svg";
  *
  * Props:
  * - panels (object): Object containing the component content
- *    - icon (string, optional): Type of SVG icon to display alongside the title.
+ *    - icon (string, optional): Type of Icon icon to display alongside the title.
  *    - title (string, optional): The main title of the panel.
  *    - places (array): An array of objects containing:
  *      - image (string): URL of the image to display.
@@ -35,7 +35,7 @@ export function Panels({ panels }) {
               loading="lazy"
             />
 
-            <SVG
+            <Icon
               type="cursor"
               className={`absolute -mt-12 h-20 w-20 fill-text stroke-green stroke-1 ${index % 2 === 0 ? "ml-20 rotate-90" : "ml-64"}`}
             />

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { IconTitle } from "../iconTitle";
+import { IconTitle } from "./iconTitle";
 
 /**
  * VisualGrid Component

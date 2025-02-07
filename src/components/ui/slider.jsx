@@ -2,8 +2,8 @@ import { useNavigate } from "react-router";
 import PropTypes from "prop-types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
-import { SVG } from "../svg";
-import { IconTitle } from "../iconTitle";
+import { Icon } from "./icon";
+import { IconTitle } from "./iconTitle";
 
 /**
  * Slider Component
@@ -11,7 +11,7 @@ import { IconTitle } from "../iconTitle";
  *
  * Props:
  * - slider (object):
- *  - icon (string, optional): Type of SVG icon to display alongside the title.
+ *  - icon (string, optional): Type of Icon icon to display alongside the title.
  *  - title (string, optional): The main title of the slider.
  *  - slides (array): An array of objects containing:
  *    - image (string, optional): URL of the image to display on the slide.
@@ -30,7 +30,7 @@ export function Slider({ slider }) {
 
       <section className="flex flex-row gap-5 items-center">
         {slider.icon && (
-          <SVG type={slider.icon} className="w-10 h-10 fill-text" />
+          <Icon type={slider.icon} className="w-10 h-10 fill-text" />
         )}
         {slider.title && (
           <h2 className="text-3xl font-bold text-center font-kanit-thin">

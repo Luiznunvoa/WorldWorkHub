@@ -1,11 +1,11 @@
-import { Panels } from "../../components/panels";
-import { Hero } from "../../components/hero";
-import { Highlight } from "../../components/highlight";
+import { Panels } from "./ui/panels";
+import { Hero } from "./ui/hero";
+import { Highlight } from "./ui/highlight";
 // import { VisualGrid } from "../../components/visualGrid";
-import { Slider } from "../../components/slider";
-import { TextGrid } from "../../components/textGrid";
-import { Spinner } from "../../components/spinner";
-import { useLocale } from "../../hooks/useLocale";
+import { Slider } from "./ui/slider";
+import { TextGrid } from "./ui/textGrid";
+import { Spinner } from "./ui/spinner";
+import { useLocale } from "../hooks/useLocale";
 
 export function Home() {
   const { t } = useLocale("home");

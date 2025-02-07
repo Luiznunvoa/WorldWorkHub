@@ -1,9 +1,9 @@
-import { DynamicForm } from "../../components/dynamicForm";
-import { Spinner } from "../../components/spinner";
-import { AlertMessage } from "../../components/alertMessage";
-import { useLocale } from "../../hooks/useLocale";
-import { useUsers } from "../../hooks/useUsers";
-import { stringToRegex } from "../../utils";
+import { DynamicForm } from "./ui/dynamicForm";
+import { Spinner } from "./ui/spinner";
+import { AlertMessage } from "./ui/alertMessage";
+import { useLocale } from "../hooks/useLocale";
+import { useUsers } from "../hooks/useUsers";
+import { stringToRegex } from "../utils";
 
 export function Register() {
   const { t } = useLocale("register");

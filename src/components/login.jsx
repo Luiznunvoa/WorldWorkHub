@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { DynamicForm } from "../../components/dynamicForm";
-import { stringToRegex } from "../../utils";
-import { useUsers } from "../../hooks/useUsers";
-import { useLocale } from "../../hooks/useLocale";
-import { Spinner } from "../../components/spinner";
+import { DynamicForm } from "./ui/dynamicForm";
+import { stringToRegex } from "../utils";
+import { useUsers } from "../hooks/useUsers";
+import { useLocale } from "../hooks/useLocale";
+import { Spinner } from "./ui/spinner";
 
 export function Login() {
   const navigate = useNavigate();

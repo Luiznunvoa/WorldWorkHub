@@ -1,10 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { RouterProvider } from 'react-router-dom'
-import { DefaultLayout } from '../layout';
-import { Home } from '../../pages/home';
-import { Login } from '../../pages/login';
-import { Register } from '../../pages/register';
-import { List } from '../../pages/list';
+import { DefaultLayout } from '../components/layouts';
+import { Home } from '../components/home';
+import { Login } from '../components/login';
+import { Register } from '../components/register';
+import { List } from '../components/list';
 
 export function BrowserRouter() {
   const router = createBrowserRouter([ 

@@ -2,21 +2,21 @@ import PropTypes from "prop-types";
 import svg_data from "../../assets/svg.json";
 
 /**
- * SVG Component
- * Renders an SVG icon based on the provided type and optional className.
- * The icon data is retrieved from a JSON file and rendered as an SVG element.
+ * Icon Component
+ * Renders an Icon icon based on the provided type and optional className.
+ * The icon data is retrieved from a JSON file and rendered as an Icon element.
  *
  * Props:
- * - className (string, optional): Custom class to style the SVG (default is "fill-text").
- * - type (string, required): The type of the SVG icon to render, which corresponds to a key in the svg_data JSON.
+ * - className (string, optional): Custom class to style the Icon (default is "fill-text").
+ * - type (string, required): The type of the Icon icon to render, which corresponds to a key in the svg_data JSON.
  *
  *   INFO: Available icons: "usa", "tap", "bar", "man", "suitcase", "graph", "smile", "heart", "bow", "target", "bolt", "signs", "paperpeople", "cursor", "calendar", "info", "support", "instagram", "github" "facebook", "linkedin"
  */
-export function SVG({ className = "fill-text", type }) {
+export function Icon({ className = "fill-text", type }) {
   const svgData = svg_data[type];
 
   if (!svgData) {
-    console.error(`SVG type "${type}" not found.`);
+    console.error(`Icon type "${type}" not found.`);
     return null;
   }
 
@@ -29,7 +29,7 @@ export function SVG({ className = "fill-text", type }) {
   );
 }
 
-SVG.propTypes = {
+Icon.propTypes = {
   className: PropTypes.string,
   type: PropTypes.string.isRequired,
 };

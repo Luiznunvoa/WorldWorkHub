@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import { IconTitle } from "../iconTitle";
-import { SVG } from "../svg";
+import { IconTitle } from "./iconTitle";
+import { Icon } from "./icon";
 
 /**
  * TextGrid Component
@@ -8,10 +8,10 @@ import { SVG } from "../svg";
  * The elements are displayed in a flexible grid layout with hover effects.
  *
  * Props:
- * - icon (string, optional): Type of SVG icon to display alongside the title.
+ * - icon (string, optional): Type of Icon icon to display alongside the title.
  * - title (string, optional): The main title of the grid.
  * - elements (array): An array of objects containing:
- *   - icon (string): Type of SVG icon to display for each element.
+ *   - icon (string): Type of Icon icon to display for each element.
  *   - title (string): Title of the element.
  *   - description (string): Description of the element.
  */
@@ -29,7 +29,7 @@ export function TextGrid({ textGrid }) {
             className="flex flex-row gap-5 p-10 bg-white rounded-2xl border-4 border-solid shadow-xl transition-all cursor-pointer hover:shadow-2xl hover:scale-110 border-text"
           >
             <div className="flex flex-col h-full">
-              <SVG type={element.icon} className="w-20 h-24 fill-green" />
+              <Icon type={element.icon} className="w-20 h-24 fill-green" />
             </div>
 
             <div className="flex flex-col gap-5 justify-center h-full max-w-80">
