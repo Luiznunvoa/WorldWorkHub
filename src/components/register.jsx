@@ -3,13 +3,15 @@ import { Spinner } from "./ui/spinner";
 import { AlertMessage } from "./ui/alertMessage";
 import { useLocale } from "../hooks/useLocale";
 import { useUsers } from "../hooks/useUsers";
+import { useRequestStore } from "../stores/requestStore";
 import { stringToRegex } from "../utils";
 
 export function Register() {
   const { t } = useLocale("register");
-  const { createUser, state } = useUsers();
+  const state = useRequestStore.getState().state;
+  const { createUser } = useUsers();
 
-  if (!t || state == "loading") {
+  if (!t) {
     return <Spinner />;
   }
 
@@ -34,7 +36,9 @@ export function Register() {
     <main className="flex flex-col items-center p-6 w-full">
       <div className="w-96">
         {/* Form to create a new account */}
-        <p className="w-100 h-10 text-center text-red-500">{ state == "error" && "Unexpected Error in Registration" }</p> 
+        <p className="h-10 text-center text-red-500 w-100">
+          {state == "error" && "Unexpected Error in Registration"}
+        </p>
         <DynamicForm
           onSubmit={(data) => createUser(data)}
           buttonlabels={t.buttonlabels}

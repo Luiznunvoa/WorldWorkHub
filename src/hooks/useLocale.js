@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { usePreferencesStore } from "../stores/preferencesStore";
+import { useRequestStore, STATE } from "../stores/requestStore";
 
 // Global cache to store fetched page contents
 const localeCache = new Map();
@@ -12,12 +13,14 @@ const localeCache = new Map();
  */
 export function useLocale(page) {
   const { language } = usePreferencesStore(); // Get the current language from context
+  const { setState } = useRequestStore();
   const cacheKey = `${language}/${page}`; // Creates a cache key based on the context
   const [t, setTranslations] = useState( // Tries to get the translation in cache
     () => localeCache.get(cacheKey) || null,
   );
 
   useEffect(() => {
+    setState(STATE.IDLE)
     // If data is already in cache, update state if needed and skip fetching
     if (localeCache.has(cacheKey)) {
       const cachedData = localeCache.get(cacheKey);
@@ -49,7 +52,6 @@ export function useLocale(page) {
       });
     // console.log("cache miss")
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [language, cacheKey]); // UseEffect triggers every time the page/cacheKey or the language context change
 
   const clearCache = () => {

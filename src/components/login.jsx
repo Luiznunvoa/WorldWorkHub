@@ -3,14 +3,16 @@ import { DynamicForm } from "./ui/dynamicForm";
 import { stringToRegex } from "../utils";
 import { useUsers } from "../hooks/useUsers";
 import { useLocale } from "../hooks/useLocale";
+import { useRequestStore } from "../stores/requestStore";
 import { Spinner } from "./ui/spinner";
 
 export function Login() {
   const navigate = useNavigate();
   const { t } = useLocale("login");
-  const { validateUser, state } = useUsers();
+  const state = useRequestStore.getState().state
+  const { validateUser } = useUsers();
 
-  if (!t || state == "loading") {
+  if (!t) {
     return <Spinner />;
   }
 

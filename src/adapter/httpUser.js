@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useUserStore } from "../stores/userStore";
+import { useRequestStore, STATE } from "../stores/requestStore";
 
 export class AxiosHttpAdapter {
   constructor() {
@@ -59,6 +59,9 @@ export class AxiosHttpAdapter {
    * @returns {Promise<Object>} - API response
    */
   async requestPrivateBackend({ method, url, data = null, headers = {} }) {
+    const { setState } = useRequestStore.getState();
+    setState(STATE.LOADING);
+
     try {
       const response = await this.privateBackendInstance.request({
         method,
@@ -69,8 +72,10 @@ export class AxiosHttpAdapter {
         },
       });
 
+      setState(STATE.SUCCESS);
       return response.data;
     } catch (error) {
+      setState(STATE.ERROR);
       console.error("Request error:", error);
       throw error.response?.data || error.message;
     }

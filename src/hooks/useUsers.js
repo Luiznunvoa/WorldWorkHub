@@ -1,15 +1,8 @@
-import { useState } from "react";
-import { z } from "zod";
+import { z, ZodError } from "zod";
 import { AxiosHttpAdapter } from "../adapter/httpUser";
 import { UsersService } from "../services/usersService";
 import { useUserStore } from "../stores/userStore";
-
-const STATE = {
-  IDLE: "idle",
-  LOADING: "loading",
-  SUCCESS: "success",
-  ERROR: "error",
-};
+import { useRequestStore } from "../stores/requestStore";
 
 const userSchema = z
   .object({
@@ -58,47 +51,51 @@ const loginSchema = z.object({
 });
 
 export function useUsers() {
-  const [state, setState] = useState(STATE.IDLE);
   const usersService = new UsersService(new AxiosHttpAdapter());
+  const { state } = useRequestStore();
 
   /**
-   * Make a requisition for the creation of a new user
-   * @param {Object} newUser - User data
+   * Makes a request to create a new user.
+   * @param {Object} data - User data.
    * @returns {Promise<void>}
    */
   const createUser = async (data) => {
-    setState(STATE.LOADING);
     try {
       const newUser = userSchema.parse(data);
       await usersService.create(newUser);
-      setState(STATE.SUCCESS);
     } catch (error) {
-      console.error("Registration error:", error);
-      setState(STATE.ERROR);
+      if (error instanceof ZodError) {
+        alert("Unexpected Validation Error!");
+        console.error("Validation errors (Zod):", error.errors);
+      } else {
+        console.error("User creation request error:", error);
+      }
     }
   };
 
   /**
-   * Make a requisition for the user token
-   * @param {Object} user - Email and password
+   * Makes a request to obtain the user token (login).
+   * @param {Object} data - Email and password.
    * @returns {Promise<void>}
    */
   const validateUser = async (data) => {
-    setState(STATE.LOADING);
     try {
       const credentials = loginSchema.parse(data);
       const token = await usersService.login(credentials);
       useUserStore.getState().setAccessToken(token);
-      setState(STATE.SUCCESS);
     } catch (error) {
-      console.error("Login error: ", error);
-      setState(STATE.ERROR);
+      if (error instanceof ZodError) {
+        alert("Unexpected Validation Error!");
+        console.error("Validation errors (Zod):", error.errors);
+      } else {
+        console.error("Login request error:", error);
+        console.log(state);
+      }
     }
   };
 
   return {
     createUser,
     validateUser,
-    state,
   };
 }
