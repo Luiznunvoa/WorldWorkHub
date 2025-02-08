@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm, FormProvider } from "react-hook-form";
 import PropTypes from "prop-types";
-import { usePreferencesStore } from "../../stores/preferencesStore";
 
 /**
  * DynamicForm Component
@@ -17,7 +16,6 @@ import { usePreferencesStore } from "../../stores/preferencesStore";
 export function DynamicForm({ onSubmit, buttonlabels, dialogs, steps }) {
   const navigate = useNavigate();
   const [step, setStep] = useState(0); // Current step state
-  const { language } = usePreferencesStore(); // Retrieve the current language from the app context.
   const methods = useForm(); // Form methods from react-hook-form
 
   // Proceed to the next step if current inputs are valid
@@ -37,12 +35,6 @@ export function DynamicForm({ onSubmit, buttonlabels, dialogs, steps }) {
       methods.resetField(input.name);
     });
   }, [step, methods, steps]);
-
-  // UseEffect to reset the form if the language context changes
-  useEffect(() => {
-    setStep(0);
-    methods.reset();
-  }, [language, methods]);
 
   // Error message component for form validation errors
   function ErrorMessage({ error }) {

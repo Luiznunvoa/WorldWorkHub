@@ -2,7 +2,6 @@ import { z, ZodError } from "zod";
 import { AxiosHttpAdapter } from "../adapter/httpUser";
 import { UsersService } from "../services/usersService";
 import { useUserStore } from "../stores/userStore";
-import { useRequestStore } from "../stores/requestStore";
 
 const userSchema = z
   .object({
@@ -52,7 +51,6 @@ const loginSchema = z.object({
 
 export function useUsers() {
   const usersService = new UsersService(new AxiosHttpAdapter());
-  const { state } = useRequestStore();
 
   /**
    * Makes a request to create a new user.
@@ -89,7 +87,6 @@ export function useUsers() {
         console.error("Validation errors (Zod):", error.errors);
       } else {
         console.error("Login request error:", error);
-        console.log(state);
       }
     }
   };

@@ -1,22 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { DynamicForm } from "./ui/dynamicForm";
-import { stringToRegex } from "../utils";
 import { useUsers } from "../hooks/useUsers";
-import { useLocale } from "../hooks/useLocale";
 import { useRequestStore } from "../stores/requestStore";
-import { Spinner } from "./ui/spinner";
 
 export function Login() {
   const navigate = useNavigate();
-  const { t } = useLocale("login");
-  const state = useRequestStore.getState().state
+  const requestState = useRequestStore.getState().state;
   const { validateUser } = useUsers();
 
-  if (!t) {
-    return <Spinner />;
-  }
-
-  if (state == "success") {
+  if (requestState == "success") {
     navigate("/");
   }
 
@@ -24,34 +16,56 @@ export function Login() {
     <main className="flex flex-col gap-10 items-center">
       <div className="m-10 w-96">
         <p className="h-10 text-center text-red-500 w-100">
-          {state == "error" && "Invalid email or password"}
+          {requestState == "error" && "Invalid email or password"}
         </p>
         <DynamicForm
           onSubmit={(data) => validateUser(data)}
-          buttonlabels={t.buttonlabels}
-          dialogs={t.dialogs}
+          buttonlabels={{
+            next: "next",
+            previous: "previous",
+            submit: "submit",
+          }}
+          dialogs={[
+            {
+              text: "Don't have and accout yet?",
+              label: "Signup!",
+              path: "/register",
+            },
+            {
+              text: "Did you forgot your password?",
+              label: "Try this!",
+              path: "/",
+            },
+          ]}
           // Process each step in the form
-          steps={t.steps.map(({ title, inputs }) => ({
-            title,
-            inputs: inputs.map(
-              // Process each input field in the step
-              ({
-                // input properties
-                name, type, required, placeholder, pattern,
-              }) => ({
-                // Preserve basic input properties
-                name, type, required, placeholder,
-
-                // Conditionally add regex pattern validation if defined in locales
-                ...(pattern && {
+          steps={[
+            {
+              title: "Login Now!",
+              inputs: [
+                {
+                  name: "email",
+                  type: "email",
+                  required: "Email is required",
                   pattern: {
-                    value: stringToRegex(pattern.value), // Convert string pattern to RegExp
-                    message: pattern.message,
+                    value: /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/,
+                    message: "please enter a valid email address",
                   },
-                }),
-              }),
-            ),
-          }))}
+                  placeholder: "Your email",
+                },
+                {
+                  name: "password",
+                  type: "password",
+                  required: "Password is required",
+                  pattern: {
+                    value: /^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$/,
+                    message:
+                      "password must be at least 8 characters long and contain both letters and numbers",
+                  },
+                  placeholder: "password",
+                },
+              ],
+            },
+          ]}
         />
       </div>
     </main>
