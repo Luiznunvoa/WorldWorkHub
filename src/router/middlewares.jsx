@@ -1,26 +1,17 @@
+import { Navigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../stores/userStore";
 
-/**
- * If the user is not logged in return to the login page 
- *
- * @example
- * <VerifyUserAuthentication>
- *     <YourComponent />
- * </VerifyUserAuthentication>
- */
-export function VerifyUserAuthentication({ children }) {
-  const token = useUserStore.getState().accessToken;
-  const navigate = useNavigate();
+export const VerifyUserAuthentication = ({ children }) => {
+  const authenticated = useUserStore.getState().authenticated;
 
-  if (token) {
-    navigate("/")
+  if (authenticated) {
+    return <Navigate to="/" replace />;
   }
 
-  return <>{children}</>;
-}
+  return children;
+};
 
 VerifyUserAuthentication.propTypes = {
-  children: PropTypes.node.isRequired 
-}
+  children: PropTypes.node.isRequired,
+};

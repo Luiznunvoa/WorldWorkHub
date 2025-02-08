@@ -5,6 +5,7 @@ import { Home } from '../components/home';
 import { Login } from '../components/login';
 import { Register } from '../components/register';
 import { List } from '../components/list';
+import { VerifyUserAuthentication } from './middlewares';
 
 export function BrowserRouter() {
   const router = createBrowserRouter([ 
@@ -18,7 +19,7 @@ export function BrowserRouter() {
       ]
     }, 
     { // Routes only accessible to non-authenticaded users
-      element: /* <VerifyUserAuthentication> */ <DefaultLayout /> /* </VerifyUserAuthentication> */, 
+      element: <VerifyUserAuthentication><DefaultLayout /></VerifyUserAuthentication>, 
       children: [
         {
           path: "/login",

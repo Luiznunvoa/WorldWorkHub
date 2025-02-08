@@ -3,6 +3,7 @@ import { persist } from 'zustand/middleware';
 
 const initialState = { 
   accessToken: null,
+  authenticated: false,
 };
 
 export const useUserStore = create(
@@ -12,12 +13,13 @@ export const useUserStore = create(
       
       reset: () => set(initialState),
       
-      setAccessToken: (token) => set({ accessToken: token }),
+      setAccessToken: (token) => set({ accessToken: token, authenticated: true }),
     }),
     {
       name: "auth",
       partialize: (state) => ({
-        accessToken: state.accessToken
+        accessToken: state.accessToken,
+        authenticated: state.authenticated
       }),
     }
   )
