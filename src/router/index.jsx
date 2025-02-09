@@ -5,7 +5,7 @@ import { Home } from '../components/home';
 import { Login } from '../components/login';
 import { Register } from '../components/register';
 import { List } from '../components/list';
-import { VerifyUserAuthentication } from './middlewares';
+import { VerifyUserAuthentication, ValidateSelectedProfile } from './middlewares';
 
 export function BrowserRouter() {
   const router = createBrowserRouter([ 
@@ -32,7 +32,7 @@ export function BrowserRouter() {
       ]
     },
     { // Routes only accessible to authenticaded users
-      element: /* <ValidateSelectedProfile> */ <DefaultLayout /> /* </ValidateSelectedProfile> */, 
+      element: <ValidateSelectedProfile><DefaultLayout /></ValidateSelectedProfile>, 
       children: [
         {
           path: "/list",

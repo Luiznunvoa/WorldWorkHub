@@ -32,6 +32,23 @@ export class UsersService {
       url: "/login",
       data: credentials,
     });
+    return response;
+  }
+
+  /**
+   * Gets the data of a user by it's id
+   * @param {string} accessToken - A valid accessToken
+   * @param {string} id - User id
+   * @returns {Promise<Object>} - User data
+   */
+  async getById(accessToken, id) {
+    const response = await this.http.requestPrivateBackend({
+      method: "post",
+      url: `/user/${id}`,
+      headers: {
+        authorization: accessToken,
+      },
+    });
     return response.token;
   }
 }

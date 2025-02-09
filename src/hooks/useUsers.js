@@ -51,8 +51,8 @@ const loginSchema = z.object({
 });
 
 export function useUsers() {
+  useRequestStore(); // to persist the request state
   const usersService = new UsersService(new AxiosHttpAdapter());
-  const { state } = useRequestStore();
 
   /**
    * Makes a request to create a new user.
@@ -68,7 +68,7 @@ export function useUsers() {
         alert("Unexpected Validation Error!");
         console.error("Validation errors (Zod):", error.errors);
       } else {
-        console.error("User creation request error:", error);
+        console.error("User creation request error:", error.message);
       }
     }
   };
@@ -81,14 +81,15 @@ export function useUsers() {
   const validateUser = async (data) => {
     try {
       const credentials = loginSchema.parse(data);
-      const token = await usersService.login(credentials);
-      useUserStore.getState().setAccessToken(token);
+      const user = await usersService.login(credentials);
+      console.log(user);
+      useUserStore.getState().setUser(user);
     } catch (error) {
       if (error instanceof ZodError) {
         alert("Unexpected Validation Error!");
-        console.error("Validation errors (Zod):", error.errors, state);
+        console.error("Validation errors (Zod):", error.errors);
       } else {
-        console.error("Login request error:", error);
+        console.error("Login request error:", error.message);
       }
     }
   };

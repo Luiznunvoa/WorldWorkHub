@@ -15,3 +15,17 @@ export const VerifyUserAuthentication = ({ children }) => {
 VerifyUserAuthentication.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+export const ValidateSelectedProfile = ({ children }) => {
+  const authenticated = useUserStore.getState().authenticated;
+
+  if (!authenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
+};
+
+ValidateSelectedProfile.propTypes = {
+  children: PropTypes.node.isRequired,
+};

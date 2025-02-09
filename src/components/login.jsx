@@ -9,7 +9,7 @@ export function Login() {
   const { validateUser } = useUsers();
 
   if (requestState == "success") {
-    navigate("/");
+    navigate("/list");
   }
 
   return (
