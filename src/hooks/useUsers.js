@@ -2,6 +2,7 @@ import { z, ZodError } from "zod";
 import { AxiosHttpAdapter } from "../adapter/httpUser";
 import { UsersService } from "../services/usersService";
 import { useUserStore } from "../stores/userStore";
+import { useRequestStore } from "../stores/requestStore";
 
 const userSchema = z
   .object({
@@ -51,6 +52,7 @@ const loginSchema = z.object({
 
 export function useUsers() {
   const usersService = new UsersService(new AxiosHttpAdapter());
+  const { state } = useRequestStore();
 
   /**
    * Makes a request to create a new user.
@@ -84,7 +86,7 @@ export function useUsers() {
     } catch (error) {
       if (error instanceof ZodError) {
         alert("Unexpected Validation Error!");
-        console.error("Validation errors (Zod):", error.errors);
+        console.error("Validation errors (Zod):", error.errors, state);
       } else {
         console.error("Login request error:", error);
       }

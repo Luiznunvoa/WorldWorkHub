@@ -47,7 +47,7 @@ export function Login() {
                   type: "email",
                   required: "Email is required",
                   pattern: {
-                    value: /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/,
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                     message: "please enter a valid email address",
                   },
                   placeholder: "Your email",
@@ -57,7 +57,7 @@ export function Login() {
                   type: "password",
                   required: "Password is required",
                   pattern: {
-                    value: /^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$/,
+                    value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
                     message:
                       "password must be at least 8 characters long and contain both letters and numbers",
                   },

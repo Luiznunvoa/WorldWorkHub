@@ -40,8 +40,8 @@ export function Register() {
           }}
           dialogs={[
             {
-              label: "Login!",
               text: "already have an account?",
+              label: "Login!",
               path: "/login",
             },
           ]}
@@ -83,7 +83,7 @@ export function Register() {
                   type: "email",
                   required: "email is required",
                   pattern: {
-                    value: /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/,
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                     message: "please enter a valid email address",
                   },
                   placeholder: "email",
@@ -93,7 +93,7 @@ export function Register() {
                   type: "password",
                   required: "password is required",
                   pattern: {
-                    value: /^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$/,
+                    value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
                     message:
                       "password must be at least 8 characters long and contain both letters and numbers",
                   },
@@ -103,7 +103,10 @@ export function Register() {
                   name: "confirmpassword",
                   type: "password",
                   required: "confirm your password",
-                  validate: "password is not correct",
+                  validate: (value, methods) => {
+                    value === methods.getValues("password") ||
+                      "password is not correct";
+                  },
                   placeholder: "confirm password",
                 },
               ],
@@ -202,7 +205,7 @@ export function Register() {
                   type: "text",
                   required: "zip code is required",
                   pattern: {
-                    value: /^\\d{5}(-\\d{4})?$/,
+                    value: /^\d{5}(-\d{4})?$/,
                     message: "please enter a valid zip code",
                   },
                   placeholder: "zip code",

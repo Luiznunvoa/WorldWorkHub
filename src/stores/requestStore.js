@@ -7,7 +7,6 @@ export const STATE = {
   ERROR: "error",
 };
 
-
 export const useRequestStore = create(set => ({
   state: STATE.IDLE, 
   setState: (newState) => set({ state: newState })

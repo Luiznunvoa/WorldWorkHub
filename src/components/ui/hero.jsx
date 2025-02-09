@@ -43,6 +43,7 @@ export function Hero({ hero }) {
             src={hero.image}
             alt={hero.title ? hero.title : hero.image}
             className="object-cover w-full h-1/2 lg:block lg:h-full lg:w-[48rem]"
+            loading="eager"
           />
         )}
       </div>
