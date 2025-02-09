@@ -83,7 +83,7 @@ export function useUsers() {
       const credentials = loginSchema.parse(data);
       const user = await usersService.login(credentials);
       console.log(user);
-      useUserStore.getState().setUser(user);
+      useUserStore.getState().setAccessToken(user);
     } catch (error) {
       if (error instanceof ZodError) {
         alert("Unexpected Validation Error!");

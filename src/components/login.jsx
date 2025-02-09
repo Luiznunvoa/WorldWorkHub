@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { DynamicForm } from "./ui/dynamicForm";
 import { useUsers } from "../hooks/useUsers";
@@ -8,9 +9,11 @@ export function Login() {
   const requestState = useRequestStore.getState().state;
   const { validateUser } = useUsers();
 
-  if (requestState == "success") {
-    navigate("/list");
-  }
+  useEffect(() => {
+    if (requestState === "success") {
+      navigate("/list");
+    }
+  }, [requestState, navigate]);
 
   return (
     <main className="flex flex-col gap-10 items-center">
