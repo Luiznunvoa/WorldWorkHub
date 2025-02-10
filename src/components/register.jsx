@@ -1,4 +1,4 @@
-import { DynamicForm, StepIndicator } from "./ui/dynamicForm";
+import { DynamicForm } from "./ui/dynamicForm";
 import { AlertMessage } from "./ui/alertMessage";
 import { useUsers } from "../hooks/useUsers";
 import { useRequestStore } from "../stores/requestStore";
@@ -295,9 +295,7 @@ export function Register() {
               ],
             },
           ]}
-        >
-          <StepIndicator />
-        </DynamicForm>
+        />
       </div>
     </main>
   );

@@ -1,45 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm, FormProvider } from "react-hook-form";
 import PropTypes from "prop-types";
-
-
-export function StepIndicator({ steps, currentStep }) {
-  if (steps.length <= 1) return null;
-
-  return (
-    <ul className="flex flex-row justify-between mb-6">
-      {steps.map((_, index) => (
-        <li
-          key={index}
-          className="flex relative flex-row items-center text-sm font-semibold text-center text-green-600"
-        >
-          <div
-            className={`mx-auto h-8 w-8 rounded-sm flex items-center justify-center text-base transition-all duration-1000 
-              ${index <= currentStep ? "bg-green text-text_secondary" : "bg-white text-outline"}`}
-          >
-            {index + 1}
-          </div>
-          {index + 1 < steps.length && (
-            <div
-              className={`h-1 w-36 transition-all duration-1000 ${
-                index < currentStep ? "bg-green" : "bg-white"
-              }`}
-            />
-          )}
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-StepIndicator.propTypes = {
-  steps: PropTypes.array.isRequired,
-  currentStep: PropTypes.number.isRequired,
-};
-
-// Para facilitar a identificação no DynamicForm (quando usado via children)
-StepIndicator.displayName = "StepIndicator";
 
 /**
  * DynamicForm Component
@@ -51,13 +13,12 @@ StepIndicator.displayName = "StepIndicator";
  * - option (object): Additional option to render a login prompt.
  * - steps (array of objects): Array of step configurations containing title and inputs.
  */
-
-export function DynamicForm({ onSubmit, buttonlabels, dialogs, steps, children }) {
+export function DynamicForm({ onSubmit, buttonlabels, dialogs, steps }) {
   const navigate = useNavigate();
-  const [step, setStep] = useState(0); // Estado da etapa atual
-  const methods = useForm(); // Métodos do react-hook-form
+  const [step, setStep] = useState(0); // Current step state
+  const methods = useForm(); // Form methods from react-hook-form
 
-  // Função para avançar para a próxima etapa (se os inputs forem válidos)
+  // Proceed to the next step if current inputs are valid
   const nextStep = async () => {
     const isValid = await methods.trigger();
     if (isValid) {
@@ -65,17 +26,17 @@ export function DynamicForm({ onSubmit, buttonlabels, dialogs, steps, children }
     }
   };
 
-  // Função para retornar para a etapa anterior
+  // Return to the previous step
   const previousStep = () => setStep((prev) => (prev > 0 ? prev - 1 : prev));
 
-  // useEffect para resetar os campos do formulário ao mudar de etapa
+  // UsesEffect to reset form fields when the step changes
   useEffect(() => {
     steps[step].inputs.forEach((input) => {
       methods.resetField(input.name);
     });
   }, [step, methods, steps]);
 
-  // Componente para exibir mensagens de erro de validação
+  // Error message component for form validation errors
   function ErrorMessage({ error }) {
     return error ? <p className="text-sm text-red-500">{error}</p> : null;
   }
@@ -86,33 +47,45 @@ export function DynamicForm({ onSubmit, buttonlabels, dialogs, steps, children }
 
   return (
     <div className="flex flex-col justify-center items-center w-full h-full">
-      {/* Renderiza os children passados, injetando as props necessárias em <StepIndicator /> */}
-      {React.Children.map(children, (child) => {
-        // Verifica se o componente filho é o StepIndicator (usando displayName ou comparação direta)
-        if (
-          child &&
-          child.type &&
-          (child.type.displayName === "StepIndicator" || child.type === StepIndicator)
-        ) {
-          return React.cloneElement(child, { steps, currentStep: step });
-        }
-        return child;
-      })}
+      {/* Step indicators */}
+      {steps.length > 1 && (
+        <ul className="flex flex-row justify-between mb-6">
+          {steps.map((_, index) => (
+            <li
+              key={index}
+              className="flex relative flex-row items-center text-sm font-semibold text-center text-green-600"
+            >
+              <div
+                className={`mx-auto h-8 w-8 rounded-sm flex items-center justify-center text-base transition-all duration-1000 
+                  ${index <= step ? "bg-green text-text_secondary" : "bg-white text-outline"}`}
+              >
+                {index + 1}
+              </div>
+              {index + 1 < steps.length && (
+                <div
+                  className={`h-1 w-36 transition-all duration-1000 ${index < step ? "bg-green" : "bg-white"}`}
+                />
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
 
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit(onSubmit)}
           className="flex flex-col items-center p-6 w-full bg-white rounded-lg shadow-2xl"
         >
-          {/* Título da etapa */}
+          {/* Step title */}
           <h2 className="m-5 text-2xl italic font-bold text-center">
             {steps[step].title}
           </h2>
 
-          {/* Inputs da etapa */}
+          {/* Step inputs */}
           {steps[step].inputs.map((input, index) => (
             <div key={index} className="mb-4 w-full">
               {input.type === "select" ? (
+                // In case the input is a dropdown type
                 <select
                   {...methods.register(input.name, {
                     required: input.required,
@@ -130,6 +103,7 @@ export function DynamicForm({ onSubmit, buttonlabels, dialogs, steps, children }
                   ))}
                 </select>
               ) : (
+                // Regular input
                 <input
                   {...methods.register(input.name, {
                     required: input.required,
@@ -144,14 +118,14 @@ export function DynamicForm({ onSubmit, buttonlabels, dialogs, steps, children }
                   className="p-2 w-full rounded border border-gray-300 placeholder:font-Roboto"
                 />
               )}
-              {/* Mensagem de erro */}
+              {/* Error message */}
               <ErrorMessage
                 error={methods.formState.errors[input.name]?.message}
               />
             </div>
           ))}
 
-          {/* Botões de navegação */}
+          {/* Navigation buttons */}
           <div className="flex flex-row gap-5 justify-center items-center my-2">
             {step > 0 && (
               <button
@@ -181,7 +155,7 @@ export function DynamicForm({ onSubmit, buttonlabels, dialogs, steps, children }
             )}
           </div>
 
-          {/* Diálogos/opções adicionais */}
+          {/* Optional link */}
           {dialogs.map((dialog, index) => (
             <p key={index} className="flex gap-1 text-outline">
               {dialog.text}
@@ -198,6 +172,7 @@ export function DynamicForm({ onSubmit, buttonlabels, dialogs, steps, children }
     </div>
   );
 }
+
 DynamicForm.propTypes = {
   // Function to execute after completing the last step
   onSubmit: PropTypes.func.isRequired,
@@ -217,8 +192,6 @@ DynamicForm.propTypes = {
       path: PropTypes.string.isRequired,
     }),
   ),
-
-  children: PropTypes.node,
 
   // Configuration for each step of the form
   steps: PropTypes.arrayOf(
@@ -267,4 +240,4 @@ DynamicForm.propTypes = {
       ).isRequired,
     }).isRequired,
   ).isRequired,
-};
+};;
