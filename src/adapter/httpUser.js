@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useUserStore } from "../stores/userStore";
+import { useSessionStore } from "../stores/sessionStore";
 
 export class AxiosHttpAdapter {
   constructor() {
@@ -14,7 +14,7 @@ export class AxiosHttpAdapter {
     });
 
     // Sets up interceptors for authentication and global error handling
-    // this._setupInterceptors();
+    this._setupInterceptors();
   }
 
   /**
@@ -25,9 +25,10 @@ export class AxiosHttpAdapter {
     // Request interceptor to add the JWT token from the store
     this.privateBackendInstance.interceptors.request.use(
       (config) => {
-        const token = useUserStore.getState().accessToken; // Get token from the store
+        const token = useSessionStore.getState().accessToken;
+        console.log(token);
         if (token) {
-          config.headers.Authorization = `Bearer ${token}`;
+          config.headers.authorization = `${token}`;
         }
         return config;
       },
@@ -40,7 +41,7 @@ export class AxiosHttpAdapter {
       (error) => {
         // If the status is 401 (unauthorized), clear the token and redirect to login
         if (error.response?.status === 401) {
-          useUserStore.getState().reset(); // Clear token from the store
+          useSessionStore.getState().reset(); // Clear token from the store
           window.location.href = "/login"; // Redirect to login page
         }
         return Promise.reject(error);

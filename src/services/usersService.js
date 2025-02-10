@@ -27,12 +27,11 @@ export class UsersService {
    * @returns {Promise<Object>} - User data with token
    */
   async login(credentials) {
-    const response = await this.http.requestPrivateBackend({
+    return await this.http.requestPrivateBackend({
       method: "post",
       url: "/login",
       data: credentials,
     });
-    return response;
   }
 
   /**
@@ -41,13 +40,10 @@ export class UsersService {
    * @param {string} id - User id
    * @returns {Promise<Object>} - User data
    */
-  async logout(accessToken) {
+  async logout() {
     await this.http.requestPrivateBackend({
       method: "post",
-      url: `/logout`,
-      headers: {
-        authorization: accessToken,
-      },
+      url: `/logout`, 
     });
   }
 
@@ -57,14 +53,10 @@ export class UsersService {
    * @param {string} id - User id
    * @returns {Promise<Object>} - User data
    */
-  async getById(accessToken, id) {
-    const response = await this.http.requestPrivateBackend({
-      method: "post",
-      url: `/user/${id}`,
-      headers: {
-        authorization: accessToken,
-      },
+  async getCurrent() {
+    return await this.http.requestPrivateBackend({
+      method: "get",
+      url: `/current-user`,
     });
-    return response.token;
   }
 }

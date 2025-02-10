@@ -1,8 +1,9 @@
 import { z, ZodError } from "zod";
 import { AxiosHttpAdapter } from "../adapter/httpUser";
 import { UsersService } from "../services/usersService";
-import { useUserStore } from "../stores/userStore";
+import { useSessionStore } from "../stores/sessionStore";
 import { useRequestStore, STATE } from "../stores/requestStore";
+import { useUserStore } from "../stores/userStore";
 
 const userSchema = z
   .object({
@@ -51,7 +52,7 @@ const loginSchema = z.object({
 });
 
 export function useUsers() {
-  const { setState } = useRequestStore(); 
+  const { setState } = useRequestStore();
   const usersService = new UsersService(new AxiosHttpAdapter());
 
   /**
@@ -86,12 +87,12 @@ export function useUsers() {
     try {
       const credentials = loginSchema.parse(data);
       const response = await usersService.login(credentials);
-      console.log(response.user);
 
-      useUserStore.getState().setState({
+      useSessionStore.getState().setState({
         accessToken: response.access_token,
-        user: response.user,
       });
+
+      useUserStore.getState().setState({ user: response.user });
 
       setState(STATE.SUCCESS);
     } catch (error) {
@@ -116,20 +117,45 @@ export function useUsers() {
   const endSession = async () => {
     setState(STATE.LOADING);
     try {
-      const token = useUserStore.getState().accessToken;
+      const token = useSessionStore.getState().accessToken;
       if (!token) {
         setState(STATE.ERROR);
-        throw new Error("Access token não encontrado.");
+        throw new Error("Missing access token");
       }
-      await usersService.logout(token);
+      await usersService.logout();
 
+      useSessionStore.getState().reset();
       useUserStore.getState().reset();
+
       setState(STATE.SUCCESS);
     } catch (error) {
-      console.error("Erro na requisição de logout:", error.message);
+      console.error("Error in logout requisition:", error.message);
       setState(STATE.ERROR);
     }
   };
+
+  /**
+   * Makes a request to obtain the user token (login).
+   * @param {Object} data - Email and password.
+   * @returns {Promise<void>}
+   */
+  // const getUser = async () => {
+  //   setState(STATE.LOADING);
+  //   try {
+  //     const token = useSessionStore.getState().accessToken;
+  //     if (!token) {
+  //       setState(STATE.ERROR);
+  //       throw new Error("Missing access token.");
+  //     }
+  //     const user = await usersService.getCurrent();
+  //     useUserStore.getState().setState({ user: user});
+  //
+  //     setState(STATE.SUCCESS);
+  //   } catch (error) {
+  //     console.error("Erro na requisição de logout:", error.message);
+  //     setState(STATE.ERROR);
+  //   }
+  // };
 
   return {
     createUser,

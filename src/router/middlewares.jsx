@@ -1,9 +1,9 @@
 import { Navigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import { useUserStore } from "../stores/userStore";
+import { useSessionStore } from "../stores/sessionStore";
 
 export const VerifyUserAuthentication = ({ children }) => {
-  const authenticated = useUserStore.getState().authenticated;
+  const authenticated = useSessionStore.getState().authenticated;
 
   if (authenticated) {
     return <Navigate to="/list" replace />;
@@ -17,7 +17,7 @@ VerifyUserAuthentication.propTypes = {
 };
 
 export const ValidateSelectedProfile = ({ children }) => {
-  const authenticated = useUserStore.getState().authenticated;
+  const authenticated = useSessionStore.getState().authenticated;
 
   if (!authenticated) {
     return <Navigate to="/login" replace />;
