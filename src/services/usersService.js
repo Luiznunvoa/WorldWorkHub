@@ -41,6 +41,22 @@ export class UsersService {
    * @param {string} id - User id
    * @returns {Promise<Object>} - User data
    */
+  async logout(accessToken) {
+    await this.http.requestPrivateBackend({
+      method: "post",
+      url: `/logout`,
+      headers: {
+        authorization: accessToken,
+      },
+    });
+  }
+
+  /**
+   * Gets the data of a user by it's id
+   * @param {string} accessToken - A valid accessToken
+   * @param {string} id - User id
+   * @returns {Promise<Object>} - User data
+   */
   async getById(accessToken, id) {
     const response = await this.http.requestPrivateBackend({
       method: "post",

@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useRequestStore, STATE } from "../stores/requestStore";
 import { useUserStore } from "../stores/userStore";
 
 export class AxiosHttpAdapter {
@@ -32,7 +31,7 @@ export class AxiosHttpAdapter {
         }
         return config;
       },
-      (error) => Promise.reject(error)
+      (error) => Promise.reject(error),
     );
 
     // Response interceptor for global error handling
@@ -45,10 +44,9 @@ export class AxiosHttpAdapter {
           window.location.href = "/login"; // Redirect to login page
         }
         return Promise.reject(error);
-      }
+      },
     );
   }
-
 
   /**
    * Generic method for authenticated requests
@@ -60,9 +58,6 @@ export class AxiosHttpAdapter {
    * @returns {Promise<Object>} - API response
    */
   async requestPrivateBackend({ method, url, data = null, headers = {} }) {
-    const { setState } = useRequestStore.getState();
-    setState(STATE.LOADING);
-
     try {
       const response = await this.privateBackendInstance.request({
         method,
@@ -73,10 +68,9 @@ export class AxiosHttpAdapter {
         },
       });
 
-      setState(STATE.SUCCESS);
       return response.data;
     } catch (error) {
-      setState(STATE.ERROR);
+      console.error(error);
       throw error.response?.data || error.message;
     }
   }

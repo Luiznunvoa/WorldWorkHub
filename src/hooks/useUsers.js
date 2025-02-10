@@ -2,7 +2,7 @@ import { z, ZodError } from "zod";
 import { AxiosHttpAdapter } from "../adapter/httpUser";
 import { UsersService } from "../services/usersService";
 import { useUserStore } from "../stores/userStore";
-import { useRequestStore } from "../stores/requestStore";
+import { useRequestStore, STATE } from "../stores/requestStore";
 
 const userSchema = z
   .object({
@@ -51,7 +51,7 @@ const loginSchema = z.object({
 });
 
 export function useUsers() {
-  useRequestStore(); // to persist the request state
+  const { setState } = useRequestStore(); 
   const usersService = new UsersService(new AxiosHttpAdapter());
 
   /**
@@ -60,10 +60,13 @@ export function useUsers() {
    * @returns {Promise<void>}
    */
   const createUser = async (data) => {
+    setState(STATE.LOADING);
     try {
       const newUser = userSchema.parse(data);
       await usersService.create(newUser);
+      setState(STATE.SUCCESS);
     } catch (error) {
+      setState(STATE.ERROR);
       if (error instanceof ZodError) {
         alert("Unexpected Validation Error!");
         console.error("Validation errors (Zod):", error.errors);
@@ -79,23 +82,58 @@ export function useUsers() {
    * @returns {Promise<void>}
    */
   const validateUser = async (data) => {
+    setState(STATE.LOADING);
     try {
       const credentials = loginSchema.parse(data);
-      const user = await usersService.login(credentials);
-      console.log(user);
-      useUserStore.getState().setAccessToken(user);
+      const response = await usersService.login(credentials);
+      console.log(response.user);
+
+      useUserStore.getState().setState({
+        accessToken: response.access_token,
+        user: response.user,
+      });
+
+      setState(STATE.SUCCESS);
     } catch (error) {
       if (error instanceof ZodError) {
         alert("Unexpected Validation Error!");
         console.error("Validation errors (Zod):", error.errors);
+      } else if (error.message === "Invalid Credentials") {
+        console.error("Login request error:", error.message);
+        await new Promise((resolve) => setTimeout(resolve, 5000));
       } else {
         console.error("Login request error:", error.message);
       }
+      setState(STATE.ERROR);
+    }
+  };
+
+  /**
+   * Makes a request to obtain the user token (login).
+   * @param {Object} data - Email and password.
+   * @returns {Promise<void>}
+   */
+  const endSession = async () => {
+    setState(STATE.LOADING);
+    try {
+      const token = useUserStore.getState().accessToken;
+      if (!token) {
+        setState(STATE.ERROR);
+        throw new Error("Access token não encontrado.");
+      }
+      await usersService.logout(token);
+
+      useUserStore.getState().reset();
+      setState(STATE.SUCCESS);
+    } catch (error) {
+      console.error("Erro na requisição de logout:", error.message);
+      setState(STATE.ERROR);
     }
   };
 
   return {
     createUser,
     validateUser,
+    endSession,
   };
 }

@@ -6,7 +6,7 @@ export const VerifyUserAuthentication = ({ children }) => {
   const authenticated = useUserStore.getState().authenticated;
 
   if (authenticated) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/list" replace />;
   }
 
   return children;

@@ -6,7 +6,7 @@ import { Spinner } from "./ui/spinner";
 import { useRequestStore, STATE  } from "../stores/requestStore";
 
 export const DefaultLayout = () => {
-  const state = useRequestStore.getState().state;
+  const state = useRequestStore((store) => store.state);
   const { pathname } = useLocation();
   const setState = useRequestStore((state) => state.setState);
 
