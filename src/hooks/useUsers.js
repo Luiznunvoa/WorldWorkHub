@@ -109,11 +109,6 @@ export function useUsers() {
     }
   };
 
-  /**
-   * Makes a request to obtain the user token (login).
-   * @param {Object} data - Email and password.
-   * @returns {Promise<void>}
-   */
   const endSession = async () => {
     setState(STATE.LOADING);
     try {
@@ -134,32 +129,37 @@ export function useUsers() {
     }
   };
 
-  /**
-   * Makes a request to obtain the user token (login).
-   * @param {Object} data - Email and password.
-   * @returns {Promise<void>}
-   */
-  // const getUser = async () => {
-  //   setState(STATE.LOADING);
-  //   try {
-  //     const token = useSessionStore.getState().accessToken;
-  //     if (!token) {
-  //       setState(STATE.ERROR);
-  //       throw new Error("Missing access token.");
-  //     }
-  //     const user = await usersService.getCurrent();
-  //     useUserStore.getState().setState({ user: user});
-  //
-  //     setState(STATE.SUCCESS);
-  //   } catch (error) {
-  //     console.error("Erro na requisição de logout:", error.message);
-  //     setState(STATE.ERROR);
-  //   }
-  // };
+  const getNewToken = async () => {
+    try {
+      const token = await usersService.refreshToken();
+      useSessionStore.getState().setState({ accessToken: token });
+      return token;
+    } catch (error) {
+      console.error("Erro ao atualizar token:", error.message);
+      throw error;
+    }
+  };
+
+  const getUser = async () => {
+    try {
+      const token = useSessionStore.getState().accessToken;
+      if (!token) { 
+        // throw new Error("Missing Token") 
+      }
+      const user = await usersService.getCurrent();
+      useUserStore.getState().setState({ user });
+      return user;
+    } catch (error) {
+      console.error("Erro ao obter usuário:", error.message);
+      throw error;
+    }
+  };
 
   return {
     createUser,
     validateUser,
     endSession,
+    getUser,
+    getNewToken,
   };
 }

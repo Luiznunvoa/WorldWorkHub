@@ -31,6 +31,7 @@ export class UsersService {
       method: "post",
       url: "/login",
       data: credentials,
+      credentials: true,
     });
   }
 
@@ -44,19 +45,23 @@ export class UsersService {
     await this.http.requestPrivateBackend({
       method: "post",
       url: `/logout`, 
+      credentials: true,
     });
   }
 
-  /**
-   * Gets the data of a user by it's id
-   * @param {string} accessToken - A valid accessToken
-   * @param {string} id - User id
-   * @returns {Promise<Object>} - User data
-   */
   async getCurrent() {
     return await this.http.requestPrivateBackend({
       method: "get",
       url: `/current-user`,
+      config: { skipAuthRedirect: true },
+    });
+  }
+
+  async refreshToken() {
+    return await this.http.requestPrivateBackend({
+      method: "post",
+      url: `/refresh-token`,
+      credentials: true,
     });
   }
 }
