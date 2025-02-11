@@ -133,6 +133,7 @@ export function useUsers() {
     try {
       const token = await usersService.refreshToken();
       useSessionStore.getState().setState({ accessToken: token });
+      console.log("token refreshed")
       return token;
     } catch (error) {
       console.error("Erro ao atualizar token:", error.message);
