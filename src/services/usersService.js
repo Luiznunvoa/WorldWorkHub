@@ -18,7 +18,6 @@ export class UsersService {
     return await this.http.requestPrivateBackend({
       method: "get",
       url: `/current-user`,
-      config: { skipAuthRedirect: true },
     });
   }
 

@@ -2,6 +2,7 @@ import { z, ZodError } from "zod";
 import { AxiosHttpAdapter } from "../adapter/httpUser";
 import { UsersService } from "../services/usersService";
 import { useRequestStore, STATE } from "../stores/requestStore";
+import { useUserStore } from "../stores/userStore.js";
 
 const userSchema = z
   .object({
@@ -67,7 +68,39 @@ export function useUsers() {
     }
   };
 
+  const getUser = async () => {
+    setState(STATE.LOADING);
+    try {
+      const response = await usersService.getCurrent();
+      console.log(response);
+      useUserStore.setState({
+        user: {
+          id: response.id,
+          firstname: response.firstname,
+          lastname: response.lastname,
+          email: response.email,
+          role: response.role,
+          occupation: response.occupation,
+          phone: response.phone,
+          education: response.education,
+          region: response.region,
+          city: response.city,
+          zipcode: response.zipcode,
+          services: response.services,
+          languages: response.languages,
+        },
+      });
+      setState(STATE.SUCCESS);
+      return response.user;
+    } catch (error) {
+      setState(STATE.ERROR);
+      console.error("Error fetching current user:", error);
+      throw error;
+    }
+  };
+
   return {
-    createUser, 
+    createUser,
+    getUser,
   };
 }

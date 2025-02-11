@@ -33,6 +33,7 @@ export function useSession() {
       });
 
       useUserStore.getState().setState({ user: response.user });
+      console.log(useUserStore.getState().user);
 
       setState(STATE.SUCCESS);
     } catch (error) {
@@ -44,7 +45,7 @@ export function useSession() {
         await new Promise((resolve) => setTimeout(resolve, 5000));
       } else {
         console.error("Login request error:", error);
-        alert("Unexpected Error: ", error.message)
+        alert("Unexpected Error: ", error.message);
       }
       setState(STATE.ERROR);
     }
@@ -63,6 +64,13 @@ export function useSession() {
       useSessionStore.getState().reset();
       useUserStore.getState().reset();
 
+      const cookies = document.cookie.split(";");
+
+      for (const cookie of cookies) {
+        const [name] = cookie.split("=");
+        document.cookie = `${name.trim()}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+      }
+
       setState(STATE.SUCCESS);
     } catch (error) {
       console.error("Error in logout requisition:", error);
@@ -74,10 +82,12 @@ export function useSession() {
   const refreshToken = async () => {
     setState(STATE.LOADING);
     try {
-      const token = await sessionService.refresh();
-      useSessionStore.getState().setState({ accessToken: token });
+      const response = await sessionService.refresh();
+      useSessionStore
+        .getState()
+        .setState({ accessToken: response.access_token });
       setState(STATE.SUCCESS);
-      return token;
+      return response.access_token;
     } catch (error) {
       console.error("Error in token refresh:", error);
       alert("Unexpected error: ", error.message);
