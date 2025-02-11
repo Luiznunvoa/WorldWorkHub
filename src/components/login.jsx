@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { DynamicForm } from "./ui/dynamicForm";
-import { useUsers } from "../hooks/useUsers";
+import { useSession } from "../hooks/useSession";
 import { useRequestStore } from "../stores/requestStore";
 
 export function Login() {
   const navigate = useNavigate();
   const requestState = useRequestStore.getState().state;
-  const { validateUser } = useUsers();
+  const { startSession } = useSession();
 
   useEffect(() => {
     if (requestState === "success") {
@@ -22,7 +22,7 @@ export function Login() {
           {requestState == "error" && "Invalid email or password"}
         </p>
         <DynamicForm
-          onSubmit={(data) => validateUser(data)}
+          onSubmit={(data) => startSession(data)}
           buttonlabels={{
             next: "next",
             previous: "previous",

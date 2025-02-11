@@ -1,13 +1,13 @@
 
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useUsers } from "../hooks/useUsers";
+import { useSession } from "../hooks/useSession";
 import { useRequestStore } from "../stores/requestStore";
 // import { useSessionStore } from "../stores/sessionStore";
 
 export function List() {
   const navigate = useNavigate();
-  const { endSession, getNewToken } = useUsers();
+  const { endSession, refreshToken } = useSession();
   
   const requestState = useRequestStore((state) => state.state);
   // const token = useSessionStore((state) => state.accessToken)
@@ -22,7 +22,7 @@ export function List() {
       <p>Your user must be authenticated to be here</p>
       <div className="flex flex-row gap-10">
         <button className="bg-outline w-50" onClick={() => endSession()}>Quit</button>
-        <button className="bg-outline w-50" onClick={() => getNewToken()}>refresh token</button>
+        <button className="bg-outline w-50" onClick={() => refreshToken()}>refresh token</button>
       </div>
     </main>
   );
