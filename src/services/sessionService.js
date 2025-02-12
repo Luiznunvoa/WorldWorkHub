@@ -23,11 +23,11 @@ export class SessionService {
     });
   }
 
-  async refresh() {
-    return await this.http.requestPrivateBackend({
-      method: "post",
-      url: `/refresh-token`,
-      credentials: true,
-    });
-  }
+  // async refresh() {
+  //   return await this.http.requestPrivateBackend({
+  //     method: "post",
+  //     url: `/refresh-token`,
+  //     credentials: true,
+  //   });
+  // }
 }

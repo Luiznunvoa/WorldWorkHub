@@ -2,7 +2,7 @@ import { z, ZodError } from "zod";
 import { AxiosHttpAdapter } from "../adapter/httpUser";
 import { UsersService } from "../services/usersService";
 import { useRequestStore, STATE } from "../stores/requestStore";
-import { useUserStore } from "../stores/userStore.js";
+import { useUserStore, initialState } from "../stores/userStore.js";
 
 const userSchema = z
   .object({
@@ -39,16 +39,20 @@ const userSchema = z
   })
   .transform((data) => ({
     ...data,
-    role: "User", // All user are created with the user role
+    role: "User", // INFO: All users are created with the user role
   }));
 
+/**
+ * Custom hook for user-related operations.
+ * @returns {Object} User management functions
+ */
 export function useUsers() {
   const { setState } = useRequestStore();
   const usersService = new UsersService(new AxiosHttpAdapter());
 
   /**
-   * Makes a request to create a new user.
-   * @param {Object} data - User data.
+   * Creates a new user.
+   * @param {Object} data - The user data.
    * @returns {Promise<void>}
    */
   const createUser = async (data) => {
@@ -68,11 +72,17 @@ export function useUsers() {
     }
   };
 
+  /**
+   * Retrieves the current user's information.
+   * @returns {Promise<Object>} The user data.
+   */
   const getUser = async () => {
+    if (useUserStore.getState().user !== initialState) {
+      return;
+    }
     setState(STATE.LOADING);
     try {
       const response = await usersService.getCurrent();
-      console.log(response);
       useUserStore.setState({
         user: {
           id: response.id,
@@ -104,3 +114,4 @@ export function useUsers() {
     getUser,
   };
 }
+
