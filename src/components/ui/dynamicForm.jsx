@@ -38,7 +38,7 @@ export function DynamicForm({ onSubmit, buttonlabels, dialogs, steps }) {
 
   // Error message component for form validation errors
   function ErrorMessage({ error }) {
-    return error ? <p className="text-sm text-red-500">{error}</p> : null;
+    return <p className="h-1 text-sm text-red-500">{error}</p>;
   }
 
   ErrorMessage.propTypes = {
@@ -47,126 +47,105 @@ export function DynamicForm({ onSubmit, buttonlabels, dialogs, steps }) {
 
   return (
     <div className="flex flex-col justify-center items-center w-full h-full">
-      {/* Step indicators */}
-      {steps.length > 1 && (
-        <ul className="flex flex-row justify-between mb-6">
-          {steps.map((_, index) => (
-            <li
-              key={index}
-              className="flex relative flex-row items-center text-sm font-semibold text-center text-green-600"
-            >
-              <div
-                className={`mx-auto h-8 w-8 rounded-sm flex items-center justify-center text-base transition-all duration-1000 
-                  ${index <= step ? "bg-green text-text_secondary" : "bg-white text-outline"}`}
-              >
-                {index + 1}
-              </div>
-              {index + 1 < steps.length && (
-                <div
-                  className={`h-1 w-36 transition-all duration-1000 ${index < step ? "bg-green" : "bg-white"}`}
-                />
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
-
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit(onSubmit)}
-          className="flex flex-col items-center p-6 w-full bg-white rounded-lg shadow-2xl"
+          className="flex flex-col justify-between items-center p-6 w-full h-full bg-white shadow-2xl"
         >
           {/* Step title */}
-          <h2 className="m-5 text-2xl italic font-bold text-center">
-            {steps[step].title}
-          </h2>
 
           {/* Step inputs */}
-          {steps[step].inputs.map((input, index) => (
-            <div key={index} className="mb-4 w-full">
-              {input.type === "select" ? (
-                // In case the input is a dropdown type
-                <select
-                  {...methods.register(input.name, {
-                    required: input.required,
-                  })}
-                  className="p-2 w-full rounded border border-gray-300"
-                  defaultValue=""
-                >
-                  <option value="" disabled>
-                    {input.placeholder}
-                  </option>
-                  {input.options.map((select, optIndex) => (
-                    <option key={optIndex} value={select.value}>
-                      {select.label}
+          <div className="flex-col w-full">
+            <h2 className="m-5 text-2xl italic font-bold text-center font-kanit-thin">
+              {steps[step].title}
+            </h2>
+            {steps[step].inputs.map((input, index) => (
+              <div key={index} className="mb-4 w-full">
+                {input.type === "select" ? (
+                  // In case the input is a dropdown type
+                  <select
+                    {...methods.register(input.name, {
+                      required: input.required,
+                    })}
+                    className="p-2 w-full rounded border border-gray-300"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      {input.placeholder}
                     </option>
-                  ))}
-                </select>
-              ) : (
-                // Regular input
-                <input
-                  {...methods.register(input.name, {
-                    required: input.required,
-                    minlength: input.minLength,
-                    pattern: input.pattern,
-                    validate:
-                      input.validate &&
-                      ((value) => input.validate(value, methods)),
-                  })}
-                  type={input.type}
-                  placeholder={input.placeholder}
-                  className="p-2 w-full rounded border border-gray-300 placeholder:font-Roboto"
+                    {input.options.map((select, optIndex) => (
+                      <option key={optIndex} value={select.value}>
+                        {select.label}
+                      </option>
+                    ))}
+                  </select>
+                ) : (
+                  // Regular input
+                  <input
+                    {...methods.register(input.name, {
+                      required: input.required,
+                      minlength: input.minLength,
+                      pattern: input.pattern,
+                      validate:
+                        input.validate &&
+                        ((value) => input.validate(value, methods)),
+                    })}
+                    type={input.type}
+                    placeholder={input.placeholder}
+                    className="p-2 w-full bg-white text-black rounded border-b border-black placeholder-black placeholder:font-Roboto"
+                  />
+                )}
+                {/* Error message */}
+                <ErrorMessage
+                  error={methods.formState.errors[input.name]?.message}
                 />
-              )}
-              {/* Error message */}
-              <ErrorMessage
-                error={methods.formState.errors[input.name]?.message}
-              />
-            </div>
-          ))}
-
-          {/* Navigation buttons */}
-          <div className="flex flex-row gap-5 justify-center items-center my-2">
-            {step > 0 && (
-              <button
-                type="button"
-                onClick={previousStep}
-                className="py-2 px-4 text-white rounded hover:bg-gray-500 bg-green"
-              >
-                {buttonlabels.previous}
-              </button>
-            )}
-            {step < steps.length - 1 && (
-              <button
-                type="button"
-                onClick={nextStep}
-                className="py-2 px-4 text-white rounded hover:bg-gray-500 bg-green"
-              >
-                {buttonlabels.next}
-              </button>
-            )}
-            {step === steps.length - 1 && (
-              <button
-                type="submit"
-                className="py-2 px-4 text-white rounded hover:bg-gray-500 bg-green"
-              >
-                {buttonlabels.submit}
-              </button>
-            )}
+              </div>
+            ))}
           </div>
+          <div className="flex flex-col justify-between items-center w-full">
+            {/* Navigation buttons */}
+            <div className="flex flex-row gap-5 justify-center items-center my-2">
+              {step > 0 && (
+                <button
+                  type="button"
+                  onClick={previousStep}
+                  className="py-2 px-4 text-white rounded hover:bg-gray-500 bg-green"
+                >
+                  {buttonlabels.previous}
+                </button>
+              )}
+              {step < steps.length - 1 && (
+                <button
+                  type="button"
+                  onClick={nextStep}
+                  className="py-2 px-4 text-white rounded hover:bg-gray-500 bg-green"
+                >
+                  {buttonlabels.next}
+                </button>
+              )}
+              {step === steps.length - 1 && (
+                <button
+                  type="submit"
+                  className="py-2 px-4 text-white rounded hover:bg-gray-500 bg-green"
+                >
+                  {buttonlabels.submit}
+                </button>
+              )}
+            </div>
 
-          {/* Optional link */}
-          {dialogs.map((dialog, index) => (
-            <p key={index} className="flex gap-1 text-outline">
-              {dialog.text}
-              <a
-                onClick={() => navigate(dialog.path)}
-                className="text-blue-600 underline cursor-pointer"
-              >
-                {dialog.label}
-              </a>
-            </p>
-          ))}
+            {/* Optional link */}
+            {dialogs.map((dialog, index) => (
+              <p key={index} className="flex gap-1 text-outline">
+                {dialog.text}
+                <a
+                  onClick={() => navigate(dialog.path)}
+                  className="text-blue-600 underline cursor-pointer"
+                >
+                  {dialog.label}
+                </a>
+              </p>
+            ))}
+          </div>
         </form>
       </FormProvider>
     </div>
@@ -240,4 +219,4 @@ DynamicForm.propTypes = {
       ).isRequired,
     }).isRequired,
   ).isRequired,
-};;
+};

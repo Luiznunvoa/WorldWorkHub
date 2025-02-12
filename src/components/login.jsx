@@ -17,10 +17,10 @@ export function Login() {
 
   return (
     <main className="flex flex-col gap-10 items-center">
-      <div className="m-10 w-96">
-        <p className="h-10 text-center text-red-500 w-100">
-          {requestState == "error" && "Invalid email or password"}
-        </p>
+      <p className="h-10 text-center text-red-500 w-100">
+        {requestState == "error" && "Invalid email or password"}
+      </p>
+      <div className="m-10 w-96 border-2 border-solid shadow-xl border-outline">
         <DynamicForm
           onSubmit={(data) => startSession(data)}
           buttonlabels={{

@@ -14,14 +14,13 @@ export const DefaultLayout = () => {
     setState(STATE.IDLE); // Resets request state on route change
   }, [pathname, setState]);
 
-  if (state == "loading") {
-    return <Spinner />;
-  }
-
   return (
     <>
       <Header />
-      <Outlet />
+      {state == "loading" ?
+        <Spinner /> :
+        <Outlet />
+      } 
       <Footer />
     </>
   );
