@@ -35,17 +35,21 @@ export function Footer() {
   };
 
   Sections.propTypes = {
-    sections: PropTypes.arrayOf({
-      title: PropTypes.string.isRequired,
-      links: PropTypes.arrayOf({
-        label: PropTypes.string.isRequired,
-        path: PropTypes.string.isRequired,
-      }).isRequired,
-    }),
+    sections: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        links: PropTypes.arrayOf(
+          PropTypes.shape({
+            label: PropTypes.string.isRequired,
+            path: PropTypes.string.isRequired,
+          }),
+        ).isRequired,
+      }),
+    ).isRequired,
   };
 
   return (
-    <footer className="flex flex-col justify-center items-center mt-16 w-full border-t-2 border-outline">
+    <footer className="flex flex-col justify-center items-center w-full border-t-2 border-outline">
       <div className="flex flex-col gap-16 items-center lg:flex-row">
         <div className="flex flex-col gap-2 m-10">
           <h2 className="text-2xl font-bold font-kanit-thin text-outline">

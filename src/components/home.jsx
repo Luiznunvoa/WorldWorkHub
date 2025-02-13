@@ -6,7 +6,7 @@ import { TextGrid } from "./ui/textGrid";
 
 export function Home() {
   return (
-    <main className="flex flex-col gap-10 items-center">
+    <div className="flex flex-col gap-10 items-center">
       {/* Main Banner */}
       <Hero
         hero={{
@@ -181,6 +181,6 @@ export function Home() {
         }}
       />
 
-    </main>
+    </div>
   );
 }

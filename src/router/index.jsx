@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
-import { DefaultLayout } from "../components/layouts";
 import { Home } from "../components/home";
 import { Login } from "../components/login";
 import { Register } from "../components/register";
 import { List } from "../components/list";
+import { DefaultLayout, DashBoardLayout } from "../components/layouts";
 import {
   VerifyUserAuthentication,
   ValidateSelectedProfile,
@@ -12,7 +12,7 @@ import {
 
 export function BrowserRouter() {
   const router = createBrowserRouter([
-    // { 
+    // {
     //   // Routes accessible to anyone
     //   element: <YourLayout />,
     //   children: [
@@ -48,7 +48,7 @@ export function BrowserRouter() {
       // Routes only accessible to authenticaded users
       element: (
         <ValidateSelectedProfile>
-          <DefaultLayout />
+          <DashBoardLayout />
         </ValidateSelectedProfile>
       ),
       children: [

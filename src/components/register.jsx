@@ -23,7 +23,7 @@ export function Register() {
 
   if (requestState === "success") {
     return (
-      <main className="flex flex-col items-center p-6 w-full fill-green text-green">
+      <div className="flex flex-col items-center p-6 w-full fill-green text-green">
         <AlertMessage
           message={{
             icon: "check",
@@ -34,12 +34,12 @@ export function Register() {
             },
           }}
         />
-      </main>
+      </div>
     );
   }
 
   return (
-    <main className="flex flex-col items-center p-6 w-full h-full">
+    <div className="flex flex-col items-center p-6 w-full h-full">
       {/* Formulário para criar uma nova conta */}
       <p className="h-10 text-center text-red-500 w-100">
         {requestState === "error" && "Unexpected Error in Registration"}
@@ -328,6 +328,6 @@ export function Register() {
           />
         </div>
       </div>
-    </main>
+    </div>
   );
 }

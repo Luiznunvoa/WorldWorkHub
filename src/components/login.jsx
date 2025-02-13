@@ -16,7 +16,7 @@ export function Login() {
   }, [requestState, navigate]);
 
   return (
-    <main className="flex flex-col gap-10 items-center">
+    <div className="flex flex-col gap-10 items-center">
       <p className="h-10 text-center text-red-500 w-100">
         {requestState == "error" && "Invalid email or password"}
       </p>
@@ -74,6 +74,6 @@ export function Login() {
           ]}
         />
       </div>
-    </main>
+    </div>
   );
 }
