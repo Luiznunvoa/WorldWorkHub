@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { ReactSVG } from "react-svg";
+import { Icon } from "./icon";
 import { ContentHeader } from "./contentHeader";
 
 /**
@@ -35,8 +35,8 @@ export function Panels({ panels }) {
               loading="lazy"
             />
 
-            <ReactSVG
-              src={`../../../public/icons/cursor.svg`}
+            <Icon
+              icon="cursor"
               className={`absolute -mt-12 h-20 w-20 fill-text stroke-green stroke-1 ${index % 2 === 0 ? "ml-20 rotate-90" : "ml-64"}`}
             />
           </div>

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { ReactSVG } from "react-svg";
+import { Icon } from "./icon"
 
 /**
  * Highlight Component
@@ -24,12 +24,12 @@ export const Highlight = ({ highlights }) => (
         </p>
 
         <div className="flex relative flex-row">
-          <ReactSVG
-            src={`../../../public/icons/${greenIcon}.svg`}
+          <Icon
+            icon={greenIcon}
             className="w-40 h-40 fill-green"
           />
-          <ReactSVG
-            src={`../../../public/icons/${blackIcon}.svg`}
+          <Icon
+            icon={blackIcon}
             className={`fill-tex absolute mt-8 h-20 w-20 ${animation}`}
           />
         </div>

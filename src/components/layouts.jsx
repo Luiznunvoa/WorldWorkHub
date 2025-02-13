@@ -3,7 +3,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { Footer } from "./ui/footer";
 import { Header } from "./ui/header";
 import { Spinner } from "./ui/spinner";
-import { useRequestStore, STATE  } from "../stores/requestStore";
+import { useRequestStore, STATE } from "../stores/requestStore";
 
 export const DefaultLayout = () => {
   const state = useRequestStore((store) => store.state);
@@ -17,10 +17,13 @@ export const DefaultLayout = () => {
   return (
     <>
       <Header />
-      {state == "loading" ?
-        <Spinner /> :
+      {state == "loading" ? (
+        <div className="w-full h-96">
+          <Spinner />
+        </div>
+      ) : (
         <Outlet />
-      } 
+      )}
       <Footer />
     </>
   );

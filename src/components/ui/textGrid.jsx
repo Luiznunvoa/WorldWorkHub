@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { ReactSVG } from "react-svg";
+import { Icon } from "./icon";
 import { ContentHeader } from "./contentHeader";
 
 /**
@@ -29,8 +29,8 @@ export function TextGrid({ textGrid }) {
             className="flex flex-row gap-5 p-10 bg-white rounded-2xl border-4 border-solid shadow-xl transition-all cursor-pointer hover:shadow-2xl hover:scale-110 border-text"
           >
             <div className="flex flex-col h-full">
-              <ReactSVG 
-                src={`../../../public/icons/${element.icon}.svg`}
+              <Icon 
+                icon={element.icon}
                 className="w-20 h-24 fill-green" />
             </div>
 

@@ -1,107 +1,10 @@
-import { ReactSVG } from "react-svg";
+import PropTypes from "prop-types";
+import { Icon } from "./icon";
 
 export function Footer() {
-  const sections = [
-    {
-      title: "Company",
-      links: [
-        {
-          label: "About Us",
-          path: "#",
-        },
-        {
-          label: "Careers",
-          path: "#",
-        },
-        {
-          label: "Blog",
-          path: "#",
-        },
-      ],
-    },
-    {
-      title: "Support",
-      links: [
-        {
-          label: "FAQ",
-          path: "#",
-        },
-        {
-          label: "Contact",
-          path: "#",
-        },
-        {
-          label: "Help Center",
-          path: "#",
-        },
-      ],
-    },
-    {
-      title: "Legal",
-      links: [
-        {
-          label: "Privacy Policy",
-          path: "#",
-        },
-        {
-          label: "Terms of Service",
-          path: "#",
-        },
-        {
-          label: "License",
-          path: "#",
-        },
-      ],
-    },
-  ];
-
-  return (
-    <footer className="flex flex-col justify-center items-center mt-16 w-full border-t-2 border-outline">
-      <div className="flex flex-col gap-16 items-center lg:flex-row">
-        <div className="flex flex-col gap-2 m-10">
-          <h2 className="text-2xl font-bold font-kanit-thin text-outline">
-            WorldWorkHub.
-          </h2>
-
-          <p className="text-sm italic text-outline font-Roboto">
-            {`Copyright © ${new Date().getFullYear()} WorldWorkHub`}
-          </p>
-
-          <p className="text-sm italic text-outline font-Roboto">
-            all rights reserved
-          </p>
-
-          <nav className="flex flex-row gap-5 items-center mt-5">
-            <div className="flex flex-col justify-center items-center w-7 h-7 rounded-full transition cursor-pointer bg-outline hover:bg-background_secondary">
-              <ReactSVG
-                src={`../../../public/icons/github.svg`}
-                className="w-5 h-5 fill-text_secondary"
-              />
-            </div>
-
-            <div className="flex flex-col justify-center items-center w-7 h-7 rounded-full transition cursor-pointer bg-outline hover:bg-background_secondary">
-              <ReactSVG
-                src={`../../../public/icons/instagram.svg`}
-                className="w-5 h-5 stroke-2 fill-outline stroke-text_secondary"
-              />
-            </div>
-
-            <div className="flex flex-col justify-center items-center w-7 h-7 rounded-full transition cursor-pointer bg-outline hover:bg-background_secondary">
-              <ReactSVG
-                src={`../../../public/icons/facebook.svg`}
-                className="w-5 h-5 fill-text_secondary"
-              />{" "}
-            </div>
-
-            <div className="flex flex-col justify-center items-center w-7 h-7 rounded-full transition cursor-pointer bg-outline hover:bg-background_secondary">
-              <ReactSVG
-                src={`../../../public/icons/linkedin.svg`}
-                className="w-7 h-7 fill-text_secondary"
-              />
-            </div>
-          </nav>
-        </div>
-
+  const Sections = ({ sections }) => {
+    return (
+      <>
         {sections.map((section) => (
           <div
             key={section.title}
@@ -127,6 +30,109 @@ export function Footer() {
             </ul>
           </div>
         ))}
+      </>
+    );
+  };
+
+  Sections.propTypes = {
+    sections: PropTypes.arrayOf({
+      title: PropTypes.string.isRequired,
+      links: PropTypes.arrayOf({
+        label: PropTypes.string.isRequired,
+        path: PropTypes.string.isRequired,
+      }).isRequired,
+    }),
+  };
+
+  return (
+    <footer className="flex flex-col justify-center items-center mt-16 w-full border-t-2 border-outline">
+      <div className="flex flex-col gap-16 items-center lg:flex-row">
+        <div className="flex flex-col gap-2 m-10">
+          <h2 className="text-2xl font-bold font-kanit-thin text-outline">
+            WorldWorkHub.
+          </h2>
+
+          <p className="text-sm italic text-outline font-Roboto">
+            {`Copyright © ${new Date().getFullYear()} WorldWorkHub`}
+          </p>
+
+          <p className="text-sm italic text-outline font-Roboto">
+            all rights reserved
+          </p>
+
+          <nav className="flex flex-row gap-5 items-center mt-5">
+            <div className="flex flex-col justify-center items-center w-7 h-7 rounded-full transition cursor-pointer bg-outline hover:bg-background_secondary">
+              <Icon icon="github" className="w-5 h-5 fill-text_secondary" />
+            </div>
+
+            <div className="flex flex-col justify-center items-center w-7 h-7 rounded-full transition cursor-pointer bg-outline hover:bg-background_secondary">
+              <Icon icon="instagram" className="w-5 h-5 fill-text_secondary" />
+            </div>
+
+            <div className="flex flex-col justify-center items-center w-7 h-7 rounded-full transition cursor-pointer bg-outline hover:bg-background_secondary">
+              <Icon icon="linkedin" className="w-5 h-5 fill-text_secondary" />
+            </div>
+
+            <div className="flex flex-col justify-center items-center w-7 h-7 rounded-full transition cursor-pointer bg-outline hover:bg-background_secondary">
+              <Icon icon="facebook" className="w-5 h-5 fill-text_secondary" />
+            </div>
+          </nav>
+        </div>
+        <Sections
+          sections={[
+            {
+              title: "Company",
+              links: [
+                {
+                  label: "About Us",
+                  path: "#",
+                },
+                {
+                  label: "Careers",
+                  path: "#",
+                },
+                {
+                  label: "Blog",
+                  path: "#",
+                },
+              ],
+            },
+            {
+              title: "Support",
+              links: [
+                {
+                  label: "FAQ",
+                  path: "#",
+                },
+                {
+                  label: "Contact",
+                  path: "#",
+                },
+                {
+                  label: "Help Center",
+                  path: "#",
+                },
+              ],
+            },
+            {
+              title: "Legal",
+              links: [
+                {
+                  label: "Privacy Policy",
+                  path: "#",
+                },
+                {
+                  label: "Terms of Service",
+                  path: "#",
+                },
+                {
+                  label: "License",
+                  path: "#",
+                },
+              ],
+            },
+          ]}
+        />
 
         <iframe
           className="hidden w-1/5 h-52 rounded-lg border-4 border-solid xl:flex border-outline"

@@ -28,6 +28,7 @@ export function Login() {
             previous: "previous",
             submit: "submit",
           }}
+
           dialogs={[
             {
               text: "Don't have and accout yet?",
@@ -40,6 +41,7 @@ export function Login() {
               path: "/",
             },
           ]}
+
           // Process each step in the form
           steps={[
             {
@@ -55,6 +57,7 @@ export function Login() {
                   },
                   placeholder: "Your email",
                 },
+
                 {
                   name: "password",
                   type: "password",
