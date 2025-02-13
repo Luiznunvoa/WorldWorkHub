@@ -1,4 +1,4 @@
-import { create } from "zustand";
+import { create } from "zustand"
 
 export const initialState = {
   id: null,
@@ -14,10 +14,10 @@ export const initialState = {
   zipcode: null,
   services: [],
   languages: [],
-};
+}
 
 export const useUserStore = create((set) => ({
   user: initialState,
   reset: () => set(initialState),
   setState: (newState) => set({ user: newState }),
-}));
+}))

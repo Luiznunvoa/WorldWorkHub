@@ -1,22 +1,23 @@
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { create } from "zustand"
+import { persist } from "zustand/middleware"
 
-const initialState = { 
+const initialState = {
   accessToken: null,
-  authenticated: false, 
-};
+  authenticated: false,
+}
 
 export const useSessionStore = create(
   persist(
     (set) => ({
       ...initialState,
-      
+
       reset: () => set(initialState),
-      
-      setState: ({ accessToken }) => set({
-        accessToken,
-        authenticated: !!accessToken, 
-      }),
+
+      setState: ({ accessToken }) =>
+        set({
+          accessToken,
+          authenticated: !!accessToken,
+        }),
     }),
     {
       name: "auth",
@@ -26,4 +27,4 @@ export const useSessionStore = create(
       }),
     }
   )
-);
+)

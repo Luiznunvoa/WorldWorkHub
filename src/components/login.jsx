@@ -1,19 +1,19 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Form } from "./ui/form";
-import { useSession } from "../hooks/useSession";
-import { useRequestStore } from "../stores/requestStore";
+import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import { Form } from "./ui/form"
+import { useSession } from "../hooks/useSession"
+import { useRequestStore } from "../stores/requestStore"
 
 export function Login() {
-  const navigate = useNavigate();
-  const requestState = useRequestStore.getState().state;
-  const { startSession } = useSession();
+  const navigate = useNavigate()
+  const requestState = useRequestStore.getState().state
+  const { startSession } = useSession()
 
   useEffect(() => {
     if (requestState === "success") {
-      navigate("/list");
+      navigate("/list")
     }
-  }, [requestState, navigate]);
+  }, [requestState, navigate])
 
   return (
     <div className="flex flex-col gap-10 items-center">
@@ -28,7 +28,6 @@ export function Login() {
             previous: "previous",
             submit: "submit",
           }}
-
           dialogs={[
             {
               text: "Don't have and accout yet?",
@@ -41,7 +40,6 @@ export function Login() {
               path: "/",
             },
           ]}
-
           // Process each step in the form
           steps={[
             {
@@ -75,5 +73,5 @@ export function Login() {
         />
       </div>
     </div>
-  );
+  )
 }

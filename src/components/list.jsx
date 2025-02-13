@@ -1,21 +1,21 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSession } from "../hooks/useSession";
-import { useRequestStore } from "../stores/requestStore";
-import { useUserStore } from "../stores/userStore";
+import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import { useSession } from "../hooks/useSession"
+import { useRequestStore } from "../stores/requestStore"
+import { useUserStore } from "../stores/userStore"
 
 export function List() {
-  const navigate = useNavigate();
-  const { endSession } = useSession();
+  const navigate = useNavigate()
+  const { endSession } = useSession()
 
-  const requestState = useRequestStore((state) => state.state);
-  const user = useUserStore((state) => state.user);
+  const requestState = useRequestStore((state) => state.state)
+  const user = useUserStore((state) => state.user)
 
   useEffect(() => {
     if (requestState === "success" || requestState === "error") {
-      navigate("/login");
+      navigate("/login")
     }
-  }, [requestState, navigate]);
+  }, [requestState, navigate])
 
   return (
     <div className="flex flex-col gap-10 justify-center items-center w-full">
@@ -27,5 +27,5 @@ export function List() {
       </div>
       <p>User id: {user.id ? user.id : "No user data on context"}</p>
     </div>
-  );
+  )
 }

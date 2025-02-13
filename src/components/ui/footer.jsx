@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import { Icon } from "./icon";
+import PropTypes from "prop-types"
+import { Icon } from "./icon"
 
 export function Footer() {
   const Sections = ({ sections }) => {
@@ -31,8 +31,8 @@ export function Footer() {
           </div>
         ))}
       </>
-    );
-  };
+    )
+  }
 
   Sections.propTypes = {
     sections: PropTypes.arrayOf(
@@ -42,11 +42,11 @@ export function Footer() {
           PropTypes.shape({
             label: PropTypes.string.isRequired,
             path: PropTypes.string.isRequired,
-          }),
+          })
         ).isRequired,
-      }),
+      })
     ).isRequired,
-  };
+  }
 
   return (
     <footer className="flex flex-col justify-center items-center w-full border-t-2 border-outline">
@@ -149,5 +149,5 @@ export function Footer() {
         />
       </div>
     </footer>
-  );
+  )
 }

@@ -1,29 +1,29 @@
-import { createBrowserRouter } from "react-router-dom";
-import { RouterProvider } from "react-router-dom";
-import { Home } from "../components/home";
-import { Login } from "../components/login";
-import { Register } from "../components/register";
-import { List } from "../components/list";
-import { DefaultLayout, DashBoardLayout } from "../components/layouts";
+import { createBrowserRouter } from "react-router-dom"
+import { RouterProvider } from "react-router-dom"
+import { Home } from "../components/home"
+import { Login } from "../components/login"
+import { Register } from "../components/register"
+import { List } from "../components/list"
+import { DefaultLayout, DashBoardLayout } from "../components/layouts"
 import {
   VerifyUserAuthentication,
   ValidateSelectedProfile,
-} from "./middlewares";
+} from "./middlewares"
 
 export function BrowserRouter() {
   const router = createBrowserRouter([
-    // {
-    //   // Routes accessible to anyone
-    //   element: <YourLayout />,
-    //   children: [
-    //     {
-    //       path: "/",
-    //       element: <YourPage />
-    //     },
-    //   ]
-    // },
     {
-      // Routes only accessible to non-authenticaded users
+      // Routes accessible to anyone
+      element: <DefaultLayout />,
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+      ],
+    },
+    {
+      // Routes only accessible to non-authenticated users
       element: (
         <VerifyUserAuthentication>
           <DefaultLayout />
@@ -45,7 +45,7 @@ export function BrowserRouter() {
       ],
     },
     {
-      // Routes only accessible to authenticaded users
+      // Routes only accessible to authenticated users
       element: (
         <ValidateSelectedProfile>
           <DashBoardLayout />
@@ -58,7 +58,7 @@ export function BrowserRouter() {
         },
       ],
     },
-  ]);
+  ])
 
-  return <RouterProvider router={router} />;
+  return <RouterProvider router={router} />
 }

@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"
 import { Icon } from "./icon"
 
 /**
@@ -24,10 +24,7 @@ export const Highlight = ({ highlights }) => (
         </p>
 
         <div className="flex relative flex-row">
-          <Icon
-            icon={greenIcon}
-            className="w-40 h-40 fill-green"
-          />
+          <Icon icon={greenIcon} className="w-40 h-40 fill-green" />
           <Icon
             icon={blackIcon}
             className={`fill-tex absolute mt-8 h-20 w-20 ${animation}`}
@@ -36,7 +33,7 @@ export const Highlight = ({ highlights }) => (
       </section>
     ))}
   </div>
-);
+)
 
 Highlight.propTypes = {
   highlights: PropTypes.arrayOf(
@@ -45,6 +42,6 @@ Highlight.propTypes = {
       blackIcon: PropTypes.string.isRequired,
       greenIcon: PropTypes.string.isRequired,
       animation: PropTypes.string,
-    }).isRequired,
+    }).isRequired
   ).isRequired,
-};
+}

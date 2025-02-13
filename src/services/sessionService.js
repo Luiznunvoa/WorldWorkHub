@@ -3,8 +3,8 @@ export class SessionService {
    * @param {AxiosHttpAdapter} httpAdapter - HTTP adapter instance
    */
   constructor(httpAdapter) {
-    this.http = httpAdapter;
-  } 
+    this.http = httpAdapter
+  }
 
   async start(credentials) {
     return await this.http.requestPrivateBackend({
@@ -12,15 +12,15 @@ export class SessionService {
       url: "/login",
       data: credentials,
       credentials: true,
-    });
+    })
   }
 
   async end() {
     await this.http.requestPrivateBackend({
       method: "post",
-      url: `/logout`, 
+      url: `/logout`,
       credentials: true,
-    });
+    })
   }
 
   // async refresh() {

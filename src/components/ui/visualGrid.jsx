@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import { ContentHeader } from "./contentHeader";
+import PropTypes from "prop-types"
+import { ContentHeader } from "./contentHeader"
 
 /**
  * VisualGrid Component
@@ -56,7 +56,7 @@ export function VisualGrid({ visualGrid }) {
         ))}
       </section>
     </div>
-  );
+  )
 }
 
 VisualGrid.propTypes = {
@@ -70,7 +70,7 @@ VisualGrid.propTypes = {
         title: PropTypes.string,
         subtitle: PropTypes.string,
         description: PropTypes.string,
-      }).isRequired,
+      }).isRequired
     ).isRequired,
   }),
-};
+}

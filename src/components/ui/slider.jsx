@@ -1,9 +1,9 @@
-import { useNavigate } from "react-router";
-import PropTypes from "prop-types";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
-import { Icon } from "./icon";
-import { ContentHeader } from "./contentHeader";
+import { useNavigate } from "react-router"
+import PropTypes from "prop-types"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Navigation, Pagination } from "swiper/modules"
+import { Icon } from "./icon"
+import { ContentHeader } from "./contentHeader"
 
 /**
  * Slider Component
@@ -20,20 +20,16 @@ import { ContentHeader } from "./contentHeader";
  *    - button (object, optional): Object with label and function for a button.
  */
 export function Slider({ slider }) {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   return (
     <div className="flex flex-col gap-20 justify-center items-center w-full">
-      { (slider.icon || slider.title) &&
+      {(slider.icon || slider.title) && (
         <ContentHeader icon={slider.icon} title={slider.title} />
-      }
+      )}
 
       <section className="flex flex-row gap-5 items-center">
-        {slider.icon && (
-          <Icon  
-            icon={slider}
-            className="w-10 h-10 fill-text" />
-        )}
+        {slider.icon && <Icon icon={slider} className="w-10 h-10 fill-text" />}
         {slider.title && (
           <h2 className="text-3xl font-bold text-center font-kanit-thin">
             {slider.title}
@@ -91,7 +87,7 @@ export function Slider({ slider }) {
         ))}
       </Swiper>
     </div>
-  );
+  )
 }
 
 Slider.propTypes = {
@@ -108,7 +104,7 @@ Slider.propTypes = {
           label: PropTypes.string.isRequired,
           path: PropTypes.string.isRequired,
         }),
-      }).isRequired,
+      }).isRequired
     ).isRequired,
   }),
-};
+}

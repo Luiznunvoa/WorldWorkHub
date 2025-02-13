@@ -848,9 +848,7 @@
         "Y",
         "Yakutat"
       ],
-      "American Samoa": [
-        "American Samoa"
-      ],
+      "American Samoa": ["American Samoa"],
       "Arizona": [
         "Ajo",
         "Ak-chin Village",
@@ -3259,12 +3257,8 @@
         "Woodside East",
         "Wyoming"
       ],
-      "District Of Columbia": [
-        "Washington"
-      ],
-      "Federated States Of Micronesia": [
-        "Fsm"
-      ],
+      "District Of Columbia": ["Washington"],
+      "Federated States Of Micronesia": ["Fsm"],
       "Florida": [
         "Alachua",
         "Alford",
@@ -4753,9 +4747,7 @@
         "Young Harris",
         "Zebulon"
       ],
-      "Guam": [
-        "Guam"
-      ],
+      "Guam": ["Guam"],
       "Hawaii": [
         "Ahuimanu",
         "Aiea",
@@ -9585,9 +9577,7 @@
         "Yarmouth",
         "York Harbor"
       ],
-      "Marshall Islands": [
-        "Marshall Islands"
-      ],
+      "Marshall Islands": ["Marshall Islands"],
       "Maryland": [
         "Aberdeen",
         "Aberdeen Proving Ground",
@@ -16779,9 +16769,7 @@
         "Zap",
         "Zeeland"
       ],
-      "Northern Mariana Islands": [
-        "Northern Mariana Islands"
-      ],
+      "Northern Mariana Islands": ["Northern Mariana Islands"],
       "Ohio": [
         "Aberdeen",
         "Ada",
@@ -18842,9 +18830,7 @@
         "Yamhill",
         "Yoncalla"
       ],
-      "Palau": [
-        "Palau"
-      ],
+      "Palau": ["Palau"],
       "Pennsylvania": [
         "Aaronsburg",
         "Abbottstown",
@@ -23542,9 +23528,7 @@
         "Winooski",
         "Woodstock"
       ],
-      "Virgin Islands": [
-        "Virgin Islands"
-      ],
+      "Virgin Islands": ["Virgin Islands"],
       "Virginia": [
         "Abingdon",
         "Accomac",

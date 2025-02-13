@@ -17,15 +17,14 @@ export default {
       },
       backgroundImage: {
         custom_gradient: "linear-gradient(0deg, #E0E0E0 48%, #3c9366 48%)",
-        san_francisco: "url('https://i.postimg.cc/BvrgpMh4/sanfrancisco.jpg')"
+        san_francisco: "url('https://i.postimg.cc/BvrgpMh4/sanfrancisco.jpg')",
       },
       fontFamily: {
-        "Roboto": ["Roboto", "sans-serif"],
+        Roboto: ["Roboto", "sans-serif"],
         "kanit-thin": ["Kanit", "sans-serif"],
         "archivo-black-regular": ["Archivo Black", "sans-serif"],
       },
     },
   },
   plugins: [],
-};
-
+}

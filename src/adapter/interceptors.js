@@ -1,5 +1,5 @@
-import axios from "axios";
-import { useSessionStore } from "../stores/sessionStore";
+import axios from "axios"
+import { useSessionStore } from "../stores/sessionStore"
 
 /**
  * Request Interceptor
@@ -12,20 +12,20 @@ import { useSessionStore } from "../stores/sessionStore";
 export const requestInterceptor = (config) => {
   // Skip token attachment for the refresh-token endpoint to prevent infinite loops.
   if (config.url === "/refresh-token") {
-    return config;
+    return config
   }
 
   // Retrieve the current access token from the session store.
-  const token = useSessionStore.getState().accessToken;
+  const token = useSessionStore.getState().accessToken
 
   // If a token exists, add it to the request's authorization header.
   if (token) {
-    config.headers.authorization = `${token}`;
+    config.headers.authorization = `${token}`
   }
 
   // Return the updated configuration.
-  return config;
-};
+  return config
+}
 
 /**
  * Response Error Interceptor
@@ -38,9 +38,9 @@ export const requestInterceptor = (config) => {
  * @returns {Function} An asynchronous function to handle response errors.
  */
 export const responseErrorInterceptor = (axiosInstance) => {
-  return async (error) => { 
-    const originalRequest = error.config; // original request configuration from the error object.
-    const baseURL = import.meta.env.VITE_API_BASE_URL;
+  return async (error) => {
+    const originalRequest = error.config // original request configuration from the error object.
+    const baseURL = import.meta.env.VITE_API_BASE_URL
 
     if (
       error.response?.status === 401 &&
@@ -48,7 +48,7 @@ export const responseErrorInterceptor = (axiosInstance) => {
       originalRequest.url !== "/refresh-token"
     ) {
       // Mark the request as having been retried to prevent infinite loops.
-      originalRequest._isRetry = true;
+      originalRequest._isRetry = true
 
       try {
         // Create a new Axios instance for the purpose of refreshing the token.
@@ -57,36 +57,35 @@ export const responseErrorInterceptor = (axiosInstance) => {
           baseURL,
           withCredentials: true,
           headers: { "Content-Type": "application/json" },
-        });
+        })
 
         // Attempt to obtain a new access token from the refresh-token endpoint.
-        const refreshResponse = await refreshClient.post("/refresh-token");
-        const newToken = refreshResponse.data.access_token;
+        const refreshResponse = await refreshClient.post("/refresh-token")
+        const newToken = refreshResponse.data.access_token
 
         // Update the session store with the new token.
-        useSessionStore.getState().setState({ accessToken: newToken });
+        useSessionStore.getState().setState({ accessToken: newToken })
 
         // Update the authorization header of the original request with the new token.
-        originalRequest.headers.authorization = newToken;
+        originalRequest.headers.authorization = newToken
 
         // Retry the original request using the updated configuration.
-        return axiosInstance(originalRequest);
+        return axiosInstance(originalRequest)
       } catch (refreshError) {
-        useSessionStore.getState().reset();
-        console.error(refreshError);
+        useSessionStore.getState().reset()
+        console.error(refreshError)
         alert("Unexpected Error" + refreshError.message)
-        window.location.href = "/login";
-        return Promise.reject(refreshError);
+        window.location.href = "/login"
+        return Promise.reject(refreshError)
       }
     }
 
     // If the error status is 401 and no specific handling is applicable,
     if (error.response?.status === 401) {
-      useSessionStore.getState().reset();
-      window.location.href = "/login";
+      useSessionStore.getState().reset()
+      window.location.href = "/login"
     }
 
-    return Promise.reject(error);
-  };
-};
-;
+    return Promise.reject(error)
+  }
+}

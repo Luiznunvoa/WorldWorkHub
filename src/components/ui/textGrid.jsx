@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import { Icon } from "./icon";
-import { ContentHeader } from "./contentHeader";
+import PropTypes from "prop-types"
+import { Icon } from "./icon"
+import { ContentHeader } from "./contentHeader"
 
 /**
  * TextGrid Component
@@ -29,9 +29,7 @@ export function TextGrid({ textGrid }) {
             className="flex flex-row gap-5 p-10 bg-white rounded-2xl border-4 border-solid shadow-xl transition-all cursor-pointer hover:shadow-2xl hover:scale-110 border-text"
           >
             <div className="flex flex-col h-full">
-              <Icon 
-                icon={element.icon}
-                className="w-20 h-24 fill-green" />
+              <Icon icon={element.icon} className="w-20 h-24 fill-green" />
             </div>
 
             <div className="flex flex-col gap-5 justify-center h-full max-w-80">
@@ -47,7 +45,7 @@ export function TextGrid({ textGrid }) {
         ))}
       </section>
     </div>
-  );
+  )
 }
 
 TextGrid.propTypes = {
@@ -60,7 +58,7 @@ TextGrid.propTypes = {
         icon: PropTypes.string,
         title: PropTypes.string,
         description: PropTypes.string,
-      }).isRequired,
+      }).isRequired
     ),
   }),
-};
+}

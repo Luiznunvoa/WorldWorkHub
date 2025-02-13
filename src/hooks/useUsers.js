@@ -1,8 +1,8 @@
-import { z, ZodError } from "zod";
-import { AxiosHttpAdapter } from "../adapter/httpUser";
-import { UsersService } from "../services/usersService";
-import { useRequestStore, STATE } from "../stores/requestStore";
-import { useUserStore, initialState } from "../stores/userStore.js";
+import { z, ZodError } from "zod"
+import { AxiosHttpAdapter } from "../adapter/httpUser"
+import { UsersService } from "../services/usersService"
+import { useRequestStore, STATE } from "../stores/requestStore"
+import { useUserStore, initialState } from "../stores/userStore.js"
 
 const userSchema = z
   .object({
@@ -40,15 +40,15 @@ const userSchema = z
   .transform((data) => ({
     ...data,
     role: "User", // INFO: All users are created with the user role
-  }));
+  }))
 
 /**
  * Custom hook for user-related operations.
  * @returns {Object} User management functions
  */
 export function useUsers() {
-  const { setState } = useRequestStore();
-  const usersService = new UsersService(new AxiosHttpAdapter());
+  const { setState } = useRequestStore()
+  const usersService = new UsersService(new AxiosHttpAdapter())
 
   /**
    * Creates a new user.
@@ -56,21 +56,22 @@ export function useUsers() {
    * @returns {Promise<void>}
    */
   const createUser = async (data) => {
-    setState(STATE.LOADING);
+    setState(STATE.LOADING)
     try {
-      const newUser = userSchema.parse(data);
-      await usersService.create(newUser);
-      setState(STATE.SUCCESS);
+      const newUser = userSchema.parse(data)
+      await usersService.create(newUser)
+      setState(STATE.SUCCESS)
     } catch (error) {
-      setState(STATE.ERROR);
+      setState(STATE.ERROR)
       if (error instanceof ZodError) {
-        alert("Unexpected Validation Error!");
-        console.error("Validation errors (Zod):", error.errors);
+        alert("Unexpected Validation Error!")
+        console.error("Validation errors (Zod):", error.errors)
+        
       } else {
-        console.error("User creation request error:", error.message);
+        console.error("User creation request error:", error.message)
       }
     }
-  };
+  }
 
   /**
    * Retrieves the current user's information.
@@ -78,11 +79,11 @@ export function useUsers() {
    */
   const getUser = async () => {
     if (useUserStore.getState().user !== initialState) {
-      return;
+      return
     }
-    setState(STATE.LOADING);
+    setState(STATE.LOADING)
     try {
-      const response = await usersService.getCurrent();
+      const response = await usersService.getCurrent()
       useUserStore.setState({
         user: {
           id: response.id,
@@ -99,19 +100,18 @@ export function useUsers() {
           services: response.services,
           languages: response.languages,
         },
-      });
-      setState(STATE.SUCCESS);
-      return response.user;
+      })
+      setState(STATE.SUCCESS)
+      return response.user
     } catch (error) {
-      setState(STATE.ERROR);
-      console.error("Error fetching current user:", error);
-      throw error;
+      setState(STATE.ERROR)
+      console.error("Error fetching current user:", error)
+      throw error
     }
-  };
+  }
 
   return {
     createUser,
     getUser,
-  };
+  }
 }
-

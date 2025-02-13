@@ -15,14 +15,14 @@
 //   return new RegExp(pattern, flags);
 // }
 
-/* 
- * Clears the navigation cookies 
+/*
+ * Clears the navigation cookies
  */
 export function clearCookies() {
-  const cookies = document.cookie.split(";");
+  const cookies = document.cookie.split(";")
 
   for (const cookie of cookies) {
-    const [name] = cookie.split("=");
-    document.cookie = `${name.trim()}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    const [name] = cookie.split("=")
+    document.cookie = `${name.trim()}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`
   }
 }
