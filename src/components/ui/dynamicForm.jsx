@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm, FormProvider } from "react-hook-form";
+import { useFormStore } from "../../stores/formStore";
 import PropTypes from "prop-types";
 
 /**
@@ -10,33 +11,37 @@ import PropTypes from "prop-types";
  * Props:
  * - onSubmit (function): Handles form submission.
  * - buttonlabels (object): Labels for navigation buttons (previous, next, submit).
- * - option (object): Additional option to render a login prompt.
- * - steps (array of objects): Array of step configurations containing title and inputs.
+ * - dialogs (array of objects): Configurations de diálogos, ex.: prompt de login.
+ * - steps (array of objects): Array de configurações de etapas contendo título e inputs.
  */
 export function DynamicForm({ onSubmit, buttonlabels, dialogs, steps }) {
   const navigate = useNavigate();
-  const [step, setStep] = useState(0); // Current step state
-  const methods = useForm(); // Form methods from react-hook-form
+  const [step, setStep] = useState(0); // Estado da etapa atual
+  const methods = useForm(); // Métodos do react-hook-form
 
-  // Proceed to the next step if current inputs are valid
+  const setState = useFormStore((state) => state.setState);
+  const formValues = methods.watch();
+
+  // Sempre que formValues mudar, atualiza a store do Zustand
+  useEffect(() => {
+    setState(formValues);
+  }, [formValues, setState]);
+
+  // Avança para a próxima etapa se os inputs atuais forem válidos
   const nextStep = async () => {
     const isValid = await methods.trigger();
     if (isValid) {
       setStep((prev) => (prev < steps.length - 1 ? prev + 1 : prev));
+      steps[step].inputs.forEach((input) => {
+        methods.resetField(input.name);
+      });
     }
   };
 
-  // Return to the previous step
+  // Retorna para a etapa anterior
   const previousStep = () => setStep((prev) => (prev > 0 ? prev - 1 : prev));
 
-  // UsesEffect to reset form fields when the step changes
-  useEffect(() => {
-    steps[step].inputs.forEach((input) => {
-      methods.resetField(input.name);
-    });
-  }, [step, methods, steps]);
-
-  // Error message component for form validation errors
+  // Componente para exibir mensagem de erro na validação
   function ErrorMessage({ error }) {
     return <p className="h-1 text-sm text-red-500">{error}</p>;
   }
@@ -52,17 +57,16 @@ export function DynamicForm({ onSubmit, buttonlabels, dialogs, steps }) {
           onSubmit={methods.handleSubmit(onSubmit)}
           className="flex flex-col justify-between items-center p-6 w-full h-full bg-white shadow-2xl"
         >
-          {/* Step title */}
-
-          {/* Step inputs */}
+          {/* Inputs da etapa */}
           <div className="flex-col w-full">
+            {/* Título da etapa */}
             <h2 className="m-5 text-2xl italic font-bold text-center font-kanit-thin">
               {steps[step].title}
             </h2>
+
             {steps[step].inputs.map((input, index) => (
               <div key={index} className="mb-4 w-full">
                 {input.type === "select" ? (
-                  // In case the input is a dropdown type
                   <select
                     {...methods.register(input.name, {
                       required: input.required,
@@ -80,7 +84,6 @@ export function DynamicForm({ onSubmit, buttonlabels, dialogs, steps }) {
                     ))}
                   </select>
                 ) : (
-                  // Regular input
                   <input
                     {...methods.register(input.name, {
                       required: input.required,
@@ -92,18 +95,19 @@ export function DynamicForm({ onSubmit, buttonlabels, dialogs, steps }) {
                     })}
                     type={input.type}
                     placeholder={input.placeholder}
-                    className="p-2 w-full bg-white text-black rounded border-b border-black placeholder-black placeholder:font-Roboto"
+                    className="p-2 w-full placeholder-black text-black bg-white rounded border-b border-black placeholder:font-Roboto"
                   />
                 )}
-                {/* Error message */}
+                {/* Mensagem de erro */}
                 <ErrorMessage
                   error={methods.formState.errors[input.name]?.message}
                 />
               </div>
             ))}
           </div>
+
+          {/* Botões de navegação */}
           <div className="flex flex-col justify-between items-center w-full">
-            {/* Navigation buttons */}
             <div className="flex flex-row gap-5 justify-center items-center my-2">
               {step > 0 && (
                 <button
@@ -133,7 +137,7 @@ export function DynamicForm({ onSubmit, buttonlabels, dialogs, steps }) {
               )}
             </div>
 
-            {/* Optional link */}
+            {/* Links adicionais */}
             {dialogs.map((dialog, index) => (
               <p key={index} className="flex gap-1 text-outline">
                 {dialog.text}
@@ -153,17 +157,17 @@ export function DynamicForm({ onSubmit, buttonlabels, dialogs, steps }) {
 }
 
 DynamicForm.propTypes = {
-  // Function to execute after completing the last step
+  // Função a ser executada após completar a última etapa
   onSubmit: PropTypes.func.isRequired,
 
-  // Labels for the form buttons (next, previous, submit)
+  // Labels para os botões do formulário (next, previous, submit)
   buttonlabels: PropTypes.shape({
     next: PropTypes.string.isRequired,
     previous: PropTypes.string.isRequired,
     submit: PropTypes.string.isRequired,
   }).isRequired,
 
-  // Optional login prompt or additional link at the bottom of the form
+  // Prompt de login ou link adicional opcional
   dialogs: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.string.isRequired,
@@ -172,43 +176,43 @@ DynamicForm.propTypes = {
     }),
   ),
 
-  // Configuration for each step of the form
+  // Configuração para cada etapa do formulário
   steps: PropTypes.arrayOf(
     PropTypes.shape({
-      // Title of the step
+      // Título da etapa
       title: PropTypes.string.isRequired,
 
-      // Array of input configurations for the step
+      // Array de configurações de inputs para a etapa
       inputs: PropTypes.arrayOf(
         PropTypes.shape({
-          // Unique name for the input
+          // Nome único do input
           name: PropTypes.string.isRequired,
 
-          // Input type (e.g., text, email, select)
+          // Tipo do input (ex.: text, email, select)
           type: PropTypes.string.isRequired,
 
-          // Validation error message if input is required but not provided
+          // Mensagem de erro para input obrigatório
           required: PropTypes.string,
 
-          // Function to validate input value
+          // Função para validar o valor do input
           validate: PropTypes.func,
 
-          // Placeholder text for the input
+          // Placeholder do input
           placeholder: PropTypes.string,
 
-          // Minimum length validation and its error message
+          // Validação de comprimento mínimo e sua mensagem de erro
           minlength: PropTypes.shape({
             value: PropTypes.number.isRequired,
             message: PropTypes.string.isRequired,
           }),
 
-          // Regex pattern validation and its error message
+          // Validação por regex e sua mensagem de erro
           pattern: PropTypes.shape({
             value: PropTypes.instanceOf(RegExp).isRequired,
             message: PropTypes.string.isRequired,
           }),
 
-          // Options for a select input type
+          // Opções para input do tipo select
           options: PropTypes.arrayOf(
             PropTypes.shape({
               label: PropTypes.string.isRequired,

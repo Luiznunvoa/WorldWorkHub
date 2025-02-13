@@ -1,48 +1,64 @@
-import { createBrowserRouter } from 'react-router-dom'
-import { RouterProvider } from 'react-router-dom'
-import { DefaultLayout } from '../components/layouts';
-import { Home } from '../components/home';
-import { Login } from '../components/login';
-import { Register } from '../components/register';
-import { List } from '../components/list';
-import { VerifyUserAuthentication, ValidateSelectedProfile } from './middlewares';
+import { createBrowserRouter } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
+import { DefaultLayout } from "../components/layouts";
+import { Home } from "../components/home";
+import { Login } from "../components/login";
+import { Register } from "../components/register";
+import { List } from "../components/list";
+import {
+  VerifyUserAuthentication,
+  ValidateSelectedProfile,
+} from "./middlewares";
 
 export function BrowserRouter() {
-  const router = createBrowserRouter([ 
-    { // Routes accessible to anyone
-      element: <DefaultLayout />,
-      children: [
-        {
-          path: "/",
-          element: <Home />
-        },
-      ]
-    }, 
-    { // Routes only accessible to non-authenticaded users
-      element: <VerifyUserAuthentication><DefaultLayout /></VerifyUserAuthentication>, 
+  const router = createBrowserRouter([
+    // { 
+    //   // Routes accessible to anyone
+    //   element: <YourLayout />,
+    //   children: [
+    //     {
+    //       path: "/",
+    //       element: <YourPage />
+    //     },
+    //   ]
+    // },
+    {
+      // Routes only accessible to non-authenticaded users
+      element: (
+        <VerifyUserAuthentication>
+          <DefaultLayout />
+        </VerifyUserAuthentication>
+      ),
       children: [
         {
           path: "/login",
-          element: <Login />
+          element: <Login />,
         },
         {
           path: "/register",
-          element: <Register />
-        }
-      ]
+          element: <Register />,
+        },
+        {
+          path: "/",
+          element: <Home />,
+        },
+      ],
     },
-    { // Routes only accessible to authenticaded users
-      element: <ValidateSelectedProfile><DefaultLayout /></ValidateSelectedProfile>, 
+    {
+      // Routes only accessible to authenticaded users
+      element: (
+        <ValidateSelectedProfile>
+          <DefaultLayout />
+        </ValidateSelectedProfile>
+      ),
       children: [
         {
           path: "/list",
-          element: <List />
-        }, 
-      ]
+          element: <List />,
+        },
+      ],
     },
   ]);
 
-  return (
-    <RouterProvider router={router} />
-  )
+  return <RouterProvider router={router} />;
 }

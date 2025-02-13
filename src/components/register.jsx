@@ -2,14 +2,18 @@ import { DynamicForm } from "./ui/dynamicForm";
 import { AlertMessage } from "./ui/alertMessage";
 import { useUsers } from "../hooks/useUsers";
 import { useRequestStore } from "../stores/requestStore";
+import { useFormStore } from "../stores/formStore";
+import data from "../assets/usa_states_and_cities.json";
 
 export function Register() {
   const requestState = useRequestStore.getState().state;
   const { createUser } = useUsers();
+  const cities = data.countries.USA;
+  const region = useFormStore((state) => state.form.region);
 
-  if (requestState == "success") {
+  if (requestState === "success") {
     return (
-      <main className="flex flex-col items-center p-6 w-ful fill-green text-green">
+      <main className="flex flex-col items-center p-6 w-full fill-green text-green">
         <AlertMessage
           message={{
             icon: "check",
@@ -26,12 +30,11 @@ export function Register() {
 
   return (
     <main className="flex flex-col items-center p-6 w-full h-full">
-      {/* Form to create a new account */}
+      {/* Formulário para criar uma nova conta */}
       <p className="h-10 text-center text-red-500 w-100">
-        {requestState == "error" && "Unexpected Error in Registration"}
+        {requestState === "error" && "Unexpected Error in Registration"}
       </p>
       <div className="flex overflow-hidden flex-row-reverse justify-center items-center border-2 border-solid shadow-xl h-[32rem] border-outline">
-        
         <div className="w-96 h-full">
           <DynamicForm
             onSubmit={(data) => createUser(data)}
@@ -40,6 +43,7 @@ export function Register() {
               previous: "previous",
               submit: "submit",
             }}
+
             dialogs={[
               {
                 text: "already have an account?",
@@ -47,7 +51,8 @@ export function Register() {
                 path: "/login",
               },
             ]}
-            // Process each step in the form
+
+            // Configuração das etapas do formulário
             steps={[
               {
                 title: "Create your Account",
@@ -66,6 +71,7 @@ export function Register() {
                     },
                     placeholder: "First name",
                   },
+
                   {
                     name: "lastname",
                     type: "text",
@@ -80,16 +86,18 @@ export function Register() {
                     },
                     placeholder: "Last name",
                   },
+
                   {
                     name: "email",
                     type: "email",
                     required: "Email is required",
                     pattern: {
                       value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                      message: "please enter a valid email address",
+                      message: "Please enter a valid email address",
                     },
                     placeholder: "Email",
                   },
+
                   {
                     name: "password",
                     type: "password",
@@ -101,14 +109,14 @@ export function Register() {
                     },
                     placeholder: "Password",
                   },
+
                   {
                     name: "confirmpassword",
                     type: "password",
                     required: "Confirm your password",
-                    validate: (value, methods) => {
+                    validate: (value, methods) =>
                       value === methods.getValues("password") ||
-                        "password is not correct";
-                    },
+                      "Password is not correct",
                     placeholder: "Confirm password",
                   },
                 ],
@@ -119,98 +127,100 @@ export function Register() {
                   {
                     name: "region",
                     type: "select",
-                    required: "region is required",
-                    placeholder: "select your state",
+                    required: "Region is required",
+                    placeholder: "Select your state",
                     options: [
-                      { label: "Alabama", value: "AL" },
-                      { label: "Alaska", value: "AK" },
-                      { label: "Arizona", value: "AZ" },
-                      { label: "Arkansas", value: "AR" },
-                      { label: "California", value: "CA" },
-                      { label: "Colorado", value: "CO" },
-                      { label: "Connecticut", value: "CT" },
-                      { label: "Delaware", value: "DE" },
-                      { label: "Florida", value: "FL" },
-                      { label: "Georgia", value: "GA" },
-                      { label: "Hawaii", value: "HI" },
-                      { label: "Idaho", value: "ID" },
-                      { label: "Illinois", value: "IL" },
-                      { label: "Indiana", value: "IN" },
-                      { label: "Iowa", value: "IA" },
-                      { label: "Kansas", value: "KS" },
-                      { label: "Kentucky", value: "KY" },
-                      { label: "Louisiana", value: "LA" },
-                      { label: "Maine", value: "ME" },
-                      { label: "Maryland", value: "MD" },
-                      { label: "Massachusetts", value: "MA" },
-                      { label: "Michigan", value: "MI" },
-                      { label: "Minnesota", value: "MN" },
-                      { label: "Mississippi", value: "MS" },
-                      { label: "Missouri", value: "MO" },
-                      { label: "Montana", value: "MT" },
-                      { label: "Nebraska", value: "NE" },
-                      { label: "Nevada", value: "NV" },
-                      { label: "New Hampshire", value: "NH" },
-                      { label: "New Jersey", value: "NJ" },
-                      { label: "New Mexico", value: "NM" },
-                      { label: "New York", value: "NY" },
-                      { label: "North Carolina", value: "NC" },
-                      { label: "North Dakota", value: "ND" },
-                      { label: "Ohio", value: "OH" },
-                      { label: "Oklahoma", value: "OK" },
-                      { label: "Oregon", value: "OR" },
-                      { label: "Pennsylvania", value: "PA" },
-                      { label: "Rhode Island", value: "RI" },
-                      { label: "South Carolina", value: "SC" },
-                      { label: "South Dakota", value: "SD" },
-                      { label: "Tennessee", value: "TN" },
-                      { label: "Texas", value: "TX" },
-                      { label: "Utah", value: "UT" },
-                      { label: "Vermont", value: "VT" },
-                      { label: "Virginia", value: "VA" },
-                      { label: "Washington", value: "WA" },
-                      { label: "West Virginia", value: "WV" },
-                      { label: "Wisconsin", value: "WI" },
-                      { label: "Wyoming", value: "WY" },
+                      { label: "Alabama", value: "Alabama" },
+                      { label: "Alaska", value: "Alaska" },
+                      { label: "Arizona", value: "Arizona" },
+                      { label: "Arkansas", value: "Arkansas" },
+                      { label: "California", value: "California" },
+                      { label: "Colorado", value: "Colorado" },
+                      { label: "Connecticut", value: "Connecticut" },
+                      { label: "Delaware", value: "Delaware" },
+                      { label: "Florida", value: "Florida" },
+                      { label: "Georgia", value: "Georgia" },
+                      { label: "Hawaii", value: "Hawaii" },
+                      { label: "Idaho", value: "Idaho" },
+                      { label: "Illinois", value: "Illinois" },
+                      { label: "Indiana", value: "Indiana" },
+                      { label: "Iowa", value: "Iowa" },
+                      { label: "Kansas", value: "Kansas" },
+                      { label: "Kentucky", value: "Kentucky" },
+                      { label: "Louisiana", value: "Louisiana" },
+                      { label: "Maine", value: "Maine" },
+                      { label: "Maryland", value: "Maryland" },
+                      { label: "Massachusetts", value: "Massachusetts" },
+                      { label: "Michigan", value: "Michigan" },
+                      { label: "Minnesota", value: "Minnesota" },
+                      { label: "Mississippi", value: "Mississippi" },
+                      { label: "Missouri", value: "Missouri" },
+                      { label: "Montana", value: "Montana" },
+                      { label: "Nebraska", value: "Nebraska" },
+                      { label: "Nevada", value: "Nevada" },
+                      { label: "New Hampshire", value: "New Hampshire" },
+                      { label: "New Jersey", value: "New Jersey" },
+                      { label: "New Mexico", value: "New Mexico" },
+                      { label: "New York", value: "New York" },
+                      { label: "North Carolina", value: "North Carolina" },
+                      { label: "North Dakota", value: "North Dakota" },
+                      { label: "Ohio", value: "Ohio" },
+                      { label: "Oklahoma", value: "Oklahoma" },
+                      { label: "Oregon", value: "Oregon" },
+                      { label: "Pennsylvania", value: "Pennsylvania" },
+                      { label: "Rhode Island", value: "Rhode Island" },
+                      { label: "South Carolina", value: "South Carolina" },
+                      { label: "South Dakota", value: "South Dakota" },
+                      { label: "Tennessee", value: "Tennessee" },
+                      { label: "Texas", value: "Texas" },
+                      { label: "Utah", value: "Utah" },
+                      { label: "Vermont", value: "Vermont" },
+                      { label: "Virginia", value: "Virginia" },
+                      { label: "Washington", value: "Washington" },
+                      { label: "West Virginia", value: "West Virginia" },
+                      { label: "Wisconsin", value: "Wisconsin" },
+                      { label: "Wyoming", value: "Wyoming" },
                     ],
                   },
+
                   {
                     name: "city",
-                    type: "text",
-                    required: "city is required",
-                    minlength: {
-                      value: 2,
-                      message: "city must have at least 2 characters",
-                    },
-                    pattern: {
-                      value: /^[A-Za-zÇç´^~ ]+$/,
-                      message: "city can only contain letters",
-                    },
-                    placeholder: "city",
+                    type: "select",
+                    required: "City is required",
+                    placeholder: "Select your city",
+                    options:
+                      region && cities[region]
+                        ? cities[region].map((city) => ({
+                          label: city,
+                          value: city,
+                        }))
+                        : [{label: "No State Selected", value: ""}],
                   },
+
                   {
                     name: "phone",
                     type: "text",
-                    required: "phone is required",
+                    required: "Phone is required",
                     minlength: {
                       value: 9,
-                      message: "phone number must have at least 9 numbers",
+                      message: "Phone number must have at least 9 numbers",
                     },
                     pattern: {
                       value: /^[0-9]*$/,
-                      message: "please enter a valid phone number",
+                      message: "Please enter a valid phone number",
                     },
-                    placeholder: "phone number",
+                    placeholder: "Phone number",
                   },
+
                   {
                     name: "zipcode",
                     type: "text",
-                    required: "zip code is required",
+                    required: "Zip code is required",
                     pattern: {
                       value: /^\d{5}(-\d{4})?$/,
-                      message: "please enter a valid zip code",
+                      message: "Please enter a valid zip code",
                     },
-                    placeholder: "zip code",
+                    placeholder: "Zip code",
                   },
                 ],
               },
@@ -220,8 +230,8 @@ export function Register() {
                   {
                     name: "education",
                     type: "select",
-                    required: "your education level is required",
-                    placeholder: "select your education",
+                    required: "Your education level is required",
+                    placeholder: "Select your education",
                     options: [
                       { label: "no education", value: "no education" },
                       { label: "middle school", value: "middle school" },
@@ -230,11 +240,12 @@ export function Register() {
                       { label: "phd", value: "phd" },
                     ],
                   },
+
                   {
                     name: "occupation",
                     type: "select",
-                    required: "your current occupation is required",
-                    placeholder: "select your occupation",
+                    required: "Your current occupation is required",
+                    placeholder: "Select your occupation",
                     options: [
                       { label: "Driver", value: "Driver" },
                       { label: "Waiter/Waitress", value: "Waiter/Waitress" },
