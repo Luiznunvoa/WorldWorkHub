@@ -1,4 +1,4 @@
-import { Icon } from "./icon";
+import { ReactSVG } from "react-svg";
 
 export function Footer() {
   const sections = [
@@ -73,22 +73,31 @@ export function Footer() {
 
           <nav className="flex flex-row gap-5 items-center mt-5">
             <div className="flex flex-col justify-center items-center w-7 h-7 rounded-full transition cursor-pointer bg-outline hover:bg-background_secondary">
-              <Icon type="github" className="w-7 h-7 fill-text_secondary" />
-            </div>
-
-            <div className="flex flex-col justify-center items-center w-7 h-7 rounded-full transition cursor-pointer bg-outline hover:bg-background_secondary">
-              <Icon
-                type="instagram"
-                className="w-7 h-7 stroke-2 fill-outline stroke-text_secondary"
+              <ReactSVG
+                src={`../../../public/icons/github.svg`}
+                className="w-5 h-5 fill-text_secondary"
               />
             </div>
 
             <div className="flex flex-col justify-center items-center w-7 h-7 rounded-full transition cursor-pointer bg-outline hover:bg-background_secondary">
-              <Icon type="facebook" className="w-7 h-7 fill-text_secondary" />
+              <ReactSVG
+                src={`../../../public/icons/instagram.svg`}
+                className="w-5 h-5 stroke-2 fill-outline stroke-text_secondary"
+              />
             </div>
 
             <div className="flex flex-col justify-center items-center w-7 h-7 rounded-full transition cursor-pointer bg-outline hover:bg-background_secondary">
-              <Icon type="linkedin" className="w-5 h-5 fill-text_secondary" />
+              <ReactSVG
+                src={`../../../public/icons/facebook.svg`}
+                className="w-5 h-5 fill-text_secondary"
+              />{" "}
+            </div>
+
+            <div className="flex flex-col justify-center items-center w-7 h-7 rounded-full transition cursor-pointer bg-outline hover:bg-background_secondary">
+              <ReactSVG
+                src={`../../../public/icons/linkedin.svg`}
+                className="w-7 h-7 fill-text_secondary"
+              />
             </div>
           </nav>
         </div>

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import { IconTitle } from "./iconTitle";
-import { Icon } from "./icon";
+import { ReactSVG } from "react-svg";
+import { ContentHeader } from "./contentHeader";
 
 /**
  * TextGrid Component
@@ -19,7 +19,7 @@ export function TextGrid({ textGrid }) {
   return (
     <div className="flex flex-col gap-20 justify-center items-center">
       {(textGrid.icon || textGrid.title) && (
-        <IconTitle icon={textGrid.icon} title={textGrid.title} />
+        <ContentHeader icon={textGrid.icon} title={textGrid.title} />
       )}
 
       <section className="grid grid-cols-1 gap-10 justify-center items-center md:grid-cols-2">
@@ -29,7 +29,9 @@ export function TextGrid({ textGrid }) {
             className="flex flex-row gap-5 p-10 bg-white rounded-2xl border-4 border-solid shadow-xl transition-all cursor-pointer hover:shadow-2xl hover:scale-110 border-text"
           >
             <div className="flex flex-col h-full">
-              <Icon type={element.icon} className="w-20 h-24 fill-green" />
+              <ReactSVG 
+                src={`../../../public/icons/${element.icon}.svg`}
+                className="w-20 h-24 fill-green" />
             </div>
 
             <div className="flex flex-col gap-5 justify-center h-full max-w-80">

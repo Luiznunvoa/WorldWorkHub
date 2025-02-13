@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import { IconTitle } from "./iconTitle";
-import { Icon } from "./icon";
+import { ReactSVG } from "react-svg";
+import { ContentHeader } from "./contentHeader";
 
 /**
  * Panels Component
@@ -16,7 +16,7 @@ import { Icon } from "./icon";
 export function Panels({ panels }) {
   return (
     <div className="flex flex-col gap-10 items-center mb-14">
-      <IconTitle icon={panels.icon} title={panels.title} />
+      <ContentHeader icon={panels.icon} title={panels.title} />
 
       {panels.places.map((place, index) => (
         <section
@@ -35,8 +35,8 @@ export function Panels({ panels }) {
               loading="lazy"
             />
 
-            <Icon
-              type="cursor"
+            <ReactSVG
+              src={`../../../public/icons/cursor.svg`}
               className={`absolute -mt-12 h-20 w-20 fill-text stroke-green stroke-1 ${index % 2 === 0 ? "ml-20 rotate-90" : "ml-64"}`}
             />
           </div>

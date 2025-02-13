@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import PropTypes from "prop-types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
-import { Icon } from "./icon";
+import { ReactSVG } from "react-svg";
 import { IconTitle } from "./iconTitle";
 
 /**
@@ -30,7 +30,9 @@ export function Slider({ slider }) {
 
       <section className="flex flex-row gap-5 items-center">
         {slider.icon && (
-          <Icon type={slider.icon} className="w-10 h-10 fill-text" />
+          <ReactSVG  
+            src={`../../../public/icons/${slider.icon}.svg`}
+            className="w-10 h-10 fill-text" />
         )}
         {slider.title && (
           <h2 className="text-3xl font-bold text-center font-kanit-thin">

@@ -14,7 +14,7 @@ import PropTypes from "prop-types";
  * - dialogs (array of objects): Configurations de diálogos, ex.: prompt de login.
  * - steps (array of objects): Array de configurações de etapas contendo título e inputs.
  */
-export function DynamicForm({ onSubmit, buttonlabels, dialogs, steps }) {
+export function Form({ onSubmit, buttonlabels, dialogs, steps }) {
   const navigate = useNavigate();
   const [step, setStep] = useState(0); // Estado da etapa atual
   const methods = useForm(); // Métodos do react-hook-form
@@ -156,7 +156,7 @@ export function DynamicForm({ onSubmit, buttonlabels, dialogs, steps }) {
   );
 }
 
-DynamicForm.propTypes = {
+Form.propTypes = {
   // Função a ser executada após completar a última etapa
   onSubmit: PropTypes.func.isRequired,
 

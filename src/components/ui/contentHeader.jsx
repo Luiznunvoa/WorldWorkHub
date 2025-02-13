@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
-import { Icon } from "./icon";
+import { ReactSVG } from "react-svg";
 
-export function IconTitle({ icon, title }) {
+export function ContentHeader({ icon, title }) {
   return (
     <section className="flex flex-row gap-5 items-center">
-      {icon && <Icon type={icon} className="w-10 h-10 fill-text" />}
+      {icon && <ReactSVG src={`../../../public/icons/${icon}.svg`} className="w-10 h-10 fill-text" />}
       {title && (
         <h2 className="text-3xl font-bold text-center font-kanit-thin">
           {title}
@@ -14,7 +14,7 @@ export function IconTitle({ icon, title }) {
   );
 }
 
-IconTitle.propTypes = {
+ContentHeader.propTypes = {
   icon: PropTypes.string,
   title: PropTypes.string,
 };

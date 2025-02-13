@@ -1,15 +1,25 @@
-import { DynamicForm } from "./ui/dynamicForm";
+import { useEffect, useState } from "react";
+import { Form } from "./ui/form";
 import { AlertMessage } from "./ui/alertMessage";
 import { useUsers } from "../hooks/useUsers";
 import { useRequestStore } from "../stores/requestStore";
 import { useFormStore } from "../stores/formStore";
-import data from "../assets/usa_states_and_cities.json";
 
 export function Register() {
   const requestState = useRequestStore.getState().state;
   const { createUser } = useUsers();
-  const cities = data.countries.USA;
+  const [cities, setCities] = useState([]);
   const region = useFormStore((state) => state.form.region);
+
+  useEffect(() => {
+    if (region) {
+      import("../assets/usa_states_and_cities.json")
+        .then((module) => {
+          setCities(module.default.countries.USA);
+        })
+        .catch((error) => console.error("Error loading region data:", error));
+    }
+  }, [region]);
 
   if (requestState === "success") {
     return (
@@ -36,14 +46,13 @@ export function Register() {
       </p>
       <div className="flex overflow-hidden flex-row-reverse justify-center items-center border-2 border-solid shadow-xl h-[32rem] border-outline">
         <div className="w-96 h-full">
-          <DynamicForm
+          <Form
             onSubmit={(data) => createUser(data)}
             buttonlabels={{
               next: "next",
               previous: "previous",
               submit: "submit",
             }}
-
             dialogs={[
               {
                 text: "already have an account?",
@@ -51,7 +60,6 @@ export function Register() {
                 path: "/login",
               },
             ]}
-
             // Configuração das etapas do formulário
             steps={[
               {
@@ -194,7 +202,7 @@ export function Register() {
                           label: city,
                           value: city,
                         }))
-                        : [{label: "No State Selected", value: ""}],
+                        : [{ label: "No State Selected", value: "" }],
                   },
 
                   {

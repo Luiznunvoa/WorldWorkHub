@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { DynamicForm } from "./ui/dynamicForm";
+import { Form } from "./ui/form";
 import { useSession } from "../hooks/useSession";
 import { useRequestStore } from "../stores/requestStore";
 
@@ -21,7 +21,7 @@ export function Login() {
         {requestState == "error" && "Invalid email or password"}
       </p>
       <div className="m-10 w-96 border-2 border-solid shadow-xl border-outline">
-        <DynamicForm
+        <Form
           onSubmit={(data) => startSession(data)}
           buttonlabels={{
             next: "next",

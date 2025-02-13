@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { IconTitle } from "./iconTitle";
+import { ContentHeader } from "./contentHeader";
 
 /**
  * VisualGrid Component
@@ -18,7 +18,7 @@ import { IconTitle } from "./iconTitle";
 export function VisualGrid({ visualGrid }) {
   return (
     <div className="flex flex-col justify-center items-center w-full">
-      <IconTitle icon={visualGrid.icon} title={visualGrid.title} />
+      <ContentHeader icon={visualGrid.icon} title={visualGrid.title} />
 
       <section className="grid gap-6 justify-items-center p-4 w-9/12 sm:grid-cols-2 max-w-[1427px] grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] xl:grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))]">
         {visualGrid.elements.map((element, index) => (

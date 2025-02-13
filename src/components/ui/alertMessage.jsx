@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import { Icon } from "./icon";
+import { ReactSVG } from "react-svg";
 
 export function AlertMessage({ message }) {
   const navigate = useNavigate();
@@ -10,8 +10,8 @@ export function AlertMessage({ message }) {
   return (
     <div className="flex flex-col gap-10 justify-center items-center h-96">
       <div className="flex flex-row gap-7 justify-center items-center">
-        <Icon
-          type={message.icon}
+        <ReactSVG
+          src={`../../../public/icons/icon.svg`}
           className="w-32 h-32 stroke-4"
         />
         <p className="text-4xl font-bold font-kanit-thin">
