@@ -1,8 +1,8 @@
-import PropTypes from "prop-types"
-import { ReactSVG } from "react-svg"
-import { Spinner } from "./spinner"
+import PropTypes from "prop-types";
+import { ReactSVG } from "react-svg";
+import { Spinner } from "./spinner";
 
-export function Icon({ icon, className = "fill-text h-5 w-5" }) {
+export function Icon({ icon, className = "w-5 h-5 fill-text" }) {
   return (
     <ReactSVG
       src={`/icons/${icon}.svg`}
@@ -18,10 +18,10 @@ export function Icon({ icon, className = "fill-text h-5 w-5" }) {
         </span>
       )}
     />
-  )
+  );
 }
 
 Icon.propTypes = {
   icon: PropTypes.string.isRequired,
   className: PropTypes.string,
-}
+};

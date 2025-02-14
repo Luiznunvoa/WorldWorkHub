@@ -1,6 +1,6 @@
-import PropTypes from "prop-types"
-import { Icon } from "./icon"
-import { ContentHeader } from "./contentHeader"
+import PropTypes from "prop-types";
+import { Icon } from "./icon";
+import { ContentHeader } from "./contentHeader";
 
 /**
  * Panels Component
@@ -43,7 +43,7 @@ export function Panels({ panels }) {
         </section>
       ))}
     </div>
-  )
+  );
 }
 
 Panels.propTypes = {
@@ -54,7 +54,7 @@ Panels.propTypes = {
       PropTypes.shape({
         image: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
-      }).isRequired
+      }).isRequired,
     ).isRequired,
   }).isRequired,
-}
+};

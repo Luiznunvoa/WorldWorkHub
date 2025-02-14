@@ -1,8 +1,8 @@
-import { Panels } from "./ui/panels"
-import { Hero } from "./ui/hero"
-import { Highlight } from "./ui/highlight"
-import { Slider } from "./ui/slider"
-import { TextGrid } from "./ui/textGrid"
+import { Panels } from "./ui/panels";
+import { Hero } from "./ui/hero";
+import { Highlight } from "./ui/highlight";
+import { Slider } from "./ui/slider";
+import { TextGrid } from "./ui/textGrid";
 
 export function Home() {
   return (
@@ -181,5 +181,5 @@ export function Home() {
         }}
       />
     </div>
-  )
+  );
 }

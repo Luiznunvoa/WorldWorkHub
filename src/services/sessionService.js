@@ -3,7 +3,7 @@ export class SessionService {
    * @param {AxiosHttpAdapter} httpAdapter - HTTP adapter instance
    */
   constructor(httpAdapter) {
-    this.http = httpAdapter
+    this.http = httpAdapter;
   }
 
   async start(credentials) {
@@ -12,7 +12,7 @@ export class SessionService {
       url: "/login",
       data: credentials,
       credentials: true,
-    })
+    });
   }
 
   async end() {
@@ -20,7 +20,7 @@ export class SessionService {
       method: "post",
       url: `/logout`,
       credentials: true,
-    })
+    });
   }
 
   // async refresh() {

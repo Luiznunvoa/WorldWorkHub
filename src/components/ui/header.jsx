@@ -1,7 +1,7 @@
-import { useNavigate } from "react-router"
+import { useNavigate } from "react-router";
 
 export function Header() {
-  let navigate = useNavigate()
+  let navigate = useNavigate();
 
   return (
     <header className="flex justify-between items-center p-4 w-full bg-white border-b-2 border-solid border-outline">
@@ -11,5 +11,5 @@ export function Header() {
         </h1>
       </span>
     </header>
-  )
+  );
 }

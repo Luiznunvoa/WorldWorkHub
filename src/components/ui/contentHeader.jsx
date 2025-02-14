@@ -1,5 +1,5 @@
-import PropTypes from "prop-types"
-import { Icon } from "./icon"
+import PropTypes from "prop-types";
+import { Icon } from "./icon";
 
 export function ContentHeader({ icon, title }) {
   return (
@@ -11,10 +11,10 @@ export function ContentHeader({ icon, title }) {
         </h2>
       )}
     </section>
-  )
+  );
 }
 
 ContentHeader.propTypes = {
   icon: PropTypes.string,
   title: PropTypes.string,
-}
+};

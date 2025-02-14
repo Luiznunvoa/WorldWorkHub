@@ -3,7 +3,7 @@ export class UsersService {
    * @param {AxiosHttpAdapter} httpAdapter - HTTP adapter instance
    */
   constructor(httpAdapter) {
-    this.http = httpAdapter
+    this.http = httpAdapter;
   }
 
   async create(userData) {
@@ -11,14 +11,14 @@ export class UsersService {
       method: "post",
       url: "/users",
       data: userData,
-    })
+    });
   }
 
   async getCurrent() {
     return await this.http.requestPrivateBackend({
       method: "get",
       url: `/current-user`,
-    })
+    });
   }
 
   // TODO: getByID, getAll, Exclude and Edit

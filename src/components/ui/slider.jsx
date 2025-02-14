@@ -1,9 +1,9 @@
-import { useNavigate } from "react-router"
-import PropTypes from "prop-types"
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Navigation, Pagination } from "swiper/modules"
-import { Icon } from "./icon"
-import { ContentHeader } from "./contentHeader"
+import { useNavigate } from "react-router";
+import PropTypes from "prop-types";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import { Icon } from "./icon";
+import { ContentHeader } from "./contentHeader";
 
 /**
  * Slider Component
@@ -20,7 +20,7 @@ import { ContentHeader } from "./contentHeader"
  *    - button (object, optional): Object with label and function for a button.
  */
 export function Slider({ slider }) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className="flex flex-col gap-20 justify-center items-center w-full">
@@ -87,7 +87,7 @@ export function Slider({ slider }) {
         ))}
       </Swiper>
     </div>
-  )
+  );
 }
 
 Slider.propTypes = {
@@ -104,7 +104,7 @@ Slider.propTypes = {
           label: PropTypes.string.isRequired,
           path: PropTypes.string.isRequired,
         }),
-      }).isRequired
+      }).isRequired,
     ).isRequired,
   }),
-}
+};

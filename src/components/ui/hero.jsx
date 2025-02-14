@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router"
-import PropTypes from "prop-types"
+import { useNavigate } from "react-router";
+import PropTypes from "prop-types";
 
 /**
  * Hero Component
@@ -13,7 +13,7 @@ import PropTypes from "prop-types"
  *  - button (object): Object with label and function to the button
  */
 export function Hero({ hero }) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className="flex flex-col justify-center items-center w-full">
@@ -54,7 +54,7 @@ export function Hero({ hero }) {
         </div>
       )}
     </div>
-  )
+  );
 }
 
 Hero.propTypes = {
@@ -69,4 +69,4 @@ Hero.propTypes = {
       path: PropTypes.string.isRequired,
     }),
   }),
-}
+};

@@ -1,4 +1,4 @@
-import { create } from "zustand"
+import { create } from "zustand";
 
 export const initialState = {
   firstname: null,
@@ -12,10 +12,10 @@ export const initialState = {
   region: null,
   city: null,
   zipcode: null,
-}
+};
 
 export const useFormStore = create((set) => ({
   form: initialState,
   reset: () => set(initialState),
   setState: (newState) => set({ form: newState }),
-}))
+}));

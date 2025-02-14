@@ -1,25 +1,25 @@
-import { useEffect, useState } from "react"
-import { Form } from "./ui/form"
-import { AlertMessage } from "./ui/alertMessage"
-import { useUsers } from "../hooks/useUsers"
-import { useRequestStore } from "../stores/requestStore"
-import { useFormStore } from "../stores/formStore"
+import { useEffect, useState } from "react";
+import { Form } from "./ui/form";
+import { AlertMessage } from "./ui/alertMessage";
+import { useUsers } from "../hooks/useUsers";
+import { useRequestStore } from "../stores/requestStore";
+import { useFormStore } from "../stores/formStore";
 
 export function Register() {
-  const requestState = useRequestStore.getState().state
-  const { createUser } = useUsers()
-  const [cities, setCities] = useState([])
-  const region = useFormStore((state) => state.form.region)
+  const requestState = useRequestStore.getState().state;
+  const { createUser } = useUsers();
+  const [cities, setCities] = useState([]);
+  const region = useFormStore((state) => state.form.region);
 
   useEffect(() => {
     if (region) {
       import("../assets/usa_states_and_cities.json")
         .then((module) => {
-          setCities(module.default.countries.USA)
+          setCities(module.default.countries.USA);
         })
-        .catch((error) => console.error("Error loading region data:", error))
+        .catch((error) => console.error("Error loading region data:", error));
     }
-  }, [region])
+  }, [region]);
 
   if (requestState === "success") {
     return (
@@ -35,7 +35,7 @@ export function Register() {
           }}
         />
       </div>
-    )
+    );
   }
 
   return (
@@ -329,5 +329,5 @@ export function Register() {
         </div>
       </div>
     </div>
-  )
+  );
 }

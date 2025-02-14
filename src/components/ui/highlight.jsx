@@ -1,5 +1,5 @@
-import PropTypes from "prop-types"
-import { Icon } from "./icon"
+import PropTypes from "prop-types";
+import { Icon } from "./icon";
 
 /**
  * Highlight Component
@@ -33,7 +33,7 @@ export const Highlight = ({ highlights }) => (
       </section>
     ))}
   </div>
-)
+);
 
 Highlight.propTypes = {
   highlights: PropTypes.arrayOf(
@@ -42,6 +42,6 @@ Highlight.propTypes = {
       blackIcon: PropTypes.string.isRequired,
       greenIcon: PropTypes.string.isRequired,
       animation: PropTypes.string,
-    }).isRequired
+    }).isRequired,
   ).isRequired,
-}
+};

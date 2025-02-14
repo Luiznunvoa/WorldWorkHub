@@ -6,14 +6,13 @@ import { requestInterceptor, responseErrorInterceptor } from "./interceptors";
  *
  * The base URL is read from `import.meta.env.VITE_API_BASE_URL`,
  *  INFO: .env exemple:
- *   # In the .env at the root directory 
- *   VITE_API_BASE_URL=http://localhost:9090 
+ *   # In the .env at the root directory
+ *   VITE_API_BASE_URL=http://localhost:9090
  *
  * The adapter exposes a method `requestPrivateBackend` to make HTTP requests and automatically handle
  * the response data extraction as well as error logging.
  */
 export class AxiosHttpAdapter {
-
   /**
    * Creates an instance of AxiosHttpAdapter.
    * After setting up the instance, it calls the internal method to configure the interceptors.
@@ -44,12 +43,12 @@ export class AxiosHttpAdapter {
   _setupInterceptors() {
     this.privateBackendInstance.interceptors.request.use(
       requestInterceptor,
-      (error) => Promise.reject(error)
+      (error) => Promise.reject(error),
     );
 
     this.privateBackendInstance.interceptors.response.use(
       (response) => response,
-      responseErrorInterceptor(this.privateBackendInstance)
+      responseErrorInterceptor(this.privateBackendInstance),
     );
   }
 
@@ -72,4 +71,3 @@ export class AxiosHttpAdapter {
     }
   }
 }
-

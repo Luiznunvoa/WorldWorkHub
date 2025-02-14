@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-import { useForm, FormProvider } from "react-hook-form"
-import { useFormStore } from "../../stores/formStore"
-import PropTypes from "prop-types"
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useForm, FormProvider } from "react-hook-form";
+import { useFormStore } from "../../stores/formStore";
+import PropTypes from "prop-types";
 
 /**
  * DynamicForm Component
@@ -15,37 +15,37 @@ import PropTypes from "prop-types"
  * - steps (array of objects): Array de configurações de etapas contendo título e inputs.
  */
 export function Form({ onSubmit, buttonlabels, dialogs, steps }) {
-  const navigate = useNavigate()
-  const [step, setStep] = useState(0) // Estado da etapa atual
-  const methods = useForm() // Métodos do react-hook-form
+  const navigate = useNavigate();
+  const [step, setStep] = useState(0); // Estado da etapa atual
+  const methods = useForm(); // Métodos do react-hook-form
 
-  const setState = useFormStore((state) => state.setState)
-  const formValues = methods.watch()
+  const setState = useFormStore((state) => state.setState);
+  const formValues = methods.watch();
 
   // Sempre que formValues mudar, atualiza a store do Zustand
   useEffect(() => {
-    setState(formValues)
-  }, [formValues, setState])
+    setState(formValues);
+  }, [formValues, setState]);
 
   // Avança para a próxima etapa se os inputs atuais forem válidos
   const nextStep = async () => {
-    const isValid = await methods.trigger()
+    const isValid = await methods.trigger();
     if (isValid) {
-      setStep((prev) => (prev < steps.length - 1 ? prev + 1 : prev)) 
+      setStep((prev) => (prev < steps.length - 1 ? prev + 1 : prev));
     }
-  }
+  };
 
   // Retorna para a etapa anterior
-  const previousStep = () => setStep((prev) => (prev > 0 ? prev - 1 : prev))
+  const previousStep = () => setStep((prev) => (prev > 0 ? prev - 1 : prev));
 
   // Componente para exibir mensagem de erro na validação
   function ErrorMessage({ error }) {
-    return <p className="h-1 text-sm text-red-500">{error}</p>
+    return <p className="h-1 text-sm text-red-500">{error}</p>;
   }
 
   ErrorMessage.propTypes = {
     error: PropTypes.string,
-  }
+  };
 
   return (
     <div className="flex flex-col justify-center items-center w-full h-full">
@@ -150,7 +150,7 @@ export function Form({ onSubmit, buttonlabels, dialogs, steps }) {
         </form>
       </FormProvider>
     </div>
-  )
+  );
 }
 
 Form.propTypes = {
@@ -170,7 +170,7 @@ Form.propTypes = {
       text: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
       path: PropTypes.string.isRequired,
-    })
+    }),
   ),
 
   // Configuração para cada etapa do formulário
@@ -214,10 +214,10 @@ Form.propTypes = {
             PropTypes.shape({
               label: PropTypes.string.isRequired,
               value: PropTypes.string.isRequired,
-            })
+            }),
           ),
-        })
+        }),
       ).isRequired,
-    }).isRequired
+    }).isRequired,
   ).isRequired,
-}
+};

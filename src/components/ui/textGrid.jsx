@@ -1,6 +1,6 @@
-import PropTypes from "prop-types"
-import { Icon } from "./icon"
-import { ContentHeader } from "./contentHeader"
+import PropTypes from "prop-types";
+import { Icon } from "./icon";
+import { ContentHeader } from "./contentHeader";
 
 /**
  * TextGrid Component
@@ -45,7 +45,7 @@ export function TextGrid({ textGrid }) {
         ))}
       </section>
     </div>
-  )
+  );
 }
 
 TextGrid.propTypes = {
@@ -58,7 +58,7 @@ TextGrid.propTypes = {
         icon: PropTypes.string,
         title: PropTypes.string,
         description: PropTypes.string,
-      }).isRequired
+      }).isRequired,
     ),
   }),
-}
+};
