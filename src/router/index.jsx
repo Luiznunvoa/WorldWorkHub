@@ -22,6 +22,7 @@ export function BrowserRouter() {
     //     },
     //   ],
     // },
+
     {
       // Routes only accessible to non-authenticated users
       element: (
@@ -44,6 +45,7 @@ export function BrowserRouter() {
         },
       ],
     },
+
     {
       // Routes only accessible to authenticated users
       element: (
@@ -57,7 +59,7 @@ export function BrowserRouter() {
           element: <List />,
         },
       ],
-    },
+    }
   ]);
 
   return <RouterProvider router={router} />;

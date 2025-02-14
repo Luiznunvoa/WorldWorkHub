@@ -40,7 +40,7 @@ export function Register() {
 
   return (
     <div className="flex flex-col items-center p-6 w-full h-full">
-      {/* Formulário para criar uma nova conta */}
+      {/* Form to create a new account */}
       <p className="h-10 text-center text-red-500 w-100">
         {requestState === "error" && "Unexpected Error in Registration"}
       </p>
@@ -60,7 +60,7 @@ export function Register() {
                 path: "/login",
               },
             ]}
-            // Configuração das etapas do formulário
+            // Config of each step in the form
             steps={[
               {
                 title: "Create your Account",
@@ -129,6 +129,7 @@ export function Register() {
                   },
                 ],
               },
+
               {
                 title: "Address information",
                 inputs: [
@@ -232,6 +233,7 @@ export function Register() {
                   },
                 ],
               },
+
               {
                 title: "Personal information",
                 inputs: [

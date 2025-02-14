@@ -47,9 +47,8 @@ export const DashBoardLayout = () => {
         </div>
       ) : (
         <main className="flex flex-row items-center">
-          <div className="flex flex-col gap-10 p-10 w-96 bg-white border-r-2 h-[48rem] border-outline">
+          <div className="flex flex-col gap-10 p-10 w-96 bg-white border-r-2 h-[42rem] border-outline">
             <h1 className="text-xl font-bold text-text font-kanit-thin">
-              {" "}
               Side Bar
             </h1>
           </div>

@@ -5,7 +5,7 @@ import { requestInterceptor, responseErrorInterceptor } from "./interceptors";
  * AxiosHttpAdapter is an HTTP adapter that leverages Axios to perform API requests.
  *
  * The base URL is read from `import.meta.env.VITE_API_BASE_URL`,
- *  INFO: .env exemple:
+ *  INFO: .env example:
  *   # In the .env at the root directory
  *   VITE_API_BASE_URL=http://localhost:9090
  *

@@ -5,29 +5,27 @@ import { useFormStore } from "../../stores/formStore";
 import PropTypes from "prop-types";
 
 /**
- * DynamicForm Component
+ * Form Component
  * A multi-step form component built with React and react-hook-form.
  *
  * Props:
  * - onSubmit (function): Handles form submission.
  * - buttonlabels (object): Labels for navigation buttons (previous, next, submit).
- * - dialogs (array of objects): Configurations de diálogos, ex.: prompt de login.
- * - steps (array of objects): Array de configurações de etapas contendo título e inputs.
+ * - dialogs (array of objects): Dialogs and links in the bottom of the form, 
+ * - steps (array of objects): Array of all the steps in the form.
  */
 export function Form({ onSubmit, buttonlabels, dialogs, steps }) {
   const navigate = useNavigate();
-  const [step, setStep] = useState(0); // Estado da etapa atual
-  const methods = useForm(); // Métodos do react-hook-form
+  const [step, setStep] = useState(0); 
+  const methods = useForm(); 
 
   const setState = useFormStore((state) => state.setState);
   const formValues = methods.watch();
-
-  // Sempre que formValues mudar, atualiza a store do Zustand
+  
   useEffect(() => {
     setState(formValues);
   }, [formValues, setState]);
 
-  // Avança para a próxima etapa se os inputs atuais forem válidos
   const nextStep = async () => {
     const isValid = await methods.trigger();
     if (isValid) {
@@ -35,10 +33,8 @@ export function Form({ onSubmit, buttonlabels, dialogs, steps }) {
     }
   };
 
-  // Retorna para a etapa anterior
   const previousStep = () => setStep((prev) => (prev > 0 ? prev - 1 : prev));
 
-  // Componente para exibir mensagem de erro na validação
   function ErrorMessage({ error }) {
     return <p className="h-1 text-sm text-red-500">{error}</p>;
   }
@@ -54,9 +50,8 @@ export function Form({ onSubmit, buttonlabels, dialogs, steps }) {
           onSubmit={methods.handleSubmit(onSubmit)}
           className="flex flex-col justify-between items-center p-6 w-full h-full bg-white shadow-2xl"
         >
-          {/* Inputs da etapa */}
           <div className="flex-col w-full">
-            {/* Título da etapa */}
+            {/* Step Title */}
             <h2 className="m-5 text-2xl italic font-bold text-center font-kanit-thin">
               {steps[step].title}
             </h2>
@@ -95,7 +90,7 @@ export function Form({ onSubmit, buttonlabels, dialogs, steps }) {
                     className="p-2 w-full placeholder-black text-black bg-white rounded border-b border-black placeholder:font-Roboto"
                   />
                 )}
-                {/* Mensagem de erro */}
+                {/* Error Message */}
                 <ErrorMessage
                   error={methods.formState.errors[input.name]?.message}
                 />
@@ -103,7 +98,7 @@ export function Form({ onSubmit, buttonlabels, dialogs, steps }) {
             ))}
           </div>
 
-          {/* Botões de navegação */}
+          {/* Navigation Buttons */}
           <div className="flex flex-col justify-between items-center w-full">
             <div className="flex flex-row gap-5 justify-center items-center my-2">
               {step > 0 && (
@@ -134,7 +129,7 @@ export function Form({ onSubmit, buttonlabels, dialogs, steps }) {
               )}
             </div>
 
-            {/* Links adicionais */}
+            {/* Additional Links */}
             {dialogs.map((dialog, index) => (
               <p key={index} className="flex gap-1 text-outline">
                 {dialog.text}
@@ -154,17 +149,14 @@ export function Form({ onSubmit, buttonlabels, dialogs, steps }) {
 }
 
 Form.propTypes = {
-  // Função a ser executada após completar a última etapa
   onSubmit: PropTypes.func.isRequired,
 
-  // Labels para os botões do formulário (next, previous, submit)
   buttonlabels: PropTypes.shape({
     next: PropTypes.string.isRequired,
     previous: PropTypes.string.isRequired,
     submit: PropTypes.string.isRequired,
   }).isRequired,
 
-  // Prompt de login ou link adicional opcional
   dialogs: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.string.isRequired,
@@ -173,43 +165,32 @@ Form.propTypes = {
     }),
   ),
 
-  // Configuração para cada etapa do formulário
   steps: PropTypes.arrayOf(
     PropTypes.shape({
-      // Título da etapa
       title: PropTypes.string.isRequired,
 
-      // Array de configurações de inputs para a etapa
       inputs: PropTypes.arrayOf(
         PropTypes.shape({
-          // Nome único do input
           name: PropTypes.string.isRequired,
 
-          // Tipo do input (ex.: text, email, select)
           type: PropTypes.string.isRequired,
 
-          // Mensagem de erro para input obrigatório
           required: PropTypes.string,
 
-          // Função para validar o valor do input
           validate: PropTypes.func,
 
-          // Placeholder do input
           placeholder: PropTypes.string,
 
-          // Validação de comprimento mínimo e sua mensagem de erro
           minlength: PropTypes.shape({
             value: PropTypes.number.isRequired,
             message: PropTypes.string.isRequired,
           }),
 
-          // Validação por regex e sua mensagem de erro
           pattern: PropTypes.shape({
             value: PropTypes.instanceOf(RegExp).isRequired,
             message: PropTypes.string.isRequired,
           }),
 
-          // Opções para input do tipo select
           options: PropTypes.arrayOf(
             PropTypes.shape({
               label: PropTypes.string.isRequired,
