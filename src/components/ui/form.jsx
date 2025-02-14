@@ -31,10 +31,7 @@ export function Form({ onSubmit, buttonlabels, dialogs, steps }) {
   const nextStep = async () => {
     const isValid = await methods.trigger()
     if (isValid) {
-      setStep((prev) => (prev < steps.length - 1 ? prev + 1 : prev))
-      steps[step].inputs.forEach((input) => {
-        methods.resetField(input.name)
-      })
+      setStep((prev) => (prev < steps.length - 1 ? prev + 1 : prev)) 
     }
   }
 

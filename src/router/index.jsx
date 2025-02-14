@@ -12,16 +12,16 @@ import {
 
 export function BrowserRouter() {
   const router = createBrowserRouter([
-    {
-      // Routes accessible to anyone
-      element: <DefaultLayout />,
-      children: [
-        {
-          path: "/",
-          element: <Home />,
-        },
-      ],
-    },
+    // {
+    //   // Routes accessible to anyone
+    //   element: <DefaultLayout />,
+    //   children: [
+    //     {
+    //       path: "/",
+    //       element: <Home />,
+    //     },
+    //   ],
+    // },
     {
       // Routes only accessible to non-authenticated users
       element: (
