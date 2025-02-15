@@ -8,6 +8,7 @@ import { useFormStore } from "../stores/formStore";
 export function Register() { const requestState = useRequestStore.getState().state; const { createUser } = useUsers();
   const [cities, setCities] = useState([]);
   const region = useFormStore((state) => state.form.region);
+  const { checkEmail } = useUsers();
 
   useEffect(() => {
     if (region) {
@@ -101,6 +102,7 @@ export function Register() { const requestState = useRequestStore.getState().sta
                       value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                       message: "Please enter a valid email address",
                     },
+                    validate: (value) => {checkEmail(value) || "Email in use"},
                     placeholder: "Email",
                   },
 

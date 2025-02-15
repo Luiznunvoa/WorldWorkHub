@@ -21,5 +21,13 @@ export class UsersService {
     });
   }
 
+  async emailExists(email) {
+    return await this.http.requestPrivateBackend({
+      method: "emailExists",
+      url: "/email-exists",
+      data: email
+    })
+  }
+
   // TODO: getByID, getAll, Exclude and Edit
 }
