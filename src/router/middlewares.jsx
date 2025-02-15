@@ -33,7 +33,6 @@ export const ValidateSelectedProfile = ({ children }) => {
       }
     };
 
-    console.log("why")
     // Making sure that will try to fetch only once
     if (authenticated && !hasFetchedUser.current) {
       fetchUser();

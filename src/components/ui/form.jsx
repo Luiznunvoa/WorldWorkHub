@@ -94,7 +94,7 @@ export function Form({ onSubmit, buttonlabels, dialogs, steps }) {
                     })}
                     type={input.type}
                     placeholder={input.placeholder}
-                    className="p-2 w-full placeholder-black text-black bg-white rounded border-b border-black placeholder:font-Roboto"
+                    className="p-2 w-full placeholder-black text-text bg-white rounded border-b border-black placeholder:font-Roboto"
                   />
                 )}
                 {/* Error Message */}

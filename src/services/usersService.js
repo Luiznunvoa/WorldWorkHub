@@ -23,7 +23,7 @@ export class UsersService {
 
   async emailExists(email) {
     return await this.http.requestPrivateBackend({
-      method: "emailExists",
+      method: "post",
       url: "/email-exists",
       data: email
     })

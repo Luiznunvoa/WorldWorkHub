@@ -110,17 +110,8 @@ export function useUsers() {
   };
 
   const checkEmail = async (email) => {
-    setState(STATE.LOADING);
-    console.log(email);
-    try {
-      const exists = await usersService.emailExists(email);
-      setState(STATE.IDLE);
-      return exists;
-    } catch (error) {
-      console.log(error);
-      setState(STATE.IDLE);
-      return false;
-    }
+    const response = await usersService.emailExists({ email });
+    return !response.exists;
   };
 
   return {

@@ -5,7 +5,9 @@ import { useUsers } from "../hooks/useUsers";
 import { useRequestStore } from "../stores/requestStore";
 import { useFormStore } from "../stores/formStore";
 
-export function Register() { const requestState = useRequestStore.getState().state; const { createUser } = useUsers();
+export function Register() {
+  const requestState = useRequestStore.getState().state;
+  const { createUser } = useUsers();
   const [cities, setCities] = useState([]);
   const region = useFormStore((state) => state.form.region);
   const { checkEmail } = useUsers();
@@ -102,7 +104,10 @@ export function Register() { const requestState = useRequestStore.getState().sta
                       value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                       message: "Please enter a valid email address",
                     },
-                    validate: (value) => {checkEmail(value) || "Email in use"},
+                    validate: async (value) => {
+                      const isValid = await checkEmail(value);
+                      return isValid || "Email in use";
+                    },
                     placeholder: "Email",
                   },
 
@@ -133,6 +138,17 @@ export function Register() { const requestState = useRequestStore.getState().sta
               {
                 title: "Address information",
                 inputs: [
+                  {
+                    name: "zipcode",
+                    type: "text",
+                    required: "Zip code is required",
+                    pattern: {
+                      value: /^\d{5}(-\d{4})?$/,
+                      message: "Please enter a valid zip code",
+                    },
+                    placeholder: "Zip code",
+                  },
+
                   {
                     name: "region",
                     type: "select",
@@ -204,32 +220,6 @@ export function Register() { const requestState = useRequestStore.getState().sta
                           value: city,
                         }))
                         : [{ label: "No State Selected", value: "" }],
-                  },
-
-                  {
-                    name: "phone",
-                    type: "text",
-                    required: "Phone is required",
-                    minlength: {
-                      value: 9,
-                      message: "Phone number must have at least 9 numbers",
-                    },
-                    pattern: {
-                      value: /^[0-9]*$/,
-                      message: "Please enter a valid phone number",
-                    },
-                    placeholder: "Phone number",
-                  },
-
-                  {
-                    name: "zipcode",
-                    type: "text",
-                    required: "Zip code is required",
-                    pattern: {
-                      value: /^\d{5}(-\d{4})?$/,
-                      message: "Please enter a valid zip code",
-                    },
-                    placeholder: "Zip code",
                   },
                 ],
               },
@@ -323,6 +313,21 @@ export function Register() { const requestState = useRequestStore.getState().sta
                       { label: "Carpenter", value: "Carpenter" },
                       { label: "Farmer", value: "Farmer" },
                     ],
+                  },
+
+                  {
+                    name: "phone",
+                    type: "text",
+                    required: "Phone is required",
+                    minlength: {
+                      value: 9,
+                      message: "Phone number must have at least 9 numbers",
+                    },
+                    pattern: {
+                      value: /^[0-9]*$/,
+                      message: "Please enter a valid phone number",
+                    },
+                    placeholder: "Phone number",
                   },
                 ],
               },
