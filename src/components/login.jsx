@@ -6,7 +6,7 @@ import { useRequestStore } from "../stores/requestStore";
 
 export function Login() {
   const navigate = useNavigate();
-  const requestState = useRequestStore.getState().state;
+  const requestState = useRequestStore((state) => state.state);
   const { startSession } = useSession();
 
   useEffect(() => {

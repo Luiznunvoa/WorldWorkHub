@@ -10,7 +10,7 @@ export function Footer() {
             key={section.title}
             className="flex flex-col justify-center items-center"
           >
-            <p className="text-lg font-bold text-outline font-Roboto">
+            <p className="text-lg text-center font-bold text-outline font-Roboto">
               {section.title}
             </p>
             <ul className="flex flex-col gap-2 mt-3">
@@ -21,7 +21,7 @@ export function Footer() {
                 >
                   <a
                     href={link.path}
-                    className="cursor-pointer hover:underline"
+                    className="cursor-pointer text-center hover:underline"
                   >
                     {link.label}
                   </a>
@@ -51,8 +51,8 @@ export function Footer() {
   return (
     <footer className="flex flex-col justify-center items-center w-full border-t-2 border-outline">
       <div className="flex flex-col gap-16 items-center lg:flex-row">
-        <div className="flex flex-col gap-2 m-10">
-          <h2 className="text-2xl font-bold font-kanit-thin text-outline">
+        <div className="flex flex-col gap-2 m-10 justify-center">
+          <h2 className="text-2xl text-center lg:text-start font-bold font-kanit-thin text-outline">
             WorldWorkHub.
           </h2>
 
@@ -60,11 +60,11 @@ export function Footer() {
             {`Copyright © ${new Date().getFullYear()} WorldWorkHub`}
           </p>
 
-          <p className="text-sm italic text-outline font-Roboto">
+          <p className="text-sm text-center lg:text-start italic text-outline font-Roboto">
             all rights reserved
           </p>
 
-          <nav className="flex flex-row gap-5 items-center mt-5">
+          <nav className="flex flex-row gap-5 items-center lg:justify-start justify-center mt-5">
             <div className="flex flex-col justify-center items-center w-7 h-7 rounded-full transition cursor-pointer bg-outline hover:bg-background_secondary">
               <Icon icon="github" className="w-5 h-5 fill-text_secondary" />
             </div>

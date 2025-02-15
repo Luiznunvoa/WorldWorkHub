@@ -187,3 +187,15 @@
   animation: show 1.5s ease-in-out;
 }
 
+@keyframes slide {
+  0% {
+    transform: translateY(-36rem);
+  }
+  100% {
+    transform: translateY(0rem);
+  }
+}
+
+.animate-slide {
+  animation: slide 1s ease-out forwards;
+}

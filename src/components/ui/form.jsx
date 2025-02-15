@@ -11,17 +11,17 @@ import PropTypes from "prop-types";
  * Props:
  * - onSubmit (function): Handles form submission.
  * - buttonlabels (object): Labels for navigation buttons (previous, next, submit).
- * - dialogs (array of objects): Dialogs and links in the bottom of the form, 
+ * - dialogs (array of objects): Dialogs and links in the bottom of the form,
  * - steps (array of objects): Array of all the steps in the form.
  */
 export function Form({ onSubmit, buttonlabels, dialogs, steps }) {
   const navigate = useNavigate();
-  const [step, setStep] = useState(0); 
-  const methods = useForm(); 
+  const [step, setStep] = useState(0);
+  const methods = useForm();
 
   const setState = useFormStore((state) => state.setState);
   const formValues = methods.watch();
-  
+
   useEffect(() => {
     setState(formValues);
   }, [formValues, setState]);
@@ -51,15 +51,20 @@ export function Form({ onSubmit, buttonlabels, dialogs, steps }) {
           className="flex flex-col justify-between items-center p-6 w-full h-full bg-white shadow-2xl"
         >
           <div className="flex-col w-full">
-            {/* Step Title */}
-            <h2 className="m-5 text-2xl italic font-bold text-center font-kanit-thin">
-              {steps[step].title}
-            </h2>
+            {steps[step].title && (
+              <h2 className="m-5 text-2xl italic font-bold text-center font-kanit-thin">
+                {steps[step].title}
+              </h2>
+            )}
 
             {steps[step].inputs.map((input, index) => (
-              <div key={index} className="mb-4 w-full">
+              <div
+                key={`${input.name}-${index}-${step}`}
+                className="mb-4 w-full"
+              >
                 {input.type === "select" ? (
                   <select
+                    key={`${input.name}-${step}`}
                     {...methods.register(input.name, {
                       required: input.required,
                     })}
@@ -77,6 +82,8 @@ export function Form({ onSubmit, buttonlabels, dialogs, steps }) {
                   </select>
                 ) : (
                   <input
+                    key={`${input.name}-${step}`}
+                    defaultValue=""
                     {...methods.register(input.name, {
                       required: input.required,
                       minlength: input.minLength,
@@ -130,7 +137,7 @@ export function Form({ onSubmit, buttonlabels, dialogs, steps }) {
             </div>
 
             {/* Additional Links */}
-            {dialogs.map((dialog, index) => (
+            {dialogs && dialogs.map((dialog, index) => (
               <p key={index} className="flex gap-1 text-outline">
                 {dialog.text}
                 <a
@@ -162,12 +169,12 @@ Form.propTypes = {
       text: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
       path: PropTypes.string.isRequired,
-    }),
+    }).isRequired,
   ),
 
   steps: PropTypes.arrayOf(
     PropTypes.shape({
-      title: PropTypes.string.isRequired,
+      title: PropTypes.string,
 
       inputs: PropTypes.arrayOf(
         PropTypes.shape({

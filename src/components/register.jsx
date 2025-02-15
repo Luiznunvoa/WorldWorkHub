@@ -5,9 +5,7 @@ import { useUsers } from "../hooks/useUsers";
 import { useRequestStore } from "../stores/requestStore";
 import { useFormStore } from "../stores/formStore";
 
-export function Register() {
-  const requestState = useRequestStore.getState().state;
-  const { createUser } = useUsers();
+export function Register() { const requestState = useRequestStore.getState().state; const { createUser } = useUsers();
   const [cities, setCities] = useState([]);
   const region = useFormStore((state) => state.form.region);
 
