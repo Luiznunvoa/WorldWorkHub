@@ -318,8 +318,9 @@ export function Register() {
                   {
                     name: "phone",
                     type: "text",
+                    mask: "+00 (000)00000-0000",
                     required: "Phone is required",
-                    minlength: {
+                    minLength: {
                       value: 9,
                       message: "Phone number must have at least 9 numbers",
                     },

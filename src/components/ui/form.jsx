@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useForm, FormProvider } from "react-hook-form";
+import { useForm, FormProvider, Controller } from "react-hook-form";
 import { useFormStore } from "../../stores/formStore";
 import PropTypes from "prop-types";
+import { IMaskInput } from "react-imask";
 
 /**
  * Form Component
@@ -80,6 +81,30 @@ export function Form({ onSubmit, buttonlabels, dialogs, steps }) {
                       </option>
                     ))}
                   </select>
+                ) : input.mask ? (
+                  // When the "mask" property is provided, use IMaskInput via Controller
+                  <Controller
+                    name={input.name}
+                    control={methods.control}
+                    rules={{
+                      required: input.required,
+                      minLength: input.minLength,
+                      pattern: input.pattern,
+                      validate:
+                        input.validate &&
+                        ((value) => input.validate(value, methods)),
+                    }}
+                    defaultValue=""
+                    render={({ field }) => (
+                      <IMaskInput
+                        mask={input.mask}
+                        type={input.type}
+                        placeholder={input.placeholder}
+                        className="p-2 w-full placeholder-black bg-white rounded border-b border-black text-text placeholder:font-Roboto"
+                        {...field}
+                      />
+                    )}
+                  />
                 ) : (
                   <input
                     key={`${input.name}-${step}`}
@@ -94,7 +119,7 @@ export function Form({ onSubmit, buttonlabels, dialogs, steps }) {
                     })}
                     type={input.type}
                     placeholder={input.placeholder}
-                    className="p-2 w-full placeholder-black text-text bg-white rounded border-b border-black placeholder:font-Roboto"
+                    className="p-2 w-full placeholder-black bg-white rounded border-b border-black text-text placeholder:font-Roboto"
                   />
                 )}
                 {/* Error Message */}
@@ -187,6 +212,8 @@ Form.propTypes = {
           validate: PropTypes.func,
 
           placeholder: PropTypes.string,
+
+          mask: PropTypes.string,
 
           minlength: PropTypes.shape({
             value: PropTypes.number.isRequired,
