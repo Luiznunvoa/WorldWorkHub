@@ -1,6 +1,4 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
-import { useRequestStore } from "../stores/requestStore";
+import { useState } from "react";
 import { useSession } from "../hooks/useSession";
 import { Panels } from "./ui/panels";
 import { Hero } from "./ui/hero";
@@ -12,16 +10,8 @@ import { Form } from "./ui/form";
 
 export function Home() {
   const [dialog, setDialog] = useState(false);
-  const navigate = useNavigate();
   const { startSession } = useSession();
-  const requestState = useRequestStore((state) => state.state);
   
-  useEffect(() => {
-    if (requestState === "success") {
-      navigate("/list");
-    }
-  }, [requestState, navigate]);
-
   return (
     <div className="flex flex-col gap-10 items-center mb-20">
       {/* Main Banner */}

@@ -1,19 +1,10 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { Form } from "./ui/form";
 import { useSession } from "../hooks/useSession";
 import { useRequestStore } from "../stores/requestStore";
 
 export function Login() {
-  const navigate = useNavigate();
   const requestState = useRequestStore((state) => state.state);
   const { startSession } = useSession();
-
-  useEffect(() => {
-    if (requestState === "success") {
-      navigate("/list");
-    }
-  }, [requestState, navigate]);
 
   return (
     <div className="flex flex-col gap-10 items-center">

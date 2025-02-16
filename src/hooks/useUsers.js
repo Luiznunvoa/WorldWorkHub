@@ -102,8 +102,7 @@ export function useUsers() {
    * @returns {Promise<boolean>} - A promise that resolves to true if the email exist.
    */
   const checkEmail = async (email) => {
-    const { exists } = await usersService.emailExists({ email });
-    return exists;
+    return await usersService.emailExists({ email });
   };
 
   return {
