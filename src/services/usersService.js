@@ -28,6 +28,14 @@ export class UsersService {
       data: email
     })
   }
+  
+  async zipExists(zipcode) {
+    return await this.http.requestPrivateBackend({
+      method: "post",
+      url: "/zip-exists",
+      data: zipcode 
+    })
+  }
 
   // TODO: getByID, getAll, Exclude and Edit
 }

@@ -102,12 +102,33 @@ export function useUsers() {
    * @returns {Promise<boolean>} - A promise that resolves to true if the email exist.
    */
   const checkEmail = async (email) => {
-    return await usersService.emailExists({ email });
+    const response = await usersService.emailExists({ email });
+    return response.exists; 
+  };
+
+  /**
+   * Checks if the given zip code exists. 
+   *
+   * @param {string} zipcode - The zip code to check.
+   * @returns {Promise<boolean>} - A promise that resolves to true
+   */
+  const checkZip = async (zipcode) => {
+    try {
+      const response = await usersService.zipExists({ zipcode });
+      console.log("Response:", response);
+      if (response.message !== "ZipCode does not exist.") {
+        return true;
+      }
+    } catch (error) {
+      console.error("Error checking zip code:", error);
+    }
+    return false
   };
 
   return {
     createUser,
     getUser,
     checkEmail,
+    checkZip,
   };
 }

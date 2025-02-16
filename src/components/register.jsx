@@ -6,11 +6,10 @@ import { useRequestStore } from "../stores/requestStore";
 import { useFormStore } from "../stores/formStore";
 
 export function Register() {
-  const requestState = useRequestStore.getState().state;
-  const { createUser } = useUsers();
   const [cities, setCities] = useState([]);
+  const { checkEmail, createUser, checkZip } = useUsers();
+  const requestState = useRequestStore.getState().state;
   const region = useFormStore((state) => state.form.region);
-  const { checkEmail } = useUsers();
 
   useEffect(() => {
     if (region) {
@@ -147,6 +146,10 @@ export function Register() {
                       message: "Please enter a valid zip code",
                     },
                     placeholder: "Zip code",
+                    validate: async (value) => {
+                      const isValid = await checkZip(value);
+                      return isValid || "Zip code not found";
+                    },
                   },
 
                   {
