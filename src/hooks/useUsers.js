@@ -74,44 +74,36 @@ export function useUsers() {
 
   /**
    * Retrieves the current user's information.
+   * If the user is already loaded (i.e. not in its initial state), it returns the cached data.
+   * Otherwise, it fetches the user data from the API.
    * @returns {Promise<Object>} The user data.
    */
   const getUser = async () => {
-    if (useUserStore.getState().user !== initialState) {
-      return;
-    }
+    const currentUser = useUserStore.getState().user;
+    if (currentUser !== initialState) return currentUser;
+
     setState(STATE.LOADING);
     try {
-      const response = await usersService.getCurrent();
-      useUserStore.setState({
-        user: {
-          id: response.id,
-          firstname: response.firstname,
-          lastname: response.lastname,
-          email: response.email,
-          role: response.role,
-          occupation: response.occupation,
-          phone: response.phone,
-          education: response.education,
-          region: response.region,
-          city: response.city,
-          zipcode: response.zipcode,
-          services: response.services,
-          languages: response.languages,
-        },
-      });
+      const user = await usersService.getCurrent();
+      useUserStore.setState({ user });
       setState(STATE.SUCCESS);
-      return response.user;
+      return user;
     } catch (error) {
-      setState(STATE.ERROR);
       console.error("Error fetching current user:", error);
+      setState(STATE.ERROR);
       throw error;
     }
   };
 
+  /**
+   * Checks if the given email does not exist in the user service.
+   *
+   * @param {string} email - The email to check.
+   * @returns {Promise<boolean>} - A promise that resolves to true if the email exist.
+   */
   const checkEmail = async (email) => {
-    const response = await usersService.emailExists({ email });
-    return !response.exists;
+    const { exists } = await usersService.emailExists({ email });
+    return exists;
   };
 
   return {

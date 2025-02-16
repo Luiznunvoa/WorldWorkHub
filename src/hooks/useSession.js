@@ -29,43 +29,26 @@ export function useSession() {
    */
   const startSession = async (data) => {
     setState(STATE.LOADING);
+    
     try {
       const credentials = loginSchema.parse(data);
-      const response = await sessionService.start(credentials);
+      const { access_token, user } = await sessionService.start(credentials);
 
-      useSessionStore.getState().setState({
-        accessToken: response.access_token,
-      });
-
-      useUserStore.setState({
-        user: {
-          id: response.user.id,
-          firstname: response.user.firstname,
-          lastname: response.user.lastname,
-          email: response.user.email,
-          role: response.user.role,
-          occupation: response.user.occupation,
-          phone: response.user.phone,
-          education: response.user.education,
-          region: response.user.region,
-          city: response.user.city,
-          zipcode: response.user.zipcode,
-          services: response.user.services,
-          languages: response.user.languages,
-        },
-      });
+      useSessionStore.getState().setState({ accessToken: access_token });
+      useUserStore.setState({ user });
 
       setState(STATE.SUCCESS);
     } catch (error) {
       if (error instanceof ZodError) {
-        alert("Unexpected Validation Error!");
-        console.error("Validation errors (Zod):", error.errors);
+        const messages = error.errors.map((err) => err.message).join(", ");
+        alert(`Unexpected Validation error: ${messages}`);
+        console.error("Unexpected Validation errors:", error.errors);
       } else if (error.message === "Invalid Credentials") {
-        console.error("Login request error:", error.message);
+        console.error("Invalid credentials!");
         await new Promise((resolve) => setTimeout(resolve, 5000));
       } else {
-        console.error("Login request error:", error);
-        alert("Unexpected Error: " + error.message);
+        console.error("Login error:", error);
+        alert(`Unexpected error: ${error.message}`);
       }
       setState(STATE.ERROR);
     }
@@ -78,24 +61,16 @@ export function useSession() {
   const endSession = async () => {
     setState(STATE.LOADING);
     try {
-      const token = useSessionStore.getState().accessToken;
-      if (!token) {
-        setState(STATE.ERROR);
-        throw new Error("Missing access token");
-      }
       await sessionService.end();
-
-      // Cleanup
+      setState(STATE.SUCCESS);
+    } catch (error) {
+      console.error("Error in logout request:", error);
+      setState(STATE.ERROR);
+    } finally {
       useSessionStore.getState().reset();
       useUserStore.getState().reset();
       localStorage.clear();
       clearCookies();
-
-      setState(STATE.SUCCESS);
-    } catch (error) {
-      console.error("Error in logout request:", error);
-      alert("Unexpected error: " + error.message);
-      setState(STATE.ERROR);
     }
   };
 
@@ -103,27 +78,26 @@ export function useSession() {
    * Refreshes the authentication token.
    * @returns {Promise<string>} The new access token.
    */
-  const refreshToken = async () => {
-    setState(STATE.LOADING);
-    try {
-      const response = await sessionService.refresh();
-      useSessionStore
-        .getState()
-        .setState({ accessToken: response.access_token });
-
-      setState(STATE.SUCCESS);
-      return response.access_token;
-    } catch (error) {
-      console.error("Error in token refresh:", error);
-      alert("Unexpected error: " + error.message);
-      setState(STATE.ERROR);
-      throw error;
-    }
-  };
+  // const refreshToken = async () => {
+  //   setState(STATE.LOADING);
+  //   try {
+  //     const response = await sessionService.refresh();
+  //     useSessionStore
+  //       .getState()
+  //       .setState({ accessToken: response.access_token });
+  //
+  //     setState(STATE.SUCCESS);
+  //     return response.access_token;
+  //   } catch (error) {
+  //     console.error("Error in token refresh:", error);
+  //     alert("Unexpected error: " + error.message);
+  //     setState(STATE.ERROR);
+  //     throw error;
+  //   }
+  // };
 
   return {
     startSession,
     endSession,
-    refreshToken,
   };
 }

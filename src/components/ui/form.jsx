@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm, FormProvider, Controller } from "react-hook-form";
 import { useFormStore } from "../../stores/formStore";
@@ -17,24 +17,28 @@ import { IMaskInput } from "react-imask";
  */
 export function Form({ onSubmit, buttonlabels, dialogs, steps }) {
   const navigate = useNavigate();
-  const [step, setStep] = useState(0);
-  const methods = useForm();
-
+  const [step, setStep] = useState(0); // State to track the current step
+  const methods = useForm(); // Initialize react-hook-form methods
   const setState = useFormStore((state) => state.setState);
-  const formValues = methods.watch();
+  const formValues = methods.watch(); // Watch form values
 
+  // Update form store state whenever form values change
   useEffect(() => {
     setState(formValues);
   }, [formValues, setState]);
 
-  const nextStep = async () => {
-    const isValid = await methods.trigger();
+  // Function to go to the next step, memorized with useCallback
+  const nextStep = useCallback(async () => {
+    const isValid = await methods.trigger(); // Trigger validation
     if (isValid) {
-      setStep((prev) => (prev < steps.length - 1 ? prev + 1 : prev));
+      setStep((prev) => (prev < steps.length - 1 ? prev + 1 : prev)); // Increment step if valid
     }
-  };
+  }, [methods, steps.length]);
 
-  const previousStep = () => setStep((prev) => (prev > 0 ? prev - 1 : prev));
+  // Function to go to the previous step, memorized with useCallback
+  const previousStep = useCallback(() => {
+    setStep((prev) => (prev > 0 ? prev - 1 : prev)); // Decrements step if not the first step
+  }, []);
 
   function ErrorMessage({ error }) {
     return <p className="h-1 text-sm text-red-500">{error}</p>;
@@ -82,7 +86,6 @@ export function Form({ onSubmit, buttonlabels, dialogs, steps }) {
                     ))}
                   </select>
                 ) : input.mask ? (
-                  // When the "mask" property is provided, use IMaskInput via Controller
                   <Controller
                     name={input.name}
                     control={methods.control}
@@ -122,7 +125,6 @@ export function Form({ onSubmit, buttonlabels, dialogs, steps }) {
                     className="p-2 w-full placeholder-black bg-white rounded border-b border-black text-text placeholder:font-Roboto"
                   />
                 )}
-                {/* Error Message */}
                 <ErrorMessage
                   error={methods.formState.errors[input.name]?.message}
                 />
@@ -130,7 +132,6 @@ export function Form({ onSubmit, buttonlabels, dialogs, steps }) {
             ))}
           </div>
 
-          {/* Navigation Buttons */}
           <div className="flex flex-col justify-between items-center w-full">
             <div className="flex flex-row gap-5 justify-center items-center my-2">
               {step > 0 && (
@@ -161,18 +162,18 @@ export function Form({ onSubmit, buttonlabels, dialogs, steps }) {
               )}
             </div>
 
-            {/* Additional Links */}
-            {dialogs && dialogs.map((dialog, index) => (
-              <p key={index} className="flex gap-1 text-outline">
-                {dialog.text}
-                <a
-                  onClick={() => navigate(dialog.path)}
-                  className="text-blue-600 underline cursor-pointer"
-                >
-                  {dialog.label}
-                </a>
-              </p>
-            ))}
+            {dialogs &&
+              dialogs.map((dialog, index) => (
+                <p key={index} className="flex gap-1 text-outline">
+                  {dialog.text}
+                  <a
+                    onClick={() => navigate(dialog.path)}
+                    className="text-blue-600 underline cursor-pointer"
+                  >
+                    {dialog.label}
+                  </a>
+                </p>
+              ))}
           </div>
         </form>
       </FormProvider>

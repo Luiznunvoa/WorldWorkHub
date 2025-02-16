@@ -105,7 +105,7 @@ export function Register() {
                       message: "Please enter a valid email address",
                     },
                     validate: async (value) => {
-                      const isValid = await checkEmail(value);
+                      const isValid = !(await checkEmail(value));
                       return isValid || "Email in use";
                     },
                     placeholder: "Email",
