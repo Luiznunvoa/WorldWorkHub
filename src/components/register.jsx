@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
 import { Form } from "./ui/form";
-import { AlertMessage } from "./ui/alertMessage";
 import { useUsers } from "../hooks/useUsers";
-import { useRequestStore } from "../stores/requestStore";
 import { useFormStore } from "../stores/formStore";
 
 export function Register() {
   const [cities, setCities] = useState([]);
   const { checkEmail, createUser, checkZip } = useUsers();
-  const requestState = useRequestStore.getState().state;
   const region = useFormStore((state) => state.form.region);
 
   useEffect(() => {
@@ -21,29 +18,9 @@ export function Register() {
     }
   }, [region]);
 
-  if (requestState === "success") {
-    return (
-      <div className="flex flex-col items-center p-6 w-full fill-green text-green">
-        <AlertMessage
-          message={{
-            icon: "check",
-            text: "User Created",
-            link: {
-              text: "Login Now!",
-              path: "/login",
-            },
-          }}
-        />
-      </div>
-    );
-  }
-
   return (
     <div className="flex flex-col items-center p-6 w-full h-full">
       {/* Form to create a new account */}
-      <p className="h-10 text-center text-red-500 w-100">
-        {requestState === "error" && "Unexpected Error in Registration"}
-      </p>
       <div className="flex overflow-hidden flex-row-reverse justify-center items-center border-2 border-solid shadow-xl h-[32rem] border-outline">
         <div className="w-96 h-full">
           <Form
@@ -209,6 +186,7 @@ export function Register() {
                       { label: "Wisconsin", value: "Wisconsin" },
                       { label: "Wyoming", value: "Wyoming" },
                     ],
+                    // TODO: Verify if the region is actually valid based on the zip code
                   },
 
                   {
@@ -321,7 +299,7 @@ export function Register() {
                   {
                     name: "phone",
                     type: "text",
-                    mask: "+00 (000)00000-0000",
+                    // TODO: mask: "+00 (000)00000-0000",
                     required: "Phone is required",
                     minLength: {
                       value: 9,

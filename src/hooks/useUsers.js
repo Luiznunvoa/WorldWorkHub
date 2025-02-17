@@ -3,6 +3,7 @@ import { AxiosHttpAdapter } from "../adapter/httpUser";
 import { UsersService } from "../services/usersService";
 import { useRequestStore, STATE } from "../stores/requestStore";
 import { useUserStore, initialState } from "../stores/userStore.js";
+import { useSession } from "./useSession";
 
 const userSchema = z
   .object({
@@ -48,6 +49,7 @@ const userSchema = z
  */
 export function useUsers() {
   const { setState } = useRequestStore();
+  const { startSession } = useSession();
   const usersService = new UsersService(new AxiosHttpAdapter());
 
   /**
@@ -60,6 +62,7 @@ export function useUsers() {
     try {
       const newUser = userSchema.parse(data);
       await usersService.create(newUser);
+      startSession({ email: newUser.email, password: newUser.password });
       setState(STATE.SUCCESS);
     } catch (error) {
       setState(STATE.ERROR);
@@ -67,6 +70,7 @@ export function useUsers() {
         alert("Unexpected Validation Error!");
         console.error("Validation errors (Zod):", error.errors);
       } else {
+        alert("Unexpected Error!" + error.message);
         console.error("User creation request error:", error.message);
       }
     }
@@ -115,7 +119,6 @@ export function useUsers() {
   const checkZip = async (zipcode) => {
     try {
       const response = await usersService.zipExists({ zipcode });
-      console.log("Response:", response);
       if (response.message !== "ZipCode does not exist.") {
         return true;
       }
