@@ -1,22 +1,24 @@
-import { useEffect } from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { Footer } from "./ui/footer";
 import { Header } from "./ui/header";
 import { Spinner } from "./ui/spinner";
-import { useRequestStore, STATE } from "../stores/requestStore";
+import { Icon } from "./ui/icon";
+import { useRequestStore } from "../stores/requestStore";
+import { useUserStore } from "../stores/userStore";
 
 export const DefaultLayout = () => {
   const state = useRequestStore((store) => store.state);
-  const { pathname } = useLocation();
-  const setState = useRequestStore((state) => state.setState);
-
-  useEffect(() => {
-    setState(STATE.IDLE); // Resets request state on route change
-  }, [pathname, setState]);
-
+  
   return (
     <>
-      <Header />
+      <Header>
+        <span
+          className="flex flex-row gap-5 justify-center items-center cursor-pointer"
+        >
+          <Icon icon="profile" className="w-10 h-10" />
+          <p>Login</p>
+        </span>
+      </Header>
       {state == "loading" ? (
         <div className="w-full h-96">
           <Spinner />
@@ -30,32 +32,30 @@ export const DefaultLayout = () => {
 };
 
 export const DashBoardLayout = () => {
-  const state = useRequestStore((store) => store.state);
-  const { pathname } = useLocation();
-  const setState = useRequestStore((state) => state.setState);
-
-  useEffect(() => {
-    setState(STATE.IDLE); // Resets request state on route change
-  }, [pathname, setState]);
+  const state = useRequestStore((store) => store.state)
 
   return (
     <>
-      <Header />
+      <Header>
+        <span
+          className="flex flex-row gap-5 justify-center items-center cursor-pointer"
+        >
+          <Icon icon="profile" className="w-10 h-10" />
+          <p>{useUserStore.getState().user.firstname || "N/A"}</p>
+        </span>
+      </Header>
       {state == "loading" ? (
         <div className="w-full h-96">
           <Spinner />
         </div>
       ) : (
-        <main className="flex flex-row items-center">
-          <div className="flex flex-col gap-10 p-10 w-96 bg-white border-r-2 h-[42rem] border-outline">
-            <h1 className="text-xl font-bold text-text font-kanit-thin">
-              Side Bar
-            </h1>
+        <main className="flex flex-row h-full items-center">
+          <div className="flex flex-col h-full w-96 gap-10 bg-white border-r-2 border-outline">
+
           </div>
           <Outlet />
         </main>
       )}
-      <Footer />
     </>
   );
 };

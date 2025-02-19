@@ -1,17 +1,10 @@
-import { useState } from "react";
-import { useSession } from "../hooks/useSession";
 import { Panels } from "./ui/panels";
 import { Hero } from "./ui/hero";
 import { Highlight } from "./ui/highlight";
 import { Slider } from "./ui/slider";
 import { TextGrid } from "./ui/textGrid";
-import { Icon } from "./ui/icon";
-import { Form } from "./ui/form";
 
 export function Home() {
-  const [dialog, setDialog] = useState(false);
-  const { startSession } = useSession();
-  
   return (
     <div className="flex flex-col gap-10 items-center mb-20">
       {/* Main Banner */}
@@ -187,70 +180,6 @@ export function Home() {
           ],
         }}
       />
-
-      <span
-        onClick={() => setDialog((prev) => !prev)}
-        className="absolute right-5 top-4 flex flex-row gap-5 justify-center items-center cursor-pointer"
-      >
-        <Icon icon="profile" className="w-10 h-10" />
-        <p>Login</p>
-      </span>
-
-      {dialog && (
-        <div className="absolute right-0 top-16 z-10 w-96 bg-white animate-slide">
-          <Form
-            onSubmit={(data) => startSession(data)}
-            buttonlabels={{
-              next: "next",
-              previous: "previous",
-              submit: "submit",
-            }}
-
-            dialogs={[
-              {
-                text: "Don't have and accout yet?",
-                label: "Signup!",
-                path: "/register",
-              },
-              {
-                text: "Did you forgot your password?",
-                label: "Try this!",
-                path: "/",
-              },
-            ]}
-
-            // Process each step in the form
-            steps={[
-              {
-                inputs: [
-                  {
-                    name: "email",
-                    type: "email",
-                    required: "Email is required",
-                    pattern: {
-                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                      message: "please enter a valid email address",
-                    },
-                    placeholder: "Your email",
-                  },
-
-                  {
-                    name: "password",
-                    type: "password",
-                    required: "Password is required",
-                    pattern: {
-                      value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-                      message:
-                        "password must be at least 8 characters long and contain both letters and numbers",
-                    },
-                    placeholder: "password",
-                  },
-                ],
-              },
-            ]}
-          />
-        </div>
-      )}
     </div>
   );
 }

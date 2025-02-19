@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Home } from "../components/home";
 import { Login } from "../components/login";
 import { Register } from "../components/register";
-import { List } from "../components/list";
+import { Dashboard } from "../components/dashboard";
 import { DefaultLayout, DashBoardLayout } from "../components/layouts";
 import {
   VerifyUserAuthentication,
@@ -23,7 +23,7 @@ export function BrowserRouter() {
     // },
 
     {
-      // Routes only accessible to non-authenticated users
+      // Routes only accessible to unauthenticated users
       element: (
         <VerifyUserAuthentication>
           <DefaultLayout />
@@ -54,11 +54,11 @@ export function BrowserRouter() {
       ),
       children: [
         {
-          path: "/list",
-          element: <List />,
+          path: "/dashboard",
+          element: <Dashboard />,
         },
       ],
-    }
+    },
   ]);
 
   return <RouterProvider router={router} />;

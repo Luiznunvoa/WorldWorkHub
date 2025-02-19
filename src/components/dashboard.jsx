@@ -1,7 +1,7 @@
 import { useSession } from "../hooks/useSession";
 import { useUserStore } from "../stores/userStore";
 
-export function List() {
+export function Dashboard() {
   const { endSession } = useSession();
   const user = useUserStore((state) => state.user);
 

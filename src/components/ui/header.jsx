@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router";
-export function Header() {
+import PropTypes from "prop-types";
+
+export function Header({ children }) {
   const navigate = useNavigate();
 
   return (
@@ -9,6 +11,12 @@ export function Header() {
           WorldWorkHub.
         </h1>
       </span>
+      {children}
     </header>
   );
 }
+
+Header.propTypes = {
+  children: PropTypes.node,
+};
+

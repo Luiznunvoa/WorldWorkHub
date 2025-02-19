@@ -1,8 +1,21 @@
 import { useEffect, useRef, useCallback } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useSessionStore } from "../stores/sessionStore";
 import { useUsers } from "../hooks/useUsers";
+import { useRequestStore, STATE } from "../stores/requestStore";
+
+/*
+ * useResetRequestState hook resets the request state when the pathname changes
+ */
+const useResetRequestState = () => {
+  const { pathname } = useLocation();
+  const setState = useRequestStore((state) => state.setState);
+
+  useEffect(() => {
+    setState(STATE.IDLE);
+  }, [pathname, setState]);
+};
 
 /**
  * VerifyUserAuthentication component checks if a user is authenticated
@@ -14,8 +27,10 @@ import { useUsers } from "../hooks/useUsers";
 export const VerifyUserAuthentication = ({ children }) => {
   const authenticated = useSessionStore((store) => store.authenticated);
 
+  useResetRequestState();
+
   if (authenticated) {
-    return <Navigate to="/list" replace />;
+    return <Navigate to="/dashboard" replace />;
   }
 
   return children;
@@ -36,6 +51,8 @@ export const ValidateSelectedProfile = ({ children }) => {
   const hasFetchedUser = useRef(false);
   const authenticated = useSessionStore((store) => store.authenticated);
   const { getUser } = useUsers();
+    
+  useResetRequestState();
 
   // Function to fetch the user profile
   const fetchUser = useCallback(async () => {
