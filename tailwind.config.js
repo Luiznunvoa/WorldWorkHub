@@ -24,7 +24,48 @@ export default {
         "kanit-thin": ["Kanit", "sans-serif"],
         "archivo-black-regular": ["Archivo Black", "sans-serif"],
       },
+      keyframes: {
+        float: {
+          "0%": { transform: "translateY(0rem)" },
+          "33%": { transform: "translateY(-2rem)" },
+          "66%": { transform: "translateX(4rem)" },
+          "100%": { transform: "translateX(-1rem)" },
+        },
+        climb: {
+          "0%": { transform: "translateY(1rem)" },
+          "20%": { transform: "translateX(4rem)" },
+          "40%": { transform: "translateY(1rem)" },
+          "60%": { transform: "translateX(4rem)" },
+          "80%": { transform: "translateY(1rem)" },
+          "100%": { transform: "translateX(4rem)" },
+        },
+        jump: {
+          "0%": { transform: "translateY(0rem)" },
+          "100%": { transform: "translateY(-1rem)" },
+        },
+        turn: {
+          "0%": { transform: "translateX(0rem)" },
+          "100%": { transform: "translateX(-0.5rem)" },
+        },
+        show: {
+          "0%": { opacity: "0%" },
+          "50%": { opacity: "50%" },
+          "100%": { opacity: "100%" },
+        },
+        slide: {
+          "0%": { transform: "translateY(-36rem)" },
+          "100%": { transform: "translateY(0rem)" },
+        },
+      },
+      animation: {
+        float: "float 6s ease-in-out infinite alternate",
+        climb: "climb 20s ease-in-out infinite alternate",
+        jump: "jump 2s ease-in-out infinite alternate",
+        turn: "turn 2s ease-in-out infinite alternate",
+        show: "show 1.5s ease-in-out",
+        slide: "slide 1s ease-out forwards",
+      },
     },
   },
   plugins: [],
-}
+};

@@ -1,8 +1,9 @@
 import { Panels } from "./ui/panels";
 import { Hero } from "./ui/hero";
-import { Highlight } from "./ui/highlight";
+import { ElementsArray } from "./ui/elementsArray";
 import { Slider } from "./ui/slider";
 import { TextGrid } from "./ui/textGrid";
+import { AnimatedIcons } from "./ui/AnimatedIcons";
 
 export function Home() {
   return (
@@ -22,31 +23,46 @@ export function Home() {
       />
 
       {/* Array of animated SVGs with text labels*/}
-      <Highlight
-        highlights={[
+      <ElementsArray
+        array={[
           {
-            text: "Choose where you want to work on",
-            greenIcon: "usa",
-            blackIcon: "tap",
-            animation: "animate-float",
+            element: (
+              <AnimatedIcons
+                label="Choose where you want to work"
+                blackIcon="tap"
+                greenIcon="usa"
+                animationClass="animate-float"
+              />
+            ),
           },
           {
-            text: "Search for better opportunities everywhere",
-            greenIcon: "graph",
-            blackIcon: "man",
-            animation: " animate-climb ",
+            element: (
+              <AnimatedIcons
+                label="Search for better opportunities everywhere"
+                blackIcon="man"
+                greenIcon="graph"
+                animationClass="animate-climb"
+              />
+            ),
           },
           {
-            text: "Live for new and exciting experiences",
-            greenIcon: "heart",
-            blackIcon: "smile",
-            animation: "animate-jump",
+            element: (
+              <AnimatedIcons
+                blackIcon="smile"
+                greenIcon="heart"
+                animationClass="animate-jump"
+              />
+            ),
           },
           {
-            text: "Explore paths that lead to your dreams and goals",
-            greenIcon: "target",
-            blackIcon: "bow",
-            animation: "animate-turn",
+            element: (
+              <AnimatedIcons
+                label="Explore paths that lead to your dreams and goals"
+                blackIcon="bow"
+                greenIcon="target"
+                animationClass="animate-turn"
+              />
+            ),
           },
         ]}
       />
