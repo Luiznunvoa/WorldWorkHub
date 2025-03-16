@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Panels } from "./ui/panels";
 import { Hero } from "./ui/hero";
 import { ElementsArray } from "./ui/elementsArray";
@@ -6,20 +7,32 @@ import { TextGrid } from "./ui/textGrid";
 import { AnimatedIcons } from "./ui/AnimatedIcons";
 
 export function Home() {
+  const navigate = useNavigate();
+
   return (
     <div className="flex flex-col gap-10 items-center mb-20">
       {/* Main Banner */}
       <Hero
-        hero={{
-          title: "Make your way to your dream job!",
-          subtitle: "WWH. can help you get there...",
-          image: "https://i.postimg.cc/wBQbnHRp/person.png",
-          divider: "Look the Opportunities, Explore our solutions!",
-          button: {
-            label: "Start Now!",
-            path: "/register",
-          },
-        }}
+        image="https://i.postimg.cc/wBQbnHRp/person.png"
+        divider="Look the Opportunities, Explore our solutions!"
+        hero={(
+          <div className="flex flex-col justify-center items-center w-full h-1/2 lg:h-full lg:w-[56rem]">
+            <h1 className="text-5xl italic text-center sm:text-6xl lg:mt-40 xl:text-8xl font-archivo-black-regular">
+              Make your way to your dream job!
+            </h1>
+
+            <p className="mt-5 text-lg text-center font-Roboto">
+              WWH. can help you get there...
+            </p>
+
+            <button
+              onClick={() => navigate("/login")}
+              className="mt-10 w-1/2 h-16 font-bold border-solid transition duration-150 ease-in-out hover:shadow-2xl hover:scale-105 border-[0.1rem] border-outline bg-text font-kanit-thin text-text_secondary hover:outline hover:outline-8 hover:outline-offset-2 hover:outline-green"
+            >
+              Start Now!
+            </button>
+          </div>
+        )}
       />
 
       {/* Array of animated SVGs with text labels*/}
