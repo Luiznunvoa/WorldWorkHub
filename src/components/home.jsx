@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { Panels } from "./ui/panels";
 import { Hero } from "./ui/hero";
 import { ElementsArray } from "./ui/elementsArray";
 import { Slider } from "./ui/slider";
 import { TextGrid } from "./ui/textGrid";
 import { AnimatedIcons } from "./ui/AnimatedIcons";
+import { Icon } from "./ui/icon";
+import { ElementsColumn } from "./ui/elementsColumn";
 
 export function Home() {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ export function Home() {
       <Hero
         image="https://i.postimg.cc/wBQbnHRp/person.png"
         divider="Look the Opportunities, Explore our solutions!"
-        hero={(
+        hero={
           <div className="flex flex-col justify-center items-center w-full h-1/2 lg:h-full lg:w-[56rem]">
             <h1 className="text-5xl italic text-center sm:text-6xl lg:mt-40 xl:text-8xl font-archivo-black-regular">
               Make your way to your dream job!
@@ -27,12 +28,12 @@ export function Home() {
 
             <button
               onClick={() => navigate("/login")}
-              className="mt-10 w-1/2 h-16 font-bold border-solid transition duration-150 ease-in-out hover:shadow-2xl hover:scale-105 border-[0.1rem] border-outline bg-text font-kanit-thin text-text_secondary hover:outline hover:outline-8 hover:outline-offset-2 hover:outline-green"
+              className="mt-10 w-1/2 h-16 font-bold border-solid border-[0.1rem] border-outline bg-text font-kanit-thin text-text_secondary hover:outline hover:outline-8 hover:outline-offset-2 hover:outline-green"
             >
               Start Now!
             </button>
           </div>
-        )}
+        }
       />
 
       {/* Array of animated SVGs with text labels*/}
@@ -61,6 +62,7 @@ export function Home() {
           {
             element: (
               <AnimatedIcons
+                label="Live new exicting experiences"
                 blackIcon="smile"
                 greenIcon="heart"
                 animationClass="animate-jump"
@@ -81,21 +83,62 @@ export function Home() {
       />
 
       {/* Array of image Panels with text labels */}
-      <Panels
-        panels={{
-          places: [
-            {
-              image: "https://i.postimg.cc/Y92yHVQm/houses.jpg",
-              description:
-                "Relocating for work offers access to broader job markets, top companies, and new career opportunities. It’s a chance to build skills, expand your network, and gain valuable international experience, making you more competitive in the job market.",
-            },
-            {
-              image: "https://i.postimg.cc/C1vrLN4r/america.jpg",
-              description:
-                "Beyond work, finding your perfect occupation can make you experience new lifestyles, and perspectives. It fosters personal growth, resilience, and adaptability while creating exciting memories and opportunities for meaningful connections.",
-            },
-          ],
-        }}
+      <ElementsColumn
+        array={[
+          {
+            element: (
+              <>
+                <p className="w-5/6 text-xl text-center lg:w-2/5 font-archivo-black-regular">
+                  Relocating for work offers access to broader job markets, top
+                  companies, and new career opportunities. It’s a chance to
+                  build skills, expand your network, and gain valuable
+                  international experience, making you more competitive in the
+                  job market.
+                </p>
+
+                <div className="w-96 h-60 rounded-lg shadow-2xl lg:border-4 lg:border-solid bg-green lg:border-text">
+                  <img
+                    src="https://i.postimg.cc/Y92yHVQm/houses.jpg"
+                    className="container object-cover rounded-lg border-4 shadow-xl lg:mt-10 lg:-ml-10 border-text bg-text outline outline-4 outline-green"
+                    alt={`Houses`}
+                    loading="lazy"
+                  />
+
+                  <Icon
+                    icon="cursor"
+                    className="absolute -mt-12 h-20 w-20 fill-text stroke-green stroke-1 ${index % 2 === 0 ? ml-20 "
+                  />
+                </div>
+              </>
+            ),
+          },
+          {
+            element: (
+              <>
+                <div className="w-96 h-60 rounded-lg shadow-2xl lg:border-4 lg:border-solid bg-green lg:border-text">
+                  <img
+                    src="https://i.postimg.cc/C1vrLN4r/america.jpg"
+                    className="container object-cover rounded-lg border-4 shadow-xl lg:mt-10 lg:-ml-10 border-text bg-text outline outline-4 outline-green"
+                    alt={`Houses`}
+                    loading="lazy"
+                  />
+
+                  <Icon
+                    icon="cursor"
+                    className="absolute -mt-12 h-20 w-20 fill-text stroke-green stroke-1 ${index % 2 === 0 ? ml-20 rotate-90"
+                  />
+                </div>
+                <p className="w-5/6 text-xl text-center lg:w-2/5 font-archivo-black-regular">
+                  Beyond work, finding your perfect occupation can make you
+                  experience new lifestyles, and perspectives. It fosters
+                  personal growth, resilience, and adaptability while creating
+                  exciting memories and opportunities for meaningful
+                  connections.
+                </p>
+              </>
+            ),
+          },
+        ]}
       />
 
       {/* Slider with slides containing a image, a title and a description */}
